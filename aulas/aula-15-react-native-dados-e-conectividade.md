@@ -14,9 +14,20 @@
 Os mesmos princípios da Aula 11 se aplicam: a camada de domínio não deve saber se um dado vem de uma API remota, de armazenamento local, ou de cache — essa decisão pertence exclusivamente ao repositório.
 
 ```tsx
+// Erro de domínio próprio, lançado pelo interceptador de rede (§2) sempre que
+// a falha é de conectividade — não confundir com erros HTTP (4xx/5xx), que
+// devem se propagar normalmente em vez de cair no fallback de cache.
+export class NetworkError extends Error {
+  constructor(mensagem: string) {
+    super(mensagem);
+    this.name = 'NetworkError';
+  }
+}
+
 interface PedidoRepository {
   obterPedidos(): Promise<Pedido[]>;
   salvarPedido(pedido: Pedido): Promise<void>;
+  enviarAlteracao(alteracao: AlteracaoPendente): Promise<void>;
 }
 
 class PedidoRepositoryImpl implements PedidoRepository {
@@ -36,6 +47,14 @@ class PedidoRepositoryImpl implements PedidoRepository {
       }
       throw erro;
     }
+  }
+
+  async salvarPedido(pedido: Pedido): Promise<void> {
+    await this.remoto.salvar(pedido);
+  }
+
+  async enviarAlteracao(alteracao: AlteracaoPendente): Promise<void> {
+    await this.remoto.enviarAlteracao(alteracao); // usado na sincronização, §6
   }
 }
 ```
@@ -67,14 +86,20 @@ api.interceptors.response.use(
 A tabela é diretamente comparável à da Aula 11: `AsyncStorage` cumpre o papel do `shared_preferences` do Flutter, e `WatermelonDB`/`op-sqlite` cumprem o papel do `sqflite`/`drift` — mesma decisão arquitetural (tipo e volume do dado determinam a ferramenta), expressa em bibliotecas diferentes.
 
 ```tsx
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MMKV } from 'react-native-mmkv';
 
-async function salvarCache(pedidos: Pedido[]): Promise<void> {
-  await AsyncStorage.setItem('pedidos_cache', JSON.stringify(pedidos));
+// Para caches maiores que uns poucos KB, MMKV é preferível a AsyncStorage:
+// é síncrono (sem custo de Promise para uma leitura local) e não tem o limite
+// prático de ~2MB por entrada do AsyncStorage no Android — relevante assim
+// que a lista de pedidos em cache cresce além de um protótipo pequeno.
+const armazenamento = new MMKV();
+
+function salvarCache(pedidos: Pedido[]): void {
+  armazenamento.set('pedidos_cache', JSON.stringify(pedidos));
 }
 
-async function obterCache(): Promise<Pedido[]> {
-  const dados = await AsyncStorage.getItem('pedidos_cache');
+function obterCache(): Pedido[] {
+  const dados = armazenamento.getString('pedidos_cache');
   return dados ? JSON.parse(dados) : [];
 }
 ```
@@ -91,7 +116,12 @@ function useConectividade() {
 
   useEffect(() => {
     const cancelarAssinatura = NetInfo.addEventListener((estado) => {
-      setConectado(estado.isConnected ?? false);
+      // isConnected reporta apenas se há uma interface de rede ativa (ex.: Wi-Fi
+      // associado) — não se a internet é de fato alcançável. Um Wi-Fi de portal
+      // cativo (hotel, aeroporto) sem login feito conta como "conectado" por
+      // isConnected e falha em isInternetReachable. Prefira o segundo quando
+      // a pergunta real é "consigo falar com meu servidor agora?".
+      setConectado(estado.isInternetReachable ?? estado.isConnected ?? false);
     });
     return cancelarAssinatura;
   }, []);
@@ -107,23 +137,48 @@ function useConectividade() {
 Aplicado a uma tela de catálogo de produtos:
 
 ```tsx
+// Estado explícito e mutuamente exclusivo, em vez de múltiplos booleanos
+// combináveis — com carregando=true e produtos.length>0 simultâneos (caso
+// normal de stale-while-revalidate, Aula 11), a versão com booleanos soltos
+// exibiria o indicador de carregamento SOBRE a lista já preenchida ao mesmo
+// tempo, o que não é a intenção aqui. Calcular um único estado nomeado evita
+// essa ambiguidade por construção.
+type EstadoCatalogo =
+  | { tipo: 'carregando' }
+  | { tipo: 'erro'; erro: Error }
+  | { tipo: 'vazio' }
+  | { tipo: 'comDados'; produtos: Produto[]; desatualizado: boolean };
+
+function calcularEstado(
+  conectado: boolean,
+  carregando: boolean,
+  erro: Error | null,
+  produtos: Produto[]
+): EstadoCatalogo {
+  if (produtos.length > 0) return { tipo: 'comDados', produtos, desatualizado: !conectado };
+  if (carregando) return { tipo: 'carregando' };
+  if (erro) return { tipo: 'erro', erro };
+  return { tipo: 'vazio' };
+}
+
 function TelaCatalogo() {
   const conectado = useConectividade();
   const { produtos, carregando, erro } = useProdutos();
+  const estado = calcularEstado(conectado, carregando, erro, produtos);
 
   return (
     <View style={{ flex: 1 }}>
       {!conectado && <FaixaOffline texto="Sem conexão — exibindo dados salvos" />}
-      {carregando && <IndicadorDeCarregamento />}
-      {erro && conectado && <MensagemDeErro erro={erro} />}
-      {produtos.length > 0 && <ListaDeProdutos produtos={produtos} />}
-      {produtos.length === 0 && !carregando && <EstadoVazio />}
+      {estado.tipo === 'carregando' && <IndicadorDeCarregamento />}
+      {estado.tipo === 'erro' && <MensagemDeErro erro={estado.erro} />}
+      {estado.tipo === 'comDados' && <ListaDeProdutos produtos={estado.produtos} />}
+      {estado.tipo === 'vazio' && <EstadoVazio />}
     </View>
   );
 }
 ```
 
-Esse componente traduz diretamente, em código, a discussão da Aula 8 sobre estados de vazio, carregamento e erro, agora somada ao estado de "offline com dados em cache" introduzido na Aula 11 — a mesma teoria de estados de interface, aplicada agora ao segundo framework do componente.
+Esse componente traduz diretamente, em código, a discussão da Aula 8 sobre estados de vazio, carregamento e erro, agora somada ao estado de "offline com dados em cache" introduzido na Aula 11 — a mesma teoria de estados de interface, aplicada agora ao segundo framework do componente. Modelar o estado como um tipo nomeado e mutuamente exclusivo, em vez de múltiplos booleanos independentes, é a mesma disciplina de rigor exigida pela Aula 8: os estados de interface não são "detalhes", são parte do design, e merecem ser representados sem ambiguidade no código.
 
 ## 6. Sincronização de mudanças pendentes
 
@@ -144,7 +199,9 @@ async function sincronizarPendentes(repositorio: PedidoRepository) {
 }
 ```
 
-Esse padrão — acumular mudanças feitas offline e reconciliá-las ao restabelecer conexão — é idêntico em intenção ao sincronizador Flutter da Aula 11, reforçando que o problema de conectividade intermitente é do domínio do aplicativo móvel, não de uma linguagem ou framework específico.
+Esse padrão — acumular mudanças feitas offline e reconciliá-las ao restabelecer conexão — é idêntico em intenção ao sincronizador Flutter da Aula 11, reforçando que o problema de conectividade intermitente é do domínio do aplicativo móvel, não de uma linguagem ou framework específico. A mesma ressalva da Aula 11 vale aqui: este laço não trata conflito entre uma alteração local e uma mudança concorrente no servidor — apenas repete o envio até ter sucesso.
+
+> **Elo com a Aula 14**: depois de implementar cache, revalidação e sincronização manualmente nesta aula, vale ver o mesmo comportamento coberto em poucas linhas por uma biblioteca de *server state* como o TanStack Query (persistência offline via plugin, retry com backoff embutido) — a melhor forma de entender o que a biblioteca realmente faz é comparar com a implementação manual que você acabou de escrever.
 
 ## 7. Exemplo real: carrinho de compras que sobrevive à perda de conexão
 

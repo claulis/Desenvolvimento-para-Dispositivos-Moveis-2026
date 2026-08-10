@@ -13,7 +13,7 @@
 
 Retomando a Aula 1: o smartphone tem CPU/GPU limitadas e sem ventoinha — renderizar mais do que o necessário a cada interação não é apenas "menos eficiente", é uma decisão que se manifesta como travamento visível (*jank*) percebido diretamente pelo usuário. Diferente de otimizações de backend, que muitas vezes são invisíveis ao usuário final, um problema de desempenho de renderização em mobile é imediatamente visível como uma interface que "engasga" ao rolar ou animar — motivo pelo qual a arquitetura da camada de apresentação, e não apenas o algoritmo de negócio, é tratada como preocupação central nesta aula.
 
-> **Definição — Jank**: percepção visual de travamento ou engasgo na interface, causada quando um quadro (frame) leva mais tempo que o orçamento disponível (tipicamente ~16ms para 60 quadros por segundo) para ser calculado e desenhado.
+> **Definição — Jank**: percepção visual de travamento ou engasgo na interface, causada quando um quadro (frame) leva mais tempo que o orçamento disponível para ser calculado e desenhado. O valor de referência mais citado é ~16ms para 60 quadros por segundo — mas a maioria dos aparelhos Android relevantes hoje já roda a 90Hz ou 120Hz, o que reduz o orçamento real para **~11,1ms** ou **~8,3ms** por quadro. Isso não enfraquece o argumento desta aula, pelo contrário: o orçamento disponível para cada reconstrução/re-renderização encolheu, tornando o desperdício de trabalho ainda mais visível ao usuário do que era há poucos anos.
 
 ## 2. Reconstrução de subárvore no Flutter
 
@@ -51,34 +51,35 @@ O Flutter, no entanto, é inteligente o suficiente para **não redesenhar** widg
 
 ### Escopo de reconstrução
 
-A técnica mais eficaz para reduzir o custo de reconstrução é **extrair widgets** para que o escopo de `setState()` seja o menor possível, movendo o estado para o nível mais baixo da árvore onde ele é efetivamente necessário:
+A técnica mais eficaz para reduzir o custo de reconstrução é limitar o escopo de `setState()` ao menor trecho de árvore possível — mas **isso não significa mover o próprio dado para dentro do widget filho**. "Favoritado" é estado de domínio: pertence ao usuário, precisa persistir e sincronizar (Aula 11), não é um detalhe efêmero de apresentação. Movê-lo para dentro de `_CardProdutoState`, como uma versão anterior deste material chegou a sugerir, contraria diretamente a separação de camadas das Aulas 10 e 17 — e, pior, **não funciona**: dentro de um `ListView.builder`, ao rolar a lista para longe e voltar, o `State` do item é descartado e recriado, e o favorito marcado localmente simplesmente desaparece (ou, sem uma `Key` estável — §5 desta aula — pode reaparecer associado ao item errado).
+
+A técnica correta é **escuta seletiva, não descida de estado**: a fonte da verdade continua no gerenciador de estado (Aula 10), e cada item da lista observa apenas a sua própria fatia daquele estado, de forma que alternar um favorito reconstrua unicamente o card correspondente:
 
 ```dart
-// Eficiente: o estado de "favoritado" vive dentro do próprio CardProduto,
-// então alternar um favorito só reconstrói aquele card específico
-class CardProduto extends StatefulWidget {
+// Eficiente: o estado de "favoritado" continua no domínio (favoritosProvider),
+// mas cada CardProduto observa (ref.watch) só a fatia referente ao seu id —
+// alternar um favorito reconstrói apenas aquele card, sem mover o dado
+// para fora do lugar onde ele pertence.
+class CardProduto extends ConsumerWidget {
   final Produto produto;
   const CardProduto({required this.produto, super.key});
 
   @override
-  State<CardProduto> createState() => _CardProdutoState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favoritado = ref.watch(favoritoProvider(produto.id));
 
-class _CardProdutoState extends State<CardProduto> {
-  bool favoritado = false;
-
-  @override
-  Widget build(BuildContext context) {
     return ListTile(
-      title: Text(widget.produto.nome),
+      title: Text(produto.nome),
       trailing: IconButton(
         icon: Icon(favoritado ? Icons.favorite : Icons.favorite_border),
-        onPressed: () => setState(() => favoritado = !favoritado),
+        onPressed: () => ref.read(favoritosProvider.notifier).alternar(produto.id),
       ),
     );
   }
 }
 ```
+
+O mesmo princípio, com nomes diferentes por gerenciador de estado: `Selector`/`Consumer` com um seletor específico (Provider), `ref.watch(provider(id))` com um *family provider* (Riverpod, acima), ou `BlocSelector` (BLoC). Em todos os casos, a ideia é a mesma — observar a menor fatia de estado necessária, não duplicar o dado para fora do domínio.
 
 ## 3. Reconciliação no React Native (e React)
 
@@ -136,18 +137,31 @@ const alternarFavorito = useCallback((id: string) => {
 }, []);
 ```
 
-No Flutter, o equivalente conceitual a "memoização de renderização" é justamente a extração de widget filho `const` sempre que possível — widgets `const` são construídos uma única vez e reaproveitados pela própria linguagem Dart, sem custo algum de reconstrução.
+> **`React.memo` sozinho não basta dentro de `FlatList`**: mesmo com `useCallback` no manipulador, o `renderItem` inline do exemplo da §3 (`renderItem={({ item }) => <CardProduto .../>}`) recria a função de renderização a cada render do componente pai — anulando parte do efeito de memoização do item. Extraia `renderItem` como uma função nomeada e estável (com `useCallback`), não inline. Além disso, para listas realmente longas, as props de configuração da `FlatList` importam tanto quanto a memoização dos itens: `initialNumToRender` (quantos itens renderizar na primeira passada), `windowSize` (quantas "telas" de itens manter fora da área visível), `getItemLayout` (evita medir cada item dinamicamente, quando a altura é conhecida) e `removeClippedSubviews` (remove da árvore nativa itens fora da área visível no Android).
+
+No Flutter, `const` resolve a alocação do widget em tempo de compilação — mas **não é o equivalente direto de `useMemo`**. Um widget `const` sempre foi barato de "reconstruir" (a mesma instância é reaproveitada), então declará-lo `const` não é, por si, uma técnica de memoização de *cálculo*. O equivalente real de `useMemo` — cachear o resultado de um **cálculo caro** para não repeti-lo a cada `build()` — é armazenar esse resultado fora do método `build()`: um campo do `State`, um `late final`, ou um provider derivado (`Provider`/`Riverpod`) que só recalcula quando sua entrada muda. A lição desta aula é que reconstruir `build()` em si raramente é caro — cálculo pesado *dentro* de `build()`, reexecutado a cada reconstrução, é o problema real.
 
 ## 5. Chaves de identidade (keys)
 
 > **Definição — Chave de identidade (key)**: identificador único associado a um elemento de uma lista dinâmica, usado pelo algoritmo de reconciliação (React/React Native) ou pelo Flutter (`Key`/`ValueKey`) para determinar se um elemento em uma nova renderização é "o mesmo" elemento de antes (apenas reordenado ou atualizado) ou um elemento genuinamente novo — crítico para preservar estado interno e evitar re-renderização/reconstrução completa de listas.
 
 ```tsx
+// Ao mapear manualmente um array em JSX (fora de FlatList), a prop é `key`:
 // Errado: usar o índice como chave é enganoso quando a lista é reordenada
 {produtos.map((produto, index) => <CardProduto key={index} produto={produto} />)}
-
 // Correto: chave estável, baseada no identificador real do dado
 {produtos.map((produto) => <CardProduto key={produto.id} produto={produto} />)}
+```
+
+```tsx
+// Dentro de FlatList — o componente de lista recomendado neste componente,
+// §6 — a chave NÃO é passada via prop `key`: FlatList usa `keyExtractor`,
+// uma função dedicada, separada de `renderItem`.
+<FlatList
+  data={produtos}
+  keyExtractor={(item) => item.id}
+  renderItem={({ item }) => <CardProduto produto={item} />}
+/>
 ```
 
 ```dart
@@ -176,7 +190,7 @@ Renderizar uma lista de milhares de produtos com um `ListView`/`Column` comum (q
 
 ## 7. Exemplo real: rolagem engasgada em lista de feed
 
-Um padrão de bug de desempenho relatado com frequência em aplicativos de feed de conteúdo (redes sociais, marketplaces): a rolagem fica "engasgada" (baixa taxa de quadros) especificamente ao curtir/favoritar um item no meio de uma lista longa. A causa raiz, tanto em Flutter quanto em React Native, costuma ser a mesma: o estado de "curtido" é mantido no componente pai da lista inteira (não no item individual), fazendo com que a interação com **um** item dispare a reconstrução/re-renderização de **todos** os itens visíveis simultaneamente. A correção — mover o estado de "curtido" para o próprio componente de item, como demonstrado nas seções 2 e 3 desta aula — é o mesmo princípio arquitetural aplicado nas duas plataformas, reforçando que o problema de desempenho de renderização é conceitual, não específico de framework.
+Um padrão de bug de desempenho relatado com frequência em aplicativos de feed de conteúdo (redes sociais, marketplaces): a rolagem fica "engasgada" (baixa taxa de quadros) especificamente ao curtir/favoritar um item no meio de uma lista longa. A causa raiz, tanto em Flutter quanto em React Native, costuma ser a mesma: o estado de "curtido" é observado de forma grosseira demais — o componente pai reconstrói/re-renderiza a lista inteira a cada interação com **um** item, em vez de cada item observar apenas a sua própria fatia de estado. A correção — escuta seletiva por item (`ref.watch(favoritoProvider(id))`/`Selector`/`BlocSelector` em Flutter, `React.memo` com `renderItem` estável e seletor por id em React Native), como demonstrado nas seções 2 e 3 — é o mesmo princípio arquitetural aplicado nas duas plataformas, reforçando que o problema de desempenho de renderização é conceitual, não específico de framework. O que **não** resolve o problema, e na verdade o piora, é mover o dado de "curtido" para fora do domínio e para dentro do estado local do item — como visto na §2, isso quebra ao rolar a lista e sai da arquitetura estabelecida nas Aulas 10 e 17.
 
 ## Síntese da aula
 
@@ -187,10 +201,21 @@ Um padrão de bug de desempenho relatado com frequência em aplicativos de feed 
 | `ValueKey` | `key` | Preserva identidade e estado de itens em listas |
 | `ListView.builder` | `FlatList`/`FlashList` | Renderiza apenas itens visíveis (virtualização) |
 
+## Ferramentas de medição
+
+Medir em modo debug produz números artificialmente ruins e não deve ser usado para julgar desempenho — sempre meça em modo profile/release:
+
+| Framework | Ferramenta | Como medir |
+|---|---|---|
+| Flutter | *Flutter DevTools* > aba **Performance** + *Widget Rebuild Profiler* | Rodar com `flutter run --profile` (nunca em modo debug, que tem overhead de desenvolvimento embutido) |
+| React Native | *React DevTools Profiler* + *Hermes profiler* (`Settings > Enable Sampling Profiler` no menu de desenvolvedor) | O **Flipper foi descontinuado** pela equipe do React Native — não o recomende como ferramenta atual; use o React DevTools Profiler e o sampling profiler do próprio Hermes |
+
 ## Leitura recomendada
 
 - Documentação oficial: [Flutter performance best practices](https://docs.flutter.dev/perf/best-practices) e [React Native - Optimizing FlatList](https://reactnative.dev/docs/optimizing-flatlist-configuration).
 
 ## Atividade da aula
 
-**Prática: medição do custo de renderização de uma lista longa e refatoração da composição nas duas implementações**: usando o *Flutter DevTools* (aba de performance) e o *React DevTools Profiler* (ou Flipper), medir o tempo de reconstrução/re-renderização ao interagir com um item de uma lista de pelo menos 200 elementos nas duas implementações do módulo do curso, identificar reconstruções/re-renderizações desnecessárias, e refatorar aplicando as técnicas desta aula, registrando a métrica antes e depois da correção.
+**Prática: medição do custo de renderização de uma lista longa e refatoração da composição nas duas implementações**: usando as ferramentas de medição acima, medir o tempo de reconstrução/re-renderização ao interagir com um item de uma lista de pelo menos 200 elementos nas duas implementações do módulo do curso, identificar reconstruções/re-renderizações desnecessárias, e refatorar aplicando as técnicas desta aula, registrando a métrica antes e depois da correção. Ponto de partida com uma lista de 200+ produtos já semeada (versão lenta pronta, para focar a aula na medição e correção, não na montagem dos dados) em [`codigo/flutter/19-performance-lista/`](../codigo/flutter/19-performance-lista/) e [`codigo/react-native/19-performance-lista/`](../codigo/react-native/19-performance-lista/); registre as métricas em `MEDICOES.md` dentro de cada projeto.
+
+Vale fechar a aula amarrando de volta à Aula 1: jank em um aparelho de entrada, sem ventoinha e com CPU/GPU limitadas, é exatamente onde a fragmentação de aparelhos (Aula 1) e a renderização (esta aula) se encontram — o mesmo argumento central do curso, agora com uma métrica concreta para sustentá-lo.

@@ -1,0 +1,9 @@
+{
+  "name": "repositorio-offline-inicio",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.6.0",
+    "react-native-mmkv": "^2.12.0"
+  }
+}

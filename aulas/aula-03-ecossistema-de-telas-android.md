@@ -9,11 +9,13 @@
 - Projetar considerando área segura, recortes de câmera e barras do sistema.
 - Reconhecer o efeito do tema claro/escuro e de aparelhos dobráveis sobre a interface.
 
+> **Nota sobre os exemplos de Android nativo desta unidade**: o Android possui dois sistemas de construção de interface — o sistema tradicional de **Views/XML** (`TextView`, `ImageButton`, layouts XML) e o **Jetpack Compose**, declarativo, que é o padrão recomendado pelo Google desde 2023. Este componente não ensina Kotlin nem entrega nada em Android nativo — os trechos de código nativo são apenas ilustrativos, para ancorar conceitos que valem para a plataforma como um todo. Por isso, e porque Compose é declarativo como Flutter e React Native (reduzindo o salto conceitual até a Unidade III), **os exemplos ilustrativos de Android nativo desta unidade usam Jetpack Compose**. A teoria (dp/sp, área segura, tokens de cor, classes de tamanho) se aplica igualmente a Views/XML, que você encontrará em código legado.
+
 ## 1. Por que "tamanho de tela em pixels" é a métrica errada
 
 Dois aparelhos podem ter a mesma resolução em pixels (por exemplo, 1080×2400) e, ainda assim, exibir uma interface com tamanho físico completamente diferente, porque um tem uma tela fisicamente maior e a outra menor — a diferença está na **densidade de pixels**: quantos pixels cabem por polegada física de tela.
 
-> **Definição — Densidade de tela (DPI)**: número de pixels físicos por polegada linear da tela. O Android agrupa densidades em baldes nominais (`mdpi`, `hdpi`, `xhdpi`, `xxhdpi`, `xxxhdpi`), cada um aproximadamente 1,5× o anterior.
+> **Definição — Densidade de tela (DPI)**: número de pixels físicos por polegada linear da tela. O Android agrupa densidades em baldes nominais (`ldpi`, `mdpi`, `hdpi`, `xhdpi`, `xxhdpi`, `xxxhdpi`), cuja escala segue aproximadamente **0,75 / 1 / 1,5 / 2 / 3 / 4** em relação ao `mdpi` de referência (160 dpi) — a razão entre baldes vizinhos não é constante (mdpi→hdpi é 1,5×; hdpi→xhdpi é 1,33×; xhdpi→xxhdpi é 1,5×), por isso a escala correta é a lista de multiplicadores acima, não "cada um 1,5× o anterior".
 
 Se um projeto usar pixels físicos diretamente para definir o tamanho de um botão, esse botão parecerá minúsculo em uma tela de alta densidade e enorme em uma de baixa densidade. A solução do Android — e replicada conceitualmente por Flutter e React Native — é uma unidade **independente de densidade**.
 
@@ -25,17 +27,16 @@ Se um projeto usar pixels físicos diretamente para definir o tamanho de um bot�
 
 Erro comum de quem começa no Android: usar `dp` para tamanho de fonte. Isso ignora a preferência de acessibilidade do usuário que aumentou a fonte do sistema — um requisito que será aprofundado na Aula 8.
 
-```xml
-<!-- Layout Android tradicional (XML) -->
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Confirmar pedido"
-    android:textSize="16sp"
-    android:padding="12dp" />
+```kotlin
+// Jetpack Compose
+Text(
+    text = "Confirmar pedido",
+    fontSize = 16.sp,                       // sp: respeita a escala de fonte do usuário
+    modifier = Modifier.padding(12.dp)       // dp: dimensão, não depende da escala de fonte
+)
 ```
 
-Em Jetpack Compose, Flutter e React Native, o próprio framework aplica essa conversão internamente — mas o conceito matemático subjacente é o mesmo e deve ser compreendido para depurar problemas de layout entre aparelhos.
+Em Jetpack Compose, Flutter e React Native, o próprio framework aplica essa conversão internamente — mas o conceito matemático subjacente é o mesmo e deve ser compreendido para depurar problemas de layout entre aparelhos. Para fixar a escala: um botão de 48dp ocupa 48 px físicos num aparelho `mdpi`, 96 px num `xhdpi` e 192 px num `xxxhdpi` — o mesmo tamanho físico sob o dedo do usuário nos três casos, apesar do número de pixels crescer.
 
 ## 3. Tamanho, proporção e classes de janela
 
@@ -47,16 +48,16 @@ Aparelhos modernos frequentemente têm:
 
 - **Recorte de câmera (notch/punch-hole)**: uma área da tela ocupada fisicamente pela câmera frontal, que a interface não deve cobrir com conteúdo interativo crítico.
 - **Cantos arredondados**: conteúdo posicionado exatamente no canto pode ser visualmente cortado.
-- **Barra de status** (topo) e **barra de navegação/área de gesto** (base): áreas do sistema que sobrepõem ou compartilham espaço com o conteúdo do app, especialmente relevante desde que os apps passaram a poder desenhar conteúdo "por trás" dessas barras (*edge-to-edge*, padrão obrigatório a partir do Android 15).
+- **Barra de status** (topo) e **barra de navegação/área de gesto** (base): áreas do sistema que sobrepõem ou compartilham espaço com o conteúdo do app, especialmente relevante desde que os apps passaram a poder desenhar conteúdo "por trás" dessas barras (*edge-to-edge*, obrigatório a partir do Android 15 **para apps com `targetSdk 35` ou superior** — um app com `targetSdk` menor continua no comportamento anterior mesmo rodando num aparelho Android 15; a obrigatoriedade é do app declarado, não do aparelho).
 
 > **Definição — Área segura (safe area)**: região retangular da tela garantida livre de recortes de hardware e de sobreposição pelas barras do sistema, dentro da qual o conteúdo essencial da interface deve ser posicionado.
 
 ```kotlin
-// Android nativo: respeitando os insets do sistema com edge-to-edge
-ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
-    val barras = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-    view.updatePadding(top = barras.top, bottom = barras.bottom)
-    insets
+// Jetpack Compose: respeitando os insets do sistema com edge-to-edge
+Scaffold(
+    modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars)
+) { padding ->
+    ConteudoDaTela(modifier = Modifier.padding(padding))
 }
 ```
 

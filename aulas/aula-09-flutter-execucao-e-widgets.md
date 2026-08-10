@@ -11,7 +11,7 @@
 
 ## 1. O que torna o Flutter diferente
 
-> **Definição — Flutter**: framework de interface multiplataforma da Google, escrito em Dart, que renderiza sua própria interface pixel a pixel através de um motor gráfico próprio (historicamente Skia, migrando para Impeller), em vez de traduzir seus componentes para os widgets nativos do sistema operacional hospedeiro.
+> **Definição — Flutter**: framework de interface multiplataforma da Google, escrito em Dart, que renderiza sua própria interface pixel a pixel através de um motor gráfico próprio — **Impeller**, o motor padrão desde 2024–2025 (padrão no Android para dispositivos com suporte a Vulkan desde o Flutter 3.29, e padrão no iOS desde antes disso), sucedendo o antigo motor Skia, hoje em remoção — em vez de traduzir seus componentes para os widgets nativos do sistema operacional hospedeiro.
 
 Essa é a diferença arquitetural mais importante do Flutter em relação a abordagens como o React Native (Aula 13) ou o desenvolvimento Android nativo: **o Flutter não usa os componentes visuais do Android** (`Button`, `TextView` etc.). Ele desenha, com seu próprio motor de renderização, algo visualmente idêntico a esses componentes. A consequência é dupla:
 
@@ -27,6 +27,8 @@ Dart, a linguagem do Flutter, compila para código de máquina nativo (AOT) na b
 > **Definição — Widget**: no Flutter, a unidade fundamental e universal de construção de interface — **tudo é widget**: um texto, um espaçamento, um alinhamento, uma animação, e até mesmo conceitos estruturais como tema e diretriz de acessibilidade são representados como widgets que envolvem (compõem) outros widgets.
 
 Diferente do Android nativo, onde existe uma distinção entre a `View` visual e conceitos de layout separados, no Flutter tudo — inclusive espaçamento e alinhamento — é resolvido por composição de widgets, formando uma árvore.
+
+> **Nuance importante, que explica a Aula 19**: "tudo é widget" descreve apenas a camada mais externa. Por trás dela, o Flutter mantém **três árvores** sincronizadas: a árvore de **Widgets** (a configuração que você escreve em `build()` — imutável, descartável, recriada a cada reconstrução), a árvore de **Elements** (a instância persistente que conecta um widget ao seu lugar na hierarquia ao longo do tempo) e a árvore de **RenderObjects** (responsável pelo cálculo real de layout e pintura na tela). Um novo widget sendo criado em `build()` **não** significa, por si só, trabalho caro: o Flutter compara o novo widget ao anterior por meio da árvore de Elements e só propaga a mudança para a árvore de RenderObjects quando algo de fato mudou. É exatamente essa distinção — "reconstruir a configuração é barato; recalcular layout/pintura é o que custa" — que sustenta a Aula 19.
 
 ```dart
 class TelaProduto extends StatelessWidget {
@@ -127,6 +129,12 @@ class TelaResponsiva extends StatelessWidget {
 
 Essa comparação direta com os pontos de quebra de 600dp e 840dp estudados na Aula 7 mostra que a teoria de responsividade não muda entre Android nativo e Flutter — apenas a API usada para aplicá-la.
 
+> **Quando usar cada um**: para uma decisão estrutural de **tela inteira** baseada na classe de tamanho de janela (como no exemplo acima), o idiomático é `MediaQuery.sizeOf(context)` — desde o Flutter 3.10, essa chamada evita reconstruções desnecessárias de widgets que não dependem do tamanho — ou o pacote oficial `flutter_adaptive_scaffold`. Reserve `LayoutBuilder` para quando o widget está aninhado dentro de outro layout que já reduziu o espaço disponível (ex.: um card dentro de um painel lateral), onde o tamanho da tela inteira não é a informação relevante — que é o caso de uso que o widget foi desenhado para resolver, e continua válido.
+
+> **Nota**: a `TelaProduto` construída acima é a "tela âncora" deste componente — a mesma tela será reconstruída em React Native na Aula 13 e comparada formalmente na Aula 20. Vale a pena guardá-la.
+
+Para ver a árvore de widgets renderizada ao vivo — e tornar a metáfora "árvore" concreta, não apenas textual — abra o **Flutter DevTools > Widget Inspector** durante o desenvolvimento desta tela, não apenas na Aula 19.
+
 ## 6. `SafeArea` no Flutter
 
 Retomando a Aula 3, o Flutter resolve área segura com o widget declarativo `SafeArea`, que aplica automaticamente o preenchimento necessário para evitar recortes de câmera e barras do sistema:
@@ -155,9 +163,11 @@ Antes de frameworks com hot reload, ajustar um valor de espaçamento em uma tela
 
 ## Leitura recomendada
 
-- BIESSEK, Alessandro. *Flutter for Beginners*. Birmingham: Packt Publishing, 2019 — capítulos introdutórios sobre widgets e layout.
-- Documentação oficial: [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview).
+- Documentação oficial: [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview) e [Flutter — Get started](https://docs.flutter.dev/get-started).
+- SMYTH, Neil. *Flutter Apprentice*. Kodeco (atualizado continuamente) — cobre Dart moderno com null safety e Material 3.
+
+> Evite bibliografia de Flutter anterior a 2022: o framework mudou substancialmente com a chegada de null safety obrigatório e do Material 3, tornando exemplos de livros mais antigos incompatíveis com projetos novos.
 
 ## Atividade da aula
 
-**Configuração do ambiente Flutter e implementação responsiva da tela projetada na semana 7**: instalar o Flutter SDK, criar um novo projeto, e implementar em código Dart a tela cujas três variações de classe de tamanho foram prototipadas na Aula 7, usando `LayoutBuilder` para alternar entre elas nos mesmos pontos de quebra (600dp e 840dp) definidos anteriormente.
+**Configuração do ambiente Flutter e implementação responsiva da tela projetada na semana 7**: instalar o Flutter SDK, criar um novo projeto (ponto de partida disponível em [`codigo/flutter/09-widgets-responsivos/`](../codigo/flutter/09-widgets-responsivos/)), e implementar em código Dart a tela cujas três variações de classe de tamanho foram prototipadas na Aula 7, usando `LayoutBuilder` para alternar entre elas nos mesmos pontos de quebra (600dp e 840dp) definidos anteriormente.

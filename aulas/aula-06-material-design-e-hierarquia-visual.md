@@ -23,16 +23,16 @@ Uma tela sem hierarquia visual clara obriga o usuário a ler tudo para entender 
 
 ## 3. Malha de espaçamento (spacing grid)
 
-O Material Design recomenda uma malha base de **8dp**: todo espaçamento (margens, preenchimento interno, distância entre elementos) deve ser múltiplo de 8dp (com exceções pontuais de 4dp para ajustes finos). Isso não é estético por si só — é o que garante que elementos de proveniências diferentes (um botão do sistema, um card customizado) se alinhem visualmente sem que o desenvolvedor precise ajustar pixel a pixel.
+O Material Design recomenda uma malha base de **8dp**: todo espaçamento (margens, preenchimento interno, distância entre elementos) deve ser múltiplo de 8dp (com exceções pontuais de 4dp para ajustes finos). Isso não é estético por si só — é o que garante que elementos de proveniências diferentes (um botão do sistema, um card customizado) se alinhem visualmente sem que o desenvolvedor precise ajustar pixel a pixel. A escolha de 8 também não é arbitrária: por ser divisível por 2 e por 4, um valor em múltiplos de 8dp converte de forma exata para pixels físicos nos principais baldes de densidade estudados na Aula 3 (8dp = 8px em `mdpi`, 12px em `hdpi`, 16px em `xhdpi`...), evitando arredondamentos que produziriam bordas ligeiramente desalinhadas em telas de densidades diferentes.
 
-```xml
-<!-- Espaçamentos múltiplos de 8dp -->
-<LinearLayout
-    android:padding="16dp"
-    android:orientation="vertical">
-    <TextView android:layout_marginBottom="8dp" ... />
-    <TextView android:layout_marginBottom="24dp" ... />
-</LinearLayout>
+```kotlin
+// Jetpack Compose — espaçamentos múltiplos de 8dp
+Column(
+    modifier = Modifier.padding(16.dp)
+) {
+    Text(texto1, modifier = Modifier.padding(bottom = 8.dp))
+    Text(texto2, modifier = Modifier.padding(bottom = 24.dp))
+}
 ```
 
 ## 4. Escala tipográfica
@@ -53,14 +53,14 @@ O Material Design define uma escala de estilos de texto nomeados (não tamanhos 
 
 O Material Design 3 (Material You) define papéis de cor como `primary` (cor de marca, usada em ações principais), `onPrimary` (cor de texto/ícone sobre uma superfície `primary`, garantindo contraste), `surface` (fundo de cards e superfícies elevadas), `error` (estados de erro), entre outros. Referenciar tokens, em vez de valores fixos, é o mecanismo que torna o suporte a tema claro/escuro (Aula 3) possível sem duplicar o código de cada tela.
 
+**Atenção**: o Material 3 **não define um papel de cor `success` nativamente** — apenas `primary/secondary/tertiary/error` (cada um com seu `container` e sua variante `on*`). Para um estado semântico como "entregue com sucesso", a opção correta é definir um papel de cor **customizado** dentro do `ColorScheme` da aplicação (ou gerá-lo com o Material Theme Builder, `m3.material.io/theme-builder`) — nunca esperar encontrar um `colorSuccess` pronto no framework.
+
 ```kotlin
 // Errado: cor fixa, ignora tema
-view.setBackgroundColor(Color.parseColor("#FFFFFF"))
+Modifier.background(Color(0xFFFFFFFF))
 
-// Correto: token de cor resolvido pelo tema ativo
-view.setBackgroundColor(
-    MaterialColors.getColor(view, com.google.android.material.R.attr.colorSurface)
-)
+// Correto: token de cor resolvido pelo tema ativo (Jetpack Compose)
+Modifier.background(MaterialTheme.colorScheme.surface)
 ```
 
 ## 6. Elevação
@@ -86,7 +86,9 @@ Princípios práticos de UX writing para interfaces móveis, onde o espaço é e
 
 ## 9. Exemplo real: o mesmo componente, dois tratamentos de hierarquia
 
-Considere uma tela de listagem de pedidos com status "Entregue", "A caminho" e "Cancelado". Um tratamento sem hierarquia visual mostra os três em texto preto do mesmo tamanho, obrigando o usuário a ler cada linha. Um tratamento com hierarquia visual adequada usa: cor (token `success` para "Entregue", `primary` para "A caminho", `error` para "Cancelado"), peso tipográfico (`titleMedium` para o status, `bodyMedium` para os detalhes secundários) e um ícone reconhecível por status — permitindo que o usuário escaneie a lista inteira e identifique pedidos com problema (cancelados) sem ler palavra por palavra. Esse é o valor prático e mensurável da hierarquia visual bem aplicada.
+Considere uma tela de listagem de pedidos com status "Entregue", "A caminho" e "Cancelado". Um tratamento sem hierarquia visual mostra os três em texto preto do mesmo tamanho, obrigando o usuário a ler cada linha. Um tratamento com hierarquia visual adequada usa: cor (um token customizado `success`, definido no `ColorScheme` da aplicação — retomando a ressalva da §5 — para "Entregue"; `primary` para "A caminho"; `error`, nativo do M3, para "Cancelado"), peso tipográfico (`titleMedium` para o status, `bodyMedium` para os detalhes secundários) e um ícone reconhecível por status — permitindo que o usuário escaneie a lista inteira e identifique pedidos com problema (cancelados) sem ler palavra por palavra. Esse é o valor prático e mensurável da hierarquia visual bem aplicada.
+
+> **Nota de atualização (2025)**: a revisão *Material 3 Expressive* trouxe maior ênfase a movimento, forma e tipografia dentro do mesmo sistema de design — os princípios desta aula (malha, escala, tokens, elevação) permanecem válidos; consulte [m3.material.io](https://m3.material.io/) para as adições mais recentes de forma e movimento antes de aplicar em um projeto novo.
 
 ## Síntese da aula
 
@@ -105,4 +107,4 @@ Considere uma tela de listagem de pedidos com status "Entregue", "A caminho" e "
 
 ## Atividade da aula
 
-**Exercício: redesenho de tela aplicando malha, escala tipográfica e sistema de cor**: a partir de uma tela existente sem hierarquia visual clara (fornecida pelo docente ou escolhida pela equipe), redesenhar aplicando malha de 8dp, no mínimo três níveis da escala tipográfica, tokens de cor para dois estados distintos (ex.: sucesso/erro) e revisão dos textos de interface segundo os princípios de UX writing apresentados.
+**Exercício: redesenho de tela aplicando malha, escala tipográfica e sistema de cor**: a partir de uma tela existente sem hierarquia visual clara (fornecida pelo docente ou escolhida pela equipe), redesenhar aplicando malha de 8dp, no mínimo três níveis da escala tipográfica, tokens de cor para dois estados distintos (ex.: sucesso/erro) e revisão dos textos de interface segundo os princípios de UX writing apresentados. Gere o `ColorScheme` completo (claro e escuro) em minutos com o [Material Theme Builder](https://m3.material.io/theme-builder) — o resultado alimenta diretamente a implementação em Flutter na Aula 9. Registre o antes/depois com duas capturas de tela lado a lado: é a evidência mais direta de que a hierarquia visual foi aplicada.

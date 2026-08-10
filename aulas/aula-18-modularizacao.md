@@ -58,6 +58,8 @@ lib/
 
 Nessa organização, tudo o que diz respeito a "pedidos" está fisicamente próximo, e a fronteira entre `catalogo` e `pedidos` é explícita — qualquer dependência de um módulo sobre o outro exige uma importação visível entre pastas de funcionalidade, tornando acoplamentos indevidos mais fáceis de notar em revisão de código.
 
+> **O risco do módulo `compartilhado`**: na prática, `compartilhado/` é o modo de falha mais comum dessa estrutura — vira, com o tempo, o depósito de tudo que "parece" reaproveitável, recriando exatamente o acoplamento que a modularização por funcionalidade buscava eliminar (todo módulo termina dependendo de `compartilhado`, e `compartilhado` termina sabendo de tudo). Uma regra prática que ajuda a conter esse crescimento é a **regra dos três**: só promover algo para `compartilhado` quando pelo menos três módulos de funcionalidade genuinamente precisarem dele — duas ocorrências ainda cabem como duplicação aceitável, mais barata do que uma abstração prematura.
+
 ## 4. Efeito sobre acoplamento, substituição e evolução
 
 | Critério | Acoplamento | Substituição | Evolução típica |
@@ -71,15 +73,15 @@ Nenhum dos dois é "correto" isoladamente — a escolha depende de como a equipe
 
 > **Definição — Fronteira de módulo (module boundary)**: limite deliberado entre módulos, através do qual apenas uma interface pública explicitamente exposta pode ser acessada — detalhes internos de implementação permanecem inacessíveis a outros módulos, reforçando o encapsulamento no nível de organização de projeto, não apenas no nível de classe.
 
-Em Dart (Flutter), fronteiras podem ser reforçadas por convenção de visibilidade de biblioteca e por ferramentas de análise de dependência entre pacotes (em projetos organizados como múltiplos pacotes/packages dentro de um monorepositório, usando `melos`, por exemplo). Em TypeScript (React Native), fronteiras podem ser reforçadas por regras de lint que proíbem importações diretas entre pastas de funcionalidades distintas, exigindo passar por um índice público (`index.ts`) de cada módulo.
+Em Dart (Flutter), a fronteira real é reforçada com um arquivo de biblioteca (`src/` interno ao módulo, mais um único arquivo barril público na raiz, seguindo a convenção do `pub`) ou, em projetos maiores, com um **pacote Dart separado** por módulo dentro de um monorepositório — o `melos` é apenas o orquestrador que facilita trabalhar com múltiplos pacotes ao mesmo tempo (versionamento, publicação, scripts), não o mecanismo que impõe a fronteira em si. Em TypeScript (React Native), fronteiras podem ser reforçadas por regras de lint como `eslint-plugin-boundaries`, que **falham o build** quando há importação direta entre pastas de funcionalidades distintas, exigindo passar por um índice público (`index.ts`) de cada módulo — a diferença entre uma convenção combinada e uma regra verificada automaticamente.
 
 ```ts
 // pedidos/index.ts — interface pública do módulo, único ponto de importação externa
 export { TelaPedidos } from './apresentacao/TelaPedidos';
 export type { Pedido } from './dominio/Pedido';
-// PedidoRepository e detalhes internos NÃO são exportados aqui —
-// permanecem privados ao módulo, mesmo sendo tecnicamente importáveis
 ```
+
+O ponto mais importante deste exemplo, fácil de passar despercebido por estar apenas em comentário: `PedidoRepository` e os demais detalhes internos do módulo **não são exportados** por este índice — permanecem privados a `pedidos/`, mesmo sendo tecnicamente importáveis por um caminho de arquivo direto (`pedidos/dados/PedidoRepository`) enquanto uma regra de lint como a citada acima não estiver configurada para bloquear esse acesso. A interface pública deliberada é o que faz a fronteira existir de fato, não apenas a organização de pastas.
 
 ## 6. Dependências permitidas entre módulos de funcionalidade
 
@@ -88,6 +90,8 @@ Uma regra frequentemente adotada em projetos modularizados por funcionalidade: m
 ## 7. Exemplo real: por que grandes aplicativos migram para modularização por funcionalidade
 
 Aplicativos de grande porte mantidos por múltiplas equipes (bancos digitais, marketplaces) frequentemente relatam a migração de uma estrutura inicial por camada para uma estrutura por funcionalidade, à medida que o número de desenvolvedores cresce e squads passam a ser organizados por área de produto (ex.: um squad de "pagamentos", outro de "catálogo"). Nessa migração, o critério técnico de organização (camada) deixa de refletir o critério real de propriedade e evolução do código (funcionalidade/squad), e a estrutura por camada passa a gerar atrito: dois squads diferentes frequentemente precisam editar arquivos na mesma pasta técnica (`apresentacao/`), aumentando conflitos de integração sem relação real de dependência entre as funcionalidades.
+
+Esse fenômeno tem nome: a **Lei de Conway** observa que a estrutura de um sistema tende a espelhar a estrutura de comunicação da organização que o constrói — uma equipe organizada por squads de produto tende, mais cedo ou mais tarde, a produzir (ou exigir) um código organizado por funcionalidade, e resistir a uma estrutura por camada que não corresponde a como o trabalho é de fato dividido entre pessoas.
 
 ## Síntese da aula
 

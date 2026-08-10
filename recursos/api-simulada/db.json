@@ -1,0 +1,1304 @@
+{
+  "pedidos": [
+    {
+      "id": "1",
+      "status": "cancelado",
+      "total": 2030.58,
+      "itens": [
+        {
+          "produtoId": "p41",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p39",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p37",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p3",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p40",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-02-04T15:00:00Z"
+    },
+    {
+      "id": "2",
+      "status": "cancelado",
+      "total": 104,
+      "itens": [
+        {
+          "produtoId": "p23",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-05-02T14:00:00Z"
+    },
+    {
+      "id": "3",
+      "status": "pendente",
+      "total": 659.87,
+      "itens": [
+        {
+          "produtoId": "p37",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p46",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p9",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-02-01T19:00:00Z"
+    },
+    {
+      "id": "4",
+      "status": "entregue",
+      "total": 830.73,
+      "itens": [
+        {
+          "produtoId": "p48",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p33",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p4",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p40",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-05-10T14:00:00Z"
+    },
+    {
+      "id": "5",
+      "status": "cancelado",
+      "total": 393.4,
+      "itens": [
+        {
+          "produtoId": "p29",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p50",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p32",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p32",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-04-11T11:00:00Z"
+    },
+    {
+      "id": "6",
+      "status": "a_caminho",
+      "total": 210.2,
+      "itens": [
+        {
+          "produtoId": "p16",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-05-06T09:00:00Z"
+    },
+    {
+      "id": "7",
+      "status": "a_caminho",
+      "total": 832.04,
+      "itens": [
+        {
+          "produtoId": "p15",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p27",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p43",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p3",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-02-03T18:00:00Z"
+    },
+    {
+      "id": "8",
+      "status": "cancelado",
+      "total": 816.32,
+      "itens": [
+        {
+          "produtoId": "p41",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p29",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p42",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-04-23T09:00:00Z"
+    },
+    {
+      "id": "9",
+      "status": "a_caminho",
+      "total": 454.02,
+      "itens": [
+        {
+          "produtoId": "p26",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p40",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p39",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p32",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-05-21T08:00:00Z"
+    },
+    {
+      "id": "10",
+      "status": "a_caminho",
+      "total": 425.9,
+      "itens": [
+        {
+          "produtoId": "p11",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p44",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-07-18T09:00:00Z"
+    },
+    {
+      "id": "11",
+      "status": "cancelado",
+      "total": 455.75,
+      "itens": [
+        {
+          "produtoId": "p36",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p13",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p12",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p43",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-04-08T14:00:00Z"
+    },
+    {
+      "id": "12",
+      "status": "pendente",
+      "total": 789.89,
+      "itens": [
+        {
+          "produtoId": "p11",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p48",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p41",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-03-17T10:00:00Z"
+    },
+    {
+      "id": "13",
+      "status": "pendente",
+      "total": 93.64,
+      "itens": [
+        {
+          "produtoId": "p29",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-17T17:00:00Z"
+    },
+    {
+      "id": "14",
+      "status": "cancelado",
+      "total": 208.42,
+      "itens": [
+        {
+          "produtoId": "p37",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p36",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-06-06T16:00:00Z"
+    },
+    {
+      "id": "15",
+      "status": "a_caminho",
+      "total": 1042.91,
+      "itens": [
+        {
+          "produtoId": "p4",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p20",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p39",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p32",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-03-27T08:00:00Z"
+    },
+    {
+      "id": "16",
+      "status": "pendente",
+      "total": 223.9,
+      "itens": [
+        {
+          "produtoId": "p46",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p22",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-26T11:00:00Z"
+    },
+    {
+      "id": "17",
+      "status": "a_caminho",
+      "total": 704.71,
+      "itens": [
+        {
+          "produtoId": "p50",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p17",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p45",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-06-01T11:00:00Z"
+    },
+    {
+      "id": "18",
+      "status": "cancelado",
+      "total": 488.97,
+      "itens": [
+        {
+          "produtoId": "p6",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p41",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p4",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-02-06T18:00:00Z"
+    },
+    {
+      "id": "19",
+      "status": "a_caminho",
+      "total": 23.18,
+      "itens": [
+        {
+          "produtoId": "p36",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-07T15:00:00Z"
+    },
+    {
+      "id": "20",
+      "status": "cancelado",
+      "total": 786.66,
+      "itens": [
+        {
+          "produtoId": "p3",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p47",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p13",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p25",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p8",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-01-02T14:00:00Z"
+    },
+    {
+      "id": "21",
+      "status": "a_caminho",
+      "total": 486.97,
+      "itens": [
+        {
+          "produtoId": "p30",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-06-20T14:00:00Z"
+    },
+    {
+      "id": "22",
+      "status": "cancelado",
+      "total": 161.76,
+      "itens": [
+        {
+          "produtoId": "p43",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p10",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-03T17:00:00Z"
+    },
+    {
+      "id": "23",
+      "status": "a_caminho",
+      "total": 185.32,
+      "itens": [
+        {
+          "produtoId": "p21",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-06-09T16:00:00Z"
+    },
+    {
+      "id": "24",
+      "status": "entregue",
+      "total": 543.62,
+      "itens": [
+        {
+          "produtoId": "p48",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p37",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-15T13:00:00Z"
+    },
+    {
+      "id": "25",
+      "status": "entregue",
+      "total": 175.44,
+      "itens": [
+        {
+          "produtoId": "p34",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-07-24T12:00:00Z"
+    },
+    {
+      "id": "26",
+      "status": "pendente",
+      "total": 945.61,
+      "itens": [
+        {
+          "produtoId": "p49",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p45",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p17",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p10",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-06-13T19:00:00Z"
+    },
+    {
+      "id": "27",
+      "status": "cancelado",
+      "total": 1293.85,
+      "itens": [
+        {
+          "produtoId": "p16",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p43",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p15",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p9",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p28",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-07-01T09:00:00Z"
+    },
+    {
+      "id": "28",
+      "status": "a_caminho",
+      "total": 742.72,
+      "itens": [
+        {
+          "produtoId": "p14",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p19",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p19",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-03-21T14:00:00Z"
+    },
+    {
+      "id": "29",
+      "status": "a_caminho",
+      "total": 1372.63,
+      "itens": [
+        {
+          "produtoId": "p36",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p17",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p32",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p19",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p24",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-02-17T15:00:00Z"
+    },
+    {
+      "id": "30",
+      "status": "pendente",
+      "total": 300.62,
+      "itens": [
+        {
+          "produtoId": "p36",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p45",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-28T14:00:00Z"
+    },
+    {
+      "id": "31",
+      "status": "pendente",
+      "total": 172.43,
+      "itens": [
+        {
+          "produtoId": "p19",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-06-10T18:00:00Z"
+    },
+    {
+      "id": "32",
+      "status": "pendente",
+      "total": 118.92,
+      "itens": [
+        {
+          "produtoId": "p25",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-01-21T13:00:00Z"
+    },
+    {
+      "id": "33",
+      "status": "a_caminho",
+      "total": 456.93,
+      "itens": [
+        {
+          "produtoId": "p1",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p13",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p21",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p50",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-07-26T14:00:00Z"
+    },
+    {
+      "id": "34",
+      "status": "cancelado",
+      "total": 331.73,
+      "itens": [
+        {
+          "produtoId": "p37",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p12",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-07-16T16:00:00Z"
+    },
+    {
+      "id": "35",
+      "status": "pendente",
+      "total": 115.87,
+      "itens": [
+        {
+          "produtoId": "p6",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p4",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-04-21T17:00:00Z"
+    },
+    {
+      "id": "36",
+      "status": "entregue",
+      "total": 750.56,
+      "itens": [
+        {
+          "produtoId": "p32",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p46",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p49",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p22",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-06-13T15:00:00Z"
+    },
+    {
+      "id": "37",
+      "status": "pendente",
+      "total": 339.09,
+      "itens": [
+        {
+          "produtoId": "p21",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-06-13T10:00:00Z"
+    },
+    {
+      "id": "38",
+      "status": "cancelado",
+      "total": 515.65,
+      "itens": [
+        {
+          "produtoId": "p21",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p12",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-03-13T10:00:00Z"
+    },
+    {
+      "id": "39",
+      "status": "a_caminho",
+      "total": 864.06,
+      "itens": [
+        {
+          "produtoId": "p11",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p30",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p15",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p14",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p37",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-06-19T13:00:00Z"
+    },
+    {
+      "id": "40",
+      "status": "cancelado",
+      "total": 939.6,
+      "itens": [
+        {
+          "produtoId": "p15",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p16",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p4",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p21",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p21",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-06-13T19:00:00Z"
+    },
+    {
+      "id": "41",
+      "status": "entregue",
+      "total": 321.78,
+      "itens": [
+        {
+          "produtoId": "p14",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-05-01T18:00:00Z"
+    },
+    {
+      "id": "42",
+      "status": "cancelado",
+      "total": 1332.11,
+      "itens": [
+        {
+          "produtoId": "p35",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p21",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p43",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p23",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p24",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-24T08:00:00Z"
+    },
+    {
+      "id": "43",
+      "status": "cancelado",
+      "total": 72.7,
+      "itens": [
+        {
+          "produtoId": "p45",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-03-11T17:00:00Z"
+    },
+    {
+      "id": "44",
+      "status": "cancelado",
+      "total": 588.84,
+      "itens": [
+        {
+          "produtoId": "p46",
+          "quantidade": 3
+        }
+      ],
+      "criadoEm": "2026-02-27T09:00:00Z"
+    },
+    {
+      "id": "45",
+      "status": "pendente",
+      "total": 507.16,
+      "itens": [
+        {
+          "produtoId": "p8",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p15",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-02-17T11:00:00Z"
+    },
+    {
+      "id": "46",
+      "status": "entregue",
+      "total": 515.31,
+      "itens": [
+        {
+          "produtoId": "p5",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p14",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p35",
+          "quantidade": 3
+        },
+        {
+          "produtoId": "p17",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-27T11:00:00Z"
+    },
+    {
+      "id": "47",
+      "status": "cancelado",
+      "total": 718.2,
+      "itens": [
+        {
+          "produtoId": "p12",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p42",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p28",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p44",
+          "quantidade": 1
+        },
+        {
+          "produtoId": "p14",
+          "quantidade": 2
+        }
+      ],
+      "criadoEm": "2026-07-23T15:00:00Z"
+    },
+    {
+      "id": "48",
+      "status": "pendente",
+      "total": 150.47,
+      "itens": [
+        {
+          "produtoId": "p7",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-20T10:00:00Z"
+    },
+    {
+      "id": "49",
+      "status": "pendente",
+      "total": 649.97,
+      "itens": [
+        {
+          "produtoId": "p1",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p21",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p9",
+          "quantidade": 2
+        },
+        {
+          "produtoId": "p47",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-06-23T13:00:00Z"
+    },
+    {
+      "id": "50",
+      "status": "cancelado",
+      "total": 115.6,
+      "itens": [
+        {
+          "produtoId": "p40",
+          "quantidade": 1
+        }
+      ],
+      "criadoEm": "2026-04-07T16:00:00Z"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "p1",
+      "nome": "Produto 1",
+      "preco": 483.86,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p2",
+      "nome": "Produto 2",
+      "preco": 354.03,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p3",
+      "nome": "Produto 3",
+      "preco": 427.24,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p4",
+      "nome": "Produto 4",
+      "preco": 417.64,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p5",
+      "nome": "Produto 5",
+      "preco": 39.41,
+      "categoria": "Casa",
+      "disponivel": true
+    },
+    {
+      "id": "p6",
+      "nome": "Produto 6",
+      "preco": 476.71,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p7",
+      "nome": "Produto 7",
+      "preco": 463.71,
+      "categoria": "Casa",
+      "disponivel": true
+    },
+    {
+      "id": "p8",
+      "nome": "Produto 8",
+      "preco": 204.57,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p9",
+      "nome": "Produto 9",
+      "preco": 393.47,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p10",
+      "nome": "Produto 10",
+      "preco": 254.57,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p11",
+      "nome": "Produto 11",
+      "preco": 482.03,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p12",
+      "nome": "Produto 12",
+      "preco": 300.03,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p13",
+      "nome": "Produto 13",
+      "preco": 402.72,
+      "categoria": "Esporte",
+      "disponivel": false
+    },
+    {
+      "id": "p14",
+      "nome": "Produto 14",
+      "preco": 14.28,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p15",
+      "nome": "Produto 15",
+      "preco": 318.88,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p16",
+      "nome": "Produto 16",
+      "preco": 50.67,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p17",
+      "nome": "Produto 17",
+      "preco": 393.82,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p18",
+      "nome": "Produto 18",
+      "preco": 82.51,
+      "categoria": "Esporte",
+      "disponivel": true
+    },
+    {
+      "id": "p19",
+      "nome": "Produto 19",
+      "preco": 300.9,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p20",
+      "nome": "Produto 20",
+      "preco": 273.16,
+      "categoria": "Casa",
+      "disponivel": true
+    },
+    {
+      "id": "p21",
+      "nome": "Produto 21",
+      "preco": 203.45,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p22",
+      "nome": "Produto 22",
+      "preco": 295.93,
+      "categoria": "Esporte",
+      "disponivel": true
+    },
+    {
+      "id": "p23",
+      "nome": "Produto 23",
+      "preco": 264.78,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p24",
+      "nome": "Produto 24",
+      "preco": 314.17,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p25",
+      "nome": "Produto 25",
+      "preco": 158.25,
+      "categoria": "Casa",
+      "disponivel": true
+    },
+    {
+      "id": "p26",
+      "nome": "Produto 26",
+      "preco": 491.2,
+      "categoria": "Eletronicos",
+      "disponivel": false
+    },
+    {
+      "id": "p27",
+      "nome": "Produto 27",
+      "preco": 47.18,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p28",
+      "nome": "Produto 28",
+      "preco": 10.36,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p29",
+      "nome": "Produto 29",
+      "preco": 94.91,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p30",
+      "nome": "Produto 30",
+      "preco": 14.99,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p31",
+      "nome": "Produto 31",
+      "preco": 464.77,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p32",
+      "nome": "Produto 32",
+      "preco": 178.41,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p33",
+      "nome": "Produto 33",
+      "preco": 340.09,
+      "categoria": "Esporte",
+      "disponivel": true
+    },
+    {
+      "id": "p34",
+      "nome": "Produto 34",
+      "preco": 173.96,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p35",
+      "nome": "Produto 35",
+      "preco": 374.2,
+      "categoria": "Casa",
+      "disponivel": false
+    },
+    {
+      "id": "p36",
+      "nome": "Produto 36",
+      "preco": 164.98,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p37",
+      "nome": "Produto 37",
+      "preco": 240.45,
+      "categoria": "Moda",
+      "disponivel": false
+    },
+    {
+      "id": "p38",
+      "nome": "Produto 38",
+      "preco": 314.79,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p39",
+      "nome": "Produto 39",
+      "preco": 102.16,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p40",
+      "nome": "Produto 40",
+      "preco": 296.73,
+      "categoria": "Esporte",
+      "disponivel": true
+    },
+    {
+      "id": "p41",
+      "nome": "Produto 41",
+      "preco": 122.66,
+      "categoria": "Esporte",
+      "disponivel": true
+    },
+    {
+      "id": "p42",
+      "nome": "Produto 42",
+      "preco": 274.13,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p43",
+      "nome": "Produto 43",
+      "preco": 465.3,
+      "categoria": "Moda",
+      "disponivel": true
+    },
+    {
+      "id": "p44",
+      "nome": "Produto 44",
+      "preco": 410.33,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p45",
+      "nome": "Produto 45",
+      "preco": 313.39,
+      "categoria": "Eletronicos",
+      "disponivel": true
+    },
+    {
+      "id": "p46",
+      "nome": "Produto 46",
+      "preco": 378.66,
+      "categoria": "Livros",
+      "disponivel": false
+    },
+    {
+      "id": "p47",
+      "nome": "Produto 47",
+      "preco": 320.29,
+      "categoria": "Livros",
+      "disponivel": true
+    },
+    {
+      "id": "p48",
+      "nome": "Produto 48",
+      "preco": 342.45,
+      "categoria": "Esporte",
+      "disponivel": true
+    },
+    {
+      "id": "p49",
+      "nome": "Produto 49",
+      "preco": 159.31,
+      "categoria": "Casa",
+      "disponivel": true
+    },
+    {
+      "id": "p50",
+      "nome": "Produto 50",
+      "preco": 465.04,
+      "categoria": "Moda",
+      "disponivel": true
+    }
+  ]
+}

@@ -48,7 +48,15 @@ class _EstadoRuim extends State<TelaPedidosRuim> {
 
 ```dart
 // Correto: widget delega ao domínio/dados via um gerenciador de estado
+@riverpod
+Future<List<Pedido>> pedidos(PedidosRef ref) async {
+  final repositorio = ref.watch(pedidoRepositoryProvider);
+  return repositorio.obterPedidos(); // gerado como AsyncValue<List<Pedido>> abaixo
+}
+
 class TelaPedidos extends ConsumerWidget {
+  const TelaPedidos({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pedidosAsync = ref.watch(pedidosProvider); // apresentação só consome
@@ -60,6 +68,10 @@ class TelaPedidos extends ConsumerWidget {
   }
 }
 ```
+
+> **Definição — `AsyncValue`**: tipo do Riverpod que representa o resultado de uma operação assíncrona em um dos três estados mutuamente exclusivos — `data` (sucesso, com o valor), `loading` (em andamento) ou `error` (falha, com o erro) — e cujo método `.when(...)` obriga o código consumidor a tratar os três. Não é coincidência que sejam os mesmos três estados discutidos na Aula 8 (carregando/erro/conteúdo): `AsyncValue` é a materialização, em tipo de dado, do princípio de que esses três estados fazem parte do design da interface, não são "detalhes de implementação" a esquecer.
+
+**Nota de comportamento**: por padrão, `.when(...)` já evita "piscar" o indicador de carregamento durante uma revalidação (ex.: `ref.invalidate(pedidosProvider)`) — o caso `data` continua sendo chamado com o valor anterior, marcado internamente como `isRefreshing`, em vez de cair no caso `loading`. Se a interface precisar distinguir "carregando pela primeira vez" de "atualizando em segundo plano com dado antigo na tela", inspecione `pedidosAsync.isRefreshing` dentro do caso `data`, em vez de assumir que todo `loading` é a primeira carga.
 
 ## 3. Gerenciamento de estado: por que existe mais de uma solução
 
@@ -91,13 +103,26 @@ final carrinho = context.watch<CarrinhoNotifier>();
 Evolução do Provider, desacoplada da árvore de widgets (não depende de `BuildContext` para declarar providers), com verificação em tempo de compilação e melhor testabilidade — considerada por parte da comunidade Flutter como sucessora natural do Provider em projetos novos.
 
 ```dart
-final carrinhoProvider = StateNotifierProvider<CarrinhoNotifier, List<Item>>(
-  (ref) => CarrinhoNotifier(),
-);
+// Riverpod 3, com geração de código (@riverpod) — a API recomendada atualmente.
+// A classe legada StateNotifier/StateNotifierProvider foi desaconselhada
+// pelo próprio autor do Riverpod desde a versão 2.6 (2024); evite ensiná-la
+// como padrão em projetos novos.
+@riverpod
+class Carrinho extends _$Carrinho {
+  @override
+  List<Item> build() => [];
+
+  void adicionar(Item item) {
+    state = [...state, item]; // reatribuição imutável, não mutação da lista
+  }
+}
 
 // No widget:
 final itens = ref.watch(carrinhoProvider);
+ref.read(carrinhoProvider.notifier).adicionar(novoItem);
 ```
+
+> **Nota**: o exemplo acima é o motivo pelo qual `CarrinhoNotifier`, definido como `ChangeNotifier` na seção do Provider logo acima, **não** deve ser reaproveitado como argumento de tipo de um `StateNotifierProvider` — são APIs de gerenciadores de estado distintos (Provider usa `ChangeNotifier`; o Riverpod legado usava `StateNotifier`, uma classe diferente), e confundi-los é um erro de tipo, não de estilo.
 
 ### BLoC (Business Logic Component)
 
@@ -118,6 +143,7 @@ class CarrinhoBloc extends Bloc<CarrinhoEvent, CarrinhoState> {
 
 | Solução | Quando escolher |
 |---|---|
+| Nenhuma (`setState` + `InheritedWidget`) | Estado verdadeiramente local ou compartilhado apenas por uma pequena subárvore — a resposta mais honesta e mais comum na comunidade Flutter para o início de um projeto: comece sem biblioteca, adote uma quando a dor de compartilhar estado entre telas distantes aparecer de fato |
 | Provider | Projetos pequenos/médios, equipe já familiarizada, prioridade em simplicidade |
 | Riverpod | Projetos que valorizam testabilidade e segurança em tempo de compilação, sem dependência de `BuildContext` |
 | BLoC | Domínios com regras de transição de estado complexas, equipes grandes que valorizam rastreabilidade explícita de eventos |
@@ -131,6 +157,32 @@ O gerenciador de estado escolhido (Provider, Riverpod ou BLoC) pertence à **fro
 ## 5. Exemplo real: por que aplicativos Flutter de médio porte migram de Provider para Riverpod ou BLoC
 
 É comum em relatos de equipes de desenvolvimento que um projeto Flutter iniciado com `setState()` simples migre para Provider ao crescer, e depois para Riverpod ou BLoC conforme o número de fontes de estado compartilhado e a necessidade de testes automatizados aumentam — não porque Provider "pare de funcionar", mas porque a ausência de tipagem estrita na recuperação de providers pelo `BuildContext` no Provider tradicional torna erros de contexto (buscar um provider fora do escopo onde foi disponibilizado) detectáveis apenas em tempo de execução, um custo que cresce com o tamanho do time e da base de código.
+
+## 6. O motivo prático de isolar o domínio: um teste que roda em milissegundos, sem emulador
+
+Este componente usa "testabilidade" como critério de decisão desde a tabela da §3 — mas até aqui nenhuma linha de teste foi escrita. O motivo de isolar regra de negócio do widget não é abstrato: um domínio livre de `Widget`, `BuildContext` ou chamadas de rede diretas pode ser testado com o pacote `test` puro, sem instanciar nenhuma árvore de widgets e sem emulador — a diferença de custo é de segundos (`flutter test` compilando um app inteiro) para milissegundos.
+
+```dart
+// Domínio puro, sem nenhuma dependência de Flutter
+bool podeCancelarPedido(Pedido pedido) {
+  return pedido.status != StatusPedido.enviado;
+}
+
+// test/pedido_test.dart — roda em milissegundos, sem emulador
+void main() {
+  test('pedido enviado não pode ser cancelado', () {
+    final pedido = Pedido(status: StatusPedido.enviado);
+    expect(podeCancelarPedido(pedido), isFalse);
+  });
+
+  test('pedido pendente pode ser cancelado', () {
+    final pedido = Pedido(status: StatusPedido.pendente);
+    expect(podeCancelarPedido(pedido), isTrue);
+  });
+}
+```
+
+Esse é o retorno concreto do rigor arquitetural discutido nesta aula: quanto mais a lógica de negócio estiver isolada em funções e classes puras de domínio, maior a fração do sistema que pode ser coberta por testes rápidos, executados a cada alteração de código, sem depender de um emulador ligado — pré-requisito prático de qualquer pipeline de integração contínua.
 
 ## Síntese da aula
 

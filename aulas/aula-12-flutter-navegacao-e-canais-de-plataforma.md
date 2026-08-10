@@ -47,11 +47,20 @@ Retomando a Aula 2: independentemente do modelo escolhido, o Flutter precisa man
 
 ```dart
 PopScope(
-  canPop: formularioEstaVazio,
+  // podeSairSemConfirmar (não "canPop" isolado): nome escolhido para deixar
+  // explícito o que a flag realmente decide — nomear bem é conteúdo, não
+  // estética, num curso que ensina arquitetura.
+  canPop: podeSairSemConfirmar,
   onPopInvokedWithResult: (didPop, result) async {
-    if (!didPop) {
-      final confirmar = await exibirDialogoDescartar(context);
-      if (confirmar) Navigator.of(context).pop();
+    if (didPop) return; // já saiu (canPop era true): nada a fazer
+    final confirmar = await exibirDialogoDescartar(context);
+    if (confirmar && context.mounted) {
+      // Com canPop: false, chamar Navigator.pop() aqui seria bloqueado de
+      // novo pelo próprio PopScope — o pitfall mais comum da migração
+      // WillPopScope -> PopScope. É preciso liberar a saída primeiro,
+      // atualizando o estado que alimenta `canPop`, e só então tentar sair.
+      setState(() => podeSairSemConfirmar = true);
+      if (context.mounted) Navigator.of(context).pop();
     }
   },
   child: TelaFormulario(),
@@ -62,16 +71,49 @@ PopScope(
 
 > **Definição — Ligação profunda (deep link)**: URL ou notificação que, ao ser aberta, leva o usuário diretamente a uma tela específica dentro do aplicativo — não apenas à tela inicial — reconstruindo, se necessário, uma pilha de retorno sintética coerente até aquele ponto.
 
-Um deep link mal implementado abre a tela de destino sem nenhuma pilha por trás dela: o usuário toca em voltar e o app fecha inesperadamente, ou fica preso sem rota de saída clara — violação direta da heurística "controle e liberdade do usuário" (Aula 5). O `go_router` resolve isso automaticamente ao tratar cada rota como parte de uma árvore de navegação conhecida, reconstruindo os ancestrais lógicos da rota de destino.
+Um deep link mal implementado abre a tela de destino sem nenhuma pilha por trás dela: o usuário toca em voltar e o app fecha inesperadamente, ou fica preso sem rota de saída clara — violação direta da heurística "controle e liberdade do usuário" (Aula 5). O `go_router` resolve isso reconstruindo os ancestrais lógicos da rota de destino, mas isso exige declarar a rota como filha (rota aninhada) do ancestral desejado — não acontece "sozinho" apenas por declarar a rota isoladamente:
 
 ```dart
-GoRoute(
-  path: '/pedido/:id',
-  builder: (context, state) => TelaDetalhePedido(id: state.pathParameters['id']!),
-  // Ao abrir via deep link, o go_router pode inserir a tela de catálogo
-  // como ancestral lógico, para que "voltar" leve a um estado coerente.
-),
+final router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const TelaCatalogo(),
+      routes: [
+        // Rota aninhada: ao abrir '/pedido/42' via deep link, o go_router
+        // reconstrói TelaCatalogo como ancestral na pilha antes de exibir
+        // TelaDetalhePedido — "voltar" leva ao catálogo, não fecha o app.
+        GoRoute(
+          path: 'pedido/:id',
+          builder: (context, state) =>
+              TelaDetalhePedido(id: state.pathParameters['id']!),
+        ),
+      ],
+    ),
+  ],
+);
 ```
+
+Além da rota Dart, um deep link só funciona de fato com a configuração de plataforma correspondente — no `AndroidManifest.xml`:
+
+```xml
+<activity android:name=".MainActivity" android:exported="true">
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="meuapp" android:host="pedido" />
+    </intent-filter>
+</activity>
+```
+
+E testado com:
+
+```bash
+adb shell am start -W -a android.intent.action.VIEW -d "meuapp://pedido/42"
+```
+
+Sem essa configuração de manifesto, nenhuma rota Dart de deep link é alcançável a partir de fora do app — um requisito frequentemente esquecido ao validar a Avaliação 2.
 
 ## 4. Sessão e persistência de rota
 
@@ -127,6 +169,8 @@ class MainActivity : FlutterActivity() {
 
 > **Observação de arquitetura**: o canal de plataforma é, por natureza, assíncrono — a chamada de Dart para nativo não é uma chamada de função direta, é uma mensagem serializada e enviada por um canal de mensagens. Isso tem custo de desempenho perceptível se usado em alta frequência (ex.: chamado a cada quadro de animação), e deve ser reservado para operações pontuais, não para lógica de tempo real.
 
+> **Ferramentas complementares**: para chamadas pontuais como a acima, o pacote `pigeon` gera a interface `MethodChannel` de forma tipada a partir de uma especificação Dart, eliminando o risco de erro de digitação nos nomes de método e no formato dos argumentos — hoje recomendado no lugar de escrever `MethodChannel` manualmente em projetos novos. Para fluxos contínuos de dados (ex.: leitura de um sensor a cada intervalo), o mecanismo equivalente é o `EventChannel`, que expõe um `Stream` em vez de uma chamada única.
+
 ## 6. Exemplo real: por que apps de e-commerce usam deep links em notificações push
 
 Quando um aplicativo de e-commerce envia uma notificação "Seu pedido saiu para entrega", tocar nela deve levar diretamente à tela de acompanhamento daquele pedido específico — não à tela inicial do app, obrigando o usuário a navegar manualmente até encontrar o pedido certo. Essa é a aplicação mais comum de deep link em produção: a notificação carrega um identificador de pedido, que o `go_router` traduz em uma rota `/pedido/:id`, reconstruindo a pilha de retorno de forma que o usuário, ao tocar em voltar, chegue a uma tela de lista de pedidos coerente — não a um estado vazio ou inesperado.
@@ -146,4 +190,4 @@ Quando um aplicativo de e-commerce envia uma notificação "Seu pedido saiu para
 
 ## Atividade da aula
 
-**Avaliação 2 — Módulo em Flutter (peso 20%)**: cada equipe entrega um módulo funcional em Flutter contendo: arquitetura em camadas (Aula 10), repositório com fonte remota e local (Aula 11), gerenciamento de estado justificado, navegação declarativa com ao menos uma rota acessível por deep link, e comportamento correto sob conectividade intermitente. A entrega é seguida de arguição individual, na qual cada integrante deve justificar oralmente as decisões de arquitetura e de interface tomadas no módulo — não pontua no critério de arquitetura quem não sustentar a decisão adotada.
+**Avaliação 2 — Módulo em Flutter (peso 20%)**: cada equipe entrega um módulo funcional em Flutter contendo: arquitetura em camadas (Aula 10), repositório com fonte remota e local (Aula 11), gerenciamento de estado justificado, navegação declarativa com ao menos uma rota acessível por deep link (testável com o comando `adb` acima), e comportamento correto sob conectividade intermitente. A entrega é seguida de arguição individual, na qual cada integrante deve justificar oralmente as decisões de arquitetura e de interface tomadas no módulo — não pontua no critério de arquitetura quem não sustentar a decisão adotada. Roteiro-padrão de perguntas de arguição (para isonomia entre equipes) em [`recursos/rubricas/roteiro-arguicao.md`](../recursos/rubricas/roteiro-arguicao.md).

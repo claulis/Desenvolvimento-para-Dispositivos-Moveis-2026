@@ -27,6 +27,8 @@ A arquitetura em camadas reduz acoplamento entre apresentação e dados (eles n�
 
 > **Definição — Arquitetura de portas e adaptadores (hexagonal)**: estilo arquitetural em que o núcleo da aplicação (domínio) define interfaces abstratas — **portas** — que descrevem o que ele precisa do mundo externo (ex.: "uma forma de obter pedidos"), sem conhecer nenhum detalhe de como isso é implementado; **adaptadores** são implementações concretas dessas portas (ex.: um adaptador que busca pedidos de uma API REST, outro que busca de um banco local), plugáveis e substituíveis sem alterar o núcleo.
 
+> **Por que "hexagonal"**: o nome vem da forma como Alistair Cockburn, autor original do padrão, desenhou o diagrama — um hexágono no centro, com espaço suficiente nas bordas para representar múltiplas portas/adaptadores ao redor. Os seis lados não têm significado técnico específico; é só a forma geométrica escolhida para o desenho, não procure um sentido mais profundo nela.
+
 A diferença central em relação à arquitetura em camadas simples: a dependência é sempre **do adaptador para a porta** (definida pelo domínio), nunca o contrário — o domínio não importa nenhum tipo do adaptador, apenas define a interface que o adaptador deve implementar.
 
 ```dart
@@ -53,20 +55,28 @@ O padrão repositório estudado nas Aulas 11 e 15 é, na prática, uma aplicaç�
 
 > **Definição — Regra de dependência**: princípio segundo o qual as dependências de código-fonte devem apontar sempre para dentro, em direção às políticas de mais alto nível (o domínio), garantindo que mudanças em detalhes externos (um framework de interface, um banco de dados específico) não se propaguem para o núcleo de regras de negócio.
 
-```
-┌─────────────────────────────────────┐
-│   Adaptadores externos (UI, API,     │
-│   banco de dados, frameworks)        │  ← depende de tudo dentro
-│  ┌─────────────────────────────┐    │
-│  │   Casos de uso (domínio)     │    │  ← depende só das entidades
-│  │  ┌───────────────────┐      │    │
-│  │  │    Entidades       │      │    │  ← não depende de nada externo
-│  │  └───────────────────┘      │    │
-│  └─────────────────────────────┘    │
-└─────────────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Externo["Adaptadores externos (UI, API, banco de dados, frameworks)"]
+        subgraph CasosDeUso["Casos de uso (domínio) — depende só das entidades"]
+            Entidades["Entidades — não dependem de nada externo"]
+        end
+    end
 ```
 
+A seta de dependência sempre aponta de fora para dentro: adaptadores externos conhecem casos de uso, casos de uso conhecem entidades — nunca o contrário.
+
 A arquitetura limpa é, em essência, uma formalização mais detalhada do mesmo princípio de portas e adaptadores, com a adição explícita da camada de **casos de uso** (regras de aplicação específicas, ex.: "cancelar um pedido") separada das **entidades** (regras de negócio universais do domínio, ex.: "um pedido tem um total que é a soma de seus itens").
+
+## 4.1. Onde MVVM e MVI se encaixam nesses estilos
+
+Os três estilos das §2–4 descrevem como organizar o sistema **como um todo**. Um degrau abaixo, dentro da camada de apresentação especificamente, existem padrões mais específicos que decidem como a interface se comunica com o estado — os que você provavelmente vai encontrar nomeados em uma vaga de desenvolvimento Android:
+
+> **Definição — MVVM (Model-View-ViewModel)**: padrão de apresentação em que a View observa um ViewModel que expõe estado e comandos, sem o ViewModel conhecer a View diretamente — o Provider/Riverpod consumido por um `ConsumerWidget` (Aula 10) ou um hook customizado consumido por um componente (Aula 14) cumprem, na prática, o papel de ViewModel.
+
+> **Definição — MVI (Model-View-Intent)**: padrão de apresentação em que toda interação do usuário é modelada como uma **intenção** (evento) explícita, processada de forma unidirecional para produzir um novo estado imutável — o BLoC (Aula 10) é, em espírito, uma implementação de MVI: eventos de entrada, estados de saída, fluxo estritamente unidirecional.
+
+Ou seja: MVVM/MVI não competem com camadas/portas-e-adaptadores/arquitetura limpa — eles descrevem a organização *interna* da camada de apresentação, dentro de qualquer um dos três estilos macro já estudados.
 
 ## 5. Isolamento do framework: o que muda entre plataformas, o que permanece
 
@@ -102,6 +112,10 @@ Equipes que mantêm simultaneamente uma versão Flutter e uma versão React Nati
 - MARTIN, Robert C. *Arquitetura Limpa*. Rio de Janeiro: Alta Books, 2019.
 - RICHARDS, Mark; FORD, Neal. *Fundamentals of Software Architecture*. Sebastopol: O'Reilly Media, 2020 — capítulo sobre estilos arquiteturais.
 
+## Ferramentas que tornam a regra de dependência verificável, não apenas combinada
+
+A melhor forma de ensinar arquitetura é transformar a regra de dependência em uma verificação automática, não em um acordo de cavalheiros que qualquer PR pode violar sem que ninguém perceba: `import_lint`/`dart_code_metrics` (Dart/Flutter) e `eslint-plugin-boundaries` (TypeScript/React Native) **falham o build** quando o domínio importa um tipo de framework. Vale configurar ao menos um deles no módulo da equipe.
+
 ## Atividade da aula
 
-**Exercício: reorganização do módulo segundo dois estilos distintos, com comparação do acoplamento resultante**: cada equipe reorganiza o domínio do módulo já implementado (Aulas 10-12 e 14-16) segundo o estilo de portas e adaptadores (se ainda não seguido rigorosamente) e, em seguida, segundo arquitetura limpa completa, documentando em cada versão quais dependências de framework vazaram para o domínio e quais foram efetivamente eliminadas — produzindo uma tabela comparativa de acoplamento entre as três versões (camadas simples, portas e adaptadores, arquitetura limpa).
+**Exercício: reorganização do módulo segundo portas e adaptadores, com análise em papel da arquitetura limpa**: em uma aula de 4h, reorganizar completamente o domínio segundo **dois** estilos adicionais é ambicioso demais para produzir algo terminado. Escopo recomendado: cada equipe reorganiza o domínio do módulo já implementado (Aulas 10-12 e 14-16) segundo o estilo de portas e adaptadores (se ainda não seguido rigorosamente), documentando quais dependências de framework vazavam para o domínio e foram eliminadas. Em seguida, faz uma **análise em papel** (sem reescrever o código) do que mudaria ao migrar para arquitetura limpa completa: quantas classes a mais, que indireção adicional, e se o ganho de isolamento compensaria o custo para este módulo específico — produzindo uma tabela comparativa de acoplamento entre as três versões (camadas simples, portas e adaptadores, arquitetura limpa) com a terceira coluna preenchida por análise, não por implementação.

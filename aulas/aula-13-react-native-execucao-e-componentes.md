@@ -17,22 +17,21 @@ Essa é a diferença arquitetural central entre as duas plataformas estudadas no
 
 | Aspecto | Flutter | React Native |
 |---|---|---|
-| Renderização | Motor próprio (Skia/Impeller), desenha cada pixel | Componentes nativos reais da plataforma |
-| Linguagem | Dart (compilada para código de máquina) | JavaScript/TypeScript (interpretada/JIT em runtime) |
+| Renderização | Motor próprio (Impeller), desenha cada pixel | Componentes nativos reais da plataforma, via Fabric |
+| Linguagem | Dart (compilada para código de máquina, AOT) | JavaScript/TypeScript, executado pelo motor **Hermes**, que pré-compila para bytecode em tempo de build (AOT) e o interpreta — não há JIT em produção |
 | Fidelidade visual entre SOs | Idêntica por construção | Depende da fidelidade da ponte com o componente nativo de cada SO |
 | Acesso a recursos nativos "de fábrica" | Requer canal de plataforma para o que não está pronto | Mais próximo, mas ainda depende de módulos nativos para APIs não cobertas |
 
-## 2. Interface JavaScript, renderizador e módulos síncronos
+## 2. Interface JavaScript, renderizador e módulos: a Nova Arquitetura
 
-O modelo de execução tradicional do React Native (arquitetura "Bridge", ainda em uso em muitos projetos, embora a "Nova Arquitetura" com JSI venha substituindo-a) funciona em três partes:
+Desde a versão 0.76 (outubro de 2024), a **Nova Arquitetura** é o padrão de todo projeto React Native novo — não mais uma migração em andamento. Vale entendê-la como o modelo de referência, com a arquitetura antiga ("Bridge") tratada como contexto histórico que explica por que certas bibliotecas de animação existem:
 
 1. **Thread JavaScript**: executa a lógica da aplicação e decide **o que** deve ser exibido, descrevendo a interface como uma árvore de elementos React (semelhante ao DOM virtual da web).
-2. **Ponte (Bridge) / JSI**: serializa mensagens entre a thread JavaScript e a thread nativa — historicamente de forma assíncrona e em lotes (Bridge, formato JSON); na Nova Arquitetura, via JSI (JavaScript Interface), permitindo chamadas síncronas e tipadas diretamente, reduzindo a sobrecarga de serialização.
-3. **Thread de UI nativa**: recebe as instruções e efetivamente cria/atualiza os componentes nativos Android na tela.
+2. **JSI (JavaScript Interface)**: mecanismo de comunicação da Nova Arquitetura entre a thread JavaScript e o código nativo — permite chamadas **síncronas e tipadas diretamente**, sem serialização em lote, substituindo a antiga Bridge.
+3. **Fabric**: o renderizador da Nova Arquitetura, responsável por criar e atualizar os componentes nativos reais na tela a partir da árvore descrita em JavaScript — o análogo funcional do motor de renderização do Flutter (Aula 9), com a diferença central de que o Fabric produz componentes nativos de fato, não pixels desenhados por um motor próprio.
+4. **TurboModules**: acesso a módulos nativos sob demanda e com JSI, substituindo o antigo `NativeModules` (retomado na Aula 16).
 
-> **Definição — Ponte (Bridge)**: mecanismo de comunicação assíncrona entre a thread JavaScript e a thread nativa no React Native, historicamente baseado em serialização de mensagens em lote — um ponto de atenção arquitetural, já que operações que exigem comunicação intensa entre as duas threads (ex.: animações complexas guiadas por gesto) podem sofrer perda de fluidez se toda comunicação passar por esse canal serializado.
-
-Esse modelo em camadas explica por que, historicamente, animações e gestos complexos em React Native se beneficiam de bibliotecas como `react-native-reanimated` e `react-native-gesture-handler`, que movem parte da lógica de animação para a thread de UI nativa, contornando a latência da ponte tradicional.
+> **Definição — Ponte (Bridge)**: mecanismo de comunicação **assíncrona** entre a thread JavaScript e a thread nativa, usado pela arquitetura legada do React Native (anterior à 0.76), baseado em serialização de mensagens em lote — hoje em desativação. É o motivo histórico pelo qual animações e gestos complexos em React Native se beneficiaram de bibliotecas como `react-native-reanimated` e `react-native-gesture-handler`, que movem parte da lógica de animação para a thread de UI nativa, contornando a latência da ponte. Com JSI, parte dessa limitação estrutural é reduzida, mas essas bibliotecas continuam sendo a prática recomendada para animações guiadas por gesto.
 
 ## 3. Componentes funcionais e hooks
 
@@ -68,32 +67,49 @@ Esse exemplo é conceitualmente equivalente ao `StatefulWidget` da Aula 9: `useS
 Para explicitar a equivalência entre as duas plataformas — central ao método comparativo deste componente — a mesma tela de detalhe de produto construída em Flutter na Aula 9 é reconstruída aqui em React Native:
 
 ```tsx
-import { View, Text, Pressable, StyleSheet, SafeAreaView } from 'react-native';
+// tema.ts — tokens de cor e tipografia, único lugar que conhece valores brutos
+// (a mesma paleta gerada no Material Theme Builder, Aula 6, reaproveitada aqui)
+export const cores = {
+  primary: '#6750A4',
+  onPrimary: '#FFFFFF',
+} as const;
+
+export const tipografia = {
+  headlineSmall: { fontSize: 24, fontWeight: '600' as const },
+  titleLarge: { fontSize: 20, fontWeight: '400' as const },
+};
+```
+
+```tsx
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { cores, tipografia } from './tema';
 
 function TelaProduto() {
-  return (
-    <SafeAreaView style={estilos.container}>
-      <Text style={estilos.titulo}>Smartphone XYZ</Text>
-      <Text style={estilos.preco}>R$ 1.500,00</Text>
+  const insets = useSafeAreaInsets(); // Aula 3: SafeAreaView do core é legado e
+  return (                            // não se comporta bem no Android — usar
+    <View style={[estilos.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+      <Text style={[estilos.titulo, tipografia.headlineSmall]}>Smartphone XYZ</Text>
+      <Text style={[estilos.preco, tipografia.titleLarge]}>R$ 1.500,00</Text>
       <View style={estilos.espacador} />
       <Pressable style={estilos.botao} onPress={() => {}}>
         <Text style={estilos.textoBotao}>Comprar</Text>
       </Pressable>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const estilos = StyleSheet.create({
   container: { flex: 1, padding: 16 },
-  titulo: { fontSize: 24, fontWeight: '600' },
-  preco: { fontSize: 20, marginTop: 8 },
+  titulo: { color: '#000000' },
+  preco: { marginTop: 8 },
   espacador: { flex: 1 },
-  botao: { backgroundColor: '#6750A4', padding: 16, borderRadius: 8 },
-  textoBotao: { color: '#FFFFFF', textAlign: 'center', fontWeight: '600' },
+  botao: { backgroundColor: cores.primary, padding: 16, borderRadius: 8 },
+  textoBotao: { color: cores.onPrimary, textAlign: 'center', fontWeight: '600' },
 });
 ```
 
-Note que a malha de espaçamento (múltiplos de 8, Aula 6) e os tokens de cor continuam se aplicando — apenas expressos em `StyleSheet` do React Native em vez de widgets do Flutter.
+Note que a malha de espaçamento (múltiplos de 8, Aula 6) e os tokens de cor continuam se aplicando — apenas expressos em `StyleSheet` do React Native em vez de widgets do Flutter. **Cores e tamanhos de fonte fixos direto no `StyleSheet`, como `'#6750A4'` espalhado pelos componentes, são exatamente o antipadrão "cor fixa, ignora tema" apontado na Aula 6** — centralizar os valores em `tema.ts` (ou um equivalente que resolva claro/escuro) é o que preserva, em React Native, o mesmo princípio já estabelecido para Android nativo. Reutilize `tema.ts` nas Aulas 14 a 16.
 
 ## 5. Layout por Flexbox
 
@@ -147,9 +163,16 @@ Uma razão de mercado frequentemente citada para a adoção do React Native é a
 
 ## Leitura recomendada
 
-- EISENMAN, Bonnie. *Learning React Native*. 2. ed. Sebastopol: O'Reilly Media, 2017 — capítulos introdutórios sobre componentes e estilo.
-- Documentação oficial: [React Native architecture overview](https://reactnative.dev/architecture/overview).
+- Documentação oficial: [React Native architecture overview](https://reactnative.dev/architecture/overview) e [Expo documentation](https://docs.expo.dev/).
+
+> Evite bibliografia de React Native anterior a 2019: livros como *Learning React Native* (Eisenman, 2ª ed., 2017) antecedem os hooks e ensinam componentes de classe como padrão — incompatível com o código desta aula e do restante do componente.
+
+## Uso de Expo
+
+Este componente adota **Expo** como caminho padrão de projeto novo, em vez de React Native CLI puro: é a recomendação atual da própria equipe do React Native para a maioria dos projetos, e evita consumir uma aula inteira só com configuração de ambiente Android nativo (SDK, variáveis de ambiente, emulador) antes de escrever a primeira tela — tempo mais bem investido em arquitetura, tema central deste componente.
 
 ## Atividade da aula
 
-**Configuração do ambiente React Native e implementação responsiva da mesma tela da semana 9**: instalar Node.js e o ambiente React Native/Expo, e implementar a mesma tela de detalhe de produto responsiva construída em Flutter na Aula 9, usando `useWindowDimensions` para alternar entre as três classes de tamanho de janela nos mesmos pontos de quebra.
+**Configuração do ambiente React Native (Expo) e implementação responsiva da mesma tela da semana 9**: instalar Node.js e o Expo (`npx create-expo-app`), e implementar a mesma tela de detalhe de produto responsiva construída em Flutter na Aula 9, usando `useWindowDimensions` para alternar entre as três classes de tamanho de janela nos mesmos pontos de quebra. Ponto de partida em [`codigo/react-native/13-execucao-e-componentes/`](../codigo/react-native/13-execucao-e-componentes/).
+
+A tabela comparativa da §1 é o embrião da tabela final da Aula 20 — mantenha-a à mão e vá completando novas linhas ao longo das Aulas 14 a 19; na Aula 20, a comparação já estará em grande parte construída pela própria equipe.

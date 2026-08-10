@@ -33,8 +33,15 @@ class PedidoRepositoryImpl implements PedidoRepository {
       final pedidos = await _remoto.buscarPedidos();
       await _local.salvarCache(pedidos); // atualiza cache local
       return pedidos;
-    } on SocketException {
-      return _local.obterCache(); // sem rede: usa o que já foi salvo
+    } on DioException catch (e) {
+      // dio embrulha falhas de conexão em DioException — NUNCA em SocketException,
+      // mesmo quando a causa raiz é a mesma ausência de rede. Capturar
+      // SocketException aqui deixaria esse catch morto e o fallback de cache nunca dispararia.
+      if (e.type == DioExceptionType.connectionError ||
+          e.type == DioExceptionType.connectionTimeout) {
+        return _local.obterCache(); // sem rede: usa o que já foi salvo
+      }
+      rethrow; // erro de servidor (4xx/5xx): não é um problema de conectividade, propaga
     }
   }
 }
@@ -42,7 +49,7 @@ class PedidoRepositoryImpl implements PedidoRepository {
 
 ## 2. Cliente HTTP e serialização
 
-O Flutter não inclui um cliente HTTP completo por padrão fora do pacote básico `http`; pacotes como `dio` são amplamente usados por oferecerem interceptadores, cancelamento de requisição e tratamento de erro mais estruturado.
+O Flutter não inclui um cliente HTTP completo por padrão fora do pacote básico `http`; pacotes como `dio` são amplamente usados por oferecerem interceptadores, cancelamento de requisição e tratamento de erro mais estruturado. **Atenção**: a exceção lançada por `dio` em falha de rede é `DioException` — não a `SocketException` nativa do Dart usada pelo pacote `http`. Se o projeto usa `dio` (recomendado abaixo), todo `catch` de erro de conectividade deve capturar `DioException`, como no exemplo da §1; capturar `SocketException` com `dio` é um erro silencioso, porque o `catch` simplesmente nunca dispara.
 
 > **Definição — Serialização**: processo de converter um objeto Dart em um formato de intercâmbio (tipicamente JSON) para transmissão em rede ou persistência, e o processo inverso (desserialização) para reconstruir o objeto a partir desse formato.
 
@@ -100,13 +107,16 @@ class SincronizadorPedidos {
       try {
         await _remoto.enviar(alteracao);
         await _local.marcarComoSincronizado(alteracao);
-      } on SocketException {
-        break; // ainda sem rede: tenta o restante depois
+      } on DioException catch (e) {
+        if (e.type == DioExceptionType.connectionError) break; // ainda sem rede: tenta o restante depois
+        rethrow; // erro do servidor não deve ser silenciosamente ignorado
       }
     }
   }
 }
 ```
+
+> **Simplificação assumida**: o laço acima interrompe a sincronização inteira ao primeiro erro de conectividade e não trata **conflito** — o que acontece se o mesmo pedido foi alterado no servidor e localmente, de forma divergente? Estratégias reais incluem *last-write-wins* (a alteração mais recente por timestamp vence), merge de campos não conflitantes, ou uma fila com versionamento explícito que rejeita e sinaliza o conflito ao usuário. Reconhecer essa simplificação é importante: implementar cache-then-network **não** é, por si só, ter resolvido sincronização offline.
 
 ### Nova tentativa com espera progressiva (retry with backoff)
 
@@ -118,10 +128,27 @@ Future<T> comNovaTentativa<T>(Future<T> Function() operacao, {int maxTentativas 
   while (true) {
     try {
       return await operacao();
-    } catch (e) {
+    } on DioException catch (e) {
+      // Repetir apenas falhas transitórias: rede, timeout ou 5xx/429 do servidor.
+      // Um 401/404 não vai "melhorar" numa nova tentativa — repeti-lo só
+      // queima bateria e pode até disparar limitação de taxa (rate limit).
+      final transitorio = e.type == DioExceptionType.connectionError ||
+          e.type == DioExceptionType.connectionTimeout ||
+          e.type == DioExceptionType.receiveTimeout ||
+          (e.response?.statusCode ?? 0) >= 500 ||
+          e.response?.statusCode == 429;
       tentativa++;
-      if (tentativa >= maxTentativas) rethrow;
-      await Future.delayed(Duration(seconds: 1 << tentativa)); // 2, 4, 8...
+      if (!transitorio || tentativa >= maxTentativas) rethrow;
+
+      // Espera exponencial + jitter aleatório: sem o jitter, milhares de
+      // clientes que perderam conexão ao mesmo tempo (ex.: queda de uma
+      // torre) tentariam de novo em sincronia exata (2s, 4s, 8s...), um
+      // pico de carga simultâneo (thundering herd) que pode derrubar o
+      // servidor justamente no momento em que a rede volta.
+      final espera = Duration(
+        milliseconds: (1000 * (1 << tentativa)) + Random().nextInt(1000),
+      );
+      await Future.delayed(espera);
     }
   }
 }
@@ -130,6 +157,8 @@ Future<T> comNovaTentativa<T>(Future<T> Function() operacao, {int maxTentativas 
 ### Detecção de estado de conectividade
 
 O pacote `connectivity_plus` permite observar mudanças no estado de conectividade em tempo real, possibilitando que a interface reaja (ex.: exibir uma faixa "Sem conexão — mostrando dados salvos") em vez de simplesmente falhar silenciosamente ou travar em estado de carregamento indefinido.
+
+> **Elo com a Aula 2**: sincronizar pendências exige rodar mesmo quando o app está fechado ou em segundo plano — exatamente o caso de uso do `WorkManager`, apresentado na Aula 2 como resposta ao limite de execução em segundo plano do Android. O pacote Flutter `workmanager` expõe essa mesma API: agendar `SincronizadorPedidos.sincronizar()` como uma tarefa adiável e garantida, delegando ao sistema operacional a decisão de *quando* executar.
 
 ## 6. Estados de rede na interface
 
@@ -155,4 +184,16 @@ Aplicativos de transporte urbano usados no Brasil (bilhete único digital, apps 
 
 ## Atividade da aula
 
-**Prática: repositório com duas fontes intercambiáveis, testado com banda limitada e perda de conexão no emulador**: implementar um `PedidoRepository` com fonte remota (API simulada) e fonte local (cache), aplicando a estratégia de cache-then-network e nova tentativa com espera progressiva. Testar o comportamento usando o controle de rede do emulador Android (banda limitada e modo avião) e registrar o comportamento observado da interface em cada condição.
+**Prática: repositório com duas fontes intercambiáveis, testado com banda limitada e perda de conexão no emulador**: implementar um `PedidoRepository` com fonte remota e fonte local (cache), aplicando a estratégia de cache-then-network e nova tentativa com espera progressiva. Use a API simulada pronta em [`recursos/api-simulada/`](../recursos/api-simulada/) (50 pedidos de exemplo, roda localmente com `json-server`) como fonte remota, para que todas as equipes testem contra os mesmos dados. Testar o comportamento usando o controle de rede do emulador Android:
+
+```bash
+# Reduzir a banda disponível (perfil de rede lenta)
+adb shell settings put global network_watchlist_enabled false  # ambiente sem VPN de watchlist, se aplicável
+# No próprio Android Studio: Extended Controls > Cellular > definir "Network type"/"Signal strength"
+
+# Simular modo avião (perda total de conexão)
+adb shell settings put global airplane_mode_on 1
+adb shell am broadcast -a android.intent.action.AIRPLANE_MODE
+```
+
+Registrar o comportamento observado da interface em cada condição. Ponto de partida do projeto em [`codigo/flutter/11-repositorio-offline/`](../codigo/flutter/11-repositorio-offline/).

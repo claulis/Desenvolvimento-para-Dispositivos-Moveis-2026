@@ -21,7 +21,7 @@ Um erro conceitual recorrente em projetos iniciantes é tratar o desenvolvimento
 
 ## 2. Uso com uma mão e ergonomia de alcance do polegar
 
-Estudos de ergonomia (popularizados por pesquisas como as de Steven Hoober, "How Do Users Really Hold Mobile Devices?") mostram que a maioria dos usuários segura o smartphone com uma mão e interage com o polegar dessa mesma mão em boa parte das sessões de uso, especialmente em telas grandes onde alcançar o topo exige reposicionar o aparelho.
+A pesquisa de Steven Hoober ("How Do Users Really Hold Mobile Devices?", 2013) — um levantamento observacional com mais de 1300 pessoas em uso real, portanto anterior à popularização de telas acima de 6 polegadas — mediu como usuários seguram o aparelho: aproximadamente **49% em pegada de uma mão só** (polegar como único dedo interativo), **36% em pegada "de berço"** (*cradled*: uma mão segura, o outro indicador ou polegar da mesma mão toca), e **15% com as duas mãos**. Ou seja, a maioria das sessões envolve uma única mão interagindo com o polegar — mas os números exatos, e não "a maioria usa uma mão", são o que sustenta a recomendação a seguir com credibilidade, especialmente considerando que telas maiores hoje podem deslocar essa distribuição.
 
 > **Definição — Zona de alcance do polegar**: região da tela que o polegar consegue tocar confortavelmente sem que o usuário precise reposicionar a pegada, tipicamente concentrada na metade inferior da tela e mais estreita nas bordas superiores.
 
@@ -30,27 +30,29 @@ Isso leva a uma convenção consolidada nas interfaces Android modernas:
 - **Ações primárias e frequentes** (enviar, confirmar, buscar, navegação principal) posicionadas na parte **inferior** da tela — daí a popularidade de barras de navegação inferior (`BottomNavigationBar`) e botões de ação flutuante (FAB) na base.
 - **Informação de contexto e ações secundárias/raras** (voltar, configurações, menu) na parte superior, onde o alcance é mais difícil, mas a frequência de toque é menor.
 
-```
-┌─────────────────────┐
-│  Difícil alcançar    │  ← título, ações secundárias
-│                      │
-│                      │
-│   Zona confortável   │  ← conteúdo principal, listas
-│                      │
-│  Fácil alcançar       │  ← ações primárias, navegação
-└─────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Tela["Tela do smartphone, vista de frente"]
+        direction TB
+        A["Difícil alcançar\ntítulo, ações secundárias"]
+        B["Zona confortável\nconteúdo principal, listas"]
+        C["Fácil alcançar\nações primárias, navegação"]
+        A --> B --> C
+    end
 ```
 
 ## 3. Tamanho mínimo de alvo de toque
 
-O dedo humano cobre uma área bem maior que um cursor de mouse, e o toque é impreciso comparado ao clique. As diretrizes do Material Design recomendam um alvo mínimo de **48dp × 48dp** para qualquer elemento tocável, mesmo que o ícone visual dentro dele seja menor — a área de toque efetiva deve ser maior que a área visualmente desenhada quando necessário.
+O dedo humano cobre uma área bem maior que um cursor de mouse, e o toque é impreciso comparado ao clique. O valor de **48dp × 48dp** não é um número isolado — é a convergência de três referências distintas, e vale conhecer as três porque cada uma aparece em contextos diferentes: o **Material Design 3** recomenda 48dp como alvo mínimo recomendado; o **WCAG 2.2**, critério 2.5.8 (nível AA), exige no mínimo 24×24 pixels CSS; e o mesmo WCAG 2.2, critério 2.5.5 (nível AAA), pede 44×44. Na prática, 48dp atende aos três com folga e é o valor a adotar por padrão — mas ao justificar a decisão numa entrega, cite a origem, não apenas o número.
 
-```xml
-<ImageButton
-    android:layout_width="48dp"
-    android:layout_height="48dp"
-    android:src="@drawable/ic_favorito"
-    android:contentDescription="Adicionar aos favoritos" />
+```kotlin
+// Jetpack Compose
+IconButton(
+    onClick = { adicionarAosFavoritos() },
+    modifier = Modifier.size(48.dp)
+) {
+    Icon(Icons.Default.FavoriteBorder, contentDescription = "Adicionar aos favoritos")
+}
 ```
 
 Alvos menores que isso aumentam a taxa de erro de toque, especialmente relevante em cenários de uso em movimento (mão instável, atenção dividida) — outro elo direto entre o contexto de uso e uma decisão de dimensionamento aparentemente puramente visual.
@@ -87,4 +89,6 @@ Aplicativos bancários brasileiros (Nubank, Itaú, Banco do Brasil) convergiram,
 
 ## Atividade da aula
 
-**Avaliação 1 — Estudo do contexto de uso e mapa de restrições de plataforma (peso 15%)**: cada equipe, a partir do produto que desenvolverá ao longo do semestre, deve entregar um documento curto contendo: (1) descrição do contexto de uso típico do usuário-alvo (onde, quando, com que grau de atenção); (2) mapa das restrições de plataforma identificadas nas Aulas 1 a 3 que se aplicam ao produto (energia, memória, densidade de tela, permissões necessárias); (3) para cada restrição, a consequência de projeto que ela impõe. Rubrica: profundidade da análise de contexto, cobertura das restrições de plataforma, e conexão explícita entre restrição e decisão de projeto — não pontua descrição genérica sem essa conexão.
+**Avaliação 1 — Estudo do contexto de uso e mapa de restrições de plataforma (peso 15%)**: cada equipe, a partir do produto que desenvolverá ao longo do semestre, deve entregar um documento curto contendo: (1) descrição do contexto de uso típico do usuário-alvo (onde, quando, com que grau de atenção); (2) mapa das restrições de plataforma identificadas nas Aulas 1 a 3 que se aplicam ao produto (energia, memória, densidade de tela, permissões necessárias); (3) para cada restrição, a consequência de projeto que ela impõe. Rubrica detalhada em [`recursos/rubricas/avaliacao-1-contexto-de-uso.md`](../recursos/rubricas/avaliacao-1-contexto-de-uso.md).
+
+**Atividade extra recomendada (15 min, sem peso)**: cada estudante abre o app do próprio banco e mapeia as três ações mais frequentes (pagar, transferir, ver saldo/extrato) contra a zona de alcance do polegar da §2. Gera discussão imediata e conecta a teoria a um produto real que todos já usam.

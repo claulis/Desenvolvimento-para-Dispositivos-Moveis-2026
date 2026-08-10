@@ -27,7 +27,7 @@ Não é necessário um laboratório de usabilidade para gerar evidência útil. 
 
 ## 3. Roteiro de entrevista: estrutura mínima
 
-Um roteiro breve e bem construído tem three partes:
+Um roteiro breve e bem construído tem três partes:
 
 1. **Contexto** — perguntas abertas sobre como a pessoa resolve hoje o problema em questão, sem menção ao produto.
 2. **Tarefa** — se houver protótipo, pedir que tente completar uma tarefa concreta e específica (não "explore o app à vontade", que produz dados difíceis de comparar entre participantes).
@@ -68,8 +68,17 @@ Processo recomendado para a atividade desta aula:
 
 1. Definir 3 a 5 tarefas representativas no aplicativo avaliado.
 2. Percorrer cada tarefa observando violações a cada uma das dez heurísticas.
-3. Classificar cada achado por severidade (ex.: escala de 0 a 4: de "não é um problema" a "catástrofe de usabilidade").
-4. Registrar cada achado com: heurística violada, local exato na interface, descrição do problema, severidade e sugestão de correção.
+3. Classificar cada achado por severidade, usando a escala de Nielsen (1994) — os cinco níveis abaixo, sempre com os mesmos descritores para toda a turma, garantindo que os laudos sejam comparáveis entre estudantes:
+
+| Nível | Descrição |
+|---|---|
+| 0 | Não é um problema de usabilidade |
+| 1 | Problema cosmético — corrigir apenas se houver tempo sobrando |
+| 2 | Problema menor — prioridade baixa de correção |
+| 3 | Problema maior — importante corrigir, prioridade alta |
+| 4 | Catástrofe de usabilidade — impede ou bloqueia o uso, corrigir antes do lançamento |
+
+4. Registrar cada achado com: heurística violada, local exato na interface, descrição do problema, severidade (0–4, escala acima) e sugestão de correção.
 
 ## 7. Ética e proteção de dados na coleta
 
@@ -100,4 +109,4 @@ Um time de estudantes desenhando um aplicativo de agendamento de serviços pode,
 
 ## Atividade da aula
 
-**Avaliação heurística de um aplicativo Android existente, com laudo de achados**: cada estudante escolhe um aplicativo Android popular (não o próprio produto da equipe), define três tarefas representativas, percorre-as e produz um laudo estruturado com no mínimo 8 achados classificados por heurística violada, severidade e sugestão de correção.
+**Avaliação heurística de um aplicativo Android existente, com laudo de achados (atividade formativa, sem peso na nota)**: cada estudante escolhe um aplicativo Android popular (não o próprio produto da equipe), define três tarefas representativas, percorre-as e produz um laudo estruturado com no mínimo 8 achados classificados por heurística violada, severidade e sugestão de correção. Use o modelo pronto em [`recursos/template-laudo-heuristico.md`](../recursos/template-laudo-heuristico.md), com colunas fixas (`# | Heurística | Tela/local | Descrição | Severidade | Correção proposta | Evidência`), para padronizar a correção. Os achados de acessibilidade encontrados aqui devem alimentar o laudo de acessibilidade da Entrega 1 (Aula 8) — as duas atividades tratam do mesmo produto de análise sempre que possível.

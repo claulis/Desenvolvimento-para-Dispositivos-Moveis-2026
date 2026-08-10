@@ -51,24 +51,32 @@ function usePedidos() {
   const repositorio = usePedidoRepository(); // injeção via contexto/DI
 
   useEffect(() => {
+    let cancelado = false; // guarda contra atualização em componente desmontado
+
     repositorio
       .obterPedidos()
-      .then(setPedidos)
-      .catch(setErro)
-      .finally(() => setCarregando(false));
-  }, [repositorio]);
+      .then((dados) => { if (!cancelado) setPedidos(dados); })
+      .catch((e) => { if (!cancelado) setErro(e); })
+      .finally(() => { if (!cancelado) setCarregando(false); });
+
+    return () => { cancelado = true; }; // se o componente desmontar ou repositorio
+  }, [repositorio]);                    // mudar antes da resposta, ignora o resultado
 
   return { pedidos, carregando, erro };
 }
 ```
 
+> **Por que a flag `cancelado`/`AbortController` não é opcional**: sem ela, se o componente desmontar (ou `repositorio` mudar) antes da `Promise` resolver, o `.then`/`.catch` chama `setPedidos`/`setErro` em um componente que não existe mais — uma condição de corrida que o React sinaliza como aviso e que, em cenários mais complexos, pode causar atualização de estado incorreta. É a versão em React Native do princípio "o processo pode morrer/mudar a qualquer momento" já discutido para o Android nativo na Aula 2 — aqui, o equivalente é o componente ser desmontado a qualquer momento. Em chamadas HTTP reais, prefira encadear um `AbortController` e passar seu `signal` para `fetch`/`axios`, cancelando a requisição de fato, não apenas ignorando seu resultado.
+
 O hook customizado `usePedidos` desempenha, no React Native, um papel equivalente ao gerenciador de estado exposto por um `Provider`/`Riverpod` no Flutter (Aula 10): é a fronteira entre o componente de apresentação (que apenas consome `{ pedidos, carregando, erro }`) e o domínio/dados (que o hook encapsula, delegando ao repositório, tema retomado na Aula 15).
+
+> **Nota — o ecossistema abandonou esse padrão manual**: implementar `loading`/`error`/cache à mão com `useEffect`, como acima, é exatamente o que a comunidade React chama de misturar **estado de servidor** (dados que vivem no backend e apenas são espelhados localmente) com **estado de cliente** (dados que só existem na interface, como um formulário sendo preenchido). Bibliotecas de *server state* como **TanStack Query** (ou SWR) resolvem loading/error/cache/revalidação automaticamente — retomado na §3 desta aula e na Aula 15. Vale implementar manualmente uma vez, como acima, precisamente para entender o problema que essas bibliotecas resolvem — mas não é o padrão recomendado para um projeto real em 2026.
 
 ## 3. Gerenciamento de estado: Context, Redux e Zustand
 
 ### Context API
 
-Mecanismo nativo do React para compartilhar dados entre componentes sem passar propriedades manualmente por cada nível da árvore (*prop drilling*). Adequado para estado que muda com pouca frequência (tema, dados de sessão do usuário autenticado) — usar Context para estado que muda a cada interação (ex.: texto digitado em tempo real) pode causar reconstruções desnecessárias em toda a árvore de consumidores.
+Mecanismo nativo do React para compartilhar dados entre componentes sem passar propriedades manualmente por cada nível da árvore (*prop drilling*). Adequado para estado que muda com pouca frequência (tema, dados de sessão do usuário autenticado) — usar Context para estado que muda a cada interação (ex.: texto digitado em tempo real) pode causar reconstruções desnecessárias em toda a árvore de consumidores. E isso vale mesmo para mudanças pouco frequentes, por um motivo estrutural: o Context **não faz** *bailout* seletivo de re-renderização — qualquer mudança no `value` do provider re-renderiza **todos** os componentes que o consomem, mesmo os que leem apenas uma parte do objeto que não mudou. É essa limitação (não a frequência de mudança isoladamente) que explica por que Context é uma escolha pobre para estado que muda rápido, e por que a Aula 19 recomenda `Selector`/observação seletiva em bibliotecas dedicadas.
 
 ```tsx
 const CarrinhoContext = createContext<CarrinhoContextType | null>(null);
@@ -84,8 +92,19 @@ function CarrinhoProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Hook de acesso: lança erro descritivo se usado fora do provider, em vez de
+// silenciar o problema com "!" (non-null assertion), que descarta a segurança
+// de tipo do TypeScript exatamente no ponto em que ela mais importa.
+function useCarrinho() {
+  const contexto = useContext(CarrinhoContext);
+  if (!contexto) {
+    throw new Error('useCarrinho deve ser usado dentro de um CarrinhoProvider');
+  }
+  return contexto;
+}
+
 // Em qualquer componente descendente:
-const { itens, adicionar } = useContext(CarrinhoContext)!;
+const { itens, adicionar } = useCarrinho();
 ```
 
 ### Redux (com Redux Toolkit)
@@ -129,10 +148,31 @@ const adicionar = useCarrinhoStore((state) => state.adicionar);
 | Solução | Quando escolher |
 |---|---|
 | Context | Estado de baixa frequência de mudança, sem necessidade de ferramentas de depuração avançadas |
-| Redux | Aplicações grandes, equipes que valorizam rastreabilidade explícita e ferramentas de depuração maduras |
+| Redux (+ RTK Query, se já em uso) | Aplicações grandes, equipes que valorizam rastreabilidade explícita e ferramentas de depuração maduras |
 | Zustand | Projetos que querem simplicidade de API sem abrir mão de estado global compartilhado |
+| TanStack Query (ou SWR) | Sempre que o dado é *server state* (ver §2.1) — combinável com qualquer uma das três acima para o *client state* restante |
 
 Essa tabela é estruturalmente paralela à da Aula 10 (Provider/Riverpod/BLoC) — o critério de decisão (tamanho do projeto, necessidade de rastreabilidade, preferência por simplicidade x rigor estrutural) é o mesmo raciocínio arquitetural aplicado a dois ecossistemas distintos, reforçando o argumento comparativo central deste componente.
+
+## 2.1. Estado de cliente x estado de servidor
+
+> **Definição — Estado de servidor (*server state*)**: dado cuja fonte de verdade vive fora do aplicativo (numa API, num banco remoto), que o app apenas espelha localmente, sujeito a ficar desatualizado, a precisar de revalidação, cache e nova tentativa — em oposição ao **estado de cliente** (*client state*), dado que só existe na interface e não tem contraparte remota (ex.: texto de um formulário em edição, aba selecionada).
+
+`usePedidos` na §2 é *server state* — e é exatamente por isso que reimplementá-lo à mão com `useState`/`useEffect` significa reconstruir, manualmente, loading/erro/cache/revalidação que uma biblioteca de *server state* já resolve. **TanStack Query** (sucessora do React Query) é a referência do ecossistema para isso:
+
+```tsx
+function usePedidos() {
+  return useQuery({
+    queryKey: ['pedidos'],
+    queryFn: () => pedidoRepository.obterPedidos(),
+  });
+}
+
+// No componente:
+const { data: pedidos, isLoading, error } = usePedidos();
+```
+
+Em poucas linhas, `useQuery` cobre cache, revalidação em segundo plano, nova tentativa com backoff e persistência offline (com o plugin de persistência) — o mesmo conjunto de responsabilidades manuais implementado na §2, agora comparável lado a lado com o que foi escrito à mão. **Context, Redux e Zustand continuam sendo a ferramenta certa para *client state*** (carrinho em edição, tema, sessão) — a distinção client/server state, não "qual biblioteca é melhor", é o critério organizador desta aula. Se o projeto já usa Redux Toolkit, o complemento **RTK Query** resolve o mesmo problema de *server state* sem introduzir uma dependência nova.
 
 ## 4. Onde o gerenciador de estado se encaixa na arquitetura
 
@@ -149,6 +189,24 @@ export function podeAdicionarAoCarrinho(item: Item, estoque: number): boolean {
 
 Um padrão observado em relatos de equipes de produto: projetos React Native iniciados com Redux (por ser historicamente a opção mais conhecida) frequentemente migram parcial ou totalmente para Zustand ou Context quando a equipe percebe que a maior parte do "boilerplate" do Redux (actions, reducers, seletores para operações simples) não se paga em projetos de porte pequeno a médio — mantendo Redux apenas em domínios com fluxos de estado genuinamente complexos, onde o rigor estrutural compensa a verbosidade. Essa é, novamente, uma decisão arquitetural a ser justificada por características do projeto, não por preferência isolada da equipe.
 
+## 6. O motivo prático de isolar o domínio: um teste em três linhas
+
+Assim como na Aula 10 para Flutter: uma função de domínio pura, sem dependência de React ou de qualquer gerenciador de estado, é testável sem montar nenhum componente:
+
+```tsx
+// pedidos/dominio/podeAdicionarAoCarrinho.ts — já apresentada na §4
+export function podeAdicionarAoCarrinho(item: Item, estoque: number): boolean {
+  return estoque > 0 && item.disponivel;
+}
+
+// pedidos/dominio/podeAdicionarAoCarrinho.test.ts — roda em milissegundos, com Vitest/Jest
+test('item sem estoque não pode ser adicionado', () => {
+  expect(podeAdicionarAoCarrinho({ disponivel: true } as Item, 0)).toBe(false);
+});
+```
+
+Esse teste não precisa de emulador, de `render()` de componente, nem de mock de hooks — é o retorno concreto de manter a regra de negócio fora do reducer/store, discutido na §4.
+
 ## Síntese da aula
 
 | Camada | Não deve conter |
@@ -159,7 +217,7 @@ Um padrão observado em relatos de equipes de produto: projetos React Native ini
 
 ## Leitura recomendada
 
-- Documentação oficial: [Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context), [Redux Toolkit](https://redux-toolkit.js.org/) e [Zustand](https://github.com/pmndrs/zustand).
+- Documentação oficial: [Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context), [Redux Toolkit](https://redux-toolkit.js.org/), [Zustand](https://github.com/pmndrs/zustand) e [TanStack Query](https://tanstack.com/query/latest).
 
 ## Atividade da aula
 

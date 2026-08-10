@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "prod-1",
+    "nome": "Produto 1",
+    "preco": 250.3,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod1/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-2",
+    "nome": "Produto 2",
+    "preco": 129.55,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod2/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-3",
+    "nome": "Produto 3",
+    "preco": 48.49,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod3/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-4",
+    "nome": "Produto 4",
+    "preco": 211.3,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod4/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-5",
+    "nome": "Produto 5",
+    "preco": 332.15,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod5/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-6",
+    "nome": "Produto 6",
+    "preco": 125.19,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod6/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-7",
+    "nome": "Produto 7",
+    "preco": 284.6,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod7/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-8",
+    "nome": "Produto 8",
+    "preco": 34.54,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod8/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-9",
+    "nome": "Produto 9",
+    "preco": 69.17,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod9/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-10",
+    "nome": "Produto 10",
+    "preco": 102.68,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod10/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-11",
+    "nome": "Produto 11",
+    "preco": 339.22,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod11/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-12",
+    "nome": "Produto 12",
+    "preco": 492.95,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod12/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-13",
+    "nome": "Produto 13",
+    "preco": 278.05,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod13/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-14",
+    "nome": "Produto 14",
+    "preco": 388.69,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod14/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-15",
+    "nome": "Produto 15",
+    "preco": 49.02,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod15/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-16",
+    "nome": "Produto 16",
+    "preco": 443.22,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod16/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-17",
+    "nome": "Produto 17",
+    "preco": 305.45,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod17/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-18",
+    "nome": "Produto 18",
+    "preco": 329.88,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod18/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-19",
+    "nome": "Produto 19",
+    "preco": 230.68,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod19/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-20",
+    "nome": "Produto 20",
+    "preco": 212.01,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod20/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-21",
+    "nome": "Produto 21",
+    "preco": 478.04,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod21/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-22",
+    "nome": "Produto 22",
+    "preco": 252.93,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod22/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-23",
+    "nome": "Produto 23",
+    "preco": 230.86,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod23/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-24",
+    "nome": "Produto 24",
+    "preco": 125.98,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod24/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-25",
+    "nome": "Produto 25",
+    "preco": 142.47,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod25/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-26",
+    "nome": "Produto 26",
+    "preco": 484.5,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod26/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-27",
+    "nome": "Produto 27",
+    "preco": 376.22,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod27/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-28",
+    "nome": "Produto 28",
+    "preco": 21.81,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod28/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-29",
+    "nome": "Produto 29",
+    "preco": 115.43,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod29/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-30",
+    "nome": "Produto 30",
+    "preco": 371.25,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod30/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-31",
+    "nome": "Produto 31",
+    "preco": 13.43,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod31/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-32",
+    "nome": "Produto 32",
+    "preco": 226.15,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod32/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-33",
+    "nome": "Produto 33",
+    "preco": 233.57,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod33/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-34",
+    "nome": "Produto 34",
+    "preco": 239.85,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod34/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-35",
+    "nome": "Produto 35",
+    "preco": 449.16,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod35/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-36",
+    "nome": "Produto 36",
+    "preco": 85.68,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod36/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-37",
+    "nome": "Produto 37",
+    "preco": 333.56,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod37/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-38",
+    "nome": "Produto 38",
+    "preco": 416.97,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod38/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-39",
+    "nome": "Produto 39",
+    "preco": 50.08,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod39/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-40",
+    "nome": "Produto 40",
+    "preco": 417.06,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod40/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-41",
+    "nome": "Produto 41",
+    "preco": 252.07,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod41/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-42",
+    "nome": "Produto 42",
+    "preco": 249.28,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod42/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-43",
+    "nome": "Produto 43",
+    "preco": 122.85,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod43/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-44",
+    "nome": "Produto 44",
+    "preco": 76.96,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod44/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-45",
+    "nome": "Produto 45",
+    "preco": 315.76,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod45/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-46",
+    "nome": "Produto 46",
+    "preco": 63.43,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod46/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-47",
+    "nome": "Produto 47",
+    "preco": 14.14,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod47/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-48",
+    "nome": "Produto 48",
+    "preco": 372.04,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod48/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-49",
+    "nome": "Produto 49",
+    "preco": 361.31,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod49/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-50",
+    "nome": "Produto 50",
+    "preco": 186.11,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod50/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-51",
+    "nome": "Produto 51",
+    "preco": 50.61,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod51/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-52",
+    "nome": "Produto 52",
+    "preco": 158.98,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod52/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-53",
+    "nome": "Produto 53",
+    "preco": 225.37,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod53/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-54",
+    "nome": "Produto 54",
+    "preco": 453.97,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod54/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-55",
+    "nome": "Produto 55",
+    "preco": 68.94,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod55/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-56",
+    "nome": "Produto 56",
+    "preco": 254.43,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod56/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-57",
+    "nome": "Produto 57",
+    "preco": 234.63,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod57/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-58",
+    "nome": "Produto 58",
+    "preco": 213.69,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod58/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-59",
+    "nome": "Produto 59",
+    "preco": 395.78,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod59/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-60",
+    "nome": "Produto 60",
+    "preco": 495.07,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod60/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-61",
+    "nome": "Produto 61",
+    "preco": 225.73,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod61/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-62",
+    "nome": "Produto 62",
+    "preco": 281.92,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod62/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-63",
+    "nome": "Produto 63",
+    "preco": 377.81,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod63/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-64",
+    "nome": "Produto 64",
+    "preco": 227.56,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod64/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-65",
+    "nome": "Produto 65",
+    "preco": 35.35,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod65/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-66",
+    "nome": "Produto 66",
+    "preco": 495.33,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod66/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-67",
+    "nome": "Produto 67",
+    "preco": 341.69,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod67/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-68",
+    "nome": "Produto 68",
+    "preco": 268.57,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod68/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-69",
+    "nome": "Produto 69",
+    "preco": 480.15,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod69/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-70",
+    "nome": "Produto 70",
+    "preco": 200.6,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod70/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-71",
+    "nome": "Produto 71",
+    "preco": 124.09,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod71/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-72",
+    "nome": "Produto 72",
+    "preco": 454.77,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod72/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-73",
+    "nome": "Produto 73",
+    "preco": 416.81,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod73/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-74",
+    "nome": "Produto 74",
+    "preco": 214.39,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod74/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-75",
+    "nome": "Produto 75",
+    "preco": 51.67,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod75/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-76",
+    "nome": "Produto 76",
+    "preco": 132.81,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod76/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-77",
+    "nome": "Produto 77",
+    "preco": 171.99,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod77/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-78",
+    "nome": "Produto 78",
+    "preco": 373.36,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod78/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-79",
+    "nome": "Produto 79",
+    "preco": 451.11,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod79/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-80",
+    "nome": "Produto 80",
+    "preco": 119.38,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod80/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-81",
+    "nome": "Produto 81",
+    "preco": 72.35,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod81/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-82",
+    "nome": "Produto 82",
+    "preco": 24.19,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod82/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-83",
+    "nome": "Produto 83",
+    "preco": 179.06,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod83/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-84",
+    "nome": "Produto 84",
+    "preco": 251.13,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod84/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-85",
+    "nome": "Produto 85",
+    "preco": 444.56,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod85/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-86",
+    "nome": "Produto 86",
+    "preco": 473.53,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod86/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-87",
+    "nome": "Produto 87",
+    "preco": 52.2,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod87/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-88",
+    "nome": "Produto 88",
+    "preco": 364.73,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod88/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-89",
+    "nome": "Produto 89",
+    "preco": 145.3,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod89/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-90",
+    "nome": "Produto 90",
+    "preco": 88.06,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod90/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-91",
+    "nome": "Produto 91",
+    "preco": 397.19,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod91/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-92",
+    "nome": "Produto 92",
+    "preco": 296.85,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod92/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-93",
+    "nome": "Produto 93",
+    "preco": 481.21,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod93/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-94",
+    "nome": "Produto 94",
+    "preco": 174.44,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod94/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-95",
+    "nome": "Produto 95",
+    "preco": 70.7,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod95/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-96",
+    "nome": "Produto 96",
+    "preco": 374.16,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod96/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-97",
+    "nome": "Produto 97",
+    "preco": 308.98,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod97/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-98",
+    "nome": "Produto 98",
+    "preco": 79.34,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod98/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-99",
+    "nome": "Produto 99",
+    "preco": 379.39,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod99/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-100",
+    "nome": "Produto 100",
+    "preco": 433.32,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod100/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-101",
+    "nome": "Produto 101",
+    "preco": 445.27,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod101/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-102",
+    "nome": "Produto 102",
+    "preco": 129.42,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod102/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-103",
+    "nome": "Produto 103",
+    "preco": 179.94,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod103/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-104",
+    "nome": "Produto 104",
+    "preco": 310.99,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod104/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-105",
+    "nome": "Produto 105",
+    "preco": 236.74,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod105/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-106",
+    "nome": "Produto 106",
+    "preco": 161.36,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod106/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-107",
+    "nome": "Produto 107",
+    "preco": 289.01,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod107/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-108",
+    "nome": "Produto 108",
+    "preco": 333.85,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod108/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-109",
+    "nome": "Produto 109",
+    "preco": 10.07,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod109/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-110",
+    "nome": "Produto 110",
+    "preco": 11.81,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod110/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-111",
+    "nome": "Produto 111",
+    "preco": 53.26,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod111/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-112",
+    "nome": "Produto 112",
+    "preco": 338.57,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod112/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-113",
+    "nome": "Produto 113",
+    "preco": 91.91,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod113/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-114",
+    "nome": "Produto 114",
+    "preco": 497.45,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod114/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-115",
+    "nome": "Produto 115",
+    "preco": 289.36,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod115/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-116",
+    "nome": "Produto 116",
+    "preco": 161.8,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod116/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-117",
+    "nome": "Produto 117",
+    "preco": 318.94,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod117/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-118",
+    "nome": "Produto 118",
+    "preco": 474.94,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod118/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-119",
+    "nome": "Produto 119",
+    "preco": 343.98,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod119/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-120",
+    "nome": "Produto 120",
+    "preco": 130.22,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod120/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-121",
+    "nome": "Produto 121",
+    "preco": 37.82,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod121/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-122",
+    "nome": "Produto 122",
+    "preco": 270.95,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod122/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-123",
+    "nome": "Produto 123",
+    "preco": 53.79,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod123/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-124",
+    "nome": "Produto 124",
+    "preco": 80.49,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod124/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-125",
+    "nome": "Produto 125",
+    "preco": 65.22,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod125/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-126",
+    "nome": "Produto 126",
+    "preco": 212.15,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod126/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-127",
+    "nome": "Produto 127",
+    "preco": 235.44,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod127/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-128",
+    "nome": "Produto 128",
+    "preco": 339.27,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod128/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-129",
+    "nome": "Produto 129",
+    "preco": 237.8,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod129/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-130",
+    "nome": "Produto 130",
+    "preco": 135.19,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod130/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-131",
+    "nome": "Produto 131",
+    "preco": 235.62,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod131/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-132",
+    "nome": "Produto 132",
+    "preco": 253.25,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod132/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-133",
+    "nome": "Produto 133",
+    "preco": 392.24,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod133/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-134",
+    "nome": "Produto 134",
+    "preco": 366.76,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod134/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-135",
+    "nome": "Produto 135",
+    "preco": 380.98,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod135/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-136",
+    "nome": "Produto 136",
+    "preco": 149.07,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod136/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-137",
+    "nome": "Produto 137",
+    "preco": 365.19,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod137/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-138",
+    "nome": "Produto 138",
+    "preco": 253.51,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod138/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-139",
+    "nome": "Produto 139",
+    "preco": 18.2,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod139/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-140",
+    "nome": "Produto 140",
+    "preco": 353.41,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod140/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-141",
+    "nome": "Produto 141",
+    "preco": 483.33,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod141/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-142",
+    "nome": "Produto 142",
+    "preco": 122.11,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod142/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-143",
+    "nome": "Produto 143",
+    "preco": 453.93,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod143/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-144",
+    "nome": "Produto 144",
+    "preco": 212.94,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod144/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-145",
+    "nome": "Produto 145",
+    "preco": 93.32,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod145/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-146",
+    "nome": "Produto 146",
+    "preco": 299.23,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod146/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-147",
+    "nome": "Produto 147",
+    "preco": 54.85,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod147/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-148",
+    "nome": "Produto 148",
+    "preco": 54.32,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod148/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-149",
+    "nome": "Produto 149",
+    "preco": 11.83,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod149/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-150",
+    "nome": "Produto 150",
+    "preco": 131.54,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod150/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-151",
+    "nome": "Produto 151",
+    "preco": 127.61,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod151/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-152",
+    "nome": "Produto 152",
+    "preco": 204.22,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod152/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-153",
+    "nome": "Produto 153",
+    "preco": 75.53,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod153/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-154",
+    "nome": "Produto 154",
+    "preco": 435.7,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod154/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-155",
+    "nome": "Produto 155",
+    "preco": 18.9,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod155/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-156",
+    "nome": "Produto 156",
+    "preco": 499.3,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod156/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-157",
+    "nome": "Produto 157",
+    "preco": 121.07,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod157/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-158",
+    "nome": "Produto 158",
+    "preco": 68.37,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod158/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-159",
+    "nome": "Produto 159",
+    "preco": 55.37,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod159/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-160",
+    "nome": "Produto 160",
+    "preco": 286.24,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod160/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-161",
+    "nome": "Produto 161",
+    "preco": 475.14,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod161/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-162",
+    "nome": "Produto 162",
+    "preco": 336.24,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod162/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-163",
+    "nome": "Produto 163",
+    "preco": 73.7,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod163/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-164",
+    "nome": "Produto 164",
+    "preco": 381.69,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod164/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-165",
+    "nome": "Produto 165",
+    "preco": 484.39,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod165/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-166",
+    "nome": "Produto 166",
+    "preco": 95.95,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod166/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-167",
+    "nome": "Produto 167",
+    "preco": 400.54,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod167/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-168",
+    "nome": "Produto 168",
+    "preco": 132.33,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod168/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-169",
+    "nome": "Produto 169",
+    "preco": 475.49,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod169/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-170",
+    "nome": "Produto 170",
+    "preco": 164.18,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod170/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-171",
+    "nome": "Produto 171",
+    "preco": 382.57,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod171/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-172",
+    "nome": "Produto 172",
+    "preco": 354.83,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod172/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-173",
+    "nome": "Produto 173",
+    "preco": 285.11,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod173/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-174",
+    "nome": "Produto 174",
+    "preco": 377.6,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod174/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-175",
+    "nome": "Produto 175",
+    "preco": 346.45,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod175/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-176",
+    "nome": "Produto 176",
+    "preco": 395.84,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod176/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-177",
+    "nome": "Produto 177",
+    "preco": 239.92,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod177/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-178",
+    "nome": "Produto 178",
+    "preco": 82.87,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod178/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-179",
+    "nome": "Produto 179",
+    "preco": 128.85,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod179/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-180",
+    "nome": "Produto 180",
+    "preco": 92.03,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod180/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-181",
+    "nome": "Produto 181",
+    "preco": 176.58,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod181/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-182",
+    "nome": "Produto 182",
+    "preco": 96.66,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod182/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-183",
+    "nome": "Produto 183",
+    "preco": 56.43,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod183/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-184",
+    "nome": "Produto 184",
+    "preco": 260.08,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod184/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-185",
+    "nome": "Produto 185",
+    "preco": 421.75,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod185/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-186",
+    "nome": "Produto 186",
+    "preco": 255.63,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod186/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-187",
+    "nome": "Produto 187",
+    "preco": 455.87,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod187/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-188",
+    "nome": "Produto 188",
+    "preco": 246.64,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod188/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-189",
+    "nome": "Produto 189",
+    "preco": 322.11,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod189/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-190",
+    "nome": "Produto 190",
+    "preco": 396.45,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod190/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-191",
+    "nome": "Produto 191",
+    "preco": 183.82,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod191/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-192",
+    "nome": "Produto 192",
+    "preco": 378.39,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod192/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-193",
+    "nome": "Produto 193",
+    "preco": 204.33,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod193/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-194",
+    "nome": "Produto 194",
+    "preco": 355.8,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod194/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-195",
+    "nome": "Produto 195",
+    "preco": 56.96,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod195/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-196",
+    "nome": "Produto 196",
+    "preco": 492,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod196/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-197",
+    "nome": "Produto 197",
+    "preco": 395.06,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod197/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-198",
+    "nome": "Produto 198",
+    "preco": 460.32,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod198/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-199",
+    "nome": "Produto 199",
+    "preco": 401.95,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod199/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-200",
+    "nome": "Produto 200",
+    "preco": 424.12,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod200/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-201",
+    "nome": "Produto 201",
+    "preco": 240.98,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod201/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-202",
+    "nome": "Produto 202",
+    "preco": 56.7,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod202/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-203",
+    "nome": "Produto 203",
+    "preco": 75.46,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod203/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-204",
+    "nome": "Produto 204",
+    "preco": 11.42,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod204/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-205",
+    "nome": "Produto 205",
+    "preco": 68.75,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod205/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-206",
+    "nome": "Produto 206",
+    "preco": 451.6,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod206/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-207",
+    "nome": "Produto 207",
+    "preco": 384.16,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod207/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-208",
+    "nome": "Produto 208",
+    "preco": 70.58,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod208/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-209",
+    "nome": "Produto 209",
+    "preco": 205.03,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod209/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-210",
+    "nome": "Produto 210",
+    "preco": 11.69,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod210/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-211",
+    "nome": "Produto 211",
+    "preco": 184.71,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod211/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-212",
+    "nome": "Produto 212",
+    "preco": 438.26,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod212/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-213",
+    "nome": "Produto 213",
+    "preco": 486.51,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod213/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-214",
+    "nome": "Produto 214",
+    "preco": 43.62,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod214/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-215",
+    "nome": "Produto 215",
+    "preco": 293.77,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod215/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-216",
+    "nome": "Produto 216",
+    "preco": 461.12,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod216/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-217",
+    "nome": "Produto 217",
+    "preco": 259.83,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod217/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-218",
+    "nome": "Produto 218",
+    "preco": 384.08,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod218/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-219",
+    "nome": "Produto 219",
+    "preco": 58.02,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod219/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-220",
+    "nome": "Produto 220",
+    "preco": 465.83,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod220/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-221",
+    "nome": "Produto 221",
+    "preco": 341.67,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod221/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-222",
+    "nome": "Produto 222",
+    "preco": 379.72,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod222/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-223",
+    "nome": "Produto 223",
+    "preco": 294.12,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod223/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-224",
+    "nome": "Produto 224",
+    "preco": 289.06,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod224/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-225",
+    "nome": "Produto 225",
+    "preco": 78.7,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod225/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-226",
+    "nome": "Produto 226",
+    "preco": 357.21,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod226/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-227",
+    "nome": "Produto 227",
+    "preco": 348.74,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod227/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-228",
+    "nome": "Produto 228",
+    "preco": 257.48,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod228/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-229",
+    "nome": "Produto 229",
+    "preco": 287.58,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod229/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-230",
+    "nome": "Produto 230",
+    "preco": 153.22,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod230/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-231",
+    "nome": "Produto 231",
+    "preco": 58.55,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod231/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-232",
+    "nome": "Produto 232",
+    "preco": 207.75,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod232/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-233",
+    "nome": "Produto 233",
+    "preco": 314.98,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod233/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-234",
+    "nome": "Produto 234",
+    "preco": 94.41,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod234/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-235",
+    "nome": "Produto 235",
+    "preco": 240.21,
+    "categoria": "Livros",
+    "imagemUrl": "https://picsum.photos/seed/prod235/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-236",
+    "nome": "Produto 236",
+    "preco": 466.54,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod236/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-237",
+    "nome": "Produto 237",
+    "preco": 487.57,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod237/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-238",
+    "nome": "Produto 238",
+    "preco": 17.46,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod238/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-239",
+    "nome": "Produto 239",
+    "preco": 240.38,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod239/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-240",
+    "nome": "Produto 240",
+    "preco": 380.51,
+    "categoria": "Eletronicos",
+    "imagemUrl": "https://picsum.photos/seed/prod240/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-241",
+    "nome": "Produto 241",
+    "preco": 152,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod241/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-242",
+    "nome": "Produto 242",
+    "preco": 249.02,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod242/200/200",
+    "disponivel": false
+  },
+  {
+    "id": "prod-243",
+    "nome": "Produto 243",
+    "preco": 385.75,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod243/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-244",
+    "nome": "Produto 244",
+    "preco": 276.33,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod244/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-245",
+    "nome": "Produto 245",
+    "preco": 124.96,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod245/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-246",
+    "nome": "Produto 246",
+    "preco": 135.77,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod246/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-247",
+    "nome": "Produto 247",
+    "preco": 22.96,
+    "categoria": "Casa",
+    "imagemUrl": "https://picsum.photos/seed/prod247/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-248",
+    "nome": "Produto 248",
+    "preco": 480.68,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod248/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-249",
+    "nome": "Produto 249",
+    "preco": 243.09,
+    "categoria": "Esporte",
+    "imagemUrl": "https://picsum.photos/seed/prod249/200/200",
+    "disponivel": true
+  },
+  {
+    "id": "prod-250",
+    "nome": "Produto 250",
+    "preco": 494.38,
+    "categoria": "Moda",
+    "imagemUrl": "https://picsum.photos/seed/prod250/200/200",
+    "disponivel": true
+  }
+]

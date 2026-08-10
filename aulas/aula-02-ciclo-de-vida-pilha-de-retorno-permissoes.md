@@ -20,13 +20,29 @@ No Android, a unidade de tela visível ao usuário é tradicionalmente represent
 | Método | Quando é chamado | O que fazer aqui |
 |---|---|---|
 | `onCreate()` | Tela criada pela primeira vez | Inflar layout, inicializar componentes que existem uma única vez |
-| `onStart()` | Tela prestes a ficar visível | — |
+| `onStart()` | Tela prestes a ficar visível | Registrar observadores que só devem existir enquanto a tela está visível (ex.: um listener de sensor de baixo custo) |
 | `onResume()` | Tela em primeiro plano, interativa | Iniciar câmera, sensores, animações |
 | `onPause()` | Outra tela está sobrepondo parcialmente | Pausar animações, salvar dados críticos rapidamente (é uma chamada breve) |
 | `onStop()` | Tela não está mais visível | Liberar recursos pesados (conexões, streams) |
 | `onDestroy()` | Tela sendo destruída | Liberar tudo que resta |
 
 Um ponto frequentemente mal compreendido por quem vem do desenvolvimento web: **`onPause()` e `onStop()` não significam necessariamente que o app vai ser fechado** — o usuário pode voltar a qualquer momento e o ciclo reinicia em `onRestart() → onStart() → onResume()`. Mas o sistema também **pode matar o processo** enquanto ele está parado, sem chamar `onDestroy()`, se precisar de memória — daí a importância de persistir estado relevante antes disso.
+
+### Process death: a metade do problema que a rotação de tela não mostra
+
+Mudança de configuração (rotação, por exemplo) é apenas metade do que pode acontecer com uma tela parada — a outra metade, mais traiçoeira porque é invisível durante o desenvolvimento normal, é o **encerramento do processo pelo sistema** (*process death*) enquanto o app está em segundo plano, sem qualquer relação com o usuário girar o aparelho. Ao voltar, o Android recria a `Activity` do zero e restaura `onSaveInstanceState()` como se nada tivesse acontecido — mas qualquer estado que não foi persistido ali, ou em armazenamento durável, se perde silenciosamente.
+
+O comando abaixo simula esse cenário em um emulador ou aparelho com depuração USB ativada, sem esperar que o sistema decida matar o processo por conta própria — é o teste mais revelador (e mais frequentemente pulado) desta aula:
+
+```bash
+# Descobrir o nome do pacote em execução, se necessário
+adb shell dumpsys window | grep mCurrentFocus
+
+# Simular o sistema matando o processo em segundo plano (não é um "fechar app" comum)
+adb shell am kill <nome.do.pacote>
+```
+
+Depois de rodar `am kill` com o app em segundo plano e voltar a ele pelo launcher, compare o resultado com o de apenas girar o aparelho: a `Activity` é recriada nos dois casos, mas só o `am kill` revela se o app depende, sem perceber, de o processo continuar vivo (variáveis estáticas, singletons em memória, streams abertos).
 
 ### Rotação de tela: o caso didático clássico
 
@@ -50,7 +66,24 @@ class FormActivity : AppCompatActivity() {
 }
 ```
 
-Em Flutter e React Native o mesmo princípio se aplica em outro nível (estado do widget/componente e navegação), e será retomado nas unidades III e IV.
+Em Flutter e React Native o mesmo princípio se aplica em outro nível (estado do widget/componente e navegação), e será retomado nas unidades III e IV: guarde este exemplo — na Aula 9 o `StatefulWidget` do Flutter resolve o mesmo problema em outro nível de abstração, e na Aula 19 você verá o custo de resolvê-lo no lugar errado da árvore de widgets.
+
+O ciclo completo, como grafo de estados (o formato mais fiel ao que ele realmente é — uma tabela linear esconde as transições possíveis em cada direção):
+
+```mermaid
+stateDiagram-v2
+    [*] --> Criada: onCreate()
+    Criada --> Iniciada: onStart()
+    Iniciada --> Retomada: onResume()
+    Retomada --> Iniciada: onPause()
+    Iniciada --> Parada: onStop()
+    Parada --> Iniciada: onRestart() + onStart()
+    Parada --> Destruida: onDestroy()
+    Parada --> [*]: processo morto\npelo sistema (sem onDestroy)
+    Destruida --> [*]
+```
+
+Note a transição pontilhada conceitual "processo morto pelo sistema": ela não passa por `onDestroy()` porque o sistema operacional encerra o processo diretamente, sem dar ao app a chance de reagir — é por isso que o teste com `adb shell am kill`, acima, é indispensável para validar que o estado foi de fato persistido, e não apenas mantido "por sorte" em memória.
 
 ## 2. A pilha de retorno (back stack)
 

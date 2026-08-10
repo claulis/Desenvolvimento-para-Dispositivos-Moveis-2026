@@ -23,11 +23,13 @@ O Android define três classes de tamanho de janela com base na largura disponí
 
 | Classe | Largura | Exemplo de aparelho |
 |---|---|---|
-| **Compacta** | < 600dp | Smartphone em retrato |
-| **Média** | 600dp – 839dp | Smartphone em paisagem, tablet pequeno, dobrável fechado |
-| **Expandida** | ≥ 840dp | Tablet grande, dobrável aberto, desktop (Chrome OS) |
+| **Compacta** | < 600dp | Smartphone em retrato; **também um dobrável fechado**, cuja tela de capa é tipicamente estreita (~330–370dp) |
+| **Média** | 600dp – 839dp | Smartphone em paisagem, tablet pequeno em retrato |
+| **Expandida** | ≥ 840dp | Tablet grande, **dobrável aberto**, desktop (Chrome OS) |
 
-> **Definição — Classe de tamanho de janela (window size class)**: categoria discreta atribuída ao espaço disponível para a interface, usada como critério de decisão para alternar entre estruturas de layout distintas, em vez de reagir a um valor contínuo de pixels.
+> **Cuidado com um erro comum**: é tentador presumir que "dobrável fechado" cai na classe média por ser fisicamente maior que um smartphone comum — mas a tela de capa de um dobrável fechado (ex.: Galaxy Z Fold) é estreita, e cai na classe **compacta**. É o dobrável **aberto** que entra na classe expandida. A classe depende da largura disponível de fato, não do porte físico do aparelho.
+
+> **Definição — Classe de tamanho de janela (window size class)**: categoria discreta atribuída ao espaço disponível para a interface, usada como critério de decisão para alternar entre estruturas de layout distintas, em vez de reagir a um valor contínuo de pixels. O Android define classes equivalentes também para a **altura** disponível (`WindowHeightSizeClass`) — relevante, por exemplo, quando o teclado ocupa parte da tela em modo paisagem, reduzindo a altura útil a ponto de mudar a estrutura vertical do layout.
 
 A vantagem de decidir por **classe**, e não por um valor exato de largura, é que o mesmo código de decisão funciona tanto para "este smartphone específico tem 412dp de largura" quanto para "este outro tem 390dp" — ambos caem na classe compacta e recebem o mesmo tratamento estrutural, sem que o desenvolvedor precise enumerar todos os tamanhos possíveis (o que seria inviável dada a fragmentação discutida na Aula 1).
 
@@ -55,13 +57,16 @@ O Android define layouts canônicos — estruturas reconhecidas e recomendadas p
 
 Uma lista de itens e o detalhe de um item selecionado. Na classe compacta, a lista e o detalhe ocupam telas separadas (navegação por empilhamento, retomando a pilha de retorno da Aula 2); nas classes média e expandida, lista e detalhe são exibidos lado a lado permanentemente, sem necessidade de navegação.
 
-```
-Compacta:              Expandida:
-┌─────────┐            ┌───────┬─────────┐
-│  Lista  │  → toque →  │ Lista │ Detalhe │
-└─────────┘  ┌─────────┐│       │         │
-             │ Detalhe │└───────┴─────────┘
-             └─────────┘
+```mermaid
+flowchart LR
+    subgraph Compacta["Compacta (< 600dp)"]
+        direction LR
+        L1["Lista"] -->|toque| D1["Detalhe\n(tela separada)"]
+    end
+    subgraph ExpandidaOuMedia["Média/Expandida (>= 600dp)"]
+        direction LR
+        L2["Lista"] --- D2["Detalhe\n(lado a lado, permanente)"]
+    end
 ```
 
 ### Painel de apoio (supporting pane)
@@ -71,6 +76,8 @@ Um conteúdo principal acompanhado de um painel secundário que fornece contexto
 ### Alimentação (feed)
 
 Uma grade ou lista de itens homogêneos (ex.: catálogo de produtos, feed de posts) que aumenta o número de colunas conforme o espaço disponível cresce, sem mudar a natureza da navegação — apenas a densidade de itens visíveis por vez.
+
+> **Nota de biblioteca**: no Jetpack Compose, a biblioteca `material3-adaptive` já implementa os três layouts canônicos acima (list-detail, supporting pane, feed) prontos para uso, com a terminologia atualizada de *panes* (painéis) — vale citá-la para quem for implementar o equivalente Android nativo além do que este componente cobre em Flutter/React Native.
 
 ## 5. Adaptação a orientação, tablet e aparelho dobrável
 
@@ -98,4 +105,4 @@ Aplicativos de notícias e e-mail (Gmail é o exemplo canônico) usam o layout l
 
 ## Atividade da aula
 
-**Prática: projeto de uma tela em três classes de tamanho, na ferramenta de prototipação**: a partir da tela redesenhada na Aula 6, produzir três variações (compacta, média, expandida) usando um dos layouts canônicos apresentados como referência estrutural, documentando explicitamente o ponto de quebra escolhido entre cada variação e a justificativa.
+**Prática: projeto de uma tela em três classes de tamanho, no Figma**: a partir da tela redesenhada na Aula 6, produzir três variações (compacta, média, expandida) usando um dos layouts canônicos apresentados como referência estrutural, documentando explicitamente o ponto de quebra escolhido entre cada variação e a justificativa. Use o **Material 3 Design Kit** oficial do Figma — já traz os componentes e os três breakpoints padrão prontos, poupando tempo de montagem que pode ser investido na decisão de layout em si. Antes de montar do zero, vale dois minutos de contraexemplo em aula: rodar um app popular qualquer em um emulador de tablet e observar como ele quebra — a maioria dos apps não testados em tela grande falha visivelmente, e ver isso ao vivo torna o motivo da atividade evidente.

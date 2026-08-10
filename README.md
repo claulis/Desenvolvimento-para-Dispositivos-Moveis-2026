@@ -23,14 +23,14 @@
 
 Este repositório reúne o material da disciplina **Desenvolvimento para Dispositivos Móveis**, um componente de 80h organizado em 20 aulas que percorre o ciclo completo de concepção de aplicativos móveis: desde as restrições impostas pelo **smartphone como plataforma de projeto** — ciclo de vida, permissões, fragmentação de telas e ergonomia — passando pela **experiência do usuário e a responsividade de interfaces** com base no Material Design, até a **construção de arquiteturas de software reais** com **Flutter** e **React Native**, encerrando com uma **análise comparativa de estilos arquiteturais, modularização, desempenho de renderização e defesa arquitetural** entre as duas plataformas.
 
-Cada aula tem carga horária de 4h e está disponível como um arquivo Markdown individual na pasta [`aulas/`](aulas/). Além das aulas, o repositório inclui:
+Além das aulas, o repositório inclui:
 
 - [`codigo/`](codigo/) — projetos Flutter e React Native executáveis que acompanham as atividades das Unidades III e IV, cada um com ponto de partida (`inicio/`) e solução de referência (`solucao/`).
 - [`recursos/`](recursos/) — rubricas de avaliação, templates, anexos de nivelamento em Dart/TypeScript, e uma API simulada com dados de exemplo.
 
 ## 🎯 Público e pré-requisitos
 
-Componente de 80h. Pré-requisitos: programação orientada a objetos, lógica de programação e noções de JavaScript/ES6. Não exige experiência prévia com desenvolvimento mobile. Quem não tiver familiaridade recente com Dart ou TypeScript pode usar os anexos de nivelamento antes das Unidades III e IV: [`recursos/dart-em-30-minutos.md`](recursos/dart-em-30-minutos.md) e [`recursos/typescript-em-30-minutos.md`](recursos/typescript-em-30-minutos.md).
+Pré-requisitos: programação orientada a objetos, lógica de programação e noções de JavaScript/ES6. Não exige experiência prévia com desenvolvimento mobile. Quem não tiver familiaridade recente com Dart ou TypeScript pode usar os anexos de nivelamento antes das Unidades III e IV: [`recursos/dart-em-30-minutos.md`](recursos/dart-em-30-minutos.md) e [`recursos/typescript-em-30-minutos.md`](recursos/typescript-em-30-minutos.md).
 
 ## 🔭 Escopo
 
@@ -47,23 +47,6 @@ Revalide estas versões no início de cada semestre — o próprio nome do repos
 | Android Studio | Versão estável mais recente |
 | `minSdk` / `targetSdk` | 24 / o mais recente disponível no Android Studio no início do semestre |
 | Node.js | LTS ativo |
-
-## 📝 Avaliação
-
-| Instrumento | Aula | Peso |
-|---|---|---|
-| Avaliação 1 — Contexto de uso e restrições de plataforma | 4 | 15% |
-| Entrega 1 — Interface responsiva e acessível | 8 | 15% |
-| Avaliação 2 — Módulo Flutter + arguição individual | 12 | 20% |
-| Entrega 2 — Módulo React Native | 16 | 20% |
-| Avaliação 3 — Análise comparativa e defesa final | 20 | 30% |
-| **Total** | | **100%** |
-
-Rubricas detalhadas em [`recursos/rubricas/`](recursos/rubricas/).
-
-## 📄 Licença
-
-Conteúdo das aulas sob [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.pt-BR); exemplos de código em [`codigo/`](codigo/) sob licença MIT.
 
 ---
 
@@ -101,8 +84,8 @@ Conteúdo das aulas sob [CC BY-SA 4.0](https://creativecommons.org/licenses/by-s
 
 ---
 
-## 📁 Como usar o repositório
+## 📄 Licença
 
-- **Estudando uma aula**: abra o arquivo correspondente em [`aulas/`](aulas/) — cada uma segue o mesmo formato (objetivos → conteúdo → exemplo real → síntese → leitura recomendada → atividade).
-- **Fazendo uma atividade prática**: verifique se a aula referencia uma pasta em [`codigo/`](codigo/) — a maioria das atividades das Unidades III e IV tem um projeto executável correspondente, com `inicio/` (ponto de partida) e `solucao/` (referência, consultar depois de tentar).
-- **Preparando uma entrega/avaliação**: consulte a rubrica correspondente em [`recursos/rubricas/`](recursos/rubricas/) antes de começar, não depois de terminar.
+Conteúdo das aulas sob [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.pt-BR); exemplos de código em [`codigo/`](codigo/) sob licença MIT.
+
+

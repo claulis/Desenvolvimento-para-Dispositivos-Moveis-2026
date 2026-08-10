@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📱 Desenvolvimento para Dispositivos Móveis
+# Desenvolvimento para Dispositivos Móveis
 
 ### Do smartphone como plataforma de projeto às arquiteturas Flutter e React Native
 

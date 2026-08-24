@@ -16,7 +16,7 @@
 
 ## Sumário
 
-1. O smartphone como plataforma: hardware, sensores, energia, memória e restrição térmica
+[1. O smartphone como plataforma: hardware, sensores, energia, memória e restrição térmica](/aulas/aula-01-o-smartphone-como-plataforma.md)
 2. Android para quem projeta: ciclo de vida de tela, pilha de retorno, gestos, notificações e permissões
 3. Ecossistema de telas Android: densidade, tamanhos, área segura, tema claro e escuro, dobráveis
 4. Contexto de uso móvel, ergonomia de alcance, alvos de toque e modelo mental do usuário

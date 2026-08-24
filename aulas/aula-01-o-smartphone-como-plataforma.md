@@ -37,8 +37,6 @@ E quase tudo usa **MIMO**: várias antenas transmitindo fluxos distintos ao mesm
 
 **A diferença essencial:** OFDM organiza o sinal no **domínio da frequência**; MIMO explora o **domínio do espaço**. São ortogonais entre si — por isso todo padrão moderno usa os dois juntos.
 
----
-
 ### Rádio celular (WWAN) — quilômetros
 
 O rádio mais complexo do aparelho. Um smartphone moderno fala **4G LTE e 5G NR** simultaneamente, em dezenas de bandas de frequência.
@@ -57,7 +55,6 @@ O rádio mais complexo do aparelho. Um smartphone moderno fala **4G LTE e 5G NR*
 
 <img width="474" height="272" alt="image" src="https://github.com/user-attachments/assets/99ed80f6-ddad-4baf-a31d-9b1dec653897" />
 
----
 
 ### Wi-Fi (WLAN) — dezenas de metros
 
@@ -72,8 +69,6 @@ O que o Wi-Fi 6/7 mudou nisso:
 - **6 GHz** (Wi-Fi 6E/7) — faixa nova, limpa, canais de 320 MHz. No Brasil está liberada.
 - **1024-QAM / 4096-QAM** — mais bits por símbolo, só útil com sinal excelente.
 
----
-
 ### Bluetooth — metros
 
 Dois protocolos diferentes com o mesmo nome:
@@ -82,7 +77,6 @@ Dois protocolos diferentes com o mesmo nome:
 
 **Bluetooth Low Energy (BLE)** — protocolo distinto, projetado para dormir. Um sensor BLE passa 99,9% do tempo desligado, acorda, transmite alguns bytes em um dos 40 canais, e volta a dormir. É o que faz uma pulseira durar uma semana com pilha de moeda.
 
----
 
 ### NFC — centímetros
 
@@ -90,7 +84,6 @@ Categoria à parte: **não é rádio de propagação, é acoplamento indutivo**.
 
 No pagamento, o celular emula um cartão (**HCE**), e a transação é assinada por um elemento seguro — no Android, tipicamente o StrongBox / TEE. O número real do cartão nunca trafega: vai um **token** específico daquele aparelho.
 
----
 
 ### UWB — centímetros, mas a metros de distância
 
@@ -100,7 +93,6 @@ Transmite pulsos extremamente curtos (nanossegundos) espalhados por uma banda la
 
 Aplicações: chave digital de carro, achar o objeto perdido apontando o celular, transferência de arquivo mirando no aparelho do colega. Resistente a ataque de repetição justamente porque a física do tempo de voo não pode ser falsificada por um repetidor.
 
----
 
 ### GNSS — recepção pura
 
@@ -115,7 +107,6 @@ Dois detalhes práticos:
 
 O Android combina isso com Wi-Fi, torres celulares e sensores inerciais — o que o app pede como "localização" é uma fusão, não uma leitura de GPS.
 
----
 
 ### Resumo comparativo
 
@@ -131,14 +122,65 @@ O Android combina isso com Wi-Fi, torres celulares e sensores inerciais — o qu
 
 ---
 
-## Por que o celular exige um jeito diferente de projetar
+## SIM
 
-Um sistema web roda em uma máquina com energia praticamente ilimitada (a tomada), tela grande, mouse e teclado, e uma única versão de navegador dominante por vez. Um aplicativo Android roda numa bateria de capacidade finita, numa tela pequena tocada por dedos, sujeito a interrupções constantes (ligações, notificações, o usuário trocando de aplicativo), e precisa funcionar em milhares de combinações diferentes de fabricante, versão de sistema operacional e capacidade de hardware.
+<img width="500" height="305" alt="image" src="https://github.com/user-attachments/assets/6abd6076-8dd9-4bf9-bf5f-905a701850f5" />
 
-Essa diferença não é de grau, é de natureza: **as restrições do aparelho não são detalhes de implementação a resolver depois — são condicionantes que devem orientar a decisão de projeto desde a primeira linha**. Um projeto que ignora bateria, memória e fragmentação de tela na concepção tende a precisar de retrabalho estrutural mais tarde, não apenas de ajuste fino.
 
-> **Definição — Condicionante de projeto**: restrição do ambiente de execução (hardware, sistema operacional, rede, aparelho do usuário) que limita o espaço de soluções aceitáveis e que, por isso, deve ser considerada durante a concepção da solução, e não apenas na fase de implementação.
+**Subscriber Identity Module.** Apesar da aparência, não é um cartão de memória — é um **computador completo**: microcontrolador, memória e um sistema operacional próprio (Java Card, na maioria). Formalmente chama-se **UICC**, e o "SIM" é apenas uma das aplicações que rodam dentro dele.
 
+<img width="250" height="107" alt="image" src="https://github.com/user-attachments/assets/4f0e5e12-1d3d-4fde-b327-2915b32bf787" />
+
+
+**O que ele guarda:**
+
+| Item | Papel |
+| :-- | :-- |
+| **IMSI** | Identidade permanente do assinante na rede |
+| **Ki** | Chave secreta de 128 bits, compartilhada só com a operadora |
+| **ICCID** | Número de série do próprio chip |
+| Agenda, SMS, dados de rede | Legado, hoje quase sem uso |
+
+**Como autentica.**:
+
+1. A rede envia um número aleatório (`RAND`) para o celular
+2. O celular repassa ao SIM — que apenas encaminha, não sabe o segredo
+3. O SIM calcula `RES = f(RAND, Ki)` internamente, com o algoritmo MILENAGE
+4. Devolve só o `RES`
+5. A rede faz a mesma conta do seu lado e compara
+
+Se bate, o assinante é legítimo. Do mesmo cálculo saem as **chaves de sessão** que cifram a chamada e os dados no ar. Nem o sistema operacional do celular, nem um app, nem um malware conseguem ler o Ki — para extraí-lo seria preciso atacar fisicamente o silício.
+
+**Formatos** — sempre o mesmo circuito, só o plástico ao redor encolheu:
+
+`Full-size (1FF)` → `Mini / 2FF` → `Micro / 3FF` → `Nano / 4FF` → `eSIM / MFF2`
+
+## eSIM
+
+**embedded SIM**, tecnicamente **eUICC**. É o mesmo chip, **soldado à placa** do aparelho — mas a mudança relevante não é física, é **de provisionamento**.
+
+O SIM tradicional sai da fábrica com um único perfil gravado, imutável. O eUICC sai **vazio e reprogramável**: consegue baixar, armazenar e alternar entre vários perfis de operadora ao longo da vida do aparelho.
+
+**Como o perfil chega lá** (padrão GSMA **RSP** — Remote SIM Provisioning):
+
+1. Você lê um QR code, que contém apenas um endereço de servidor + um código de ativação
+2. O aparelho contata o **SM-DP+** da operadora (*Subscription Manager – Data Preparation*)
+3. O servidor prepara um perfil — IMSI, Ki, regras, nome da rede — e o envia **cifrado ponta a ponta**
+4. Só o eUICC, com sua chave de fábrica, consegue decifrar e instalar
+5. O perfil é ativado; o Ki é gravado internamente e, a partir daí, funciona exatamente como um SIM físico
+
+O download é seguro mesmo passando por Wi-Fi público: o canal é protegido por certificados de uma cadeia de confiança da GSMA. Uma operadora não consegue instalar perfil no chip sem autorização, e o aparelho não consegue extrair o perfil para clonar em outro.
+
+**iSIM** é o passo seguinte: o mesmo eUICC integrado dentro do próprio SoC, sem chip dedicado. Já existe em wearables e IoT.
+
+
+### Aspectos de segurança
+
+**Privacidade — SUCI no 5G.** Em 2G/3G/4G, o IMSI trafegava em claro no primeiro contato com a torre, o que permitia os *IMSI catchers* (falsas antenas que mapeiam quem está por perto). O 5G corrigiu: o SIM cifra a identidade permanente com a **chave pública da operadora** antes de transmitir. O que vai no ar é o **SUCI**, um identificador diferente a cada tentativa. Só a operadora decifra.
+
+**SIM swap.** Toda a segurança criptográfica descrita acima pode ser contornada socialmente: alguém convence o atendimento da operadora a emitir um novo chip com o seu número. O elo fraco não é o silício, é o processo humano. Por isso **SMS é um segundo fator fraco** — vale a pena mencionar quando os alunos forem projetar autenticação nos aplicativos deles.
+
+---
 ## Arquitetura de hardware do smartphone
 
 Um smartphone típico é composto por várias categorias de componentes, cada uma com tecnologias concorrentes no mercado e com implicações de projeto próprias. Entender *o que* existe dentro do aparelho — não em profundidade de engenharia eletrônica, mas o suficiente para raciocinar sobre desempenho e consumo — é o que torna concreto o argumento
@@ -314,9 +356,7 @@ Os números abaixo servem para dar escala ao argumento desta aula — não devem
 | Distribuição de tamanho de tela e densidade em uso real | Documentação oficial: [Distribution dashboard](https://developer.android.com/about/dashboards) |
 | Fabricantes líderes de smartphones no Brasil | [Canalys](https://www.canalys.com/) e [IDC Brasil](https://www.idc.com/br) publicam relatórios trimestrais de participação de mercado |
 
-### Exemplo real: por que um app "trava" só em alguns aparelhos
 
-Cenário comum relatado por equipes de desenvolvimento brasileiras: um aplicativo de delivery funciona perfeitamente no aparelho do desenvolvedor (um smartphone de ponta, 8 GB de RAM, Android puro) mas é relatado como "trava e fecha sozinho" por usuários com aparelhos de entrada de uma marca com gestão agressiva de bateria. A causa raiz típica: o app mantém uma conexão de rede em segundo plano para atualizar o status do pedido, mas o sistema opera de forma tão agressiva na gestão de energia que mata o processo antes de o serviço terminar. A solução não é "otimizar o código" no sentido tradicional — é **redesenhar a arquitetura de atualização de status** para usar notificações por push (que acordam o app sob demanda) em vez de manter um processo ativo continuamente.
 
 
 

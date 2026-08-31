@@ -27,6 +27,9 @@
 
 Cor não é uma propriedade dos objetos: é uma **resposta perceptual** construída pelo sistema visual a partir de uma faixa estreita de radiação eletromagnética (aproximadamente 380 nm a 750 nm). O olho humano típico tem três tipos de cones — sensíveis a comprimentos de onda longos (L, "vermelho"), médios (M, "verde") e curtos (S, "azul") —, e é dessa **tricromacia** que decorre o fato de qualquer tela do mundo conseguir simular milhões de cores usando apenas três primárias.
 
+<img width="525" height="343" alt="image" src="https://github.com/user-attachments/assets/978b80f6-773c-4617-a559-8a30447c3cba" />
+
+
 > **Definição — Metamerismo**: fenômeno pelo qual duas distribuições espectrais fisicamente diferentes produzem a mesma sensação de cor. É o que permite que um pixel com três subpixels (vermelho, verde e azul) seja percebido como "amarelo", embora nenhuma luz de comprimento de onda amarelo esteja sendo emitida.
 
 ### Síntese aditiva e síntese subtrativa

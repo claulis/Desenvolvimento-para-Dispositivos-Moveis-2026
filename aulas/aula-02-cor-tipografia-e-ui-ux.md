@@ -66,17 +66,18 @@ Consequências práticas imediatas:
 - **No papel, mais tinta significa mais escuro; na tela, valor maior significa mais claro.** Isso inverte a intuição de quem vem do design gráfico impresso, sobretudo ao trabalhar com temas escuros.
 - **O preto do papel é sempre o mesmo; o preto da tela depende da tecnologia** (ver [LCD e OLED](#lcd-e-oled)): em OLED, é o pixel desligado; em LCD, é um filtro bloqueando uma luz de fundo que continua acesa.
 
+
 ```mermaid
 flowchart LR
-    subgraph Aditiva["Aditiva — a tela emite luz"]
-        R[Vermelho] --> W((Branco))
-        G[Verde] --> W
-        B[Azul] --> W
+    subgraph aditiva ["Aditiva: a tela emite luz"]
+        R["Vermelho"] --> W(("Branco"))
+        G["Verde"] --> W
+        B["Azul"] --> W
     end
-    subgraph Subtrativa["Subtrativa — a tinta absorve luz"]
-        C[Ciano] --> K((Preto))
-        M[Magenta] --> K
-        Y[Amarelo] --> K
+    subgraph subtrativa ["Subtrativa: a tinta absorve luz"]
+        C["Ciano"] --> K(("Preto"))
+        M["Magenta"] --> K
+        Y["Amarelo"] --> K
     end
 ```
 

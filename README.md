@@ -71,7 +71,7 @@ Conteúdo das aulas sob [CC BY-SA 4.0](https://creativecommons.org/licenses/by-s
 
 ### Unidade I — O smartphone e a plataforma Android como condicionantes de projeto
 1. [O smartphone como plataforma de projeto](aulas/aula-01-o-smartphone-como-plataforma.md)
-2. [Android para quem projeta: ciclo de vida, pilha de retorno e permissões](aulas/aula-02-ciclo-de-vida-pilha-de-retorno-permissoes.md)
+2. [Cor, tipografia e fundamentos de UI/UX para dispositivos móveis](aulas/aula-02-cor-tipografia-e-ui-ux.md)
 3. [Ecossistema de telas Android](aulas/aula-03-ecossistema-de-telas-android.md)
 4. [Contexto de uso móvel e ergonomia de alcance](aulas/aula-04-contexto-de-uso-movel-e-ergonomia.md)
 

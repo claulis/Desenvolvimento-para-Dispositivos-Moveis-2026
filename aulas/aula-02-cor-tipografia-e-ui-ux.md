@@ -131,19 +131,7 @@ RGB é conveniente para a máquina e péssimo para raciocinar: ninguém consegue
 
 `hsl(0, 100%, 50%)` é o vermelho puro `#FF0000`. Gerar variações de um mesmo matiz — estados de repouso, foco, pressionado e desabilitado — é trivial em HSL e trabalhoso em hexadecimal.
 
-### Por que HSL não basta: espaços perceptualmente uniformes
-
-HSL tem um defeito grave: **luminosidade em HSL não corresponde à claridade percebida**. `hsl(60, 100%, 50%)` (amarelo) e `hsl(240, 100%, 50%)` (azul) têm a mesma "luminosidade" no modelo e brilhos radicalmente diferentes aos olhos — o amarelo parece luminoso, o azul parece quase preto. Isso arruína paletas geradas programaticamente: girar o matiz mantendo L constante produz cores que não formam uma escala coerente.
-
-Espaços **perceptualmente uniformes** — CIELAB, CIELCH e, mais recentemente, **OKLCH** — corrigem o problema: distâncias iguais no espaço correspondem a diferenças iguais percebidas. É o que permite a um sistema de design gerar uma rampa tonal (tons 0, 10, 20 … 100) que parece uniforme em todos os matizes. O Material 3 faz exatamente isso com o espaço **HCT** (matiz, croma, tom), derivado do CAM16 e do L\* do CIELAB.
-
-### Espaços de cor e gama
-
-`#1E88E5` não é uma cor absoluta: é uma instrução de intensidade para três canais. A cor resultante depende do **espaço de cor** assumido.
-
-- **sRGB**: padrão universal da web e presumido por omissão em Android, iOS e navegadores. Gama menor, porém previsível.
-- **Display P3**: gama cerca de 25% maior, com vermelhos e verdes muito mais saturados; presente nos iPhones desde o 7 e em telas Android de topo. Uma cor P3 exibida como sRGB parece dessaturada; uma cor sRGB tratada como P3 estoura.
-- **Gama (*gamma*) e linearidade**: os valores 0–255 não são lineares em relação à luz emitida. `128` não emite metade da luz de `255` — emite cerca de 21%. Isso importa ao misturar cores, aplicar transparência ou calcular contraste: é preciso **linearizar** os canais antes da conta.
+<img width="650" height="650" alt="image" src="https://github.com/user-attachments/assets/a3032f72-615d-42fa-af76-22db3b2c306e" />
 
 ---
 
@@ -166,6 +154,9 @@ Heurística de proporção herdada do design de interiores e amplamente usada em
 
 > **Princípio operacional**: em um aplicativo, cor não é decoração distribuída pela tela; é **um recurso escasso, gasto em pontos de decisão**. Se tudo é colorido, nada chama atenção.
 
+<img width="500" height="271" alt="image" src="https://github.com/user-attachments/assets/1bb514a6-ef6f-4751-8b5b-4187305f4602" />
+
+
 ### Da paleta estética à paleta funcional
 
 Uma paleta de aplicativo não é uma coleção de cores bonitas, e sim um conjunto de **papéis semânticos**:
@@ -175,41 +166,9 @@ Uma paleta de aplicativo não é uma coleção de cores bonitas, e sim um conjun
 | Primária | Ação principal e identidade | Idealmente uma por tela |
 | Secundária / terciária | Ações de apoio, categorização | Opcionais |
 | Neutros (5 a 12 tons) | Fundo, superfície, bordas, texto | O trabalho pesado da interface é feito aqui |
-| Semânticas | Erro, alerta, sucesso, informação | Precisam sobreviver ao daltonismo (ver [Daltonismo](#daltonismo-e-a-regra-de-nunca-usar-cor-sozinha)) |
+| Semânticas | Erro, alerta, sucesso, informação | Precisam sobreviver ao daltonismo |
 | Pares "on" | Cor de texto e ícone sobre cada superfície | Garantem contraste por construção |
 
-Esse vocabulário de papéis (`primary`, `onPrimary`, `surface`, `error`…) é o que os *design tokens* do Material 3 formalizam, e que a Aula 6 retoma em detalhe.
-
-### Contraste: a restrição que decide se a paleta é utilizável
-
-Contraste não é opinião: a WCAG define um cálculo. Primeiro linearizam-se os canais (desfazendo a gama), depois calcula-se a **luminância relativa**:
-
-```
-c_linear = c / 12,92                       , se c ≤ 0,04045
-c_linear = ((c + 0,055) / 1,055) ^ 2,4     , caso contrário
-
-L = 0,2126·R_linear + 0,7152·G_linear + 0,0722·B_linear
-
-razão = (L_claro + 0,05) / (L_escuro + 0,05)
-```
-
-O coeficiente do verde (0,7152) é muito maior porque o olho humano é mais sensível ao verde — a mesma razão pela qual sensores de câmera têm o dobro de fotossítios verdes.
-
-Mínimos exigidos pela WCAG 2.2, nível AA:
-
-| Elemento | Razão mínima |
-|---|---|
-| Texto normal | 4,5:1 |
-| Texto grande (≥ 24px, ou ≥ 18,66px em negrito) | 3:1 |
-| Componentes de interface e gráficos essenciais (ícones, bordas de campo, indicador de foco) | 3:1 |
-| Texto normal em nível AAA | 7:1 |
-
-Exemplo concreto e contraintuitivo, com o azul `#1E88E5` (luminância relativa ≈ 0,235):
-
-- **Texto branco sobre esse azul: ≈ 3,7:1** — *reprova* para texto corrido; passa apenas como texto grande ou como componente.
-- **Texto preto sobre o mesmo azul: ≈ 5,7:1** — *aprova* para texto corrido.
-
-Ou seja: a escolha "óbvia" de texto branco sobre botão azul é justamente a que falha. Verificar sempre com ferramenta, antes de fechar a paleta.
 
 ---
 
@@ -219,22 +178,19 @@ Esta é a área do design em que circula mais folclore. Vale separar com cuidado
 
 ### O que a pesquisa sustenta
 
-**Teoria da cor em contexto** (Elliot & Maier). A resposta a uma cor não é fixa: depende do contexto em que ela aparece. O mesmo vermelho aumenta a atratividade percebida em um contexto romântico e prejudica o desempenho em um contexto de avaliação (o vermelho da prova corrigida). Não existe "efeito do vermelho" — existe "efeito do vermelho **naquele** contexto".
+**Teoria da cor em contexto**. A resposta a uma cor não é fixa: depende do contexto em que ela aparece. O mesmo vermelho aumenta a atratividade percebida em um contexto romântico e prejudica o desempenho em um contexto de avaliação (o vermelho da prova corrigida). Não existe "efeito do vermelho" — existe "efeito do vermelho **naquele** contexto".
 
 **Duas dimensões antes do matiz.** Estudos de resposta afetiva à cor (por exemplo, Wilms & Oberfeld, 2018) mostram que **saturação e brilho** explicam mais da reação emocional do que o matiz. Cores saturadas e claras são percebidas como mais estimulantes, sejam azuis ou vermelhas. Isso é diretamente acionável: para reduzir a "agressividade" de uma tela, baixar a saturação costuma funcionar melhor do que trocar o matiz.
 
 **Cor e percepção de marca.** Labrecque & Milne (2012) encontraram, em experimentos controlados, associações consistentes entre matizes e dimensões de personalidade de marca — azul com competência e confiança, vermelho com excitação, roxo com sofisticação, marrom com robustez — e mostraram que a **adequação percebida** entre cor e categoria de produto afeta a avaliação da marca. Bottomley & Doyle (2006) reforçam o ponto: cores "funcionais" combinam melhor com produtos utilitários, cores "sensoriais" com produtos hedônicos.
 
+<img width="640" height="561" alt="image" src="https://github.com/user-attachments/assets/f102101e-0a97-4896-8d67-94bece33dbdd" />
+
+
 **Efeito de isolamento (Von Restorff).** O item que destoa do conjunto é notado e lembrado primeiro. Este é o mecanismo real por trás de quase todo teste A/B de "cor de botão": não é que vermelho converta mais que verde — é que a cor que **destoa da tela** converte mais que a que se dilui nela. Pintar a tela inteira de vermelho e manter o botão vermelho anula o ganho.
 
-### O que é folclore
+<img width="600" height="600" alt="image" src="https://github.com/user-attachments/assets/5dd06d3c-9147-40db-9cd8-e8abcc86408a" />
 
-- **"Cada cor tem um significado universal."** Não tem. Significados são aprendidos, contextuais e culturais (ver [Cultura, mercado e direito de marca](#cultura-mercado-e-direito-de-marca)).
-- **"Botão vermelho converte 21% a mais."** Vem de um teste A/B único, de 2011, em uma página específica, com um público específico. É um resultado, não uma lei.
-- **"Uma cor de assinatura aumenta o reconhecimento de marca em 80%."** Número onipresente em apresentações, atribuído a um estudo universitário que ninguém consegue localizar. Trate como não verificado.
-- **"Azul transmite confiança, logo use azul em fintech."** O que a pesquisa mostra é uma associação média, em amostras majoritariamente ocidentais, sensível ao contexto e à categoria. Serve como hipótese inicial, não como conclusão de projeto.
-
-> **Postura profissional recomendada**: use a literatura para **formular hipóteses** e valide com usuários reais do seu público (Aula 5). Afirmações do tipo "vermelho gera urgência" só entram em um documento de projeto acompanhadas de "no nosso teste com N usuários, observamos…".
 
 ### Efeitos perceptuais que valem para qualquer cultura
 

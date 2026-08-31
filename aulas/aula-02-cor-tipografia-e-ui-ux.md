@@ -25,15 +25,30 @@
 
 ## 1. Cor antes do pixel
 
-Cor não é uma propriedade dos objetos: é uma **resposta perceptual** construída pelo sistema visual a partir de uma faixa estreita de radiação eletromagnética (aproximadamente 380 nm a 750 nm). O olho humano típico tem três tipos de cones — sensíveis a comprimentos de onda longos (L, "vermelho"), médios (M, "verde") e curtos (S, "azul") —, e é dessa **tricromacia** que decorre o fato de qualquer tela do mundo conseguir simular milhões de cores usando apenas três primárias.
+Cor não é uma propriedade dos objetos: é uma **resposta perceptual** construída pelo sistema visual a partir de uma faixa estreita de radiação eletromagnética (aproximadamente 380 nm a 750 nm). 
+
+<img width="452" height="337" alt="image" src="https://github.com/user-attachments/assets/94180237-3d59-4ab1-91d4-960178e5b859" />
+
+<img width="576" height="576" alt="image" src="https://github.com/user-attachments/assets/8603161f-99bc-4ada-ba0c-4fc89db19e27" />
+
+
+O olho humano típico tem três tipos de cones — sensíveis a comprimentos de onda longos (L, "vermelho"), médios (M, "verde") e curtos (S, "azul") —, e é dessa **tricromacia** que decorre o fato de qualquer tela do mundo conseguir simular milhões de cores usando apenas três primárias.
 
 <img width="525" height="343" alt="image" src="https://github.com/user-attachments/assets/978b80f6-773c-4617-a559-8a30447c3cba" />
 
 
 > **Definição — Metamerismo**: fenômeno pelo qual duas distribuições espectrais fisicamente diferentes produzem a mesma sensação de cor. É o que permite que um pixel com três subpixels (vermelho, verde e azul) seja percebido como "amarelo", embora nenhuma luz de comprimento de onda amarelo esteja sendo emitida.
 
+### Cores primárias e secundárias
+
+<img width="640" height="364" alt="image" src="https://github.com/user-attachments/assets/092abb99-ba86-413d-bcf8-93697c4af74f" />
+
+
 ### Síntese aditiva e síntese subtrativa
 
+A **síntese aditiva** ocorre quando se somam cores de luz, resultando em cores mais luminosas. As cores primárias desse sistema são vermelho, verde e azul (RGB), e a combinação das três em intensidade máxima gera luz branca. As cores secundárias são obtidas pela mistura de duas cores primárias: ciano (azul + verde), amarelo (vermelho + verde) e magenta (vermelho + azul)
+
+A **síntese subtrativa** ocorre na mistura de pigmentos ou tintas, onde a combinação de cores resulta em menos luz refletida, tornando a cor mais escura. As cores primárias desse sistema são ciano, magenta e amarelo (CMY), e a adição do preto (K) é comum na impressão, formando o sistema CMYK
 A distinção mais importante para quem projeta em dois meios (tela e papel):
 
 | | Síntese aditiva | Síntese subtrativa |

@@ -5,21 +5,71 @@
 
 ## Sumário
 
+**Parte I — Cor**
+
 1. [Cor antes do pixel](#1-cor-antes-do-pixel)
+    - 1.1 [Cores primárias e secundárias](#11-cores-primárias-e-secundárias)
+    - 1.2 [Aditiva e subtrativa: o que muda no projeto](#12-aditiva-e-subtrativa-o-que-muda-no-projeto)
 2. [RGB, hexadecimal e outros modelos de cor](#2-rgb-hexadecimal-e-outros-modelos-de-cor)
+    - 2.1 [RGB de 8 bits por canal](#21-rgb-de-8-bits-por-canal)
+    - 2.2 [Notação hexadecimal](#22-notação-hexadecimal)
+    - 2.3 [HSL e HSB: modelos pensados para humanos](#23-hsl-e-hsb-modelos-pensados-para-humanos)
+    - 2.4 [Por que HSL não basta: espaços perceptualmente uniformes](#24-por-que-hsl-não-basta-espaços-perceptualmente-uniformes)
+    - 2.5 [Espaços de cor e gama](#25-espaços-de-cor-e-gama)
 3. [Harmonia cromática e construção de paletas](#3-harmonia-cromática-e-construção-de-paletas)
+    - 3.1 [O círculo cromático e os esquemas clássicos](#31-o-círculo-cromático-e-os-esquemas-clássicos)
+    - 3.2 [A regra 60–30–10](#32-a-regra-603010)
+    - 3.3 [Da paleta estética à paleta funcional](#33-da-paleta-estética-à-paleta-funcional)
+    - 3.4 [Contraste: a restrição que decide se a paleta é utilizável](#34-contraste-a-restrição-que-decide-se-a-paleta-é-utilizável)
 4. [Psicologia da cor](#4-psicologia-da-cor)
+    - 4.1 [O que a pesquisa sustenta](#41-o-que-a-pesquisa-sustenta)
+    - 4.2 [O que é folclore](#42-o-que-é-folclore)
+    - 4.3 [Efeitos perceptuais que valem para qualquer cultura](#43-efeitos-perceptuais-que-valem-para-qualquer-cultura)
 5. [Cultura, mercado e direito de marca](#5-cultura-mercado-e-direito-de-marca)
+    - 5.1 [O significado da cor é aprendido](#51-o-significado-da-cor-é-aprendido)
+    - 5.2 [O exemplo que sempre pega quem exporta interface: alta e baixa](#52-o-exemplo-que-sempre-pega-quem-exporta-interface-alta-e-baixa)
+    - 5.3 [Cor como ativo de mercado](#53-cor-como-ativo-de-mercado)
 6. [Cor na tela física do celular](#6-cor-na-tela-física-do-celular)
+    - 6.1 [LCD e OLED](#61-lcd-e-oled)
+    - 6.2 [Tema escuro não é "inverter as cores"](#62-tema-escuro-não-é-inverter-as-cores)
+    - 6.3 [Luz ambiente e uso ao ar livre](#63-luz-ambiente-e-uso-ao-ar-livre)
+    - 6.4 [Daltonismo e a regra de nunca usar cor sozinha](#64-daltonismo-e-a-regra-de-nunca-usar-cor-sozinha)
+    - 6.5 [Cor dinâmica](#65-cor-dinâmica)
 7. [Cor tela a tela dentro do aplicativo](#7-cor-tela-a-tela-dentro-do-aplicativo)
+
+**Parte II — Tipografia**
+
 8. [Tipografia: anatomia e vocabulário](#8-tipografia-anatomia-e-vocabulário)
+    - 8.1 [Três palavras que não são sinônimas](#81-três-palavras-que-não-são-sinônimas)
+    - 8.2 [Anatomia mínima](#82-anatomia-mínima)
+    - 8.3 [Classificação](#83-classificação)
 9. [Impresso e digital: dois meios diferentes](#9-impresso-e-digital-dois-meios-diferentes)
 10. [Tipografia para dispositivos móveis](#10-tipografia-para-dispositivos-móveis)
+    - 10.1 [sp e dp: a distinção que não pode ser errada](#101-sp-e-dp-a-distinção-que-não-pode-ser-errada)
+    - 10.2 [Valores de referência](#102-valores-de-referência)
+    - 10.3 [Fontes de sistema e por que preferi-las](#103-fontes-de-sistema-e-por-que-preferi-las)
+    - 10.4 [Erros recorrentes em interfaces móveis](#104-erros-recorrentes-em-interfaces-móveis)
+
+**Parte III — UI e UX**
+
 11. [UI e UX: o que cada termo significa](#11-ui-e-ux-o-que-cada-termo-significa)
 12. [Autores e teorias de referência](#12-autores-e-teorias-de-referência)
+    - 12.1 [Donald Norman: o vocabulário básico do campo](#121-donald-norman-o-vocabulário-básico-do-campo)
+    - 12.2 [Jakob Nielsen e a tradição da usabilidade](#122-jakob-nielsen-e-a-tradição-da-usabilidade)
+    - 12.3 [As "leis" quantitativas da interação](#123-as-leis-quantitativas-da-interação)
+    - 12.4 [Gestalt: como o olho agrupa antes de a mente ler](#124-gestalt-como-o-olho-agrupa-antes-de-a-mente-ler)
+    - 12.5 [Sistemas de design como corpo normativo](#125-sistemas-de-design-como-corpo-normativo)
 13. [UX especificamente móvel](#13-ux-especificamente-móvel)
 14. [Exemplos reais](#14-exemplos-reais)
+
+**Encerramento**
+
 15. [Referências](#15-referências)
+    - 15.1 [Cor: fundamentos e prática](#151-cor-fundamentos-e-prática)
+    - 15.2 [Cor: pesquisa acadêmica](#152-cor-pesquisa-acadêmica)
+    - 15.3 [Tipografia](#153-tipografia)
+    - 15.4 [UI/UX: teoria e autores](#154-uiux-teoria-e-autores)
+    - 15.5 [UX móvel](#155-ux-móvel)
 
 ---
 
@@ -39,16 +89,16 @@ O olho humano típico tem três tipos de cones — sensíveis a comprimentos de 
 
 > **Definição — Metamerismo**: fenômeno pelo qual duas distribuições espectrais fisicamente diferentes produzem a mesma sensação de cor. É o que permite que um pixel com três subpixels (vermelho, verde e azul) seja percebido como "amarelo", embora nenhuma luz de comprimento de onda amarelo esteja sendo emitida.
 
-### Cores primárias e secundárias
+### 1.1 Cores primárias e secundárias
 
 <img width="640" height="364" alt="image" src="https://github.com/user-attachments/assets/092abb99-ba86-413d-bcf8-93697c4af74f" />
 
+A **síntese aditiva** ocorre quando se somam cores de luz, resultando em cores mais luminosas. As cores primárias desse sistema são vermelho, verde e azul (RGB), e a combinação das três em intensidade máxima gera luz branca. As cores secundárias são obtidas pela mistura de duas cores primárias: ciano (azul + verde), amarelo (vermelho + verde) e magenta (vermelho + azul).
 
-### Síntese aditiva e síntese subtrativa
+A **síntese subtrativa** ocorre na mistura de pigmentos ou tintas, onde a combinação de cores resulta em menos luz refletida, tornando a cor mais escura. As cores primárias desse sistema são ciano, magenta e amarelo (CMY), e a adição do preto (K) é comum na impressão, formando o sistema CMYK.
 
-A **síntese aditiva** ocorre quando se somam cores de luz, resultando em cores mais luminosas. As cores primárias desse sistema são vermelho, verde e azul (RGB), e a combinação das três em intensidade máxima gera luz branca. As cores secundárias são obtidas pela mistura de duas cores primárias: ciano (azul + verde), amarelo (vermelho + verde) e magenta (vermelho + azul)
+### 1.2 Aditiva e subtrativa: o que muda no projeto
 
-A **síntese subtrativa** ocorre na mistura de pigmentos ou tintas, onde a combinação de cores resulta em menos luz refletida, tornando a cor mais escura. As cores primárias desse sistema são ciano, magenta e amarelo (CMY), e a adição do preto (K) é comum na impressão, formando o sistema CMYK
 A distinção mais importante para quem projeta em dois meios (tela e papel):
 
 | | Síntese aditiva | Síntese subtrativa |
@@ -64,7 +114,7 @@ Consequências práticas imediatas:
 
 - **Um layout aprovado impresso não é o mesmo layout na tela.** Verdes e azuis vibrantes de tela (`#00E676`, `#2979FF`) simplesmente não existem em CMYK; ao imprimir, chegam apagados. O caminho inverso também falha: um Pantone metálico ou fluorescente não tem equivalente RGB.
 - **No papel, mais tinta significa mais escuro; na tela, valor maior significa mais claro.** Isso inverte a intuição de quem vem do design gráfico impresso, sobretudo ao trabalhar com temas escuros.
-- **O preto do papel é sempre o mesmo; o preto da tela depende da tecnologia** (ver §6): em OLED, é o pixel desligado; em LCD, é um filtro bloqueando uma luz de fundo que continua acesa.
+- **O preto do papel é sempre o mesmo; o preto da tela depende da tecnologia** (ver §6.1): em OLED, é o pixel desligado; em LCD, é um filtro bloqueando uma luz de fundo que continua acesa.
 
 ```mermaid
 flowchart LR
@@ -84,7 +134,7 @@ flowchart LR
 
 ## 2. RGB, hexadecimal e outros modelos de cor
 
-### RGB de 8 bits por canal
+### 2.1 RGB de 8 bits por canal
 
 O modelo RGB descreve uma cor por três intensidades — vermelho, verde e azul — normalmente com **8 bits por canal**, ou seja, 256 níveis (0 a 255) para cada um. O total de combinações é 256³ = **16.777.216 cores** (o chamado "24 bits" ou *true color*).
 
@@ -94,7 +144,7 @@ rgb(30, 136, 229)   →   R = 30    G = 136    B = 229
 
 Zero em todos os canais é preto; 255 em todos é branco; valores iguais nos três canais produzem cinzas neutros.
 
-### Notação hexadecimal
+### 2.2 Notação hexadecimal
 
 A notação hexadecimal é o mesmo valor RGB escrito na base 16, com dois dígitos por canal. O hexadecimal usa 16 símbolos — `0 1 2 3 4 5 6 7 8 9 A B C D E F`, em que `A` vale 10 e `F` vale 15. Dois dígitos hexadecimais cobrem exatamente 0–255 (`00` a `FF`), que é precisamente a faixa de um canal de 8 bits: é por isso que essa notação se tornou padrão.
 
@@ -120,26 +170,7 @@ Variações da notação que aparecem no código:
 
 > **Armadilha recorrente**: `#801E88E5` em Android é o azul com cerca de 50% de opacidade (`80` = 128, o alfa vem antes), enquanto a mesma sequência lida como CSS `#RRGGBBAA` seria uma cor completamente diferente. A posição do canal alfa muda entre plataformas.
 
-```kotlin
-// Jetpack Compose (Kotlin) — ARGB, alfa primeiro; 0xFF significa opaco
-val azul = Color(0xFF1E88E5)
-val azulMeioTransparente = Color(0x801E88E5)
-```
-
-```dart
-// Flutter (Dart) — mesma convenção ARGB
-const azul = Color(0xFF1E88E5);
-```
-
-```tsx
-// React Native (TypeScript)
-const estilos = StyleSheet.create({
-  cabecalho: { backgroundColor: '#1E88E5' },
-  overlay:   { backgroundColor: 'rgba(30, 136, 229, 0.5)' },
-});
-```
-
-### HSL e HSB: modelos pensados para humanos
+### 2.3 HSL e HSB: modelos pensados para humanos
 
 RGB é conveniente para a máquina e péssimo para raciocinar: ninguém consegue dizer de cabeça qual é a versão "20% mais clara" de `#1E88E5`. Os modelos **HSL** (matiz, saturação, luminosidade) e **HSB/HSV** (matiz, saturação, brilho) descrevem a mesma cor em termos manipuláveis:
 
@@ -149,13 +180,13 @@ RGB é conveniente para a máquina e péssimo para raciocinar: ninguém consegue
 
 `hsl(0, 100%, 50%)` é o vermelho puro `#FF0000`. Gerar variações de um mesmo matiz — estados de repouso, foco, pressionado e desabilitado — é trivial em HSL e trabalhoso em hexadecimal.
 
-### Por que HSL não basta: espaços perceptualmente uniformes
+### 2.4 Por que HSL não basta: espaços perceptualmente uniformes
 
 HSL tem um defeito grave: **luminosidade em HSL não corresponde à claridade percebida**. `hsl(60, 100%, 50%)` (amarelo) e `hsl(240, 100%, 50%)` (azul) têm a mesma "luminosidade" no modelo e brilhos radicalmente diferentes aos olhos — o amarelo parece luminoso, o azul parece quase preto. Isso arruína paletas geradas programaticamente: girar o matiz mantendo L constante produz cores que não formam uma escala coerente.
 
 Espaços **perceptualmente uniformes** — CIELAB, CIELCH e, mais recentemente, **OKLCH** — corrigem o problema: distâncias iguais no espaço correspondem a diferenças iguais percebidas. É o que permite a um sistema de design gerar uma rampa tonal (tons 0, 10, 20 … 100) que parece uniforme em todos os matizes. O Material 3 faz exatamente isso com o espaço **HCT** (matiz, croma, tom), derivado do CAM16 e do L\* do CIELAB.
 
-### Espaços de cor e gama
+### 2.5 Espaços de cor e gama
 
 `#1E88E5` não é uma cor absoluta: é uma instrução de intensidade para três canais. A cor resultante depende do **espaço de cor** assumido.
 
@@ -167,7 +198,7 @@ Espaços **perceptualmente uniformes** — CIELAB, CIELCH e, mais recentemente, 
 
 ## 3. Harmonia cromática e construção de paletas
 
-### O círculo cromático e os esquemas clássicos
+### 3.1 O círculo cromático e os esquemas clássicos
 
 | Esquema | Construção | Efeito e uso em mobile |
 |---|---|---|
@@ -178,13 +209,13 @@ Espaços **perceptualmente uniformes** — CIELAB, CIELCH e, mais recentemente, 
 | Triádico | Três matizes a 120° | Vivaz; difícil de equilibrar em tela pequena |
 | Tétrade | Dois pares complementares | Rico e quase sempre excessivo em mobile |
 
-### A regra 60–30–10
+### 3.2 A regra 60–30–10
 
 Heurística de proporção herdada do design de interiores e amplamente usada em interface: **60%** de uma cor dominante (quase sempre um neutro: fundo e superfícies), **30%** de uma cor secundária (cabeçalhos, blocos, estados) e **10%** de uma cor de destaque (ações principais). Em mobile a proporção tende a ser ainda mais conservadora — algo como 70/25/5 — porque a tela é pequena e cada centímetro de cor saturada compete com o conteúdo.
 
 > **Princípio operacional**: em um aplicativo, cor não é decoração distribuída pela tela; é **um recurso escasso, gasto em pontos de decisão**. Se tudo é colorido, nada chama atenção.
 
-### Da paleta estética à paleta funcional
+### 3.3 Da paleta estética à paleta funcional
 
 Uma paleta de aplicativo não é uma coleção de cores bonitas, e sim um conjunto de **papéis semânticos**:
 
@@ -193,12 +224,12 @@ Uma paleta de aplicativo não é uma coleção de cores bonitas, e sim um conjun
 | Primária | Ação principal e identidade | Idealmente uma por tela |
 | Secundária / terciária | Ações de apoio, categorização | Opcionais |
 | Neutros (5 a 12 tons) | Fundo, superfície, bordas, texto | O trabalho pesado da interface é feito aqui |
-| Semânticas | Erro, alerta, sucesso, informação | Precisam sobreviver ao daltonismo (§6) |
+| Semânticas | Erro, alerta, sucesso, informação | Precisam sobreviver ao daltonismo (§6.4) |
 | Pares "on" | Cor de texto e ícone sobre cada superfície | Garantem contraste por construção |
 
 Esse vocabulário de papéis (`primary`, `onPrimary`, `surface`, `error`…) é o que os *design tokens* do Material 3 formalizam, e que a Aula 6 retoma em detalhe.
 
-### Contraste: a restrição que decide se a paleta é utilizável
+### 3.4 Contraste: a restrição que decide se a paleta é utilizável
 
 Contraste não é opinião: a WCAG define um cálculo. Primeiro linearizam-se os canais (desfazendo a gama), depois calcula-se a **luminância relativa**:
 
@@ -235,7 +266,7 @@ Ou seja: a escolha "óbvia" de texto branco sobre botão azul é justamente a qu
 
 Esta é a área do design em que circula mais folclore. Vale separar com cuidado o que a pesquisa sustenta do que é repetido em infográficos.
 
-### O que a pesquisa sustenta
+### 4.1 O que a pesquisa sustenta
 
 **Teoria da cor em contexto** (Elliot & Maier). A resposta a uma cor não é fixa: depende do contexto em que ela aparece. O mesmo vermelho aumenta a atratividade percebida em um contexto romântico e prejudica o desempenho em um contexto de avaliação (o vermelho da prova corrigida). Não existe "efeito do vermelho" — existe "efeito do vermelho **naquele** contexto".
 
@@ -245,7 +276,7 @@ Esta é a área do design em que circula mais folclore. Vale separar com cuidado
 
 **Efeito de isolamento (Von Restorff).** O item que destoa do conjunto é notado e lembrado primeiro. Este é o mecanismo real por trás de quase todo teste A/B de "cor de botão": não é que vermelho converta mais que verde — é que a cor que **destoa da tela** converte mais que a que se dilui nela. Pintar a tela inteira de vermelho e manter o botão vermelho anula o ganho.
 
-### O que é folclore
+### 4.2 O que é folclore
 
 - **"Cada cor tem um significado universal."** Não tem. Significados são aprendidos, contextuais e culturais (§5).
 - **"Botão vermelho converte 21% a mais."** Vem de um teste A/B único, de 2011, em uma página específica, com um público específico. É um resultado, não uma lei.
@@ -254,7 +285,7 @@ Esta é a área do design em que circula mais folclore. Vale separar com cuidado
 
 > **Postura profissional recomendada**: use a literatura para **formular hipóteses** e valide com usuários reais do seu público (Aula 5). Afirmações do tipo "vermelho gera urgência" só entram em um documento de projeto acompanhadas de "no nosso teste com N usuários, observamos…".
 
-### Efeitos perceptuais que valem para qualquer cultura
+### 4.3 Efeitos perceptuais que valem para qualquer cultura
 
 Alguns fenômenos não são culturais, e sim ópticos, e afetam diretamente a interface:
 
@@ -266,7 +297,7 @@ Alguns fenômenos não são culturais, e sim ópticos, e afetam diretamente a in
 
 ## 5. Cultura, mercado e direito de marca
 
-### O significado da cor é aprendido
+### 5.1 O significado da cor é aprendido
 
 Aslam (2006), em revisão transcultural clássica para marketing, e estudos posteriores mostram divergências que quebram produtos exportados sem revisão:
 
@@ -279,11 +310,11 @@ Aslam (2006), em revisão transcultural clássica para marketing, e estudos post
 | Amarelo | Atenção, otimismo | Imperial e sagrado na China histórica; associado a covardia na França |
 | Azul | Confiança, corporativo | Luto no Irã; associações religiosas diversas |
 
-### O exemplo que sempre pega quem exporta interface: alta e baixa
+### 5.2 O exemplo que sempre pega quem exporta interface: alta e baixa
 
 Em mercados ocidentais, **verde é alta e vermelho é queda**. Na China, no Japão, na Coreia e em Taiwan a convenção é **invertida**: vermelho é alta (sorte, crescimento) e verde ou azul é queda. Um aplicativo de investimentos que localiza apenas os textos e mantém as cores comunica exatamente o oposto do pretendido para milhões de usuários. O mesmo vale para painéis de saúde, metas e desempenho.
 
-### Cor como ativo de mercado
+### 5.3 Cor como ativo de mercado
 
 Cor é o elemento de identidade reconhecido mais rapidamente — antes da forma do logotipo e muito antes do nome. Isso a torna um ativo disputado juridicamente:
 
@@ -302,7 +333,7 @@ Implicações para o projeto de um aplicativo:
 
 A mesma cor `#1E88E5` chega ao usuário depois de passar por uma tecnologia de tela, um perfil de calibração de fabricante, um nível de brilho e uma condição de luz ambiente. Nada disso está sob controle de quem projeta — o que exige projetar com margem.
 
-### LCD e OLED
+### 6.1 LCD e OLED
 
 | | LCD / IPS | OLED / AMOLED |
 |---|---|---|
@@ -319,7 +350,7 @@ Consequências de projeto:
 - **Elementos estáticos e brilhantes** (barras de navegação, marcas d'água, HUD de jogos) causam retenção de imagem em OLED após uso prolongado.
 - **PenTile degrada bordas de texto colorido e fino** — mais um motivo para não usar texto de peso leve em cor saturada.
 
-### Tema escuro não é "inverter as cores"
+### 6.2 Tema escuro não é "inverter as cores"
 
 O guia de tema escuro do Material recomenda, e a prática confirma:
 
@@ -328,7 +359,7 @@ O guia de tema escuro do Material recomenda, e a prática confirma:
 - **Modular a opacidade do texto em vez de usar cinzas fixos**: 87% para texto principal, 60% para secundário e 38% para desabilitado é a convenção herdada do Material.
 - O contraste continua obrigatório: temas escuros mal construídos reprovam na WCAG com a mesma facilidade que os claros.
 
-### Luz ambiente e uso ao ar livre
+### 6.3 Luz ambiente e uso ao ar livre
 
 O celular é o único dispositivo usado sob sol direto, no escuro do quarto e dentro de um ônibus em movimento — às vezes no mesmo dia. Com brilho automático, a tela varia de cerca de 2 nits a mais de 1000 nits.
 
@@ -336,7 +367,7 @@ O celular é o único dispositivo usado sob sol direto, no escuro do quarto e de
 - Cinzas muito claros sobre branco (`#F5F5F5` sobre `#FFFFFF`) desaparecem sob sol. Fronteiras entre seções precisam de outro recurso além de uma diferença sutil de tom.
 - À noite ocorre o inverso: telas claras demais ofuscam. Daí a difusão dos temas escuros e dos filtros de luz azul do sistema, que **alteram as cores do seu aplicativo sem avisar** — mais um argumento para não depender de matizes precisos para transmitir informação.
 
-### Daltonismo e a regra de nunca usar cor sozinha
+### 6.4 Daltonismo e a regra de nunca usar cor sozinha
 
 Cerca de **8% dos homens** e **0,5% das mulheres** de ascendência europeia têm alguma deficiência de visão de cores, sendo a deuteranomalia (dificuldade com o verde) a mais comum. Em uma turma de 40 alunos, é estatisticamente provável que alguém não distinga o verde de "aprovado" do vermelho de "reprovado".
 
@@ -347,9 +378,9 @@ O critério WCAG 1.4.1 (*Use of Color*) é categórico: **cor nunca pode ser o �
 - padrão, espessura ou posição, no caso de gráficos;
 - diferença de luminância suficiente — é o que sobrevive a qualquer tipo de daltonismo.
 
-### Cor dinâmica
+### 6.5 Cor dinâmica
 
-Desde o Android 12, o **Material You** pode gerar toda a paleta do aplicativo a partir do papel de parede do usuário. Isso significa que a cor primária do seu app pode não ser a sua no aparelho do usuário. Projetar com tokens semânticos (§3) é o que torna esse cenário viável; escrever `#1E88E5` diretamente dentro dos componentes é o que o impede.
+Desde o Android 12, o **Material You** pode gerar toda a paleta do aplicativo a partir do papel de parede do usuário. Isso significa que a cor primária do seu app pode não ser a sua no aparelho do usuário. Projetar com tokens semânticos (§3.3) é o que torna esse cenário viável; escrever `#1E88E5` diretamente dentro dos componentes é o que o impede.
 
 ---
 
@@ -383,15 +414,17 @@ Cada tela tem uma tarefa diferente e, por isso, um "orçamento de cor" diferente
 
 Em um aplicativo, **a maior parte da interface é texto**. Tipografia não é o acabamento do projeto: é o material com que a maior parte dele é construída.
 
-### Três palavras que não são sinônimas
+### 8.1 Três palavras que não são sinônimas
 
 > **Definição — Família tipográfica (*typeface*)**: o desenho, o projeto das letras — Roboto, Inter, Helvetica.
+>
 > **Definição — Fonte (*font*)**: uma instância concreta e utilizável desse desenho, com peso, estilo e (na origem, no tipo metálico) corpo definidos — Roboto Bold Itálico 16pt; hoje, também o arquivo `.ttf`/`.otf`.
+>
 > **Definição — Estilo**: uma variação dentro da família — peso, largura, inclinação, largura óptica.
 
 A analogia útil: a família é a música; a fonte é a gravação.
 
-### Anatomia mínima
+### 8.2 Anatomia mínima
 
 ```
    altura de ascendente
@@ -411,7 +444,7 @@ A analogia útil: a família é a música; a fonte é a gravação.
 - **Peso (*weight*)**: 100 (Thin) a 900 (Black), com 400 (Regular) e 700 (Bold) como referências.
 - **Itálico verdadeiro × oblíquo falso**: o itálico é um desenho próprio, com letras cursivas; o oblíquo sintético é a fonte normal inclinada por software. O falso é sempre pior — e é o que muitos frameworks aplicam quando a família não tem itálico instalado.
 
-### Classificação
+### 8.3 Classificação
 
 | Grupo | Características | Exemplos | Uso móvel |
 |---|---|---|---|
@@ -455,9 +488,10 @@ Diferenças que mudam decisões concretas:
 
 ## 10. Tipografia para dispositivos móveis
 
-### sp e dp: a distinção que não pode ser errada
+### 10.1 sp e dp: a distinção que não pode ser errada
 
 > **Definição — dp (*density-independent pixel*)**: unidade abstrata equivalente a um pixel em uma tela de 160 dpi, convertida pelo sistema conforme a densidade real do aparelho. Usada para dimensões, espaçamentos e ícones.
+>
 > **Definição — sp (*scale-independent pixel*)**: o mesmo que dp, **multiplicado adicionalmente pela preferência de tamanho de fonte do usuário**. Usada exclusivamente para texto.
 
 Usar dp em texto é o modo mais direto de excluir usuários com baixa visão: o app deixa de responder à configuração de acessibilidade do sistema. O Android 14 introduziu ainda o **escalonamento não linear** — textos já grandes crescem proporcionalmente menos que textos pequenos, evitando títulos gigantescos.
@@ -477,7 +511,7 @@ Text('Total do pedido', style: Theme.of(context).textTheme.bodyLarge)
 <Text style={{ fontSize: 16 }} allowFontScaling>Total do pedido</Text>
 ```
 
-### Valores de referência
+### 10.2 Valores de referência
 
 | Parâmetro | Recomendação | Origem |
 |---|---|---|
@@ -489,13 +523,13 @@ Text('Total do pedido', style: Theme.of(context).textTheme.bodyLarge)
 | Pesos por família em uso | 2 a 3 (ex.: Regular, Medium, Bold) | Custo de download e coerência |
 | Espaçamento entre letras | Ligeiramente negativo em títulos grandes; positivo em textos pequenos em caixa alta | Material 3 |
 
-### Fontes de sistema e por que preferi-las
+### 10.3 Fontes de sistema e por que preferi-las
 
 - **Android**: Roboto (e Roboto Flex, variável); **iOS**: SF Pro, com *optical sizing* automático — SF Pro Text abaixo de 20pt, SF Pro Display acima; **cobertura global**: a família Noto do Google existe justamente para eliminar o "tofu" (o retângulo vazio de caractere ausente) em mais de 1000 idiomas.
 - Vantagens: zero bytes baixados, renderização otimizada pelo sistema, ligaduras e métricas corretas para cada idioma, e familiaridade — o usuário já lê aquela letra o dia inteiro.
 - Fonte de marca custa: tamanho de app, risco de FOIT/FOUT, e cobertura incompleta de caracteres (acentos do português costumam existir; cirílico, grego, árabe e CJK frequentemente não). Se usar fonte própria, **defina uma pilha de fallback explícita** e teste com nomes acentuados reais ("João Gonçalves d'Ávila").
 
-### Erros recorrentes em interfaces móveis
+### 10.4 Erros recorrentes em interfaces móveis
 
 - **Caixa alta em blocos de texto.** Elimina a silhueta das palavras e reduz a velocidade de leitura. Aceitável em rótulos de até duas ou três palavras.
 - **Pesos Light e Thin em texto pequeno**, especialmente sobre fundo colorido ou em tema escuro.
@@ -510,6 +544,7 @@ Text('Total do pedido', style: Theme.of(context).textTheme.bodyLarge)
 ## 11. UI e UX: o que cada termo significa
 
 > **Definição — Interface do usuário (UI)**: o conjunto de elementos visuais, textuais e interativos por meio dos quais a pessoa opera o sistema — layout, cor, tipografia, componentes, ícones, movimento, som.
+>
 > **Definição — Experiência do usuário (UX)**: a totalidade da experiência da pessoa com o produto e com a organização que o oferece, incluindo descoberta, instalação, uso, suporte, cobrança e desinstalação. Termo cunhado por **Don Norman** na Apple, no início dos anos 1990, precisamente porque "interface" e "usabilidade" eram estreitos demais para o que sua equipe fazia.
 
 A relação, sem a analogia gasta do ketchup: **toda UI é parte da UX; a maior parte da UX não é UI**. Um aplicativo de banco com telas impecáveis e uma fila de atendimento de 40 minutos tem boa UI e péssima UX. Um app de entrega com tela feia que entrega em 20 minutos pode ter UX melhor que o concorrente elegante e atrasado.
@@ -529,7 +564,7 @@ Disciplinas que costumam ser confundidas com UI/UX e são distintas:
 
 ## 12. Autores e teorias de referência
 
-### Donald Norman: o vocabulário básico do campo
+### 12.1 Donald Norman: o vocabulário básico do campo
 
 Em *The Design of Everyday Things* (1988; edição revista de 2013), Norman formaliza conceitos que se aplicam diretamente à tela de um celular:
 
@@ -560,14 +595,14 @@ O lado esquerdo do ciclo é o **golfo de execução** — "consigo descobrir o q
 
 Em *Emotional Design* (2004), Norman acrescenta três níveis de processamento: **visceral** (reação imediata à aparência), **comportamental** (prazer de uso e eficácia) e **reflexivo** (o que usar aquilo significa para a pessoa). Uma boa tela de erro é projetada nos três: não assusta (visceral), oferece uma saída (comportamental) e não humilha (reflexivo).
 
-### Jakob Nielsen e a tradição da usabilidade
+### 12.2 Jakob Nielsen e a tradição da usabilidade
 
 As **dez heurísticas de usabilidade** (1994) são a ferramenta de avaliação mais usada da área — tratadas em detalhe na Aula 5. Duas contribuições complementares importam aqui:
 
 - **Lei de Jakob**: as pessoas passam a maior parte do tempo em *outros* aplicativos, e por isso esperam que o seu funcione como os demais. Inovação em padrões de navegação e em ícones tem custo alto e benefício raro.
 - **Avaliação heurística com 3 a 5 avaliadores** encontra a maior parte dos problemas graves a uma fração do custo de um teste formal.
 
-### As "leis" quantitativas da interação
+### 12.3 As "leis" quantitativas da interação
 
 | Lei | Enunciado | Consequência móvel |
 |---|---|---|
@@ -580,7 +615,7 @@ As **dez heurísticas de usabilidade** (1994) são a ferramenta de avaliação m
 | **Efeito estética-usabilidade (Kurosu & Kashimura, 1995; Tractinsky, 2000)** | Interfaces percebidas como bonitas são julgadas mais fáceis de usar | Explica por que avaliação estética não substitui teste de usabilidade: a beleza mascara problemas reais |
 | **Pico-fim (Kahneman)** | A lembrança de uma experiência é dominada pelo momento mais intenso e pelo final | Cuide especialmente do erro (pico) e da confirmação de sucesso (fim) |
 
-### Gestalt: como o olho agrupa antes de a mente ler
+### 12.4 Gestalt: como o olho agrupa antes de a mente ler
 
 Formulados por Wertheimer, Köhler e Koffka nos anos 1920, os princípios da Gestalt descrevem como a percepção agrupa elementos automaticamente. Em interface, eles são o mecanismo real por trás do espaçamento:
 
@@ -593,7 +628,7 @@ Formulados por Wertheimer, Köhler e Koffka nos anos 1920, os princípios da Ges
 
 > Consequência prática: **espaço em branco não é desperdício de tela**; é o principal meio de comunicar estrutura. Em uma tela de 6 polegadas, reduzir espaçamentos para "caber mais" quase sempre destrói o agrupamento que tornava o conteúdo legível.
 
-### Sistemas de design como corpo normativo
+### 12.5 Sistemas de design como corpo normativo
 
 Material Design (Google) e Human Interface Guidelines (Apple) não são apenas bibliotecas de componentes: são a codificação dos padrões que os usuários daquela plataforma já conhecem. Seguir o sistema é aplicar a Lei de Jakob por construção; divergir dele exige justificativa explícita de produto — e a Aula 6 trata dessa decisão em detalhe.
 
@@ -646,13 +681,13 @@ O que muda quando a interface é um retângulo de 6 polegadas segurado com uma m
 
 **Google Maps e a cor sob sol.** A escolha de azul saturado para a rota ativa sobre uma base propositalmente dessaturada é o exemplo canônico de contraste funcional: precisa ser reconhecível de relance, com o telefone na horizontal do carro, sob luz direta, por alguém que não pode olhar por mais de meio segundo. Nenhuma dessas decisões é estética.
 
-**Telas de "modo escuro" mal convertidas.** O erro mais comum em aplicativos brasileiros de banco e varejo: inverter fundo e texto mantendo a cor de marca saturada e sombras claras. O resultado é vibração cromática, texto branco borrado sobre preto absoluto e elevação incompreensível — todos os três problemas descritos em §6.
+**Telas de "modo escuro" mal convertidas.** O erro mais comum em aplicativos brasileiros de banco e varejo: inverter fundo e texto mantendo a cor de marca saturada e sombras claras. O resultado é vibração cromática, texto branco borrado sobre preto absoluto e elevação incompreensível — todos os três problemas descritos em §6.2.
 
 ---
 
 ## 15. Referências
 
-### Cor: fundamentos e prática
+### 15.1 Cor: fundamentos e prática
 
 - W3C — [WCAG 2.2 (recomendação completa)](https://www.w3.org/TR/WCAG22/) e [Understanding SC 1.4.3: Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 - W3C — [Understanding SC 1.4.1: Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)
@@ -669,7 +704,7 @@ O que muda quando a interface é um retângulo de 6 polegadas segurado com uma m
 - Information is Beautiful — [Colours in Cultures](https://informationisbeautiful.net/visualizations/colours-in-cultures/)
 - Planalto — [Lei 9.279/1996 (Lei da Propriedade Industrial), art. 124](https://www.planalto.gov.br/ccivil_03/leis/l9279.htm)
 
-### Cor: pesquisa acadêmica
+### 15.2 Cor: pesquisa acadêmica
 
 - Labrecque, L. I. & Milne, G. R. (2012). *Exciting red and competent blue: the importance of color in marketing*. Journal of the Academy of Marketing Science. [doi:10.1007/s11747-010-0245-y](https://doi.org/10.1007/s11747-010-0245-y)
 - Elliot, A. J. & Maier, M. A. (2014). *Color psychology: effects of perceiving color on psychological functioning in humans*. Annual Review of Psychology. [doi:10.1146/annurev-psych-010213-115035](https://doi.org/10.1146/annurev-psych-010213-115035)
@@ -677,7 +712,7 @@ O que muda quando a interface é um retângulo de 6 polegadas segurado com uma m
 - Bottomley, P. A. & Doyle, J. R. (2006). *The interactive effects of colors and products on perceptions of brand logo appropriateness*. Marketing Theory. [doi:10.1177/1470593106061263](https://doi.org/10.1177/1470593106061263)
 - Wilms, L. & Oberfeld, D. (2018). *Color and emotion: effects of hue, saturation, and brightness*. Psychological Research. [doi:10.1007/s00426-017-0880-8](https://doi.org/10.1007/s00426-017-0880-8)
 
-### Tipografia
+### 15.3 Tipografia
 
 - Butterick, M. — [Practical Typography](https://practicaltypography.com/) (livro completo e gratuito na web)
 - Google Fonts — [Knowledge: guias de tipografia](https://fonts.google.com/knowledge)
@@ -690,7 +725,7 @@ O que muda quando a interface é um retângulo de 6 polegadas segurado com uma m
 - Rello, L. & Baeza-Yates, R. (2013). *Good fonts for dyslexia*. ASSETS '13. [doi:10.1145/2513383.2513447](https://doi.org/10.1145/2513383.2513447)
 - Bringhurst, R. *The Elements of Typographic Style* (referência clássica sobre medida de linha e entrelinha; livro impresso)
 
-### UI/UX: teoria e autores
+### 15.4 UI/UX: teoria e autores
 
 - Norman, D. *The Design of Everyday Things* (edição revista) — [ficha do livro no NN/g](https://www.nngroup.com/books/design-everyday-things-revised/)
 - Norman, D. & Nielsen, J. — [The Definition of User Experience (UX)](https://www.nngroup.com/articles/definition-user-experience/)
@@ -704,7 +739,7 @@ O que muda quando a interface é um retângulo de 6 polegadas segurado com uma m
 - Tractinsky, N., Katz, A. S. & Ikar, D. (2000). *What is beautiful is usable*. Interacting with Computers. [doi:10.1016/S0953-5438(00)00031-X](https://doi.org/10.1016/S0953-5438%2800%2900031-X)
 - Interaction Design Foundation — [Gestalt Principles](https://www.interaction-design.org/literature/topics/gestalt-principles)
 
-### UX móvel
+### 15.5 UX móvel
 
 - Hoober, S. — [How Do Users Really Hold Mobile Devices?](https://www.uxmatters.com/mt/archives/2013/02/how-do-users-really-hold-mobile-devices.php) (UXmatters)
 - Nielsen Norman Group — [Mobile UX: Study Guide](https://www.nngroup.com/articles/mobile-ux-study-guide/)

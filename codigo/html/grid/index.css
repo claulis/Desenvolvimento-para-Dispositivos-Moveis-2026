@@ -1,0 +1,52 @@
+/* layout.css: VERSÃO 3, só Grid */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Celular: uma coluna, com as áreas desenhadas em texto */
+.pagina {
+  display: grid;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "topo"
+    "hero"
+    "principal"
+    "avisos"
+    "rodape";
+}
+.topo   { grid-area: topo; }
+.hero   { grid-area: hero; }
+.cards  { grid-area: principal; }
+.avisos { grid-area: avisos; }
+.rodape { grid-area: rodape; }
+
+/* Topo em grid: funciona, mas o menu não quebra de linha sozinho */
+.topo { display: grid; gap: 4px 16px; padding: 12px 16px; border-radius: 8px; }
+.menu { display: grid; grid-auto-flow: column; justify-content: start; gap: 16px; }
+
+.hero { padding: 24px 16px; border-radius: 8px; }
+.hero h1 { font-size: 2rem; }
+
+/* Cards: colunas automáticas, todas alinhadas */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.card  { display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; padding: 12px; }
+.card .btn { justify-self: start; }
+
+.avisos { padding: 16px; align-self: start; }
+.rodape { padding: 16px; border-radius: 8px; }
+
+/* Tablet e desktop: só redesenhamos as áreas */
+@media (min-width: 768px) {
+  .pagina {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "topo      topo"
+      "hero      hero"
+      "principal avisos"
+      "rodape    rodape";
+  }
+  .topo { grid-template-columns: auto 1fr; align-items: center; }
+  .menu { justify-content: end; }
+}

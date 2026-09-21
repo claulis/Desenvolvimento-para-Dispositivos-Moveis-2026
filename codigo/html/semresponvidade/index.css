@@ -1,0 +1,21 @@
+/* layout.css: VERSÃO 1, sem responsividade
+   Larguras e alturas fixas em px + float. Funciona só em tela grande. */
+
+.pagina { width: 960px; margin: 0 auto; }
+
+.topo { height: 70px; }
+.logo { float: left; margin: 20px 0 0 20px; }
+.menu { float: right; margin: 22px 20px 0 0; }
+.menu a { margin-left: 20px; }
+
+.hero { clear: both; height: 180px; padding: 30px 20px; }
+.hero h1 { font-size: 40px; }
+
+.cards { float: left; width: 700px; }
+.card { float: left; width: 188px; height: 250px; margin: 16px 0 0 16px; padding: 12px; }
+.card h2 { margin: 8px 0 4px; }
+.card p { margin: 0 0 10px; }
+
+.avisos { float: right; width: 216px; margin-top: 16px; padding: 12px; }
+
+.rodape { clear: both; height: 60px; line-height: 60px; margin-top: 16px; }

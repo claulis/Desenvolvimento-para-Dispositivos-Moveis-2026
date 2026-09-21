@@ -287,7 +287,7 @@ O critério WCAG 1.4.1 (*Use of Color*) é categórico: **cor nunca pode ser o �
 
 ### Cor dinâmica
 
-Desde o Android 12, o **Material You** pode gerar toda a paleta do aplicativo a partir do papel de parede do usuário. Isso significa que a cor primária do seu app pode não ser a sua no aparelho do usuário. Projetar com tokens semânticos (ver [Da paleta estética à paleta funcional](#da-paleta-estética-à-paleta-funcional)) é o que torna esse cenário viável; escrever `#1E88E5` diretamente dentro dos componentes é o que o impede.
+Desde o Android 12, o **Material You** pode gerar toda a paleta do aplicativo a partir do papel de parede do usuário. Isso significa que a cor primária do seu app pode não ser a sua no aparelho do usuário. Projetar com tokens semânticos ) é o que torna esse cenário viável; escrever `#1E88E5` diretamente dentro dos componentes é o que o impede.
 
 ---
 
@@ -313,7 +313,6 @@ Cada tela tem uma tarefa diferente e, por isso, um "orçamento de cor" diferente
 | **Paywall / assinatura** | Destaque do plano recomendado por contraste, não por saturação | Três planos com três cores fortes: nenhuma recomendação é lida |
 | **Configurações** | Neutro absoluto; cor apenas em ações destrutivas | "Excluir conta" na mesma cor de todo o resto |
 
-> **Teste rápido de disciplina cromática**: aplique um filtro de escala de cinza no protótipo. Se a hierarquia se mantém — o botão principal continua sendo o elemento mais destacado, erro continua distinguível de sucesso, o conteúdo continua à frente do enfeite — a paleta está fazendo o trabalho certo. Se a tela vira uma mancha uniforme, a cor estava carregando informação que a estrutura deveria carregar.
 
 ---
 

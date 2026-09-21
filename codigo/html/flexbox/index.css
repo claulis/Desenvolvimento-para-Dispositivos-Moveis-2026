@@ -1,0 +1,24 @@
+/* layout.css: VERSÃO 2, só Flexbox */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* O contêiner da página é flex e quebra de linha quando falta espaço */
+.pagina { display: flex; flex-wrap: wrap; gap: 16px; max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+/* Cada filho diz quanto quer ocupar: flex: grow shrink basis */
+.topo, .hero, .rodape { flex: 1 1 100%; }              /* linha inteira */
+.cards  { flex: 3 1 480px; }                           /* coluna principal */
+.avisos { flex: 1 1 220px; align-self: flex-start; padding: 16px; }  /* coluna lateral */
+
+/* Topo: logo à esquerda, menu à direita, quebra sozinho se faltar espaço */
+.topo { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; padding: 12px 16px; border-radius: 8px; }
+.menu { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+
+.hero { padding: 24px 16px; border-radius: 8px; }
+.hero h1 { font-size: 2rem; }
+
+/* Cards: também flex com wrap */
+.cards { display: flex; flex-wrap: wrap; gap: 16px; }
+.card { flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px; padding: 12px; }
+.card .btn { margin-top: auto; align-self: flex-start; }  /* botão sempre embaixo */
+
+.rodape { padding: 16px; border-radius: 8px; }

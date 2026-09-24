@@ -1,0 +1,43 @@
+/* index.css: VERSÃO 4, só media queries (sem Flexbox e sem Grid)
+   Mobile-first: o CSS base é para celular; cada @media acrescenta regras
+   para telas maiores. Larguras em %, float para colunas. */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ===== Base: celular (tudo empilhado, uma coluna) ===== */
+.pagina { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+.topo   { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
+.logo   { display: block; margin-bottom: 8px; }
+.menu a { display: inline-block; margin: 0 12px 4px 0; }
+
+.hero { padding: 24px 16px; border-radius: 8px; margin-bottom: 16px; }
+.hero h1 { font-size: 1.6rem; }
+
+/* Cards: um por linha */
+.cards { overflow: hidden; }               /* contém os floats dos cards */
+.card  { width: 100%; padding: 12px; margin-bottom: 16px; }
+.card .thumb, .card h2 { margin-bottom: 8px; }
+.card p { margin-bottom: 12px; }
+
+.avisos { padding: 16px; margin-bottom: 16px; }
+.rodape { padding: 16px; border-radius: 8px; clear: both; }
+
+/* ===== Tablet: a partir de 600px, cards em 2 colunas ===== */
+@media (min-width: 600px) {
+  .logo { display: inline-block; margin-bottom: 0; }
+  .menu { float: right; margin-top: 6px; }
+  .menu a { margin: 0 0 0 16px; }
+  .topo { overflow: hidden; }              /* contém o float do menu */
+
+  .hero h1 { font-size: 2rem; }
+
+  .cards { margin-right: -16px; }          /* compensa a margem do último card da linha */
+  .card  { float: left; width: calc(50% - 16px); margin-right: 16px; min-height: 250px; }
+}
+
+/* ===== Desktop: a partir de 900px, conteúdo + barra lateral ===== */
+@media (min-width: 900px) {
+  .cards  { float: left; width: 75%; margin-right: 0; }
+  .card   { width: calc(33.333% - 16px); }
+  .avisos { float: right; width: calc(25% - 16px); }
+}

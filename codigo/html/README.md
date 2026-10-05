@@ -239,17 +239,17 @@ As quatro implementações abaixo renderizam a mesma página com técnicas disti
 
 | Versão | Diretório | Técnica | Características |
 |---|---|---|---|
-| 1 | [`semresponsividade/`](./semresponsividade/) | Unidades absolutas (`px`) e `float` | Largura fixa de 960px. Ausência de meta viewport. Rolagem horizontal em telas menores que a largura definida. |
+| 1 | [`semresponvidade/`](./semresponvidade/) | Unidades absolutas (`px`) e `float` | Largura fixa de 960px. Ausência de meta viewport. Rolagem horizontal em telas menores que a largura definida. |
 | 2 | [`flexbox/`](./flexbox/) | Flexbox | Nenhuma media query. Adaptação obtida por `flex-wrap` e `flex: grow shrink basis`. |
 | 3 | [`grid/`](./grid/) | Grid Layout | Abordagem mobile-first com `grid-template-areas`. Uma media query para redefinição das áreas. Cards com `repeat(auto-fit, minmax())`. |
-| 4 | [`mediaqueries/`](./mediaqueries/) | Media queries, `%` e `float` | Técnica anterior ao Flexbox. Dois *breakpoints* (600px e 900px). Espaçamentos controlados por `calc()` e margem negativa. |
+| 4 | [`mediaquery/`](./mediaquery/) | Media queries, `%` e `float` | Técnica anterior ao Flexbox. Dois *breakpoints* (600px e 900px). Espaçamentos controlados por `calc()` e margem negativa. |
 
 ### Folhas de estilo de layout
 
-- [Versão 1 — `semresponsividade/index.css`](./semresponsividade/index.css)
+- [Versão 1 — `semresponvidade/index.css`](./semresponvidade/index.css)
 - [Versão 2 — `flexbox/index.css`](./flexbox/index.css)
 - [Versão 3 — `grid/index.css`](./grid/index.css)
-- [Versão 4 — `mediaqueries/index.css`](./mediaqueries/index.css)
+- [Versão 4 — `mediaquery/index.css`](./mediaquery/index.css)
 
 ### Folha de estilo visual compartilhada
 

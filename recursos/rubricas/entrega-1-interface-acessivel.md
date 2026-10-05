@@ -1,6 +1,6 @@
-# Rubrica — Entrega 1: Interface responsiva e acessibilidade (Aula 8, peso 15%)
+# Rubrica — Entrega 1: Interface responsiva e acessibilidade (Aula 4, peso 15%)
 
-Cada critério avaliado separadamente, conforme indicado na Aula 8.
+Cada critério avaliado separadamente, conforme indicado na Aula 4.
 
 | Critério | Insuficiente (0–3) | Adequado (4–7) | Excelente (8–10) |
 |---|---|---|---|

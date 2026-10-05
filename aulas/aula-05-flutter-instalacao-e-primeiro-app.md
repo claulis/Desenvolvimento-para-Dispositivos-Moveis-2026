@@ -149,7 +149,7 @@ flutter run
 
 **Hot reload** aplica as mudanças do código no app que já está rodando, em cerca de 1 segundo, **sem perder o estado** (o número do contador continua o mesmo).
 
-**Exercício em sala:**
+**Exemplo:**
 1. Com o app rodando, toque no botão **+** algumas vezes (ex.: até chegar em 5).
 2. Em `lib/main.dart`, troque a cor do tema:
    ```dart

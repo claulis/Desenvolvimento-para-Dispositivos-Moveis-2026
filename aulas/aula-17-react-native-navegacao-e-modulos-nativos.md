@@ -168,7 +168,3 @@ Aplicativos de streaming de conteúdo, ao enviar uma notificação "Novo episód
 ## Leitura recomendada
 
 - Documentação oficial: [React Navigation](https://reactnavigation.org/) e [Native Modules](https://reactnative.dev/docs/native-modules-intro).
-
-## Atividade da aula
-
-**Entrega 2 — Módulo em React Native (peso 20%)**: cada equipe reimplementa, em React Native, o mesmo módulo entregue em Flutter na Avaliação 2 (Aula 13), com equivalência de arquitetura (camadas, repositório, gerenciamento de estado justificado) e de interface (mesma responsividade, mesma navegação com deep link, mesmo comportamento off-line). Use o [`recursos/checklist-paridade.md`](../recursos/checklist-paridade.md) para verificar a equivalência antes de entregar — mesmas rotas, mesmo comportamento offline, mesmos três estados de interface — de forma que a comparação da Aula 21 seja sobre arquitetura, não sobre "a equipe implementou coisas diferentes em cada plataforma". A comparação ponto a ponto entre as duas implementações do mesmo módulo é o que sustenta a análise da Unidade V.

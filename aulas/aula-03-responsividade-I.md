@@ -111,7 +111,3 @@ Os mesmos princípios (unidades relativas, pontos de quebra e reorganização da
 ## Leitura recomendada
 
 - Documentação oficial: [Support different screen sizes — window size classes](https://developer.android.com/develop/ui/compose/layouts/adaptive/window-size-classes) e [Layouts canônicos](https://developer.android.com/develop/ui/compose/layouts/adaptive/canonical-layouts).
-
-## Atividade da aula
-
-**Prática: projeto de uma tela em três classes de tamanho, no Figma**: a partir de uma tela de aplicativo real (fornecida pelo docente ou escolhida pela equipe), produzir três variações (compacta, média, expandida) usando um dos layouts canônicos apresentados como referência estrutural, documentando explicitamente o ponto de quebra escolhido entre cada variação e a justificativa. Use o **Material 3 Design Kit** oficial do Figma — já traz os componentes e os três breakpoints padrão prontos, poupando tempo de montagem que pode ser investido na decisão de layout em si. Antes de montar do zero, vale dois minutos de contraexemplo em aula: rodar um app popular qualquer em um emulador de tablet e observar como ele quebra — a maioria dos apps não testados em tela grande falha visivelmente, e ver isso ao vivo torna o motivo da atividade evidente.

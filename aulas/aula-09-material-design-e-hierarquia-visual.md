@@ -104,7 +104,3 @@ Considere uma tela de listagem de pedidos com status "Entregue", "A caminho" e "
 
 - Documentação oficial: [Material Design 3](https://m3.material.io/) — seções de "Foundations" (cor, tipografia, layout).
 - PREECE; ROGERS; SHARP. *Design de Interação*, 3. ed. — capítulo sobre design visual de interfaces.
-
-## Atividade da aula
-
-**Exercício: redesenho de tela aplicando malha, escala tipográfica e sistema de cor**: a partir de uma tela existente sem hierarquia visual clara (fornecida pelo docente ou escolhida pela equipe), redesenhar aplicando malha de 8dp, no mínimo três níveis da escala tipográfica, tokens de cor para dois estados distintos (ex.: sucesso/erro) e revisão dos textos de interface segundo os princípios de UX writing apresentados. Gere o `ColorScheme` completo (claro e escuro) em minutos com o [Material Theme Builder](https://m3.material.io/theme-builder) — o resultado alimenta diretamente a implementação em Flutter na Aula 10. Registre o antes/depois com duas capturas de tela lado a lado: é a evidência mais direta de que a hierarquia visual foi aplicada.

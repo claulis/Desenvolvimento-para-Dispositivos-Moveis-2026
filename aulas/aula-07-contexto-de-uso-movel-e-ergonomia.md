@@ -86,9 +86,3 @@ Aplicativos bancários brasileiros (Nubank, Itaú, Banco do Brasil) convergiram,
 
 - NIELSEN, Jakob; BUDIU, Raluca. *Usabilidade Móvel*. Rio de Janeiro: Elsevier, 2013 — capítulos sobre contexto de uso e interação por toque.
 - HOOBER, Steven. "How Do Users Really Hold Mobile Devices?" — referência de pesquisa sobre ergonomia de alcance.
-
-## Atividade da aula
-
-**Avaliação 1 — Estudo do contexto de uso e mapa de restrições de plataforma (peso 15%)**: cada equipe, a partir do produto que desenvolverá ao longo do semestre, deve entregar um documento curto contendo: (1) descrição do contexto de uso típico do usuário-alvo (onde, quando, com que grau de atenção); (2) mapa das restrições de plataforma identificadas nas Aulas 1, 2 e 6 que se aplicam ao produto (energia, memória, densidade de tela, permissões necessárias); (3) para cada restrição, a consequência de projeto que ela impõe. Rubrica detalhada em [`recursos/rubricas/avaliacao-1-contexto-de-uso.md`](../recursos/rubricas/avaliacao-1-contexto-de-uso.md).
-
-**Atividade extra recomendada (15 min, sem peso)**: cada estudante abre o app do próprio banco e mapeia as três ações mais frequentes (pagar, transferir, ver saldo/extrato) contra a zona de alcance do polegar da §2. Gera discussão imediata e conecta a teoria a um produto real que todos já usam.

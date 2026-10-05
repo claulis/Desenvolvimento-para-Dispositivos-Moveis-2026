@@ -167,7 +167,3 @@ Antes de frameworks com hot reload, ajustar um valor de espaçamento em uma tela
 - SMYTH, Neil. *Flutter Apprentice*. Kodeco (atualizado continuamente) — cobre Dart moderno com null safety e Material 3.
 
 > Evite bibliografia de Flutter anterior a 2022: o framework mudou substancialmente com a chegada de null safety obrigatório e do Material 3, tornando exemplos de livros mais antigos incompatíveis com projetos novos.
-
-## Atividade da aula
-
-**Configuração do ambiente Flutter e implementação responsiva da tela projetada na semana 3**: instalar o Flutter SDK, criar um novo projeto (ponto de partida disponível em [`codigo/flutter/10-widgets-responsivos/`](../codigo/flutter/10-widgets-responsivos/)), e implementar em código Dart a tela cujas três variações de classe de tamanho foram prototipadas na Aula 3, usando `LayoutBuilder` para alternar entre elas nos mesmos pontos de quebra (600dp e 840dp) definidos anteriormente.

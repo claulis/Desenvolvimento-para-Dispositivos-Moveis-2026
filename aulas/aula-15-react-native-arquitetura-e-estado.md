@@ -218,7 +218,3 @@ Esse teste não precisa de emulador, de `render()` de componente, nem de mock de
 ## Leitura recomendada
 
 - Documentação oficial: [Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context), [Redux Toolkit](https://redux-toolkit.js.org/), [Zustand](https://github.com/pmndrs/zustand) e [TanStack Query](https://tanstack.com/query/latest).
-
-## Atividade da aula
-
-**Estudo de caso: identificação de violações de camada em código React Native e reorganização do módulo**: a partir de um trecho de código fornecido (contendo chamada de rede, regra de validação e JSX misturados em um único componente), identificar cada violação e reescrever o módulo separando apresentação, domínio e dados, adotando um dos três gerenciadores de estado apresentados, com justificativa da escolha.

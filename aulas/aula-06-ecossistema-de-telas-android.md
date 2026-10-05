@@ -104,7 +104,3 @@ A prática desta aula consiste exatamente em observar essa variação, ainda sem
 ## Leitura recomendada
 
 - Documentação oficial: [Suporte a diferentes densidades de tela](https://developer.android.com/training/multiscreen/screendensities) e [Suporte a telas grandes e dobráveis](https://developer.android.com/guide/topics/large-screens).
-
-## Atividade da aula
-
-**Prática em emulador**: configurar quatro perfis de emulador no Android Studio (smartphone pequeno de densidade média, smartphone grande com recorte de câmera simulado, tablet 10", dobrável) e executar o mesmo projeto padrão nos quatro. Capturar uma imagem de cada e registrar, em uma tabela, todas as quebras visuais observadas (elementos cortados pela área segura, texto desproporcional, botões fora de alcance) — essa tabela será a base da Avaliação 1, na Aula 7.

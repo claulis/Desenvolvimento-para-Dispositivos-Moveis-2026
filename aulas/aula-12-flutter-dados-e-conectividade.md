@@ -181,19 +181,3 @@ Aplicativos de transporte urbano usados no Brasil (bilhete único digital, apps 
 ## Leitura recomendada
 
 - Documentação oficial: [connectivity_plus](https://pub.dev/packages/connectivity_plus) e [Introduction to Isolates / networking](https://docs.flutter.dev/data-and-backend/networking).
-
-## Atividade da aula
-
-**Prática: repositório com duas fontes intercambiáveis, testado com banda limitada e perda de conexão no emulador**: implementar um `PedidoRepository` com fonte remota e fonte local (cache), aplicando a estratégia de cache-then-network e nova tentativa com espera progressiva. Use a API simulada pronta em [`recursos/api-simulada/`](../recursos/api-simulada/) (50 pedidos de exemplo, roda localmente com `json-server`) como fonte remota, para que todas as equipes testem contra os mesmos dados. Testar o comportamento usando o controle de rede do emulador Android:
-
-```bash
-# Reduzir a banda disponível (perfil de rede lenta)
-adb shell settings put global network_watchlist_enabled false  # ambiente sem VPN de watchlist, se aplicável
-# No próprio Android Studio: Extended Controls > Cellular > definir "Network type"/"Signal strength"
-
-# Simular modo avião (perda total de conexão)
-adb shell settings put global airplane_mode_on 1
-adb shell am broadcast -a android.intent.action.AIRPLANE_MODE
-```
-
-Registrar o comportamento observado da interface em cada condição. Ponto de partida do projeto em [`codigo/flutter/12-repositorio-offline/`](../codigo/flutter/12-repositorio-offline/).

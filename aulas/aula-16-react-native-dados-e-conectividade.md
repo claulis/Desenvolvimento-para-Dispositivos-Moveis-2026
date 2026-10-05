@@ -219,7 +219,3 @@ Em aplicativos de e-commerce, um comportamento esperado — e frequentemente aus
 ## Leitura recomendada
 
 - Documentação oficial: [NetInfo](https://github.com/react-native-netinfo/react-native-netinfo) e [AsyncStorage](https://react-native-async-storage.github.io/async-storage/).
-
-## Atividade da aula
-
-**Prática: repositório com duas fontes intercambiáveis, testado com banda limitada e perda de conexão no emulador**: implementar um `PedidoRepository` equivalente ao construído em Flutter na Aula 12, com fonte remota e local, cache e sincronização de pendências, testado sob as mesmas condições de rede limitada e modo avião no emulador Android.

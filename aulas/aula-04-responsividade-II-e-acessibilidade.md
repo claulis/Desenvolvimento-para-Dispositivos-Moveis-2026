@@ -113,9 +113,3 @@ Duas ferramentas gratuitas eliminam a necessidade de verificar contraste e alvo 
 
 - WORLD WIDE WEB CONSORTIUM. *Web Content Accessibility Guidelines (WCAG) 2.2*.
 - Documentação oficial: [Torne seus apps mais acessíveis](https://developer.android.com/guide/topics/ui/accessibility).
-
-## Atividade da aula
-
-**Atividade de sensibilização (20 min, recomendada antes da entrega)**: cada estudante ativa o TalkBack, veda os próprios olhos e tenta completar uma tarefa simples no aplicativo de banco que já usa no dia a dia. É a forma mais eficaz de converter acessibilidade de tópico de prova em convicção — poucos minutos costumam revelar mais violações do que uma hora de leitura.
-
-**Entrega 1 — Interface responsiva e acessibilidade (peso 15%)**: cada equipe entrega o protótipo de alta fidelidade da tela trabalhada na Aula 3, agora nas três classes de tamanho de janela, acompanhado de um laudo de acessibilidade cobrindo: verificação de contraste de todos os pares texto/fundo usados (com o verificador do WebAIM ou o Accessibility Scanner), rótulos acessíveis definidos para cada elemento interativo, ordem de foco documentada, e desenho explícito dos estados de vazio, carregamento e erro da tela escolhida. Rubrica detalhada em [`recursos/rubricas/entrega-1-interface-acessivel.md`](../recursos/rubricas/entrega-1-interface-acessivel.md) — cada critério (responsividade nas três classes, contraste, rótulos, ordem de foco, estados) é avaliado separadamente.

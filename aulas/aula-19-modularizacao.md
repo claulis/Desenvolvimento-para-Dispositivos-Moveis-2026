@@ -104,7 +104,3 @@ Esse fenômeno tem nome: a **Lei de Conway** observa que a estrutura de um siste
 ## Leitura recomendada
 
 - RICHARDS; FORD. *Fundamentals of Software Architecture* — capítulo sobre modularidade e particionamento de componentes.
-
-## Atividade da aula
-
-**Prática: definição das fronteiras de módulo das duas implementações e verificação das dependências entre elas**: cada equipe reorganiza as implementações Flutter e React Native já entregues segundo modularização por funcionalidade, definindo explicitamente a interface pública de cada módulo (o que é exportado) e verificando, por inspeção do código, se alguma dependência direta indevida entre módulos de funcionalidade distintos existe — corrigindo as encontradas.

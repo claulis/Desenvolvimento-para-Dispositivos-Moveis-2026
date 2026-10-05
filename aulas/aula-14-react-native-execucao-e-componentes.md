@@ -109,7 +109,7 @@ const estilos = StyleSheet.create({
 });
 ```
 
-Note que a malha de espaçamento (múltiplos de 8, Aula 9) e os tokens de cor continuam se aplicando — apenas expressos em `StyleSheet` do React Native em vez de widgets do Flutter. **Cores e tamanhos de fonte fixos direto no `StyleSheet`, como `'#6750A4'` espalhado pelos componentes, são exatamente o antipadrão "cor fixa, ignora tema" apontado na Aula 9** — centralizar os valores em `tema.ts` (ou um equivalente que resolva claro/escuro) é o que preserva, em React Native, o mesmo princípio já estabelecido para Android nativo. Reutilize `tema.ts` nas Aulas 15 a 17.
+Note que a malha de espaçamento (múltiplos de 8, Aula 9) e os tokens de cor continuam se aplicando — apenas expressos em `StyleSheet` do React Native em vez de widgets do Flutter. **Cores e tamanhos de fonte fixos direto no `StyleSheet`, como `'#6750A4'` espalhado pelos componentes, são exatamente o antipadrão "cor fixa, ignora tema" apontado na Aula 9** — centralizar os valores em `tema.ts` (ou um equivalente que resolva claro/escuro) é o que preserva, em React Native, o mesmo princípio já estabelecido para Android nativo.
 
 ## 5. Layout por Flexbox
 
@@ -170,9 +170,3 @@ Uma razão de mercado frequentemente citada para a adoção do React Native é a
 ## Uso de Expo
 
 Este componente adota **Expo** como caminho padrão de projeto novo, em vez de React Native CLI puro: é a recomendação atual da própria equipe do React Native para a maioria dos projetos, e evita consumir uma aula inteira só com configuração de ambiente Android nativo (SDK, variáveis de ambiente, emulador) antes de escrever a primeira tela — tempo mais bem investido em arquitetura, tema central deste componente.
-
-## Atividade da aula
-
-**Configuração do ambiente React Native (Expo) e implementação responsiva da mesma tela da semana 10**: instalar Node.js e o Expo (`npx create-expo-app`), e implementar a mesma tela de detalhe de produto responsiva construída em Flutter na Aula 10, usando `useWindowDimensions` para alternar entre as três classes de tamanho de janela nos mesmos pontos de quebra. Ponto de partida em [`codigo/react-native/14-execucao-e-componentes/`](../codigo/react-native/14-execucao-e-componentes/).
-
-A tabela comparativa da §1 é o embrião da tabela final da Aula 21 — mantenha-a à mão e vá completando novas linhas ao longo das Aulas 15 a 20; na Aula 21, a comparação já estará em grande parte construída pela própria equipe.

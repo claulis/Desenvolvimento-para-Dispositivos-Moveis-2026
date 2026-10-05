@@ -213,9 +213,3 @@ Medir em modo debug produz números artificialmente ruins e não deve ser usado 
 ## Leitura recomendada
 
 - Documentação oficial: [Flutter performance best practices](https://docs.flutter.dev/perf/best-practices) e [React Native - Optimizing FlatList](https://reactnative.dev/docs/optimizing-flatlist-configuration).
-
-## Atividade da aula
-
-**Prática: medição do custo de renderização de uma lista longa e refatoração da composição nas duas implementações**: usando as ferramentas de medição acima, medir o tempo de reconstrução/re-renderização ao interagir com um item de uma lista de pelo menos 200 elementos nas duas implementações do módulo do curso, identificar reconstruções/re-renderizações desnecessárias, e refatorar aplicando as técnicas desta aula, registrando a métrica antes e depois da correção. Ponto de partida com uma lista de 200+ produtos já semeada (versão lenta pronta, para focar a aula na medição e correção, não na montagem dos dados) em [`codigo/flutter/20-performance-lista/`](../codigo/flutter/20-performance-lista/) e [`codigo/react-native/20-performance-lista/`](../codigo/react-native/20-performance-lista/); registre as métricas em `MEDICOES.md` dentro de cada projeto.
-
-Vale fechar a aula amarrando de volta à Aula 1: jank em um aparelho de entrada, sem ventoinha e com CPU/GPU limitadas, é exatamente onde a fragmentação de aparelhos (Aula 1) e a renderização (esta aula) se encontram — o mesmo argumento central do curso, agora com uma métrica concreta para sustentá-lo.

@@ -80,7 +80,7 @@ Ou seja: MVVM/MVI não competem com camadas/portas-e-adaptadores/arquitetura lim
 
 ## 5. Isolamento do framework: o que muda entre plataformas, o que permanece
 
-A razão prática pela qual esta aula importa para os dois módulos já entregues: se o domínio e os casos de uso de um módulo de pedidos foram escritos respeitando a regra de dependência (sem importar `Widget`, `StatefulWidget`, `useState`, ou qualquer tipo específico de Flutter ou React Native), essa camada é, em princípio, portável entre os dois frameworks quase sem alteração — apenas os adaptadores externos (apresentação e, parcialmente, dados) precisam ser reescritos.
+A razão prática pela qual esta aula importa para um módulo implementado nas duas plataformas: se o domínio e os casos de uso de um módulo de pedidos foram escritos respeitando a regra de dependência (sem importar `Widget`, `StatefulWidget`, `useState`, ou qualquer tipo específico de Flutter ou React Native), essa camada é, em princípio, portável entre os dois frameworks quase sem alteração — apenas os adaptadores externos (apresentação e, parcialmente, dados) precisam ser reescritos.
 
 > **Consequência de projeto direta para este componente**: comparar a implementação Flutter (Aula 13) com a implementação React Native (Aula 17) do mesmo módulo é, em grande parte, uma comparação entre **adaptadores** de um mesmo domínio — quanto mais rigorosamente a regra de dependência foi seguida em cada implementação, mais "limpa" e isolável essa comparação se torna, e menos as duas implementações deveriam divergir na lógica de negócio em si.
 
@@ -114,8 +114,4 @@ Equipes que mantêm simultaneamente uma versão Flutter e uma versão React Nati
 
 ## Ferramentas que tornam a regra de dependência verificável, não apenas combinada
 
-A melhor forma de ensinar arquitetura é transformar a regra de dependência em uma verificação automática, não em um acordo de cavalheiros que qualquer PR pode violar sem que ninguém perceba: `import_lint`/`dart_code_metrics` (Dart/Flutter) e `eslint-plugin-boundaries` (TypeScript/React Native) **falham o build** quando o domínio importa um tipo de framework. Vale configurar ao menos um deles no módulo da equipe.
-
-## Atividade da aula
-
-**Exercício: reorganização do módulo segundo portas e adaptadores, com análise em papel da arquitetura limpa**: em uma aula de 4h, reorganizar completamente o domínio segundo **dois** estilos adicionais é ambicioso demais para produzir algo terminado. Escopo recomendado: cada equipe reorganiza o domínio do módulo já implementado (Aulas 11-13 e 15-17) segundo o estilo de portas e adaptadores (se ainda não seguido rigorosamente), documentando quais dependências de framework vazavam para o domínio e foram eliminadas. Em seguida, faz uma **análise em papel** (sem reescrever o código) do que mudaria ao migrar para arquitetura limpa completa: quantas classes a mais, que indireção adicional, e se o ganho de isolamento compensaria o custo para este módulo específico — produzindo uma tabela comparativa de acoplamento entre as três versões (camadas simples, portas e adaptadores, arquitetura limpa) com a terceira coluna preenchida por análise, não por implementação.
+A melhor forma de ensinar arquitetura é transformar a regra de dependência em uma verificação automática, não em um acordo de cavalheiros que qualquer PR pode violar sem que ninguém perceba: `import_lint`/`dart_code_metrics` (Dart/Flutter) e `eslint-plugin-boundaries` (TypeScript/React Native) **falham o build** quando o domínio importa um tipo de framework.

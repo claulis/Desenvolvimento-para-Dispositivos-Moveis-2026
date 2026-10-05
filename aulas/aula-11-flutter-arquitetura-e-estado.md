@@ -196,7 +196,3 @@ Esse é o retorno concreto do rigor arquitetural discutido nesta aula: quanto ma
 
 - MARTIN, Robert C. *Arquitetura Limpa*. Rio de Janeiro: Alta Books, 2019 — capítulos sobre regra de dependência, aplicáveis à separação de camadas em Flutter.
 - Documentação oficial: [State management approaches](https://docs.flutter.dev/data-and-backend/state-mgmt/options).
-
-## Atividade da aula
-
-**Estudo de caso: identificação de violações de camada em código Flutter e reorganização do módulo**: a partir de um trecho de código Flutter fornecido (contendo chamada de rede, regra de validação e construção de widget misturadas em um único `StatefulWidget`), identificar cada violação de camada e reescrever o módulo separando apresentação, domínio e dados, adotando um dos três gerenciadores de estado apresentados.

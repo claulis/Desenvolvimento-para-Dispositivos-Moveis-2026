@@ -187,7 +187,3 @@ Quando um aplicativo de e-commerce envia uma notificação "Seu pedido saiu para
 ## Leitura recomendada
 
 - Documentação oficial: [go_router](https://pub.dev/packages/go_router) e [Platform channels](https://docs.flutter.dev/platform-integration/platform-channels).
-
-## Atividade da aula
-
-**Avaliação 2 — Módulo em Flutter (peso 20%)**: cada equipe entrega um módulo funcional em Flutter contendo: arquitetura em camadas (Aula 11), repositório com fonte remota e local (Aula 12), gerenciamento de estado justificado, navegação declarativa com ao menos uma rota acessível por deep link (testável com o comando `adb` acima), e comportamento correto sob conectividade intermitente. A entrega é seguida de arguição individual, na qual cada integrante deve justificar oralmente as decisões de arquitetura e de interface tomadas no módulo — não pontua no critério de arquitetura quem não sustentar a decisão adotada. Roteiro-padrão de perguntas de arguição (para isonomia entre equipes) em [`recursos/rubricas/roteiro-arguicao.md`](../recursos/rubricas/roteiro-arguicao.md).

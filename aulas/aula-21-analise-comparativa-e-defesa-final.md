@@ -5,55 +5,53 @@
 
 ## Objetivos da aula
 
-- Consolidar, com evidência coletada pela própria equipe, a comparação entre as implementações Flutter e React Native do mesmo módulo.
+- Consolidar, com base em evidência medida, a comparação entre implementações Flutter e React Native do mesmo módulo.
 - Aplicar atributos de qualidade de software como critério explícito de decisão arquitetural, não como impressão subjetiva.
-- Defender oralmente uma recomendação de plataforma para um cenário concreto, sustentada por dados e por arquitetura, não por preferência.
+- Formular uma recomendação de plataforma para um cenário concreto, sustentada por dados e por arquitetura, não por preferência.
 
 ## 1. Por que esta aula fecha o curso, e não abre um tópico novo
 
-Desde a Aula 14, este componente vem construindo, aula a aula, uma tabela comparativa entre Flutter e React Native — renderização (Aulas 10/14), estado (Aulas 11/15), dados e conectividade (Aulas 12/16), navegação e integração nativa (Aulas 13/17), desempenho de renderização (Aula 20). Esta aula não introduz teoria nova: **consolida** o que já foi construído, e responde à pergunta que ficou implícita em cada comparação até aqui — dado tudo isso, qual escolher, e sob quais condições?
+Das Aulas 10 a 20, Flutter e React Native foram comparados dimensão a dimensão — renderização (Aulas 10/14), estado (Aulas 11/15), dados e conectividade (Aulas 12/16), navegação e integração nativa (Aulas 13/17), desempenho de renderização (Aula 20). Esta aula não introduz teoria nova: **consolida** o que já foi construído, e responde à pergunta que ficou implícita em cada comparação até aqui — dado tudo isso, qual escolher, e sob quais condições?
 
 > **Definição — Atributo de qualidade (quality attribute)**: propriedade mensurável ou observável de um sistema (desempenho, portabilidade, manutenibilidade, testabilidade, segurança, entre outras) usada como critério objetivo para avaliar e comparar decisões de arquitetura, em contraposição a critérios subjetivos como preferência pessoal ou familiaridade da equipe (BASS; CLEMENTS; KAZMAN, retomando a leitura da Aula 1).
 
 ## 2. Consolidação do quadro comparativo
 
-Reúna, em uma única tabela, as comparações já produzidas ao longo do componente:
+A tabela abaixo reúne as comparações feitas ao longo do componente:
 
 | Dimensão | Flutter | React Native | Aula(s) de origem |
 |---|---|---|---|
-| Renderização | Motor próprio (Impeller), desenha cada pixel | Componentes nativos reais, via Fabric | 9, 13 |
-| Linguagem e execução | Dart, compilado AOT | JavaScript/TypeScript sobre Hermes (bytecode AOT + interpretação) | 9, 13 |
-| Gerenciamento de estado | Provider/Riverpod/BLoC | Context/Redux/Zustand + TanStack Query | 10, 14 |
-| Camada de dados | Repositório + `dio`/`sqflite`/`connectivity_plus` | Repositório + `axios`/MMKV/NetInfo | 11, 15 |
-| Navegação | `go_router`, declarativa | React Navigation, `linking` | 12, 16 |
-| Integração nativa | Canal de plataforma (`MethodChannel`/`pigeon`) | TurboModules/Codegen (ou Expo Modules) | 12, 16 |
-| Custo de renderização de listas | Escopo de `setState`/escuta seletiva, `ListView.builder` | `React.memo`+seletor, `FlatList` | 19 |
-
-Se sua equipe manteve a tabela recomendada na Aula 14 §7, esta etapa é apenas revisão e organização — não reconstrução.
+| Renderização | Motor próprio (Impeller), desenha cada pixel | Componentes nativos reais, via Fabric | 10, 14 |
+| Linguagem e execução | Dart, compilado AOT | JavaScript/TypeScript sobre Hermes (bytecode AOT + interpretação) | 10, 14 |
+| Gerenciamento de estado | Provider/Riverpod/BLoC | Context/Redux/Zustand + TanStack Query | 11, 15 |
+| Camada de dados | Repositório + `dio`/`sqflite`/`connectivity_plus` | Repositório + `axios`/MMKV/NetInfo | 12, 16 |
+| Navegação | `go_router`, declarativa | React Navigation, `linking` | 13, 17 |
+| Integração nativa | Canal de plataforma (`MethodChannel`/`pigeon`) | TurboModules/Codegen (ou Expo Modules) | 13, 17 |
+| Custo de renderização de listas | Escopo de `setState`/escuta seletiva, `ListView.builder` | `React.memo`+seletor, `FlatList` | 20 |
 
 ## 3. Evidência empírica, não impressão
 
-A comparação de maior valor não é a teórica acima, mas os **números que sua própria equipe já mediu** ao longo do semestre. Reúna, das entregas anteriores:
+A comparação de maior valor não é a teórica acima, mas a que se apoia em **números medidos** nas duas implementações do mesmo módulo:
 
-| Métrica | Onde foi medida |
+| Métrica | Como medir |
 |---|---|
 | Tamanho do pacote instalável (APK/IPA) | Build de release de cada módulo |
-| Tempo de *cold start* | Observação de aula (Aula 1) e medição em aparelho real |
-| Tempo de reconstrução/re-renderização de um item de lista, antes e depois da correção | Aula 20 |
-| Linhas de código por camada (apresentação/domínio/dados) | Módulos das Aulas 11-13 e 15-17 |
+| Tempo de *cold start* | Medição em aparelho real (ver Aula 1) |
+| Tempo de reconstrução/re-renderização de um item de lista, antes e depois da otimização | Ferramentas de perfilamento de cada framework (Aula 20) |
+| Linhas de código por camada (apresentação/domínio/dados) | Contagem no código-fonte de cada implementação |
 | Número de dependências externas declaradas | `pubspec.yaml` / `package.json` de cada módulo |
 
-Uma recomendação apoiada nesses números — mesmo que a amostra seja de uma única equipe, um único módulo — vale mais nesta aula do que uma opinião sobre "qual framework é melhor" sem nenhuma medição por trás.
+Uma recomendação apoiada nesses números — mesmo que a amostra seja de um único módulo — vale mais do que uma opinião sobre "qual framework é melhor" sem nenhuma medição por trás.
 
 ## 4. "Não existe melhor, existe melhor para"
 
-Retomando o princípio da Aula 18 (nenhum estilo arquitetural é universalmente superior): o mesmo vale para a escolha entre Flutter e React Native. Cada equipe deve produzir uma recomendação justificada — não uma escolha única para todos os casos — para três cenários:
+Retomando o princípio da Aula 18 (nenhum estilo arquitetural é universalmente superior): o mesmo vale para a escolha entre Flutter e React Native. A recomendação justificada depende do cenário, e não há uma escolha única para todos os casos. Três exemplos:
 
 1. **Startup de 3 pessoas, equipe já proficiente em desenvolvimento web (React/TypeScript)**: o custo de ramp-up (Aula 14 §7) tende a pesar mais que a diferença de desempenho de renderização para a maioria dos produtos.
-2. **Aplicativo bancário com requisito forte de biometria, segurança de armazenamento local e certificação de plataforma**: a proximidade com APIs nativas e a maturidade de bibliotecas de segurança em cada ecossistema tornam-se o critério dominante — pesquise o estado atual de suporte a biometria/armazenamento seguro em cada framework antes de decidir.
+2. **Aplicativo bancário com requisito forte de biometria, segurança de armazenamento local e certificação de plataforma**: a proximidade com APIs nativas e a maturidade de bibliotecas de segurança em cada ecossistema tornam-se o critério dominante — e o estado atual de suporte a biometria/armazenamento seguro em cada framework precisa ser verificado antes da decisão.
 3. **Aplicativo com identidade visual proprietária forte e animações complexas e não padronizadas**: a consistência pixel-a-pixel entre plataformas do Flutter (Aula 10) tende a pesar mais do que a proximidade nativa do React Native.
 
-Para cada cenário, a equipe apresenta: a recomendação, os dois ou três atributos de qualidade que mais pesaram na decisão, e o que faria a equipe mudar de recomendação (qual condição inverteria a escolha).
+Em cada cenário, uma recomendação bem fundamentada explicita os dois ou três atributos de qualidade que mais pesaram na decisão e a condição que inverteria a escolha.
 
 ## 5. Quando nenhum dos dois é a resposta certa
 
@@ -63,14 +61,14 @@ Honestidade sobre o limite do escopo deste componente: Flutter e React Native n�
 - **PWA (Progressive Web App)**: quando o alcance multiplataforma via navegador é aceitável e o acesso a APIs nativas profundas não é um requisito central — mais barato de manter, mas com limites reais de acesso a hardware e de distribuição em lojas de aplicativo.
 - **Desenvolvimento nativo puro (Kotlin/Swift separados)**: ainda a escolha certa quando o produto depende fortemente de recursos de plataforma de ponta, sem tempo de espera por suporte multiplataforma, ao custo de manter duas bases de código completamente distintas.
 
-Nenhuma dessas opções foi ensinada neste componente — cite-as na apresentação apenas como reconhecimento de que o espaço de decisão é maior do que os dois frameworks estudados, não como recomendação a se aprofundar sem orientação adicional.
+Nenhuma dessas opções foi tratada neste componente; servem apenas como reconhecimento de que o espaço de decisão é maior do que os dois frameworks estudados, não como recomendação a se aprofundar sem orientação adicional.
 
 ## Síntese da aula
 
 | Etapa | Produto |
 |---|---|
 | Consolidação | Tabela comparativa completa, das Aulas 10-20 |
-| Evidência | Métricas reais medidas pela própria equipe |
+| Evidência | Métricas medidas nas duas implementações |
 | Contextualização | Recomendação justificada para três cenários distintos |
 | Limite do escopo | Reconhecimento de alternativas não cobertas pelo curso |
 
@@ -78,9 +76,3 @@ Nenhuma dessas opções foi ensinada neste componente — cite-as na apresentaç
 
 - BASS, Len; CLEMENTS, Paul; KAZMAN, Rick. *Software Architecture in Practice*, 4. ed. — capítulos sobre atributos de qualidade como critério de decisão arquitetural (retomando a Aula 1).
 - RICHARDS, Mark; FORD, Neal. *Fundamentals of Software Architecture* — capítulo sobre análise de trade-offs arquiteturais.
-
-## Atividade da aula
-
-**Avaliação 3 — Análise comparativa e defesa final (peso 30%)**: cada equipe entrega um relatório comparativo baseado nas duas implementações da própria equipe (Flutter e React Native do mesmo módulo), cobrindo a tabela consolidada da §2, a evidência empírica da §3 e a recomendação justificada para os três cenários da §4. A entrega é seguida de defesa oral, na qual a banca (docente e colegas) desafia a recomendação apresentada — questionando se a decisão está de fato ancorada em evidência medida pela equipe, ou em preferência não justificada. Esse é o critério central de avaliação desta etapa: **evidência sustenta a recomendação, ou apenas a acompanha?**
-
-Com esta entrega, fecham-se os 100% da avaliação do componente e as 80h de carga horária previstas.

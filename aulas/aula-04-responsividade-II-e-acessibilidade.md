@@ -17,7 +17,7 @@ Tratar acessibilidade como "algo a adicionar depois, se der tempo" é uma decis�
 
 ## 2. Escala de fonte definida pelo sistema
 
-Usuários com baixa visão frequentemente aumentam a escala de fonte global do sistema Android (Configurações > Acessibilidade > Tamanho da fonte), esperando que **todos** os aplicativos respeitem essa preferência. Retomando a Aula 6: usar `sp` (não `dp`) para texto é o que garante essa obediência automática.
+Usuários com baixa visão frequentemente aumentam a escala de fonte global do sistema Android (Configurações > Acessibilidade > Tamanho da fonte), esperando que **todos** os aplicativos respeitem essa preferência. Retomando a Aula 2: usar `sp` (não `dp`) para texto é o que garante essa obediência automática.
 
 > **Falha comum**: definir alturas fixas de contêiner que dependem do texto caber em uma única linha com o tamanho de fonte padrão. Quando o usuário aumenta a escala de fonte, o texto quebra em múltiplas linhas e é cortado, porque o contêiner não pode crescer.
 
@@ -36,7 +36,7 @@ Usuários com baixa visão frequentemente aumentam a escala de fonte global do s
 
 ## 3. Contraste
 
-As diretrizes WCAG (Web Content Accessibility Guidelines, também aplicáveis a interfaces móveis) recomendam uma razão de contraste mínima de **4,5:1** entre texto e fundo para texto normal, e **3:1** para texto grande (≥18pt ou ≥14pt em negrito). Esses valores de "pt" são **pontos CSS**, a unidade em que o WCAG é definido — não confundir com `sp` do Android. Na prática, a equivalência aproximada usada no Android é **~24sp normal / ~18sp em negrito** como limiar de "texto grande"; use essa referência ao aplicar o critério de contraste a um projeto Android/Flutter/React Native, não o valor em pontos diretamente. Combinações de cor esteticamente agradáveis, mas de baixo contraste (ex.: cinza claro sobre branco), são uma causa frequente de violação — e afetam não apenas usuários com baixa visão, mas qualquer usuário sob luz solar direta, retomando o contexto de uso móvel discutido na Aula 7.
+As diretrizes WCAG (Web Content Accessibility Guidelines, também aplicáveis a interfaces móveis) recomendam uma razão de contraste mínima de **4,5:1** entre texto e fundo para texto normal, e **3:1** para texto grande (≥18pt ou ≥14pt em negrito). Esses valores de "pt" são **pontos CSS**, a unidade em que o WCAG é definido — não confundir com `sp` do Android. Na prática, a equivalência aproximada usada no Android é **~24sp normal / ~18sp em negrito** como limiar de "texto grande"; use essa referência ao aplicar o critério de contraste a um projeto Android/Flutter/React Native, não o valor em pontos diretamente. Combinações de cor esteticamente agradáveis, mas de baixo contraste (ex.: cinza claro sobre branco), são uma causa frequente de violação — e afetam não apenas usuários com baixa visão, mas qualquer usuário sob luz solar direta, retomando a discussão sobre luz ambiente da Aula 2.
 
 > **Definição — Razão de contraste**: medida numérica da diferença de luminância entre duas cores, calculada segundo fórmula padronizada pelo W3C, usada para verificar objetivamente se um par de cores (texto/fundo) é suficientemente legível.
 
@@ -66,7 +66,7 @@ Layouts construídos com posicionamento absoluto ou reordenação puramente visu
 
 ## 6. Alvo mínimo e redução de movimento
 
-- **Alvo mínimo de toque**: retomando a Aula 7, 48dp × 48dp é também um requisito de acessibilidade motora — usuários com tremor ou controle motor reduzido têm taxa de erro de toque ainda maior em alvos pequenos.
+- **Alvo mínimo de toque**: 48dp × 48dp é também um requisito de acessibilidade motora — usuários com tremor ou controle motor reduzido têm taxa de erro de toque ainda maior em alvos pequenos.
 - **Redução de movimento**: o sistema permite ao usuário ativar "Remover animações" (Configurações > Acessibilidade), relevante para pessoas com sensibilidade vestibular a movimento na tela. Aplicativos devem consultar essa preferência antes de disparar animações não essenciais — a API varia por plataforma/framework:
 
 | Plataforma/framework | Como consultar a preferência |
@@ -86,7 +86,7 @@ Um erro recorrente em protótipos de estudantes é desenhar apenas o "caminho fe
 |---|---|
 | Vazio | Por que não há conteúdo, e o que fazer a respeito (ex.: "Você ainda não tem pedidos — explore o catálogo") |
 | Carregando | Que uma operação está em andamento, sem bloquear percepção de progresso além do razoável |
-| Erro | O que deu errado, em linguagem específica (retomando o UX writing da Aula 9), e uma ação de recuperação (tentar novamente) |
+| Erro | O que deu errado, em linguagem específica, e uma ação de recuperação (tentar novamente) |
 
 ## 8. Exemplo real: por que o contraste importa mais do que parece
 
@@ -118,4 +118,4 @@ Duas ferramentas gratuitas eliminam a necessidade de verificar contraste e alvo 
 
 **Atividade de sensibilização (20 min, recomendada antes da entrega)**: cada estudante ativa o TalkBack, veda os próprios olhos e tenta completar uma tarefa simples no aplicativo de banco que já usa no dia a dia. É a forma mais eficaz de converter acessibilidade de tópico de prova em convicção — poucos minutos costumam revelar mais violações do que uma hora de leitura.
 
-**Entrega 1 — Interface responsiva e acessibilidade (peso 15%)**: cada equipe entrega o protótipo de alta fidelidade da tela trabalhada nas Aulas 3 e 9, agora nas três classes de tamanho de janela, acompanhado de um laudo de acessibilidade cobrindo: verificação de contraste de todos os pares texto/fundo usados (com o verificador do WebAIM ou o Accessibility Scanner), rótulos acessíveis definidos para cada elemento interativo, ordem de foco documentada, e desenho explícito dos estados de vazio, carregamento e erro da tela escolhida. Rubrica detalhada em [`recursos/rubricas/entrega-1-interface-acessivel.md`](../recursos/rubricas/entrega-1-interface-acessivel.md) — cada critério (responsividade nas três classes, contraste, rótulos, ordem de foco, estados) é avaliado separadamente.
+**Entrega 1 — Interface responsiva e acessibilidade (peso 15%)**: cada equipe entrega o protótipo de alta fidelidade da tela trabalhada na Aula 3, agora nas três classes de tamanho de janela, acompanhado de um laudo de acessibilidade cobrindo: verificação de contraste de todos os pares texto/fundo usados (com o verificador do WebAIM ou o Accessibility Scanner), rótulos acessíveis definidos para cada elemento interativo, ordem de foco documentada, e desenho explícito dos estados de vazio, carregamento e erro da tela escolhida. Rubrica detalhada em [`recursos/rubricas/entrega-1-interface-acessivel.md`](../recursos/rubricas/entrega-1-interface-acessivel.md) — cada critério (responsividade nas três classes, contraste, rótulos, ordem de foco, estados) é avaliado separadamente.

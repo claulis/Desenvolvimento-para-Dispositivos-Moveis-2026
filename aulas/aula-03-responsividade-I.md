@@ -83,7 +83,7 @@ Uma grade ou lista de itens homogêneos (ex.: catálogo de produtos, feed de pos
 
 A rotação de tela (retrato ↔ paisagem) é, na prática, uma mudança de classe de tamanho de janela: um smartphone compacto em retrato pode entrar na classe média ao girar para paisagem. Um layout construído corretamente em termos de classes de tamanho de janela — e não de "orientação" como conceito separado — trata a rotação como apenas mais uma transição normal entre as mesmas três classes já contempladas, sem lógica duplicada.
 
-O mesmo raciocínio se aplica a tablets (frequentemente na classe expandida) e a dobráveis (que podem transicionar de compacta a expandida em tempo real ao abrir a dobra, retomando o tema da Aula 6) — a interface reage à classe de tamanho de janela corrente, independentemente da causa física da mudança.
+O mesmo raciocínio se aplica a tablets (frequentemente na classe expandida) e a dobráveis (que podem transicionar de compacta a expandida em tempo real ao abrir a dobra) — a interface reage à classe de tamanho de janela corrente, independentemente da causa física da mudança.
 
 ## 6. Exemplo real: por que aplicativos de notícias usam lista-detalhe
 
@@ -114,4 +114,4 @@ Os mesmos princípios (unidades relativas, pontos de quebra e reorganização da
 
 ## Atividade da aula
 
-**Prática: projeto de uma tela em três classes de tamanho, no Figma**: a partir da tela redesenhada na Aula 9, produzir três variações (compacta, média, expandida) usando um dos layouts canônicos apresentados como referência estrutural, documentando explicitamente o ponto de quebra escolhido entre cada variação e a justificativa. Use o **Material 3 Design Kit** oficial do Figma — já traz os componentes e os três breakpoints padrão prontos, poupando tempo de montagem que pode ser investido na decisão de layout em si. Antes de montar do zero, vale dois minutos de contraexemplo em aula: rodar um app popular qualquer em um emulador de tablet e observar como ele quebra — a maioria dos apps não testados em tela grande falha visivelmente, e ver isso ao vivo torna o motivo da atividade evidente.
+**Prática: projeto de uma tela em três classes de tamanho, no Figma**: a partir de uma tela de aplicativo real (fornecida pelo docente ou escolhida pela equipe), produzir três variações (compacta, média, expandida) usando um dos layouts canônicos apresentados como referência estrutural, documentando explicitamente o ponto de quebra escolhido entre cada variação e a justificativa. Use o **Material 3 Design Kit** oficial do Figma — já traz os componentes e os três breakpoints padrão prontos, poupando tempo de montagem que pode ser investido na decisão de layout em si. Antes de montar do zero, vale dois minutos de contraexemplo em aula: rodar um app popular qualquer em um emulador de tablet e observar como ele quebra — a maioria dos apps não testados em tela grande falha visivelmente, e ver isso ao vivo torna o motivo da atividade evidente.

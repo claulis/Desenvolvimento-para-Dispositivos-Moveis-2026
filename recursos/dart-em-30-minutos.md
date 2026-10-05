@@ -1,6 +1,6 @@
 # Dart em 30 minutos — só o que este componente usa
 
-Este não é um curso de Dart. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 9–19, para quem chega ao componente com POO (em qualquer linguagem) mas sem experiência prévia em Dart. Se sua equipe já tem essa base, pule este anexo.
+Este não é um curso de Dart. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 10–20, para quem chega ao componente com POO (em qualquer linguagem) mas sem experiência prévia em Dart. Se sua equipe já tem essa base, pule este anexo.
 
 ## Tipagem e variáveis
 
@@ -75,7 +75,7 @@ void carregar() async {
 
 ## `factory` constructors
 
-Um construtor `factory` pode decidir o que retornar (inclusive uma instância já existente), em vez de sempre criar uma nova — usado nas Aulas 11/15 para desserialização de JSON:
+Um construtor `factory` pode decidir o que retornar (inclusive uma instância já existente), em vez de sempre criar uma nova — usado nas Aulas 12/16 para desserialização de JSON:
 
 ```dart
 class Pedido {
@@ -95,7 +95,7 @@ final pedido = Pedido.fromJson({'id': 'p1', 'total': 19.9});
 
 ## Coleções imutáveis "aparentes"
 
-Padrão comum nos exemplos de gerenciamento de estado (Aula 10): em vez de alterar uma lista existente, cria-se uma nova lista com o item adicionado — o padrão que aparece como `state = [...state, item]`:
+Padrão comum nos exemplos de gerenciamento de estado (Aula 11): em vez de alterar uma lista existente, cria-se uma nova lista com o item adicionado — o padrão que aparece como `state = [...state, item]`:
 
 ```dart
 final novaLista = [...listaAntiga, novoItem]; // spread operator: copia + adiciona

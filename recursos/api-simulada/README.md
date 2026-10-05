@@ -1,6 +1,6 @@
 # API simulada
 
-`db.json` com 50 pedidos e 50 produtos de exemplo, usado como fonte remota nas atividades das Aulas 11 e 15 (padrão repositório com fonte remota + local). Versionado no repositório para que todas as equipes testem contra os mesmos dados.
+`db.json` com 50 pedidos e 50 produtos de exemplo, usado como fonte remota nas atividades das Aulas 12 e 16 (padrão repositório com fonte remota + local). Versionado no repositório para que todas as equipes testem contra os mesmos dados.
 
 ## Como rodar
 

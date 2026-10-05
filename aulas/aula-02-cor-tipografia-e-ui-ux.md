@@ -459,12 +459,12 @@ Disciplinas que costumam ser confundidas com UI/UX e são distintas:
 
 | Disciplina | Pergunta central |
 |---|---|
-| Pesquisa com usuários | Quem é a pessoa e qual é o problema real? (Aula 5) |
+| Pesquisa com usuários | Quem é a pessoa e qual é o problema real? (Aula 8) |
 | Arquitetura de informação | Como o conteúdo é organizado, nomeado e encontrado? |
 | Design de interação | O que acontece quando a pessoa age, e qual é a resposta do sistema? |
 | Design visual (UI) | Como isso se apresenta: hierarquia, cor, tipo, ritmo? |
 | Redação de interface (*UX writing*) | Que palavras exatas o sistema usa? |
-| Acessibilidade | A pessoa consegue usar com leitor de tela, fonte ampliada, só com o polegar, no ônibus? (Aula 8) |
+| Acessibilidade | A pessoa consegue usar com leitor de tela, fonte ampliada, só com o polegar, no ônibus? (Aula 4) |
 
 ---
 
@@ -503,7 +503,7 @@ Em *Emotional Design* (2004), Norman acrescenta três níveis de processamento: 
 
 ### Jakob Nielsen e a tradição da usabilidade
 
-As **dez heurísticas de usabilidade** (1994) são a ferramenta de avaliação mais usada da área — tratadas em detalhe na Aula 5. Duas contribuições complementares importam aqui:
+As **dez heurísticas de usabilidade** (1994) são a ferramenta de avaliação mais usada da área — tratadas em detalhe na Aula 8. Duas contribuições complementares importam aqui:
 
 - **Lei de Jakob**: as pessoas passam a maior parte do tempo em *outros* aplicativos, e por isso esperam que o seu funcione como os demais. Inovação em padrões de navegação e em ícones tem custo alto e benefício raro.
 - **Avaliação heurística com 3 a 5 avaliadores** encontra a maior parte dos problemas graves a uma fração do custo de um teste formal.
@@ -536,7 +536,7 @@ Formulados por Wertheimer, Köhler e Koffka nos anos 1920, os princípios da Ges
 
 ### Sistemas de design como corpo normativo
 
-Material Design (Google) e Human Interface Guidelines (Apple) não são apenas bibliotecas de componentes: são a codificação dos padrões que os usuários daquela plataforma já conhecem. Seguir o sistema é aplicar a Lei de Jakob por construção; divergir dele exige justificativa explícita de produto — e a Aula 6 trata dessa decisão em detalhe.
+Material Design (Google) e Human Interface Guidelines (Apple) não são apenas bibliotecas de componentes: são a codificação dos padrões que os usuários daquela plataforma já conhecem. Seguir o sistema é aplicar a Lei de Jakob por construção; divergir dele exige justificativa explícita de produto — e a Aula 9 trata dessa decisão em detalhe.
 
 ---
 
@@ -565,7 +565,7 @@ O que muda quando a interface é um retângulo de 6 polegadas segurado com uma m
 
 **Interrupção é a norma, não a exceção.** Ligação, notificação, semáforo abrindo. A sessão média é curta e frequentemente abandonada no meio. Consequências: preservar estado de formulário, permitir retomar de onde parou, evitar fluxos longos sem ponto de salvamento.
 
-**Contexto físico hostil.** Sol, chuva, ônibus balançando, uma mão ocupada, rede instável, dados limitados. Isso conecta esta aula diretamente à Aula 1 (restrições de plataforma) e à Aula 4 (contexto de uso e ergonomia).
+**Contexto físico hostil.** Sol, chuva, ônibus balançando, uma mão ocupada, rede instável, dados limitados. Isso conecta esta aula diretamente à Aula 1 (restrições de plataforma) e à Aula 7 (contexto de uso e ergonomia).
 
 **Desempenho percebido é UX.** Sob o limiar de Doherty, a interface precisa reagir em menos de 100 ms ao toque e mostrar progresso antes de 1 s. Esqueletos de carregamento, atualização otimista e transições curtas (200 a 300 ms) tornam o mesmo tempo de rede subjetivamente mais rápido.
 

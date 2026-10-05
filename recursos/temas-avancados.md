@@ -4,7 +4,7 @@ Este componente não tem carga horária para cobrir tudo que um aplicativo de pr
 
 ## Notificações push (implementação)
 
-Citadas como solução nas Aulas 1, 2, 12 e 16, nunca implementadas. Para aprofundar: Firebase Cloud Messaging (FCM) é o caminho mais comum em Android, com pacotes `firebase_messaging` (Flutter) e `@react-native-firebase/messaging` (React Native). O tópico central a estudar é o tratamento de mensagem com o app em primeiro plano, segundo plano e fechado — três caminhos de código distintos.
+Citadas como solução nas Aulas 1, 2, 13 e 17, nunca implementadas. Para aprofundar: Firebase Cloud Messaging (FCM) é o caminho mais comum em Android, com pacotes `firebase_messaging` (Flutter) e `@react-native-firebase/messaging` (React Native). O tópico central a estudar é o tratamento de mensagem com o app em primeiro plano, segundo plano e fechado — três caminhos de código distintos.
 
 ## Segurança
 

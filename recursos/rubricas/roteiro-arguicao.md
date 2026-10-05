@@ -1,4 +1,4 @@
-# Roteiro de arguição individual — Avaliações 2 e 3 (Aulas 12 e 20)
+# Roteiro de arguição individual — Avaliações 2 e 3 (Aulas 13 e 21)
 
 Perguntas-padrão por integrante, usadas para garantir isonomia entre equipes na arguição individual. O docente pode adaptar aos detalhes do módulo de cada equipe, mas deve cobrir as quatro categorias abaixo para cada integrante.
 
@@ -9,7 +9,7 @@ Perguntas-padrão por integrante, usadas para garantir isonomia entre equipes na
 
 ## 2. Gerenciamento de estado (obrigatória)
 
-- "Por que a equipe escolheu [Provider/Riverpod/BLoC ou Context/Redux/Zustand] e não outra opção da tabela da Aula 10/14?"
+- "Por que a equipe escolheu [Provider/Riverpod/BLoC ou Context/Redux/Zustand] e não outra opção da tabela da Aula 11/15?"
 - "O que essa escolha custou em complexidade, e o que ela comprou em troca?"
 
 ## 3. Conectividade e dados (obrigatória)

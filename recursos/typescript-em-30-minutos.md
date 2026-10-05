@@ -1,6 +1,6 @@
 # TypeScript em 30 minutos — só o que este componente usa
 
-Este não é um curso de TypeScript. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 13–19, para quem chega ao componente com JavaScript/ES6 mas sem experiência prévia em TypeScript. Se sua equipe já tem essa base, pule este anexo.
+Este não é um curso de TypeScript. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 14–20, para quem chega ao componente com JavaScript/ES6 mas sem experiência prévia em TypeScript. Se sua equipe já tem essa base, pule este anexo.
 
 ## Tipagem básica
 
@@ -14,7 +14,7 @@ let par: [string, number] = ['a', 1];   // tupla: tipos fixos por posição
 
 ## `interface`
 
-Descreve o formato esperado de um objeto — usada para modelar dados de domínio e contratos de repositório (Aulas 13–17):
+Descreve o formato esperado de um objeto — usada para modelar dados de domínio e contratos de repositório (Aulas 14–18):
 
 ```ts
 interface Pedido {
@@ -47,7 +47,7 @@ const [pedidos, setPedidos] = useState<Pedido[]>([]); // sem o genérico, TS inf
 
 ## `as` (asserção de tipo)
 
-Diz ao compilador "eu sei o tipo real disto, mesmo que você não consiga inferir" — usado ao desserializar JSON (Aula 15), onde o compilador não tem como saber a forma dos dados vindos da rede:
+Diz ao compilador "eu sei o tipo real disto, mesmo que você não consiga inferir" — usado ao desserializar JSON (Aula 16), onde o compilador não tem como saber a forma dos dados vindos da rede:
 
 ```ts
 const total = (json.total as number);
@@ -71,7 +71,7 @@ function saudacao(usuario: Usuario) {
 
 ## Async/await e `Promise<T>`
 
-Sintaxe idêntica ao Dart em espírito (Aula 11), com `Promise<T>` no lugar de `Future<T>`:
+Sintaxe idêntica ao Dart em espírito (Aula 12), com `Promise<T>` no lugar de `Future<T>`:
 
 ```ts
 async function obterPedidos(): Promise<Pedido[]> {

@@ -10,7 +10,7 @@
 
 ## Achados
 
-Mínimo de 8 linhas. Severidade na escala de Nielsen (0–4), definida na Aula 5 §6.
+Mínimo de 8 linhas. Severidade na escala de Nielsen (0–4), definida na Aula 8 §6.
 
 | # | Heurística violada | Tela/local | Descrição | Severidade (0–4) | Correção proposta | Evidência (print) |
 |---|---|---|---|---|---|---|

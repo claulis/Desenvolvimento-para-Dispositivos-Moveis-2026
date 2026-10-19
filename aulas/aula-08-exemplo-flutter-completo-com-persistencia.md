@@ -1,6 +1,6 @@
 # Aula 8 — Exemplo Flutter completo com persistência
 
-Oct 19, 2026 · @Claudio Ulisse
+
 
 ## Visão geral
 
@@ -14,16 +14,7 @@ Em 9 passos curtos, a turma constrói um app Flutter de lista de compras que **l
 - remove itens arrastando para o lado, ou todos os comprados de uma vez
 - guarda tudo no aparelho e recarrega ao abrir
 
-### Objetivos de aprendizagem
 
-Ao terminar, o aluno consegue:
-
-- explicar a diferença entre `StatelessWidget` e `StatefulWidget` e quando usar `setState`
-- montar uma tela com `Scaffold`, `AppBar`, `TextField`, `ListView.builder` e `CheckboxListTile`
-- modelar um dado com uma classe e convertê-la de e para JSON
-- guardar e ler dados no aparelho com `shared_preferences`
-- separar a tela do armazenamento, para poder trocar um pelo outro depois
-- escrever um teste automatizado simples
 
 ### Antes de codar: a analogia do quadro branco
 
@@ -55,9 +46,6 @@ flutter doctor
 8. Persistir com `shared_preferences`
 9. Testar o modelo
 
-### Como usar este guia
-
-Cada passo termina com um **resultado esperado** e, quando faz sentido, com uma pergunta **Pense antes**: peça que os alunos respondam antes de ler a explicação. Ao fim dos passos 4 e 8, há um **checkpoint** para comparar o código com o do professor. O código final completo está no fim do documento. Antes do passo 1, as seções Conceitos de base e Guia rápido de Dart explicam a biblioteca Material, os pacotes e a linguagem Dart; leia antes de começar ou consulte quando surgir dúvida. O funcionamento do shared\_preferences está explicado dentro do passo 8.
 
 ## Conceitos de base
 
@@ -1035,16 +1023,6 @@ O `shared_preferences` resolveu bem este app. Conforme os dados crescem, vale co
 
 Como isolamos tudo na `ListaStorage`, trocar de opção significa mudar **só esse arquivo**.
 
-## Exercícios
-
-Faça em ordem. Em todos, escreva primeiro, em uma frase, o que você espera ver na tela.
-
-1. **Contador de pendentes.** Mostre na `AppBar` o texto *X itens pendentes*. Dica: `_itens.where((i) => !i.comprado).length`.
-2. **Sem duplicatas.** Ao adicionar um nome que já existe (ignorando maiúsculas e minúsculas), não adicione e mostre um `SnackBar` avisando.
-3. **Preço e total.** Acrescente o campo `preco` (`double`) ao `Item`, um campo para digitá-lo e o total da lista no rodapé. Atenção: itens já salvos não têm `preco`. Use `(json['preco'] as num?)?.toDouble() ?? 0` no `fromJson` e explique por quê.
-4. **Editar o nome.** Ao tocar e segurar um item (`onLongPress`), abra um `AlertDialog` com um campo para renomeá-lo.
-5. **Pendentes primeiro.** Mostre os itens não comprados antes dos comprados, sem mudar a ordem em que foram salvos.
-6. **Desafio: trocar o armazenamento.** Reescreva só o `lista_storage.dart` para usar SQLite (`drift` ou `sqflite`), mantendo os métodos `carregar` e `salvar`. A tela não deve mudar.
 
 ## Código final completo (gabarito)
 

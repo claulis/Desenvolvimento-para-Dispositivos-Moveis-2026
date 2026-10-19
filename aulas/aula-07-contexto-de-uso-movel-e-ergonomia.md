@@ -67,11 +67,11 @@ Exemplo clássico em mobile: um usuário que aprendeu, em outros aplicativos, qu
 
 ## 5. Convenções de plataforma como atalho para o modelo mental correto
 
-Justamente porque o usuário chega ao aplicativo com um modelo mental já formado por outros aplicativos Android, **seguir as convenções da plataforma reduz a carga cognitiva**, mesmo quando uma solução "original" pareceria mais criativa. Isso não significa ausência de identidade visual — significa que a estrutura de interação (onde fica a navegação, como funciona o gesto de voltar, como se comporta um formulário) deve seguir o que o usuário já sabe, reservando a originalidade para a camada visual (cor, tipografia, ilustração), tema retomado na Aula 9.
+Justamente porque o usuário chega ao aplicativo com um modelo mental já formado por outros aplicativos Android, **seguir as convenções da plataforma reduz a carga cognitiva**, mesmo quando uma solução "original" pareceria mais criativa. Isso não significa ausência de identidade visual — significa que a estrutura de interação (onde fica a navegação, como funciona o gesto de voltar, como se comporta um formulário) deve seguir o que o usuário já sabe, reservando a originalidade para a camada visual (cor, tipografia, ilustração), tema retomado na Aula 10.
 
 ## 6. Exemplo real: por que apps de banco colocam a ação principal embaixo
 
-Aplicativos bancários brasileiros (Nubank, Itaú, Banco do Brasil) convergiram, ao longo dos últimos anos, para um padrão de navegação inferior com as ações mais usadas (pagar, transferir, extrato) sempre visíveis na base da tela — não por acaso, mas como resposta direta à ergonomia de alcance do polegar combinada com a alta frequência de uso com uma mão só, muitas vezes em pé, no transporte público. Aplicativos que mantêm ações financeiras críticas apenas em menus escondidos no topo (padrão "hambúrguer") tendem a apresentar taxas de conclusão de tarefa piores em testes de usabilidade, exatamente o tipo de medição que será praticado na Aula 8.
+Aplicativos bancários brasileiros (Nubank, Itaú, Banco do Brasil) convergiram, ao longo dos últimos anos, para um padrão de navegação inferior com as ações mais usadas (pagar, transferir, extrato) sempre visíveis na base da tela — não por acaso, mas como resposta direta à ergonomia de alcance do polegar combinada com a alta frequência de uso com uma mão só, muitas vezes em pé, no transporte público. Aplicativos que mantêm ações financeiras críticas apenas em menus escondidos no topo (padrão "hambúrguer") tendem a apresentar taxas de conclusão de tarefa piores em testes de usabilidade, exatamente o tipo de medição que será praticado na Aula 9.
 
 ## Síntese da aula
 

@@ -1312,3 +1312,81 @@ void main() {
   });
 }
 ```
+
+## Como testar no emulador ou no celular Android
+
+Até aqui rodamos no Chrome. Para ver o app como ele é de verdade, rode no Android. Há duas opções: um emulador (celular virtual no computador) ou o seu próprio celular.
+
+### Preparar o Android (uma única vez)
+
+1. Instale o [Android Studio](https://developer.android.com/studio) e abra-o uma vez, aceitando o assistente de instalação (ele baixa o Android SDK).
+2. Aceite as licenças e confira o ambiente:
+
+   ```bash
+   flutter doctor --android-licenses
+   flutter doctor
+   ```
+
+3. A seção *Android toolchain* do `flutter doctor` deve ficar sem ✗. Se aparecer `cmdline-tools component is missing`, no Android Studio vá em *Settings > Languages & Frameworks > Android SDK > SDK Tools* e marque **Android SDK Command-line Tools**.
+
+### Opção A: emulador Android
+
+1. **Criar o emulador** (só na primeira vez): no Android Studio, abra *More Actions > Virtual Device Manager* (ou *Tools > Device Manager*), clique em **Create Device**, escolha um modelo (por exemplo, *Pixel 8*), escolha uma imagem do sistema (baixe se pedir) e finalize.
+2. No VS Code, abra a pasta `lista_compras`.
+3. Aperte **Ctrl+Shift+P**, digite **Flutter: Launch Emulator** e escolha o emulador criado. Aguarde a tela do Android aparecer.
+4. Na **barra de status** (canto inferior direito do VS Code), confirme que o emulador aparece como dispositivo. Se não aparecer, clique no dispositivo atual e escolha o emulador.
+5. Abra `lib/main.dart` e aperte **F5** (ou *Run > Start Debugging*). Se pedir o ambiente, escolha **Dart & Flutter**.
+6. Aguarde a primeira compilação (pode levar alguns minutos). O app abre no emulador.
+7. Para parar, **Shift+F5**. Salvar o código (**Ctrl+S**) aplica a mudança na hora (hot reload).
+
+Pelo terminal:
+
+```bash
+flutter emulators
+flutter emulators --launch NOME_DO_EMULADOR
+flutter run
+```
+
+### Opção B: o seu próprio celular Android
+
+1. **Modo desenvolvedor:** *Configurações > Sobre o telefone* e toque 7 vezes em **Número da versão**.
+2. **Depuração USB:** *Configurações > Sistema > Opções do desenvolvedor > Depuração USB*.
+3. Conecte o celular ao computador com um cabo USB que transfira dados (não só carregue).
+4. No celular, aceite a janela **Permitir depuração USB?** (marque *Sempre permitir*).
+5. Confirme que o celular foi reconhecido:
+
+   ```bash
+   flutter devices
+   ```
+
+   O modelo do celular deve aparecer na lista. Se não aparecer, troque o cabo ou a porta USB.
+6. No VS Code, clique no dispositivo na **barra de status** e escolha o celular.
+7. Abra `lib/main.dart` e aperte **F5**. O app é instalado e abre no celular.
+8. Para parar, **Shift+F5**. Com o app aberto, **Ctrl+S** atualiza o celular na hora.
+
+Pelo terminal:
+
+```bash
+flutter devices
+flutter run -d ID_DO_CELULAR
+```
+
+Sem cabo (Android 11 ou mais novo, celular e computador na mesma rede Wi-Fi): em *Opções do desenvolvedor*, ative **Depuração por Wi-Fi**, escolha *Parear dispositivo com código* e rode:
+
+```bash
+adb pair IP:PORTA_DE_PAREAMENTO
+adb connect IP:PORTA
+flutter devices
+```
+
+### Confirmar a persistência no Android
+
+1. Adicione três itens, marque um e mude uma quantidade.
+2. Pare o app (**Shift+F5**) e rode de novo (**F5**).
+3. Os itens, as marcações e as quantidades devem reaparecer.
+
+| Sintoma | Solução |
+| --- | --- |
+| Celular não aparece em `flutter devices` | conferir a depuração USB, aceitar a janela no celular, trocar o cabo |
+| Emulador não aparece na barra de status | `flutter emulators --launch NOME` e esperar a tela do Android carregar |
+| Primeira execução muito lenta | normal: o Gradle baixa dependências; as próximas são rápidas |

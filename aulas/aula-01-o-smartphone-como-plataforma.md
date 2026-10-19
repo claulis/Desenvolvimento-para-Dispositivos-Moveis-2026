@@ -214,7 +214,7 @@ Normalmente de arquitetura **ARM** (conjunto de instruções RISC, licenciado pe
 - **Núcleos de desempenho ("big")**: 3–5 núcleos, usados para tarefas que exigem CPU sustentada.
 - **Núcleos de eficiência ("LITTLE")**: 2–4 núcleos, usados para a maior parte do tempo de uso comum (rolar uma lista, checar notificações) — o que realmente preserva a bateria no dia a dia.
 
-O sistema operacional (o *scheduler* do kernel Linux) decide dinamicamente em qual núcleo executar cada tarefa, com base em prioridade e carga — uma decisão invisível ao desenvolvedor, mas cujo efeito é sentido diretamente: uma thread de interface mal escrita, presa em um núcleo de eficiência por uma tarefa que deveria ter sido leve, produz o mesmo travamento visual (Aula 20) que veria em um aparelho genuinamente mais fraco.
+O sistema operacional (o *scheduler* do kernel Linux) decide dinamicamente em qual núcleo executar cada tarefa, com base em prioridade e carga — uma decisão invisível ao desenvolvedor, mas cujo efeito é sentido diretamente: uma thread de interface mal escrita, presa em um núcleo de eficiência por uma tarefa que deveria ter sido leve, produz o mesmo travamento visual (Aula 21) que veria em um aparelho genuinamente mais fraco.
 
 ### GPU
 
@@ -246,7 +246,7 @@ Memória flash **NAND**, não volátil (mantém os dados sem energia), mas orden
 
 ### Modem e conectividade
 
-O modem (celular 4G/5G, Wi-Fi, Bluetooth, NFC) frequentemente está integrado ao próprio SoC nos smartphones atuais. A geração de rede celular disponível (Aula 12 aprofunda o efeito disso na aplicação) e o padrão Wi-Fi suportado (Wi-Fi 5/6/6E/7) variam por faixa de preço do aparelho, e não apenas por ano de lançamento — um aparelho de entrada lançado em 2026 pode não ter 5G, enquanto um topo de linha de dois anos antes já tinha.
+O modem (celular 4G/5G, Wi-Fi, Bluetooth, NFC) frequentemente está integrado ao próprio SoC nos smartphones atuais. A geração de rede celular disponível (Aula 13 aprofunda o efeito disso na aplicação) e o padrão Wi-Fi suportado (Wi-Fi 5/6/6E/7) variam por faixa de preço do aparelho, e não apenas por ano de lançamento — um aparelho de entrada lançado em 2026 pode não ter 5G, enquanto um topo de linha de dois anos antes já tinha.
 
 ### NPU (Neural Processing Unit)
 

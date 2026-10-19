@@ -7,22 +7,22 @@ Projetos executáveis que acompanham as atividades das Unidades III e IV. Este c
 ```
 codigo/
 ├── flutter/
-│   ├── 10-widgets-responsivos/
-│   ├── 11-camadas-estado/
-│   ├── 12-repositorio-offline/
-│   ├── 13-navegacao-deeplink/
-│   └── 20-performance-lista/
+│   ├── 11-widgets-responsivos/
+│   ├── 12-camadas-estado/
+│   ├── 13-repositorio-offline/
+│   ├── 14-navegacao-deeplink/
+│   └── 21-performance-lista/
 ├── html/                 (Aula 3 — responsividade em HTML/CSS)
 │   ├── semresponvidade/
 │   ├── flexbox/
 │   ├── grid/
 │   └── mediaquery/
 └── react-native/
-    ├── 14-execucao-e-componentes/
-    ├── 15-camadas-estado/
-    ├── 16-repositorio-offline/
-    ├── 17-navegacao-deeplink/
-    └── 20-performance-lista/
+    ├── 15-execucao-e-componentes/
+    ├── 16-camadas-estado/
+    ├── 17-repositorio-offline/
+    ├── 18-navegacao-deeplink/
+    └── 21-performance-lista/
 ```
 
 Cada pasta de tópico contém:

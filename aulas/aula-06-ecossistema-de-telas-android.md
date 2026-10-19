@@ -61,7 +61,7 @@ Scaffold(
 }
 ```
 
-Em Flutter, o widget `SafeArea` resolve o mesmo problema de forma declarativa; em React Native, o hook `useSafeAreaInsets` da biblioteca `react-native-safe-area-context` cumpre papel equivalente. Os três resolvem o mesmo condicionante de plataforma, cada um à sua maneira — o que será comparado nas Aulas 10 e 14.
+Em Flutter, o widget `SafeArea` resolve o mesmo problema de forma declarativa; em React Native, o hook `useSafeAreaInsets` da biblioteca `react-native-safe-area-context` cumpre papel equivalente. Os três resolvem o mesmo condicionante de plataforma, cada um à sua maneira — o que será comparado nas Aulas 11 e 15.
 
 ## 5. Tema claro e escuro
 
@@ -71,7 +71,7 @@ Desde o Android 10, o sistema oferece um tema escuro em nível de sistema operac
 - Pode causar desconforto visual real em ambientes de pouca luz (contraste excessivo do tema claro).
 - Consome mais bateria em telas AMOLED (comuns na maioria dos aparelhos Android), já que pixels escuros consomem menos energia nesse tipo de tela.
 
-> **Implicação de projeto**: cores não devem ser codificadas de forma fixa nos componentes (*hardcoded*) — devem referenciar um sistema de tokens de cor (ex.: "cor de superfície", "cor de texto primário") que se resolve de forma diferente conforme o tema ativo. Esse princípio é a base do sistema de cor do Material Design, estudado na Aula 9.
+> **Implicação de projeto**: cores não devem ser codificadas de forma fixa nos componentes (*hardcoded*) — devem referenciar um sistema de tokens de cor (ex.: "cor de superfície", "cor de texto primário") que se resolve de forma diferente conforme o tema ativo. Esse princípio é a base do sistema de cor do Material Design, estudado na Aula 10.
 
 ## 6. Aparelhos dobráveis
 

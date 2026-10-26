@@ -71,7 +71,7 @@ Justamente porque o usuário chega ao aplicativo com um modelo mental já formad
 
 ## 6. Exemplo real: por que apps de banco colocam a ação principal embaixo
 
-Aplicativos bancários brasileiros (Nubank, Itaú, Banco do Brasil) convergiram, ao longo dos últimos anos, para um padrão de navegação inferior com as ações mais usadas (pagar, transferir, extrato) sempre visíveis na base da tela — não por acaso, mas como resposta direta à ergonomia de alcance do polegar combinada com a alta frequência de uso com uma mão só, muitas vezes em pé, no transporte público. Aplicativos que mantêm ações financeiras críticas apenas em menus escondidos no topo (padrão "hambúrguer") tendem a apresentar taxas de conclusão de tarefa piores em testes de usabilidade, exatamente o tipo de medição que será praticado na Aula 9.
+Aplicativos bancários brasileiros (Nubank, Itaú, Banco do Brasil) convergiram, ao longo dos últimos anos, para um padrão de navegação inferior com as ações mais usadas (pagar, transferir, extrato) sempre visíveis na base da tela — não por acaso, mas como resposta direta à ergonomia de alcance do polegar combinada com a alta frequência de uso com uma mão só, muitas vezes em pé, no transporte público. Aplicativos que mantêm ações financeiras críticas apenas em menus escondidos no topo (padrão "hambúrguer") tendem a apresentar taxas de conclusão de tarefa piores em testes de usabilidade, exatamente o tipo de medição que será praticado na Aula 8.
 
 ## Síntese da aula
 

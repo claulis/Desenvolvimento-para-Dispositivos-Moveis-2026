@@ -14,4 +14,4 @@ flutter run
 - `inicio/lib/main.dart`: contém a tela âncora `TelaProduto` da Aula 11 §3, sem responsividade. Adicionar `LayoutBuilder` (ou `MediaQuery.sizeOf`, ver nota da Aula 11) para alternar entre `_LayoutCompacto`, `_LayoutMedio` e `_LayoutExpandido` nos pontos de quebra de 600dp e 840dp.
 - `solucao/lib/main.dart`: referência com a responsividade já implementada — consulte depois de tentar.
 
-Esta é a "tela âncora" reconstruída em React Native na Aula 15 e comparada na Aula 22 — mantenha a estrutura de dados (`Produto`) simples e estável para facilitar a comparação futura.
+Esta é a "tela âncora" reconstruída em React Native na Aula 16 e comparada na Aula 23 — mantenha a estrutura de dados (`Produto`) simples e estável para facilitar a comparação futura.

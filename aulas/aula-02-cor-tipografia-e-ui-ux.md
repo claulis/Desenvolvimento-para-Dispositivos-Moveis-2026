@@ -459,7 +459,7 @@ Disciplinas que costumam ser confundidas com UI/UX e são distintas:
 
 | Disciplina | Pergunta central |
 |---|---|
-| Pesquisa com usuários | Quem é a pessoa e qual é o problema real? (Aula 9) |
+| Pesquisa com usuários | Quem é a pessoa e qual é o problema real? (Aula 8) |
 | Arquitetura de informação | Como o conteúdo é organizado, nomeado e encontrado? |
 | Design de interação | O que acontece quando a pessoa age, e qual é a resposta do sistema? |
 | Design visual (UI) | Como isso se apresenta: hierarquia, cor, tipo, ritmo? |
@@ -503,7 +503,7 @@ Em *Emotional Design* (2004), Norman acrescenta três níveis de processamento: 
 
 ### Jakob Nielsen e a tradição da usabilidade
 
-As **dez heurísticas de usabilidade** (1994) são a ferramenta de avaliação mais usada da área — tratadas em detalhe na Aula 9. Duas contribuições complementares importam aqui:
+As **dez heurísticas de usabilidade** (1994) são a ferramenta de avaliação mais usada da área — tratadas em detalhe na Aula 8. Duas contribuições complementares importam aqui:
 
 - **Lei de Jakob**: as pessoas passam a maior parte do tempo em *outros* aplicativos, e por isso esperam que o seu funcione como os demais. Inovação em padrões de navegação e em ícones tem custo alto e benefício raro.
 - **Avaliação heurística com 3 a 5 avaliadores** encontra a maior parte dos problemas graves a uma fração do custo de um teste formal.

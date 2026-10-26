@@ -1,6 +1,6 @@
 # Checklist de paridade — Módulo Flutter × React Native
 
-Use antes de entregar a Entrega 2 (Aula 18), para que a comparação da Aula 22 seja sobre arquitetura, não sobre diferenças acidentais de implementação entre as duas versões do mesmo módulo.
+Use antes de entregar a Entrega 2 (Aula 19), para que a comparação da Aula 23 seja sobre arquitetura, não sobre diferenças acidentais de implementação entre as duas versões do mesmo módulo.
 
 ## Rotas e navegação
 

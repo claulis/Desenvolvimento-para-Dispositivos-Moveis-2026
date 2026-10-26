@@ -61,7 +61,7 @@ Scaffold(
 }
 ```
 
-Em Flutter, o widget `SafeArea` resolve o mesmo problema de forma declarativa; em React Native, o hook `useSafeAreaInsets` da biblioteca `react-native-safe-area-context` cumpre papel equivalente. Os três resolvem o mesmo condicionante de plataforma, cada um à sua maneira — o que será comparado nas Aulas 11 e 15.
+Em Flutter, o widget `SafeArea` resolve o mesmo problema de forma declarativa; em React Native, o hook `useSafeAreaInsets` da biblioteca `react-native-safe-area-context` cumpre papel equivalente. Os três resolvem o mesmo condicionante de plataforma, cada um à sua maneira — o que será comparado nas Aulas 11 e 16.
 
 ## 5. Tema claro e escuro
 

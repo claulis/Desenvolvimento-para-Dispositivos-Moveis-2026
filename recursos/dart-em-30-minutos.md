@@ -1,6 +1,6 @@
 # Dart em 30 minutos — só o que este componente usa
 
-Este não é um curso de Dart. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 11–21, para quem chega ao componente com POO (em qualquer linguagem) mas sem experiência prévia em Dart. Se sua equipe já tem essa base, pule este anexo.
+Este não é um curso de Dart. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 11–22, para quem chega ao componente com POO (em qualquer linguagem) mas sem experiência prévia em Dart. Se sua equipe já tem essa base, pule este anexo.
 
 ## Tipagem e variáveis
 
@@ -75,7 +75,7 @@ void carregar() async {
 
 ## `factory` constructors
 
-Um construtor `factory` pode decidir o que retornar (inclusive uma instância já existente), em vez de sempre criar uma nova — usado nas Aulas 13/17 para desserialização de JSON:
+Um construtor `factory` pode decidir o que retornar (inclusive uma instância já existente), em vez de sempre criar uma nova — usado nas Aulas 13/18 para desserialização de JSON:
 
 ```dart
 class Pedido {

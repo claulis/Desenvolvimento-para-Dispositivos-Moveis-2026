@@ -24,20 +24,21 @@
 5. [Criar e rodar um app Flutter no Windows (VS Code + emulador Android)](/aulas/aula-05-flutter-instalacao-e-primeiro-app.md)
 6. Ecossistema de telas Android: densidade, tamanhos, área segura, tema claro e escuro, dobráveis
 7. Contexto de uso móvel, ergonomia de alcance, alvos de toque e modelo mental do usuário
-8. [Exemplo Flutter completo com persistência](/aulas/aula-08-exemplo-flutter-completo-com-persistencia.md)
-9. Pesquisa breve com usuário e heurísticas de usabilidade aplicadas ao Android
+8. [Pesquisa breve com usuário e heurísticas de usabilidade aplicadas ao Android](/aulas/aula-08-pesquisa-com-usuario-e-heuristicas.md)
+9. [Exemplo Flutter completo com persistência](/aulas/aula-09-exemplo-flutter-completo-com-persistencia.md)
 10. Hierarquia visual e Material Design: malha, tipografia, cor, elevação e escrita de interface
 11. Flutter: modelo de execução e renderização, árvore de widgets e composição
 12. Flutter: arquitetura em camadas e gerenciamento de estado (Provider, Riverpod, BLoC)
 13. Flutter: camada de dados, repositório e comportamento sob conectividade intermitente
 14. Flutter: navegação declarativa, ligações profundas e canais de plataforma
-15. React Native: modelo de execução e renderização, componentes funcionais e Flexbox
-16. React Native: arquitetura em camadas e gerenciamento de estado (Context, Redux, Zustand)
-17. React Native: camada de dados, detecção de conectividade e estratégia off-line
-18. React Native: navegação e módulos nativos
-19. Estilos arquiteturais: camadas, portas e adaptadores, arquitetura limpa
-20. Modularização por funcionalidade contra modularização por camada
-21. Camada de apresentação e custo de renderização: reconstrução, reconciliação e memoização
-22. Análise comparativa arquitetural e critérios de escolha de plataforma por cenário
+15. [Flutter: tutorial integrador com SQLite, arquitetura em camadas e geração do APK](/aulas/aula-15-flutter-tutorial-integrador-sqlite.md)
+16. React Native: modelo de execução e renderização, componentes funcionais e Flexbox
+17. React Native: arquitetura em camadas e gerenciamento de estado (Context, Redux, Zustand)
+18. React Native: camada de dados, detecção de conectividade e estratégia off-line
+19. React Native: navegação e módulos nativos
+20. Estilos arquiteturais: camadas, portas e adaptadores, arquitetura limpa
+21. Modularização por funcionalidade contra modularização por camada
+22. Camada de apresentação e custo de renderização: reconstrução, reconciliação e memoização
+23. Análise comparativa arquitetural e critérios de escolha de plataforma por cenário
 
 ---

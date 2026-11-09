@@ -1,17 +1,5 @@
 # Aula 16 — React Native: modelo de execução e componentes
 
-**Carga horária:** 4h
-**Unidade:** IV — Arquitetura de software em React Native
-
-## Objetivos da aula
-
-- Explicar o modelo de execução do React Native e o papel da interface JavaScript/renderizador.
-- Construir interfaces com componentes funcionais e hooks.
-- Implementar responsividade com Flexbox e `useWindowDimensions`.
-
-## Organização da aula
-
-Esta aula apresenta o segundo framework do componente e mantém o método comparativo iniciado na Unidade III: cada conceito do React Native é relacionado ao seu equivalente no Flutter, de modo que as semelhanças e as diferenças fiquem explícitas. A sequência é: como o código é executado e como produz a interface (§1 e §2), como a interface é construída e como reage a mudanças (§3 e §4), e como é organizada e adaptada a diferentes telas (§5 e §6). Em cada tópico, o conteúdo segue a ordem: problema, mecanismo e aplicação.
 
 ## 1. O que torna o React Native diferente do Flutter
 

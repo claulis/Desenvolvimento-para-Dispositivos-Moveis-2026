@@ -20,10 +20,9 @@ Este tutorial explica, passo a passo, o projeto **tarefas**: um app mobile com *
 8. [Conceitos principais](#8-conceitos-principais)
 9. [Como rodar](#9-como-rodar)
 10. [Fluxos, do toque ao banco](#10-fluxos-do-toque-ao-banco)
-11. [Migrações: como o banco passou da v1 para a v2](#11-migrações-como-o-banco-passou-da-v1-para-a-v2)
-12. [Problemas comuns](#12-problemas-comuns)
-13. [Pontos de atenção neste código](#13-pontos-de-atenção-neste-código)
-14. [Exercícios e próximos passos](#14-exercícios-e-próximos-passos)
+11. [Problemas comuns](#12-problemas-comuns)
+12. [Pontos de atenção neste código](#13-pontos-de-atenção-neste-código)
+
 
 ---
 
@@ -868,42 +867,9 @@ O padrão **gravar → recarregar → redesenhar** vale para todas as ações.
 
 ---
 
-## 11. Migrações: como o banco passou da v1 para a v2
 
-A primeira versão do app tinha só a tabela `tarefas` (**v1**). Ao incluir categorias, o banco ganhou a tabela `categorias` e a coluna `tarefas.categoria_id` (**v2**). Quem já usava o app **tem um banco v1 no celular com dados** que não podem ser perdidos. Por isso **nunca** se edita o `CREATE TABLE` antigo: acrescenta-se um degrau novo.
 
-```
-Banco novo (user_version = 0):   degrau v1 → degrau v2   → fica em 2
-Banco da versão antiga (= 1):                degrau v2   → fica em 2
-Banco atual (= 2):               nenhum degrau executa
-```
-
-Pontos de cuidado no código:
-
-1. **Cada degrau é um `if (atual === N)`** e termina com `atual = N + 1`, para o seguinte poder rodar em sequência num banco novo.
-2. **O `user_version` é gravado junto com o degrau**, não só no final. Assim, se o app fechar entre dois degraus, na próxima abertura ele continua de onde parou.
-3. **O degrau v2 usa `withTransactionAsync`.** Se `ALTER TABLE` falhar depois do `CREATE TABLE categorias`, tudo é desfeito, inclusive o `user_version`. Sem transação, o banco ficaria com a tabela criada e a versão antiga, e a próxima abertura falharia com `table categorias already exists`. (O degrau v1 não usa transação porque contém `PRAGMA journal_mode`, que não pode rodar dentro de uma.)
-4. **`ALTER TABLE ... ADD COLUMN` com `REFERENCES`** exige que a coluna nova aceite `NULL` (sem `NOT NULL` e sem valor padrão diferente de `NULL`). Por isso as tarefas antigas ficam "sem categoria".
-
-### Como criar a v3 (exemplo: data de criação)
-
-```ts
-if (atual === 2) {
-  await db.withTransactionAsync(async () => {
-    await db.execAsync(`
-      ALTER TABLE tarefas ADD COLUMN criada_em TEXT;
-      PRAGMA user_version = 3;
-    `);
-  });
-  atual = 3;
-}
-```
-
-O campo deve ser acrescentado ao tipo `Tarefa` e ao `SELECT` de `listar`.
-
----
-
-## 12. Problemas comuns
+## 11. Problemas comuns
 
 | Sintoma | Causa provável | Solução |
 |---|---|---|
@@ -936,25 +902,5 @@ Observações sobre o que pode ser melhorado (nada impede o app de funcionar):
 8. **Ícones são emojis**, que variam de aparência entre Android e iOS. Para ícones uniformes, recomenda-se `@expo/vector-icons` (já incluso no Expo).
 9. **Sem testes automatizados.** O SQL da `db.ts` é a parte mais valiosa para testar.
 
----
-
-## 14. Exercícios e próximos passos
-
-Da mais simples à mais difícil:
-
-1. **Filtrar por categoria** na aba Tarefas: reaproveitar os chips como filtro e adicionar `WHERE t.categoria_id = ?` em `listar` (atenção ao caso `NULL`: usar `IS NULL`).
-2. **Renomear categoria**: novo `UPDATE categorias SET nome = ? WHERE id = ?` em `db.ts`. Tratar o erro de nome duplicado como em `salvar`.
-3. **Trocar a categoria de uma tarefa**: um `UPDATE tarefas SET categoria_id = ? WHERE id = ?` e um jeito de escolher (toque longo abrindo as opções).
-4. **Contador de pendentes** no ícone da aba: `tabBarBadge` em `Tabs.Screen`, alimentado por um `SELECT COUNT(*)`.
-5. **Migração v3** com data de criação (seção 11) e exibição ordenada por data.
-6. **Cor por categoria**: nova coluna `cor TEXT` (migração v3), `<TextInput>` ou lista fixa de cores no cadastro, e uso da cor no chip e na tarefa.
-7. **Tela de detalhe da tarefa** (3ª rota empilhada): criar `src/app/tarefa/[id].tsx`, navegar com `router.push('/tarefa/3')` e ler o `id` com `useLocalSearchParams`. Isso exige um `Stack` em volta das abas: consultar a documentação do Expo Router sobre *nesting navigators*.
-8. **Trocar abas por menu lateral**: instalar as dependências do `Drawer` conforme a documentação e trocar `Tabs` por `Drawer`.
-9. **Modo escuro**: remover `userInterfaceStyle: "light"` e usar `useColorScheme()` do `react-native` nos estilos.
-10. **Testes** das funções de `db.ts` e **publicação** com EAS Build e EAS Submit.
-
-Documentação oficial: <https://docs.expo.dev/router/introduction/>
-
----
 
 *Documentação gerada a partir do código do projeto na versão 1.0.0 (Expo SDK 58, React Native 0.88.1, React 19.3.0, Expo Router 58).*

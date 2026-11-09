@@ -19,7 +19,7 @@ Esta aula apresenta o segundo framework do componente e mantém o método compar
 
 ### Problema
 
-Ao retomar a Aula 11, observa-se que o Flutter resolve a diferença entre sistemas operacionais desenhando todos os pixels por conta própria. Essa não é a única solução possível, e cada alternativa implica consequências distintas para a aparência, o comportamento e a integração com o sistema. A compreensão dessa escolha é pré-requisito para a comparação formal que será concluída na Aula 23.
+Ao retomar a Aula 11, observa-se que o Flutter resolve a diferença entre sistemas operacionais desenhando todos os pixels por conta própria. Essa não é a única solução possível, e cada alternativa implica consequências distintas para a aparência, o comportamento e a integração com o sistema. A compreensão dessa escolha é pré-requisito para a comparação formal que será concluída na Aula 24.
 
 ### Mecanismo
 
@@ -226,7 +226,7 @@ Uma ressalva de equivalência: `useWindowDimensions` reporta o tamanho da **jane
 
 Uma razão de mercado frequentemente citada para a adoção do React Native é a reutilização de conhecimento de equipes já proficientes em JavaScript/TypeScript e React para web. Conceitos como componentes, hooks, Flexbox e gerenciamento de estado (Context, Redux; Aula 17) transferem-se quase diretamente.
 
-Esse fator reduz o tempo de adaptação de uma equipe web à produção mobile, aspecto relevante na análise comparativa de custo de implementação que será feita na Aula 23. Ele não elimina, contudo, a necessidade de compreender os condicionantes da plataforma Android estudados na Unidade I, que continuam se aplicando integralmente.
+Esse fator reduz o tempo de adaptação de uma equipe web à produção mobile, aspecto relevante na análise comparativa de custo de implementação que será feita na Aula 24. Ele não elimina, contudo, a necessidade de compreender os condicionantes da plataforma Android estudados na Unidade I, que continuam se aplicando integralmente.
 
 ## Síntese da aula
 

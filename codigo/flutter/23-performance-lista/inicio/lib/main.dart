@@ -16,15 +16,15 @@ class App extends StatelessWidget {
   }
 }
 
-// TODO (Aula 22): esta é a versão INEFICIENTE proposital (mesmo padrão da
-// Aula 22 §2) — o estado de favoritos vive aqui, no widget pai da lista
+// TODO (Aula 23): esta é a versão INEFICIENTE proposital (mesmo padrão da
+// Aula 23 §2) — o estado de favoritos vive aqui, no widget pai da lista
 // inteira. Favoritar um item reconstrói TODA a lista.
 //
 // Meça o custo de reconstrução com o Widget Rebuild Profiler (Flutter
 // DevTools), registre em MEDICOES.md, e então refatore aplicando escuta
 // seletiva por item (ver solucao/lib/main.dart) — sem mover o dado de
 // favorito para dentro do State de cada card, o que quebraria ao rolar a
-// lista (Aula 22 §2).
+// lista (Aula 23 §2).
 class TelaCatalogo extends StatefulWidget {
   const TelaCatalogo({super.key});
 

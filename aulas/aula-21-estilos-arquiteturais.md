@@ -1,4 +1,4 @@
-# Aula 20 — Estilos arquiteturais aplicados a aplicações móveis
+# Aula 21 — Estilos arquiteturais aplicados a aplicações móveis
 
 **Carga horária:** 4h
 **Unidade:** V — Estilos arquiteturais, renderização e análise comparativa
@@ -92,11 +92,11 @@ A razão prática pela qual esta aula importa para um módulo implementado nas d
 | Portas e adaptadores | Alto — domínio nunca conhece implementação concreta | Médio — exige definir interfaces antecipadamente |
 | Arquitetura limpa | Alto, com separação adicional de casos de uso | Alto — mais classes e indireção, pode ser excessivo para módulos pequenos |
 
-> **Observação de projeto**: nenhum dos três estilos é universalmente superior — a arquitetura limpa aplicada a uma tela de configurações simples com três campos é, provavelmente, sobre-engenharia; camadas simples aplicadas a um domínio financeiro complexo, com múltiplas fontes de dados e regras de negócio elaboradas, provavelmente subdimensiona o isolamento necessário. A escolha deve ser justificada pela complexidade e pela expectativa de evolução do módulo, tema que se conecta diretamente à modularização estudada na Aula 21.
+> **Observação de projeto**: nenhum dos três estilos é universalmente superior — a arquitetura limpa aplicada a uma tela de configurações simples com três campos é, provavelmente, sobre-engenharia; camadas simples aplicadas a um domínio financeiro complexo, com múltiplas fontes de dados e regras de negócio elaboradas, provavelmente subdimensiona o isolamento necessário. A escolha deve ser justificada pela complexidade e pela expectativa de evolução do módulo, tema que se conecta diretamente à modularização estudada na Aula 22.
 
 ## 7. Exemplo real: por que times que mantêm apps em duas plataformas investem em domínio isolado
 
-Equipes que mantêm simultaneamente uma versão Flutter e uma versão React Native do mesmo produto — cenário raro, mas didaticamente relevante — relatam que o principal fator de sucesso na manutenção de paridade entre as duas versões é justamente o quanto a lógica de domínio (regras de validação, cálculo de preço, elegibilidade de desconto) foi isolada de detalhes de framework. Quando o domínio está bem isolado (mesmo que reescrito, não compartilhado literalmente entre Dart e TypeScript), uma mudança de regra de negócio é replicada de forma mecânica e verificável entre as duas bases; quando o domínio está espalhado pela camada de apresentação, cada mudança exige uma investigação separada em cada plataforma, aumentando o risco de divergência não intencional entre elas — exatamente o risco que a Unidade V busca tornar visível antes da análise comparativa final (Aula 23).
+Equipes que mantêm simultaneamente uma versão Flutter e uma versão React Native do mesmo produto — cenário raro, mas didaticamente relevante — relatam que o principal fator de sucesso na manutenção de paridade entre as duas versões é justamente o quanto a lógica de domínio (regras de validação, cálculo de preço, elegibilidade de desconto) foi isolada de detalhes de framework. Quando o domínio está bem isolado (mesmo que reescrito, não compartilhado literalmente entre Dart e TypeScript), uma mudança de regra de negócio é replicada de forma mecânica e verificável entre as duas bases; quando o domínio está espalhado pela camada de apresentação, cada mudança exige uma investigação separada em cada plataforma, aumentando o risco de divergência não intencional entre elas — exatamente o risco que a Unidade V busca tornar visível antes da análise comparativa final (Aula 24).
 
 ## Síntese da aula
 

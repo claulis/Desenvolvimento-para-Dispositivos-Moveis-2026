@@ -11,7 +11,7 @@ codigo/
 │   ├── 12-camadas-estado/
 │   ├── 13-repositorio-offline/
 │   ├── 14-navegacao-deeplink/
-│   └── 22-performance-lista/
+│   └── 23-performance-lista/
 ├── html/                 (Aula 3 — responsividade em HTML/CSS)
 │   ├── semresponvidade/
 │   ├── flexbox/
@@ -22,7 +22,7 @@ codigo/
     ├── 17-camadas-estado/
     ├── 18-repositorio-offline/
     ├── 19-navegacao-deeplink/
-    └── 22-performance-lista/
+    └── 23-performance-lista/
 ```
 
 Cada pasta de tópico contém:
@@ -35,7 +35,7 @@ Cada pasta de tópico contém:
 
 - **Flutter**: SDK Flutter instalado (`flutter doctor` sem erros bloqueantes) — ver versão de referência no [README principal](../README.md).
 - **React Native**: Node.js LTS + Expo (`npx create-expo-app` já disponível via `npx`).
-- **API simulada**: os projetos de 11/16 e 20 esperam a API fake de [`recursos/api-simulada/`](../recursos/api-simulada/) rodando em `localhost:3000` (instruções no README daquela pasta).
+- **API simulada**: os projetos de 11/16 e 21 esperam a API fake de [`recursos/api-simulada/`](../recursos/api-simulada/) rodando em `localhost:3000` (instruções no README daquela pasta).
 
 ## Convenção de branches/commits ao usar em sala
 

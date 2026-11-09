@@ -1,4 +1,4 @@
-# Aula 23 — Análise comparativa Flutter × React Native e defesa arquitetural
+# Aula 24 — Análise comparativa Flutter × React Native e defesa arquitetural
 
 **Carga horária:** 4h
 **Unidade:** V — Estilos arquiteturais, renderização e análise comparativa
@@ -11,7 +11,7 @@
 
 ## 1. Por que esta aula fecha o curso, e não abre um tópico novo
 
-Das Aulas 11 a 22, Flutter e React Native foram comparados dimensão a dimensão — renderização (Aulas 11/16), estado (Aulas 12/17), dados e conectividade (Aulas 13/18), navegação e integração nativa (Aulas 14/19), desempenho de renderização (Aula 22). Esta aula não introduz teoria nova: **consolida** o que já foi construído, e responde à pergunta que ficou implícita em cada comparação até aqui — dado tudo isso, qual escolher, e sob quais condições?
+Das Aulas 11 a 23, Flutter e React Native foram comparados dimensão a dimensão — renderização (Aulas 11/16), estado (Aulas 12/17), dados e conectividade (Aulas 13/18), navegação e integração nativa (Aulas 14/19), desempenho de renderização (Aula 23). Esta aula não introduz teoria nova: **consolida** o que já foi construído, e responde à pergunta que ficou implícita em cada comparação até aqui — dado tudo isso, qual escolher, e sob quais condições?
 
 > **Definição — Atributo de qualidade (quality attribute)**: propriedade mensurável ou observável de um sistema (desempenho, portabilidade, manutenibilidade, testabilidade, segurança, entre outras) usada como critério objetivo para avaliar e comparar decisões de arquitetura, em contraposição a critérios subjetivos como preferência pessoal ou familiaridade da equipe (BASS; CLEMENTS; KAZMAN, retomando a leitura da Aula 1).
 
@@ -21,13 +21,13 @@ A tabela abaixo reúne as comparações feitas ao longo do componente:
 
 | Dimensão | Flutter | React Native | Aula(s) de origem |
 |---|---|---|---|
-| Renderização | Motor próprio (Impeller), desenha cada pixel | Componentes nativos reais, via Fabric | 11, 15 |
-| Linguagem e execução | Dart, compilado AOT | JavaScript/TypeScript sobre Hermes (bytecode AOT + interpretação) | 11, 15 |
-| Gerenciamento de estado | Provider/Riverpod/BLoC | Context/Redux/Zustand + TanStack Query | 12, 16 |
-| Camada de dados | Repositório + `dio`/`sqflite`/`connectivity_plus` | Repositório + `axios`/MMKV/NetInfo | 13, 17 |
-| Navegação | `go_router`, declarativa | React Navigation, `linking` | 14, 18 |
-| Integração nativa | Canal de plataforma (`MethodChannel`/`pigeon`) | TurboModules/Codegen (ou Expo Modules) | 14, 18 |
-| Custo de renderização de listas | Escopo de `setState`/escuta seletiva, `ListView.builder` | `React.memo`+seletor, `FlatList` | 21 |
+| Renderização | Motor próprio (Impeller), desenha cada pixel | Componentes nativos reais, via Fabric | 11, 16 |
+| Linguagem e execução | Dart, compilado AOT | JavaScript/TypeScript sobre Hermes (bytecode AOT + interpretação) | 11, 16 |
+| Gerenciamento de estado | Provider/Riverpod/BLoC | Context/Redux/Zustand + TanStack Query | 12, 17 |
+| Camada de dados | Repositório + `dio`/`sqflite`/`connectivity_plus` | Repositório + `axios`/MMKV/NetInfo | 13, 18 |
+| Navegação | `go_router`, declarativa | React Navigation, `linking` | 14, 19 |
+| Integração nativa | Canal de plataforma (`MethodChannel`/`pigeon`) | TurboModules/Codegen (ou Expo Modules) | 14, 19 |
+| Custo de renderização de listas | Escopo de `setState`/escuta seletiva, `ListView.builder` | `React.memo`+seletor, `FlatList` | 23 |
 
 ## 3. Evidência empírica, não impressão
 
@@ -37,7 +37,7 @@ A comparação de maior valor não é a teórica acima, mas a que se apoia em **
 |---|---|
 | Tamanho do pacote instalável (APK/IPA) | Build de release de cada módulo |
 | Tempo de *cold start* | Medição em aparelho real (ver Aula 1) |
-| Tempo de reconstrução/re-renderização de um item de lista, antes e depois da otimização | Ferramentas de perfilamento de cada framework (Aula 22) |
+| Tempo de reconstrução/re-renderização de um item de lista, antes e depois da otimização | Ferramentas de perfilamento de cada framework (Aula 23) |
 | Linhas de código por camada (apresentação/domínio/dados) | Contagem no código-fonte de cada implementação |
 | Número de dependências externas declaradas | `pubspec.yaml` / `package.json` de cada módulo |
 
@@ -45,7 +45,7 @@ Uma recomendação apoiada nesses números — mesmo que a amostra seja de um ú
 
 ## 4. "Não existe melhor, existe melhor para"
 
-Retomando o princípio da Aula 20 (nenhum estilo arquitetural é universalmente superior): o mesmo vale para a escolha entre Flutter e React Native. A recomendação justificada depende do cenário, e não há uma escolha única para todos os casos. Três exemplos:
+Retomando o princípio da Aula 21 (nenhum estilo arquitetural é universalmente superior): o mesmo vale para a escolha entre Flutter e React Native. A recomendação justificada depende do cenário, e não há uma escolha única para todos os casos. Três exemplos:
 
 1. **Startup de 3 pessoas, equipe já proficiente em desenvolvimento web (React/TypeScript)**: o custo de ramp-up (Aula 16 §7) tende a pesar mais que a diferença de desempenho de renderização para a maioria dos produtos.
 2. **Aplicativo bancário com requisito forte de biometria, segurança de armazenamento local e certificação de plataforma**: a proximidade com APIs nativas e a maturidade de bibliotecas de segurança em cada ecossistema tornam-se o critério dominante — e o estado atual de suporte a biometria/armazenamento seguro em cada framework precisa ser verificado antes da decisão.
@@ -67,7 +67,7 @@ Nenhuma dessas opções foi tratada neste componente; servem apenas como reconhe
 
 | Etapa | Produto |
 |---|---|
-| Consolidação | Tabela comparativa completa, das Aulas 11-22 |
+| Consolidação | Tabela comparativa completa, das Aulas 11-23 |
 | Evidência | Métricas medidas nas duas implementações |
 | Contextualização | Recomendação justificada para três cenários distintos |
 | Limite do escopo | Reconhecimento de alternativas não cobertas pelo curso |

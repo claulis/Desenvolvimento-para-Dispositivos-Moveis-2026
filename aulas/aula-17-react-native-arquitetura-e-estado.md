@@ -144,7 +144,7 @@ Retomando a Aula 12: o estado local (`useState`) é suficiente para um component
 
 Mecanismo nativo do React para compartilhar dados entre componentes sem passar propriedades manualmente por cada nível da árvore. É adequado para estado que muda com pouca frequência (tema, dados de sessão do usuário autenticado).
 
-**Limitação estrutural.** O Context **não faz** *bailout* seletivo de re-renderização: qualquer mudança no `value` do provider re-renderiza **todos** os componentes que o consomem, mesmo aqueles que leem apenas uma parte do objeto que não mudou. Usar Context para estado que muda a cada interação (por exemplo, o texto digitado em tempo real) pode, portanto, causar reconstruções desnecessárias em todos os consumidores. É essa limitação, e não a frequência de mudança isoladamente, que explica por que o Context é uma escolha pobre para estado que muda rápido, e por que a Aula 22 recomenda observação seletiva em bibliotecas dedicadas.
+**Limitação estrutural.** O Context **não faz** *bailout* seletivo de re-renderização: qualquer mudança no `value` do provider re-renderiza **todos** os componentes que o consomem, mesmo aqueles que leem apenas uma parte do objeto que não mudou. Usar Context para estado que muda a cada interação (por exemplo, o texto digitado em tempo real) pode, portanto, causar reconstruções desnecessárias em todos os consumidores. É essa limitação, e não a frequência de mudança isoladamente, que explica por que o Context é uma escolha pobre para estado que muda rápido, e por que a Aula 23 recomenda observação seletiva em bibliotecas dedicadas.
 
 ```tsx
 const CarrinhoContext = createContext<CarrinhoContextType | null>(null);

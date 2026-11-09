@@ -1,4 +1,4 @@
-# Roteiro de arguição individual — Avaliações 2 e 3 (Aulas 14 e 23)
+# Roteiro de arguição individual — Avaliações 2 e 3 (Aulas 14 e 24)
 
 Perguntas-padrão por integrante, usadas para garantir isonomia entre equipes na arguição individual. O docente pode adaptar aos detalhes do módulo de cada equipe, mas deve cobrir as quatro categorias abaixo para cada integrante.
 

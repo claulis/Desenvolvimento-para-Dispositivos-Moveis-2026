@@ -37,7 +37,7 @@ export default function App() {
   }, []);
 
   // renderItem estável — não inline — para que React.memo em CardProduto
-  // funcione de fato (Aula 22 §4).
+  // funcione de fato (Aula 23 §4).
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Produto>) => (
       <CardProduto produto={item} favoritado={favoritos.has(item.id)} onFavoritar={alternarFavorito} />

@@ -10,6 +10,6 @@ Materiais de apoio referenciados pelas aulas — templates, rubricas, dados de e
 | [`temas-avancados.md`](temas-avancados.md) | Referência geral | Temas fora do escopo das 80h (push, segurança, build, observabilidade, i18n) |
 | [`dart-em-30-minutos.md`](dart-em-30-minutos.md) | Antes da Aula 11 | Nivelamento de sintaxe Dart usada no componente |
 | [`typescript-em-30-minutos.md`](typescript-em-30-minutos.md) | Antes da Aula 16 | Nivelamento de sintaxe TypeScript usada no componente |
-| [`rubricas/`](rubricas/) | Aulas 4, 7, 14, 23 | Rubricas de avaliação em tabela e roteiro de arguição |
+| [`rubricas/`](rubricas/) | Aulas 4, 7, 14, 24 | Rubricas de avaliação em tabela e roteiro de arguição |
 | [`api-simulada/`](api-simulada/) | Aulas 13, 18 | API REST fake (`json-server`) com pedidos e produtos de exemplo |
-| [`datasets/`](datasets/) | Aula 22 | Lista de 250 produtos para medição de desempenho de renderização |
+| [`datasets/`](datasets/) | Aula 23 | Lista de 250 produtos para medição de desempenho de renderização |

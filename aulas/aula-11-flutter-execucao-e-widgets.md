@@ -11,7 +11,7 @@
 
 ## Organização da aula
 
-Esta aula responde a três perguntas encadeadas: **como** o Flutter transforma código em pixels na tela (§1 e §2), **como** a interface é descrita e atualizada por meio de widgets (§3 e §4) e **como** essa descrição se adapta a telas de tamanhos diferentes (§5 e §6). Em cada seção, o conteúdo segue a sequência: problema, mecanismo e aplicação em código. A compreensão do mecanismo é o que permite, nas aulas seguintes, avaliar o custo de decisões de projeto, em especial o custo de renderização (Aula 22).
+Esta aula responde a três perguntas encadeadas: **como** o Flutter transforma código em pixels na tela (§1 e §2), **como** a interface é descrita e atualizada por meio de widgets (§3 e §4) e **como** essa descrição se adapta a telas de tamanhos diferentes (§5 e §6). Em cada seção, o conteúdo segue a sequência: problema, mecanismo e aplicação em código. A compreensão do mecanismo é o que permite, nas aulas seguintes, avaliar o custo de decisões de projeto, em especial o custo de renderização (Aula 23).
 
 ## 1. O que torna o Flutter diferente
 
@@ -63,7 +63,7 @@ No Flutter, a interface é descrita exclusivamente por **composição de widgets
 
 #### As três árvores internas
 
-A afirmação "tudo é widget" descreve apenas a camada mais externa. Por trás dela, o Flutter mantém **três árvores** sincronizadas, fundamentais para a compreensão do custo de renderização tratado na Aula 22:
+A afirmação "tudo é widget" descreve apenas a camada mais externa. Por trás dela, o Flutter mantém **três árvores** sincronizadas, fundamentais para a compreensão do custo de renderização tratado na Aula 23:
 
 | Árvore | Natureza | Função |
 |---|---|---|
@@ -71,7 +71,7 @@ A afirmação "tudo é widget" descreve apenas a camada mais externa. Por trás 
 | **Elements** | Instância persistente que conecta um widget à sua posição na hierarquia ao longo do tempo | Compara a configuração nova à anterior e decide o que precisa mudar |
 | **RenderObjects** | Objetos que calculam o layout e realizam a pintura efetiva | Determina **onde e como** desenhar na tela |
 
-A criação de um novo widget em `build()` **não** implica, por si só, trabalho dispendioso. O Flutter compara o novo widget ao anterior por meio da árvore de Elements e só propaga a alteração à árvore de RenderObjects quando algo efetivamente mudou. Esta é a distinção que sustenta a Aula 22: **reconstruir a configuração é barato; recalcular layout e pintura é o que custa**.
+A criação de um novo widget em `build()` **não** implica, por si só, trabalho dispendioso. O Flutter compara o novo widget ao anterior por meio da árvore de Elements e só propaga a alteração à árvore de RenderObjects quando algo efetivamente mudou. Esta é a distinção que sustenta a Aula 23: **reconstruir a configuração é barato; recalcular layout e pintura é o que custa**.
 
 ### Aplicação
 
@@ -162,7 +162,7 @@ class _ContadorFavoritosState extends State<ContadorFavoritos> {
 }
 ```
 
-Uma alteração em `_quantidade` **fora** de `setState()` mudaria o valor, mas não agendaria a reconstrução, e a tela permaneceria desatualizada. Essa distinção antecipa um tema central da Aula 22: `setState()` reconstrói o widget e **toda a sua subárvore**, de modo que compreender o escopo dessa reconstrução é o que separa um código Flutter ingênuo de um código bem projetado.
+Uma alteração em `_quantidade` **fora** de `setState()` mudaria o valor, mas não agendaria a reconstrução, e a tela permaneceria desatualizada. Essa distinção antecipa um tema central da Aula 23: `setState()` reconstrói o widget e **toda a sua subárvore**, de modo que compreender o escopo dessa reconstrução é o que separa um código Flutter ingênuo de um código bem projetado.
 
 ## 5. Responsividade com `LayoutBuilder` e `MediaQuery`
 
@@ -214,11 +214,11 @@ A comparação direta com os pontos de quebra de 600dp e 840dp estudados na Aula
 
 > **Critério de escolha**: para uma decisão estrutural de **tela inteira**, baseada na classe de tamanho de janela, o idiomático é `MediaQuery.sizeOf(context)`. Desde o Flutter 3.10, essa chamada evita reconstruções desnecessárias de widgets que não dependem do tamanho (diferentemente de `MediaQuery.of(context)`, que notifica o widget a cada mudança de qualquer propriedade do ambiente). O pacote oficial `flutter_adaptive_scaffold` é uma alternativa para essa finalidade. Reserva-se o `LayoutBuilder` para o caso em que o widget está aninhado em outro layout que já reduziu o espaço disponível (por exemplo, um card dentro de um painel lateral), situação para a qual o widget foi projetado e em que o tamanho da tela inteira não é a informação relevante.
 
-> **Nota**: a `TelaProduto` construída na §3 é a "tela âncora" deste componente. A mesma tela será reconstruída em React Native na Aula 16 e comparada formalmente na Aula 23, de modo que convém preservá-la.
+> **Nota**: a `TelaProduto` construída na §3 é a "tela âncora" deste componente. A mesma tela será reconstruída em React Native na Aula 16 e comparada formalmente na Aula 24, de modo que convém preservá-la.
 
 #### Observação da árvore em execução
 
-Para tornar concreta a metáfora da árvore, recomenda-se abrir o **Flutter DevTools > Widget Inspector** durante o desenvolvimento desta tela. A ferramenta exibe a hierarquia real de widgets, permite selecionar um elemento na tela e localizá-lo na árvore, e deve ser usada desde esta aula, e não apenas na Aula 22.
+Para tornar concreta a metáfora da árvore, recomenda-se abrir o **Flutter DevTools > Widget Inspector** durante o desenvolvimento desta tela. A ferramenta exibe a hierarquia real de widgets, permite selecionar um elemento na tela e localizá-lo na árvore, e deve ser usada desde esta aula, e não apenas na Aula 23.
 
 ## 6. `SafeArea` no Flutter
 

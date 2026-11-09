@@ -1,4 +1,4 @@
-# Aula 21 — Modularização por funcionalidade e por camada
+# Aula 22 — Modularização por funcionalidade e por camada
 
 **Carga horária:** 4h
 **Unidade:** V — Estilos arquiteturais, renderização e análise comparativa
@@ -35,7 +35,7 @@ lib/
     └── usuario_repository.dart
 ```
 
-Essa é a organização que resulta "naturalmente" de aplicar a arquitetura em camadas (Aula 20) sem critério adicional: todo o domínio junto, toda a apresentação junta. Funciona bem em projetos pequenos, mas apresenta um problema de escala: para entender ou modificar completamente a funcionalidade "pedido", é preciso navegar por três pastas diferentes e distantes na árvore de diretórios — e não há nada impedindo, estruturalmente, que o módulo de domínio de "produto" acabe referenciando algo de "pedido" de forma não intencional.
+Essa é a organização que resulta "naturalmente" de aplicar a arquitetura em camadas (Aula 21) sem critério adicional: todo o domínio junto, toda a apresentação junta. Funciona bem em projetos pequenos, mas apresenta um problema de escala: para entender ou modificar completamente a funcionalidade "pedido", é preciso navegar por três pastas diferentes e distantes na árvore de diretórios — e não há nada impedindo, estruturalmente, que o módulo de domínio de "produto" acabe referenciando algo de "pedido" de forma não intencional.
 
 ## 3. Modularização por funcionalidade (vertical)
 

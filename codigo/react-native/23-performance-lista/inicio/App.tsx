@@ -5,8 +5,8 @@ import { Produto } from './produto';
 
 const produtos = produtosJson as Produto[];
 
-// TODO (Aula 22): este é o componente da versão INEFICIENTE proposital
-// (mesmo padrão da Aula 22 §3). CardProduto não é memoizado, e o
+// TODO (Aula 23): este é o componente da versão INEFICIENTE proposital
+// (mesmo padrão da Aula 23 §3). CardProduto não é memoizado, e o
 // `renderItem` abaixo é uma função inline recriada a cada render do App —
 // mesmo que você adicione React.memo aqui, ele não vai ajudar sem também
 // estabilizar renderItem/alternarFavorito com useCallback.
@@ -43,7 +43,7 @@ export default function App() {
       <FlatList
         data={produtos}
         // TODO: adicionar keyExtractor — sem ele, o React usa o índice
-        // internamente, o antipadrão discutido na Aula 22 §5.
+        // internamente, o antipadrão discutido na Aula 23 §5.
         renderItem={({ item }) => (
           <CardProduto
             produto={item}

@@ -36,9 +36,10 @@
 17. React Native: arquitetura em camadas e gerenciamento de estado (Context, Redux, Zustand)
 18. React Native: camada de dados, detecção de conectividade e estratégia off-line
 19. React Native: navegação e módulos nativos
-20. Estilos arquiteturais: camadas, portas e adaptadores, arquitetura limpa
-21. Modularização por funcionalidade contra modularização por camada
-22. Camada de apresentação e custo de renderização: reconstrução, reconciliação e memoização
-23. Análise comparativa arquitetural e critérios de escolha de plataforma por cenário
+20. [React Native: tutorial integrador com SQLite, Expo Router e navegação por abas](/aulas/aula-20-react-native-tutorial-integrador-sqlite.md)
+21. Estilos arquiteturais: camadas, portas e adaptadores, arquitetura limpa
+22. Modularização por funcionalidade contra modularização por camada
+23. Camada de apresentação e custo de renderização: reconstrução, reconciliação e memoização
+24. Análise comparativa arquitetural e critérios de escolha de plataforma por cenário
 
 ---

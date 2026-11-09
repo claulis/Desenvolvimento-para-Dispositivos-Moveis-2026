@@ -28,7 +28,7 @@ final favoritosProvider = StateProvider<Set<String>>((ref) => {});
 
 // Family provider: cada card observa apenas a própria fatia (é ou não é
 // favorito), em vez de todo o Set de favoritos — a "escuta seletiva" da
-// Aula 22 §2.
+// Aula 23 §2.
 final favoritoProvider = Provider.family<bool, String>((ref, produtoId) {
   return ref.watch(favoritosProvider).contains(produtoId);
 });

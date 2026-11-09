@@ -155,7 +155,7 @@ O aplicativo segue a arquitetura em camadas da Aula 12:
 
 Dois pontos merecem atenção:
 
-- **O domínio não depende de nada.** Ele declara o contrato `ItemRepository` (o que precisa), e a camada de dados o implementa (como faz). A seta entre domínio e dados, portanto, aponta para cima: os dados dependem do domínio, e não o contrário. Essa inversão é o princípio central dos estilos arquiteturais da Aula 20 (portas e adaptadores, arquitetura limpa) e é o que permite testar as regras sem banco de dados.
+- **O domínio não depende de nada.** Ele declara o contrato `ItemRepository` (o que precisa), e a camada de dados o implementa (como faz). A seta entre domínio e dados, portanto, aponta para cima: os dados dependem do domínio, e não o contrário. Essa inversão é o princípio central dos estilos arquiteturais da Aula 21 (portas e adaptadores, arquitetura limpa) e é o que permite testar as regras sem banco de dados.
 - **Um único arquivo conhece as classes concretas.** `providers.dart` é o ponto de montagem (*composition root*): é ali que se decide que o `ItemRepository` usado em produção é o `ItemRepositorySqlite`. As telas pedem um `ItemRepository` e não sabem que existe SQLite. Nos testes, basta substituir esse provider por uma implementação em memória.
 
 ### 2.2 Fluxo de uma ação
@@ -235,7 +235,7 @@ compras/
 └── pubspec.yaml
 ```
 
-As pastas de `lib/` correspondem às camadas. Essa organização por camada é a mais direta para um aplicativo com uma única funcionalidade; a Aula 21 discute a alternativa de organizar por funcionalidade, mais adequada quando o aplicativo cresce.
+As pastas de `lib/` correspondem às camadas. Essa organização por camada é a mais direta para um aplicativo com uma única funcionalidade; a Aula 22 discute a alternativa de organizar por funcionalidade, mais adequada quando o aplicativo cresce.
 
 ## Passo 1: Criar o projeto e instalar as dependências
 
@@ -1543,7 +1543,7 @@ class _Falha extends StatelessWidget {
 - **Três estados (Aula 4).** `itensAsync.when` exibe o indicador de carregamento, a mensagem de falha com opção de nova tentativa, ou o conteúdo. Dentro do conteúdo, a lista vazia tem estado próprio, com orientação sobre o que fazer.
 - **Estado offline (Aula 13).** A faixa de aviso aparece acima da lista quando não há rede, sem bloquear o uso: os dados continuam sendo gravados no SQLite.
 - **`ref.listen`** executa uma ação em resposta a uma mudança, sem reconstruir a tela. É usado para sincronizar quando a rede retorna e para exibir a `SnackBar` com o resultado.
-- **`select`** faz a tela observar apenas o campo `emAndamento` do estado de sincronização. Mudanças apenas na mensagem não reconstroem a tela, o que antecipa as técnicas de redução de reconstruções da Aula 22.
+- **`select`** faz a tela observar apenas o campo `emAndamento` do estado de sincronização. Mudanças apenas na mensagem não reconstroem a tela, o que antecipa as técnicas de redução de reconstruções da Aula 23.
 - **Responsividade (Aulas 3 e 11).** O `LayoutBuilder` informa a largura disponível e define 1, 2 ou 3 colunas. A altura de cada cartão é multiplicada pela escala de fonte do sistema (`textScalerOf`); com altura fixa, um usuário com fonte ampliada (Aula 4) teria o texto cortado.
 - **`CustomScrollView` com *slivers*** permite que o cabeçalho de resumo e a grade rolem juntos, como uma única lista.
 
@@ -2440,7 +2440,7 @@ Disponível no Android 11 ou posterior, com computador e celular na mesma rede:
 | Modo | Comando | Compilação | Uso |
 |---|---|---|---|
 | Debug | `flutter run` ou **F5** | JIT (Aula 11) | Desenvolvimento: hot reload, depurador, verificações (`assert`) ativas |
-| Profile | `flutter run --profile` | AOT, com instrumentação | Medição de desempenho com o DevTools (Aula 22). Recomenda-se dispositivo físico, pois o emulador não representa o desempenho real |
+| Profile | `flutter run --profile` | AOT, com instrumentação | Medição de desempenho com o DevTools (Aula 23). Recomenda-se dispositivo físico, pois o emulador não representa o desempenho real |
 | Release | `flutter run --release` | AOT, otimizado | Comportamento e desempenho finais; sem depurador nem hot reload |
 
 No VS Code, os três modos podem ser oferecidos no menu de execução por meio do arquivo `.vscode/launch.json`:
@@ -2466,7 +2466,7 @@ No VS Code, os três modos podem ser oferecidos no menu de execução por meio d
 
 ### 4.7 Flutter DevTools
 
-Com o aplicativo em execução, `Ctrl+Shift+P` > **Flutter: Open DevTools**. O **Widget Inspector** exibe a árvore de widgets real (Aula 11) e permite selecionar um elemento na tela para localizá-lo no código; a aba **Performance**, em modo *profile*, mostra o tempo de cada quadro (Aula 22).
+Com o aplicativo em execução, `Ctrl+Shift+P` > **Flutter: Open DevTools**. O **Widget Inspector** exibe a árvore de widgets real (Aula 11) e permite selecionar um elemento na tela para localizá-lo no código; a aba **Performance**, em modo *profile*, mostra o tempo de cada quadro (Aula 23).
 
 ## 5. Formas de testar
 

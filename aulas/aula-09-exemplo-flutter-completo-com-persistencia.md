@@ -18,7 +18,7 @@ Em 9 passos curtos, a turma constrói um app Flutter de lista de compras que **l
 
 ### Antes de codar: a analogia do quadro branco
 
-Imagine a tela como um quadro branco numa sala. O **estado** (`State`) é o que está escrito no quadro. Chamar `setState` é apagar e reescrever o quadro. Mas quando a aula acaba e a sala fecha (o app é encerrado), o quadro é apagado. **Persistir** é tirar uma foto do quadro antes de sair e, na próxima aula, escrever de novo o que está na foto. É exatamente o que o passo 8 faz.
+A tela pode ser comparada a um quadro branco numa sala. O **estado** (`State`) é o que está escrito no quadro. Chamar `setState` é apagar e reescrever o quadro. Mas quando a aula acaba e a sala fecha (o app é encerrado), o quadro é apagado. **Persistir** é tirar uma foto do quadro antes de sair e, na próxima aula, escrever de novo o que está na foto. É exatamente o que o passo 8 faz.
 
 ### Pré-requisitos
 
@@ -26,7 +26,7 @@ Imagine a tela como um quadro branco numa sala. O **estado** (`State`) é o que 
 - VS Code com as extensões **Flutter** e **Dart**
 - Um destino para rodar o app: o **Chrome** (mais simples para a sala de aula) ou um emulador/celular Android
 
-Confira a instalação no terminal. Tudo que aparecer com ✗ precisa ser resolvido antes de começar:
+A instalação é conferida no terminal. Tudo que aparecer com ✗ precisa ser resolvido antes de começar:
 
 ```bash
 flutter doctor
@@ -49,7 +49,7 @@ flutter doctor
 
 ## Conceitos de base
 
-Três peças aparecem em todo o código deste guia: o Flutter e seus widgets, a biblioteca `material.dart` e os pacotes. Leia agora ou volte aqui quando surgir dúvida. A linguagem Dart tem a sua própria seção logo depois.
+Três peças aparecem em todo o código deste guia: o Flutter e seus widgets, a biblioteca `material.dart` e os pacotes. A leitura pode ser feita agora ou retomada quando surgir dúvida. A linguagem Dart tem a sua própria seção logo depois.
 
 ### Flutter e widgets
 
@@ -57,7 +57,7 @@ O **Flutter** é o framework do Google para criar apps de celular, web e desktop
 
 ### O que é o `material.dart`
 
-É a primeira linha do nosso `main.dart`:
+É a primeira linha do `main.dart` do app:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -65,13 +65,13 @@ import 'package:flutter/material.dart';
 
 Lendo a linha por partes:
 
-- `import` traz código de outro arquivo para o seu
+- `import` traz código de outro arquivo para o arquivo atual
 - `package:flutter` indica *de onde*: o pacote do próprio Flutter
 - `material.dart` é a biblioteca importada: o conjunto de widgets prontos do **Material Design**
 
-O Material Design é o sistema de design do Google: um conjunto de regras e componentes visuais (cores, tipografia, botões, barras, campos de texto, animações). A biblioteca `material.dart` entrega esses componentes prontos, para não precisarmos desenhar cada botão do zero. A versão atual do Material, usada por padrão nos apps novos, é a 3. Existe também o `cupertino.dart`, com componentes no estilo do iOS.
+O Material Design é o sistema de design do Google: um conjunto de regras e componentes visuais (cores, tipografia, botões, barras, campos de texto, animações). A biblioteca `material.dart` entrega esses componentes prontos, evitando desenhar cada botão do zero. A versão atual do Material, usada por padrão nos apps novos, é a 3. Existe também o `cupertino.dart`, com componentes no estilo do iOS.
 
-O que usamos dela no app:
+O que o app usa dessa biblioteca:
 
 | Elemento | Para que serve no app |
 | --- | --- |
@@ -89,7 +89,7 @@ Os widgets de estrutura, como `Column`, `Row`, `Text`, `Padding`, `Expanded`, `L
 
 ### Pacotes, `pub.dev` e `pubspec.yaml`
 
-Um **pacote** é código pronto, escrito por outras pessoas, que você reaproveita. O repositório oficial de pacotes Dart e Flutter é o [pub.dev](https://pub.dev). O `shared_preferences`, que usaremos no passo 8, é um deles.
+Um **pacote** é código pronto, escrito por outras pessoas, que pode ser reaproveitado. O repositório oficial de pacotes Dart e Flutter é o [pub.dev](https://pub.dev). O `shared_preferences`, usado no passo 8, é um deles.
 
 O arquivo `pubspec.yaml`, na raiz do projeto, é a *ficha* do app: nome, versão e a lista de pacotes de que ele depende. Depois do passo 8, ele terá algo assim (o número da versão pode ser mais novo):
 
@@ -105,14 +105,14 @@ dev_dependencies:
 ```
 
 - `dependencies` são pacotes que o app precisa para funcionar
-- `dev_dependencies` são pacotes só para desenvolvimento, como o `flutter_test`, que usamos no passo 9
+- `dev_dependencies` são pacotes só para desenvolvimento, como o `flutter_test`, usado no passo 9
 - `^2.5.4` significa: qualquer versão compatível a partir da 2.5.4, até antes da 3.0.0
 - `flutter pub add nome` escreve a linha no `pubspec.yaml` e baixa o pacote. `flutter pub get` baixa tudo que já está listado
-- para usar um pacote no código, importamos com `import 'package:nome/arquivo.dart';`. Pelo mesmo motivo, no teste importamos `package:lista_compras/models/item.dart`: `lista_compras` é o nome do nosso próprio pacote
+- para usar um pacote no código, importa-se com `import 'package:nome/arquivo.dart';`. Pelo mesmo motivo, no teste importa-se `package:lista_compras/models/item.dart`: `lista_compras` é o nome do próprio pacote do projeto
 
 ## Guia rápido de Dart
 
-Dart é a linguagem do Flutter. Se você conhece Java, C# ou JavaScript, vai achá-la familiar. O compilador confere os tipos antes de o app rodar, o que pega muitos erros cedo. Esta seção segue a ordem em que as ideias aparecem no código e mostra, em cada uma, onde ela é usada.
+Dart é a linguagem do Flutter. Para quem conhece Java, C# ou JavaScript, a linguagem parece familiar. O compilador confere os tipos antes de o app rodar, o que pega muitos erros cedo. Esta seção segue a ordem em que as ideias aparecem no código e mostra, em cada uma, onde ela é usada.
 
 ### 1. Variáveis, tipos e texto
 
@@ -132,7 +132,7 @@ contador = contador + 1;
 
 Os tipos básicos são `int` (inteiro), `double` (decimal), `String` (texto) e `bool` (verdadeiro ou falso).
 
-Textos aceitam aspas simples ou duplas. Para colocar um valor no meio do texto, usamos a **interpolação**: `'Oi, $nome'` para uma variável simples, e `'Quantidade: ${item.quantidade}'` quando é uma expressão, como o acesso a um campo.
+Textos aceitam aspas simples ou duplas. Para colocar um valor no meio do texto, usa-se a **interpolação**: `'Oi, $nome'` para uma variável simples, e `'Quantidade: ${item.quantidade}'` quando é uma expressão, como o acesso a um campo.
 
 ### 2. Funções
 
@@ -188,7 +188,7 @@ Uma **lambda** é uma função sem nome, escrita no lugar em que é usada:
 ```
 
 - `_` como nome de parâmetro é a convenção para “recebo, mas não uso”
-- `VoidCallback` é um tipo que significa “função sem parâmetros e sem retorno”. Nosso `_atualizar(VoidCallback alteracao)` recebe um pedaço de código e o executa dentro do `setState`
+- `VoidCallback` é um tipo que significa “função sem parâmetros e sem retorno”. O método `_atualizar(VoidCallback alteracao)` recebe um pedaço de código e o executa dentro do `setState`
 - uma lambda **lembra** as variáveis que existiam ao seu redor quando foi criada. Por isso, a lambda dentro do `itemBuilder` enxerga o `item` daquela linha
 
 ### 5. Classes, herança e `@override`
@@ -230,7 +230,7 @@ final marcado2 = marcado ?? false; // se marcado for nulo, usa false
 - `bool? marcado` no `onChanged` do checkbox e o retorno de `getString` são tipos que podem ser nulos
 - `a ?? b` significa “use `a`; se `a` for nulo, use `b`”
 - depois de um teste `== null` com `return`, o Dart passa a tratar a variável como não nula
-- `dynamic` é “qualquer tipo, sem conferir”. O `jsonDecode` devolve valores assim, e por isso usamos `as`: `json['id'] as String` diz ao Dart qual é o tipo real. Se o valor não for desse tipo, o app para com um erro de conversão
+- `dynamic` é “qualquer tipo, sem conferir”. O `jsonDecode` devolve valores assim, e por isso usa-se `as`: `json['id'] as String` diz ao Dart qual é o tipo real. Se o valor não for desse tipo, o app para com um erro de conversão
 
 ### 7. Coleções e genéricos
 
@@ -271,7 +271,7 @@ item.quantidade++;                  // soma 1
 
 ### 9. Tarefas demoradas: `Future`, `async` e `await`
 
-Imagine pedir um prato num restaurante. Você recebe uma **senha** e, enquanto a comida não fica pronta, pode conversar. Quando chamam sua senha, você busca o prato. A senha é o `Future`: uma promessa de um valor que chegará depois.
+Considere o pedido de um prato num restaurante. O cliente recebe uma **senha** e, enquanto a comida não fica pronta, pode conversar. Quando a senha é chamada, o cliente busca o prato. A senha é o `Future`: uma promessa de um valor que chegará depois.
 
 ```dart
 Future<void> _carregar() async {
@@ -287,7 +287,7 @@ Future<void> _carregar() async {
 - ler do aparelho, gravar e acessar a internet são operações lentas, então o Dart as faz de forma **assíncrona**: a tela continua respondendo enquanto isso
 - `Future<List<Item>>` lê-se “uma lista de `Item` que vai chegar”. `Future<void>` é uma tarefa que termina, mas não devolve valor
 - `async` marca a função, e `await` só pode ser usado dentro de uma função `async`. O `await` pausa **aquela função** até o resultado chegar, e o app segue funcionando
-- em `_storage.salvar(_itens);` não usamos `await`: disparamos a gravação e seguimos em frente. O `initState` não pode ser `async`, então ele também chama `_carregar()` sem esperar
+- em `_storage.salvar(_itens);` não se usa `await`: a gravação é disparada e a execução segue em frente. O `initState` não pode ser `async`, então ele também chama `_carregar()` sem esperar
 - depois de um `await`, a tela pode ter sido fechada. O `if (!mounted) return;` evita chamar `setState` numa tela que já não existe
 
 ### 10. Imports, bibliotecas e convenções
@@ -295,8 +295,8 @@ Future<void> _carregar() async {
 | Forma do import | Exemplo | De onde vem |
 | --- | --- | --- |
 | `dart:` | `import 'dart:convert';` | bibliotecas que já vêm com o Dart (aqui: `jsonEncode` e `jsonDecode`) |
-| `package:` | `import 'package:flutter/material.dart';` | pacotes: o Flutter, o pub.dev ou o seu próprio projeto |
-| caminho relativo | `import 'models/item.dart';` | outro arquivo do seu projeto |
+| `package:` | `import 'package:flutter/material.dart';` | pacotes: o Flutter, o pub.dev ou o próprio projeto |
+| caminho relativo | `import 'models/item.dart';` | outro arquivo do mesmo projeto |
 
 Convenções de nomes:
 
@@ -307,7 +307,7 @@ Convenções de nomes:
 
 ## Passo 1: Criar o projeto e rodar o primeiro app
 
-O comando `flutter create` gera um projeto completo, já com um app de exemplo funcionando. Escolha uma pasta de trabalho e rode:
+O comando `flutter create` gera um projeto completo, já com um app de exemplo funcionando. Escolher uma pasta de trabalho e executar:
 
 ```bash
 flutter create lista_compras
@@ -319,11 +319,11 @@ code .
 - o nome precisa ser em minúsculas, com `_` entre as palavras (é o nome do *pacote* Dart)
 - `code .` abre a pasta no VS Code
 
-A pasta que mais importa para nós é a `lib/`, onde fica o código do app. O arquivo `pubspec.yaml` lista as dependências, e a pasta `test/` guarda os testes.
+A pasta que mais importa para o desenvolvimento é a `lib/`, onde fica o código do app. O arquivo `pubspec.yaml` lista as dependências, e a pasta `test/` guarda os testes.
 
 ### Limpar o `main.dart`
 
-O exemplo gerado é um contador, que não vamos usar. Abra `lib/main.dart`, apague tudo e escreva:
+O exemplo gerado é um contador, que não será usado. Abrir `lib/main.dart`, apagar todo o conteúdo e escrever:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -348,7 +348,7 @@ class ListaComprasApp extends StatelessWidget {
 }
 ```
 
-O exemplo gerado também criou o arquivo `test/widget_test.dart`, que testa o contador e **vai dar erro** agora. **Apague esse arquivo** (botão direito no VS Code, *Delete*). Voltaremos aos testes no passo 9.
+O exemplo gerado também criou o arquivo `test/widget_test.dart`, que testa o contador e **vai dar erro** agora. **Esse arquivo deve ser apagado** (botão direito no VS Code, *Delete*). Os testes voltam no passo 9.
 
 ### Rodar o app
 
@@ -360,7 +360,7 @@ No VS Code, também dá para abrir o `main.dart` e apertar **F5**, escolhendo o 
 
 **Resultado esperado:** uma página com o texto *Olá, compras!* no centro.
 
-**Pense antes:** troque o texto para `'Minha lista'` e salve o arquivo com Ctrl+S. O que você espera ver? Isso se chama *hot reload*: o Flutter troca o código em execução sem reiniciar o app. No terminal, `r` faz hot reload e `R` faz hot restart (reinicia o app e zera o estado).
+**Questão para reflexão:** ao trocar o texto para `'Minha lista'` e salvar o arquivo com Ctrl+S, o que se espera ver? Isso se chama *hot reload*: o Flutter troca o código em execução sem reiniciar o app. No terminal, `r` faz hot reload e `R` faz hot restart (reinicia o app e zera o estado).
 
 > **Nota para o professor:** no Flutter 3.47, o Material também existe como pacote separado (`material_ui`), de adoção opcional por enquanto. O import `package:flutter/material.dart`, usado neste guia, continua funcionando. Detalhes em [Migrate to standalone material\_ui and cupertino\_ui packages](https://docs.flutter.dev/release/breaking-changes/material-ui-and-cupertino-ui).
 
@@ -374,9 +374,9 @@ No Flutter, tudo que aparece na tela é um *widget*. Há dois tipos de widget de
 | Guarda dados que mudam? | Não | Sim, na classe `State` |
 | Exemplo no app | `ListaComprasApp` (só configura o tema) | `ListaPage` (a lista muda a cada toque) |
 
-Um `StatefulWidget` sempre vem em **duas classes**: o widget (a configuração, que não muda) e o `State` (os dados e o método `build`, que desenha a tela). O Flutter só redesenha quando chamamos `setState`.
+Um `StatefulWidget` sempre vem em **duas classes**: o widget (a configuração, que não muda) e o `State` (os dados e o método `build`, que desenha a tela). O Flutter só redesenha quando `setState` é chamado.
 
-Em `lib/main.dart`, troque o `home` do `MaterialApp` por `const ListaPage()` e acrescente as duas classes abaixo, no fim do arquivo:
+Em `lib/main.dart`, trocar o `home` do `MaterialApp` por `const ListaPage()` e acrescentar as duas classes abaixo, no fim do arquivo:
 
 ```dart
       home: const ListaPage(),
@@ -407,13 +407,13 @@ class _ListaPageState extends State<ListaPage> {
 
 **Resultado esperado:** uma barra no topo com o título *Lista de Compras* e a mensagem *Nada por aqui ainda* no centro.
 
-**Pense antes:** por que a tela da lista precisa ser `Stateful`, e o `MaterialApp` não?
+**Questão para reflexão:** por que a tela da lista precisa ser `Stateful`, e o `MaterialApp` não?
 
 ## Passo 3: O modelo `Item` e uma lista fixa
 
-Um app precisa de um jeito de representar os dados. Em vez de guardar só textos, criamos uma **classe** que descreve um item da lista: um nome, uma quantidade e se já foi comprado.
+Um app precisa de um jeito de representar os dados. Em vez de guardar só textos, cria-se uma **classe** que descreve um item da lista: um nome, uma quantidade e se já foi comprado.
 
-Crie a pasta `lib/models/` e dentro dela o arquivo `item.dart`:
+Criar a pasta `lib/models/` e, dentro dela, o arquivo `item.dart`:
 
 ```dart
 class Item {
@@ -433,10 +433,10 @@ class Item {
 
 - `final` significa que o valor não muda depois de criado (`id` e `nome`)
 - `quantidade` e `comprado` não são `final`, pois mudam ao longo do uso
-- o `id` identifica cada item de forma única; vamos precisar dele para remover itens e para salvar
+- o `id` identifica cada item de forma única; ele será necessário para remover itens e para salvar
 - `required` obriga quem cria o `Item` a informar o campo; `this.quantidade = 1` define um valor padrão
 
-Agora use o modelo na tela. No topo do `main.dart`, acrescente o import e, em seguida, substitua a classe `_ListaPageState` inteira:
+Agora o modelo é usado na tela. No topo do `main.dart`, acrescentar o import e, em seguida, substituir a classe `_ListaPageState` inteira:
 
 ```dart
 import 'models/item.dart';
@@ -475,11 +475,11 @@ class _ListaPageState extends State<ListaPage> {
 
 **Resultado esperado:** três linhas na tela: *Arroz*, *Feijão* (quantidade 2) e *Café*.
 
-**Pense antes:** se dois itens tivessem o mesmo nome, como o app saberia qual deles remover? É por isso que existe o `id`.
+**Questão para reflexão:** se dois itens tivessem o mesmo nome, como o app saberia qual deles remover? É por isso que existe o `id`.
 
 ## Passo 4: Adicionar itens
 
-Agora a lista deixa de ser fixa. O usuário digita o nome e toca em *Adicionar*. Substitua a classe `_ListaPageState` inteira (a lista agora começa vazia):
+Agora a lista deixa de ser fixa. O usuário digita o nome e toca em *Adicionar*. Substituir a classe `_ListaPageState` inteira (a lista agora começa vazia):
 
 ```dart
 class _ListaPageState extends State<ListaPage> {
@@ -554,7 +554,7 @@ class _ListaPageState extends State<ListaPage> {
 
 O que há de novo:
 
-- `TextEditingController` lê (e limpa) o que o usuário digitou. Como ele guarda recursos, liberamos no `dispose`
+- `TextEditingController` lê (e limpa) o que o usuário digitou. Como ele guarda recursos, é liberado no `dispose`
 - `trim()` tira espaços das pontas, e `isEmpty` impede adicionar item vazio
 - **`setState`** é o coração do passo: avisa ao Flutter que os dados mudaram e que a tela precisa ser redesenhada
 - `Expanded` dentro do `Row` dá ao campo de texto o espaço que sobra ao lado do botão; dentro da `Column`, faz a lista ocupar o resto da tela
@@ -563,15 +563,15 @@ O que há de novo:
 
 **Resultado esperado:** digitar *Leite*, tocar em *Adicionar* e ver *Leite* aparecer na lista, com o campo limpo.
 
-**Pense antes:** o que aconteceria se tirássemos o `setState` e deixássemos só `_itens.add(...)`? (Teste e observe: a lista muda, mas a tela não.)
+**Questão para reflexão:** o que aconteceria se o `setState` fosse retirado, deixando só `_itens.add(...)`? (Ao testar, observa-se que a lista muda, mas a tela não.)
 
 ### Checkpoint 1
 
-Até aqui o `main.dart` tem: o import do Material, o import do `Item`, `main()`, `ListaComprasApp`, `ListaPage` e esta `_ListaPageState`. Se a turma travar, compare com o código final no fim do documento. Ele só difere por mais recursos nas linhas da lista e pelo armazenamento.
+Até aqui o `main.dart` tem: o import do Material, o import do `Item`, `main()`, `ListaComprasApp`, `ListaPage` e esta `_ListaPageState`. Se a turma travar, o código final no fim do documento serve de comparação. Ele só difere por mais recursos nas linhas da lista e pelo armazenamento.
 
 ## Passo 5: Marcar como comprado
 
-Troque o `ListTile` por um `CheckboxListTile`, que já traz a caixa de seleção embutida. No `itemBuilder`, substitua o `return ListTile(...)` por:
+O `ListTile` é trocado por um `CheckboxListTile`, que já traz a caixa de seleção embutida. No `itemBuilder`, substituir o `return ListTile(...)` por:
 
 ```dart
                       return CheckboxListTile(
@@ -593,19 +593,19 @@ Troque o `ListTile` por um `CheckboxListTile`, que já traz a caixa de seleção
 ```
 
 - `value` diz se a caixa está marcada, e `onChanged` roda quando o usuário toca nela
-- `marcado` é do tipo `bool?` (pode ser nulo), por isso o `?? false`: se vier nulo, usamos `false`
+- `marcado` é do tipo `bool?` (pode ser nulo), por isso o `?? false`: se vier nulo, usa-se `false`
 - `controlAffinity: leading` põe a caixa à esquerda do texto
 - `condição ? A : B` é o operador ternário: se `item.comprado` for verdadeiro, risca o texto; senão, não aplica nenhum efeito (`null`)
 
 **Resultado esperado:** ao tocar numa linha, a caixa marca e o nome fica riscado. Tocando de novo, volta ao normal.
 
-**Pense antes:** por que o estado *comprado* fica dentro do `Item`, e não dentro do widget da linha? Dica: o `ListView.builder` descarta e recria as linhas que saem da tela, e depois vamos precisar salvar esse estado.
+**Questão para reflexão:** por que o estado *comprado* fica dentro do `Item`, e não dentro do widget da linha? Dica: o `ListView.builder` descarta e recria as linhas que saem da tela, e depois esse estado precisará ser salvo.
 
 ## Passo 6: Remover itens
 
-Vamos remover de duas formas: arrastando um item para o lado e com um botão que limpa todos os comprados.
+A remoção ocorre de duas formas: arrastando um item para o lado e com um botão que limpa todos os comprados.
 
-**1. Arrastar para remover.** Envolva o `CheckboxListTile` com um `Dismissible`. O `itemBuilder` inteiro passa a ficar assim:
+**1. Arrastar para remover.** Envolver o `CheckboxListTile` com um `Dismissible`. O `itemBuilder` inteiro passa a ficar assim:
 
 ```dart
                     itemBuilder: (context, i) {
@@ -640,12 +640,12 @@ Vamos remover de duas formas: arrastando um item para o lado e com um botão que
                     },
 ```
 
-- o `key` é obrigatório e precisa ser **único por item**: é por ele que o Flutter sabe qual linha foi arrastada. Aqui usamos o `id`
+- o `key` é obrigatório e precisa ser **único por item**: é por ele que o Flutter sabe qual linha foi arrastada. Aqui usa-se o `id`
 - `endToStart` permite arrastar só da direita para a esquerda
 - `background` é o fundo vermelho com a lixeira que aparece enquanto se arrasta
 - `onDismissed` roda quando o gesto termina. **É obrigatório remover o item da lista aqui**; senão, o Flutter reclama que o widget ainda está na árvore
 
-**2. Botão de limpar comprados.** Na `AppBar`, acrescente a lista `actions`:
+**2. Botão de limpar comprados.** Na `AppBar`, acrescentar a lista `actions`:
 
 ```dart
       appBar: AppBar(
@@ -665,11 +665,11 @@ Vamos remover de duas formas: arrastando um item para o lado e com um botão que
 
 **Resultado esperado:** arrastar um item para a esquerda o remove. Marcar dois itens e tocar na vassoura na barra superior remove os dois de uma vez.
 
-**Pense antes:** no `ListTile` simples do passo 3 não precisávamos de `key`. Por que o `Dismissible` precisa?
+**Questão para reflexão:** no `ListTile` simples do passo 3 não era necessário `key`. Por que o `Dismissible` precisa?
 
 ## Passo 7: Controlar a quantidade
 
-O `CheckboxListTile` tem um espaço chamado `secondary`, que fica do lado oposto à caixa de seleção. Vamos colocar ali os botões **−** e **+**. Dentro do `CheckboxListTile`, logo depois do `subtitle`, acrescente:
+O `CheckboxListTile` tem um espaço chamado `secondary`, que fica do lado oposto à caixa de seleção. Ali são colocados os botões **−** e **+**. Dentro do `CheckboxListTile`, logo depois do `subtitle`, acrescentar:
 
 ```dart
                           secondary: Row(
@@ -692,25 +692,25 @@ O `CheckboxListTile` tem um espaço chamado `secondary`, que fica do lado oposto
 
 - `mainAxisSize: MainAxisSize.min` faz o `Row` ocupar só o espaço dos dois botões
 - `item.quantidade++` soma 1, e `item.quantidade--` subtrai 1
-- quando `onPressed` é `null`, o botão fica **desabilitado** (acinzentado). Usamos isso para impedir quantidades menores que 1
+- quando `onPressed` é `null`, o botão fica **desabilitado** (acinzentado). Isso é usado para impedir quantidades menores que 1
 
 **Resultado esperado:** cada linha mostra os botões − e + à direita. O + aumenta a quantidade; o − diminui e fica desabilitado quando a quantidade é 1.
 
-**Pense antes:** o que mudaria se, em vez de desabilitar o botão, deixássemos a quantidade chegar a 0 ou a números negativos? Onde mais no app essa regra poderia ficar guardada?
+**Questão para reflexão:** o que mudaria se, em vez de desabilitar o botão, a quantidade pudesse chegar a 0 ou a números negativos? Onde mais no app essa regra poderia ficar guardada?
 
 ## Passo 8: Persistir os dados com `shared_preferences`
 
-**O problema.** Adicione alguns itens, pare o app e rode de novo: a lista voltou vazia. Os dados estão na memória (`_itens`), e a memória é apagada quando o app fecha. Precisamos de um lugar onde guardar.
+**O problema.** Ao adicionar alguns itens, parar o app e executá-lo de novo, a lista volta vazia. Os dados estão na memória (`_itens`), e a memória é apagada quando o app fecha. É necessário um lugar onde guardar.
 
-**A escolha.** Para uma lista pequena de texto, o pacote `shared_preferences` é a opção mais simples: guarda pares *chave → valor* no aparelho (no navegador, usa o armazenamento local). Ele só aceita tipos simples (texto, número, `bool`, lista de textos). Por isso vamos transformar a lista inteira em **um único texto JSON** e guardá-lo numa chave. Na seção final há uma comparação com outras opções (SQLite, Hive etc.) para quando a lista crescer.
+**A escolha.** Para uma lista pequena de texto, o pacote `shared_preferences` é a opção mais simples: guarda pares *chave → valor* no aparelho (no navegador, usa o armazenamento local). Ele só aceita tipos simples (texto, número, `bool`, lista de textos). Por isso a lista inteira é transformada em **um único texto JSON** e guardada numa chave. Na seção final há uma comparação com outras opções (SQLite, Hive etc.) para quando a lista crescer.
 
-> **Qual API usar?** Desde a versão 2.3.0, o pacote tem três APIs, e a documentação recomenda a `SharedPreferencesAsync` (ou a `WithCache`) para código novo. Usamos a `SharedPreferencesAsync`. Tutoriais antigos usam `SharedPreferences.getInstance()`: funciona, mas guarda os dados num lugar diferente no Android, então **não misture as duas no mesmo app**. Fonte: [shared\_preferences no pub.dev](https://pub.dev/packages/shared_preferences).
+> **Qual API usar?** Desde a versão 2.3.0, o pacote tem três APIs, e a documentação recomenda a `SharedPreferencesAsync` (ou a `WithCache`) para código novo. Usa-se a `SharedPreferencesAsync`. Tutoriais antigos usam `SharedPreferences.getInstance()`: funciona, mas guarda os dados num lugar diferente no Android, então **não se devem misturar as duas no mesmo app**. Fonte: [shared\_preferences no pub.dev](https://pub.dev/packages/shared_preferences).
 
 ### Como o `shared_preferences` funciona
 
 O `shared_preferences` é um **plugin**: um pacote com código Dart e também código nativo de cada sistema (Android, iOS, navegador e outros). Para quem programa, ele oferece uma interface única. Por baixo, cada plataforma usa o seu próprio mecanismo de armazenamento de preferências.
 
-A ideia é a de um **armário de gavetas etiquetadas**: cada gaveta tem uma *chave* (a etiqueta) e guarda um *valor*. Nosso app usa uma única gaveta, de chave `lista_compras`, que guarda o texto JSON com todos os itens.
+A ideia é a de um **armário de gavetas etiquetadas**: cada gaveta tem uma *chave* (a etiqueta) e guarda um *valor*. O app usa uma única gaveta, de chave `lista_compras`, que guarda o texto JSON com todos os itens.
 
 | Plataforma | Onde os dados ficam |
 | --- | --- |
@@ -721,7 +721,7 @@ A ideia é a de um **armário de gavetas etiquetadas**: cada gaveta tem uma *cha
 
 Fonte: documentação do pacote no [pub.dev](https://pub.dev/packages/shared_preferences).
 
-**O caminho de um salvamento, no nosso app:**
+**O caminho de um salvamento, neste app:**
 
 1. a tela chama `_storage.salvar(_itens)` depois de qualquer mudança
 2. a `ListaStorage` transforma a lista em texto com `jsonEncode`
@@ -739,7 +739,7 @@ Fonte: documentação do pacote no [pub.dev](https://pub.dev/packages/shared_pre
 | `bool` | `setBool` | `getBool` |
 | `List<String>` | `setStringList` | `getStringList` |
 
-Por isso um `Item`, ou uma `List<Item>`, não pode ser guardado direto: convertemos para texto JSON primeiro. Além desses, há `remove(chave)` para apagar uma gaveta, `containsKey(chave)` para saber se ela existe, `getKeys()` para listar as chaves e `clear()` para apagar tudo.
+Por isso um `Item`, ou uma `List<Item>`, não pode ser guardado direto: é preciso convertê-lo para texto JSON primeiro. Além desses, há `remove(chave)` para apagar uma gaveta, `containsKey(chave)` para saber se ela existe, `getKeys()` para listar as chaves e `clear()` para apagar tudo.
 
 ```dart
 final prefs = SharedPreferencesAsync();
@@ -754,21 +754,21 @@ final nada = await prefs.getString('nao_existe');      // null
 await prefs.remove('apelido');
 ```
 
-Toda leitura devolve `null` quando a chave não existe. Foi esse o caso da primeira execução do nosso app, tratado em `if (texto == null) return [];`.
+Toda leitura devolve `null` quando a chave não existe. Foi esse o caso da primeira execução do app, tratado em `if (texto == null) return [];`.
 
 **As três APIs do pacote:**
 
 | API | Como funciona | Quando usar |
 | --- | --- | --- |
-| `SharedPreferencesAsync` | sem cache: toda leitura vai ao armazenamento nativo, e todos os métodos são assíncronos | código novo; é a que usamos |
+| `SharedPreferencesAsync` | sem cache: toda leitura vai ao armazenamento nativo, e todos os métodos são assíncronos | código novo; é a usada neste app |
 | `SharedPreferencesWithCache` | mantém uma cópia em memória, e a leitura depois de criada é imediata | quando há muitas leituras seguidas |
 | `SharedPreferences` (antiga) | cache em memória, criada com `SharedPreferences.getInstance()` | código antigo |
 
 **Cuidados:**
 
-- **não é criptografado.** Nunca guarde senhas ou tokens de login nele; para isso existe o `flutter_secure_storage`
+- **não é criptografado.** Nunca guardar senhas ou tokens de login nele; para isso existe o `flutter_secure_storage`
 - os dados somem se o app for desinstalado ou se o usuário limpar os dados do app (ou do navegador)
-- **não é um banco de dados.** A cada mudança gravamos a lista inteira de novo, o que é ótimo para dezenas de itens e ruim para milhares. Não há como buscar ou filtrar sem ler tudo
+- **não é um banco de dados.** A cada mudança, a lista inteira é gravada de novo, o que é ótimo para dezenas de itens e ruim para milhares. Não há como buscar ou filtrar sem ler tudo
 - o valor é um texto: se o formato do `Item` mudar (um campo novo, por exemplo), os dados já salvos continuam no formato antigo
 
 ### 8.1 Instalar o pacote
@@ -777,7 +777,7 @@ Toda leitura devolve `null` quando a chave não existe. Foi esse o caso da prime
 flutter pub add shared_preferences
 ```
 
-O comando baixa o pacote e acrescenta uma linha parecida com `shared_preferences: ^2.5.4` na seção `dependencies` do `pubspec.yaml` (o número da versão pode ser mais novo). Se o app estiver rodando, pare e rode de novo: plugins nativos não entram com hot reload.
+O comando baixa o pacote e acrescenta uma linha parecida com `shared_preferences: ^2.5.4` na seção `dependencies` do `pubspec.yaml` (o número da versão pode ser mais novo). Se o app estiver rodando, deve-se pará-lo e executá-lo de novo: plugins nativos não entram com hot reload.
 
 ### 8.2 Ensinar o `Item` a virar JSON
 
@@ -787,7 +787,7 @@ JSON é um formato de texto para dados. Um `Item` ficaria assim:
 {"id": "1", "nome": "Arroz", "quantidade": 1, "comprado": false}
 ```
 
-Em `lib/models/item.dart`, acrescente dois métodos **dentro** da classe `Item`, depois dos campos:
+Em `lib/models/item.dart`, acrescentar dois métodos **dentro** da classe `Item`, depois dos campos:
 
 ```dart
   Map<String, dynamic> toJson() => {
@@ -811,7 +811,7 @@ Em `lib/models/item.dart`, acrescente dois métodos **dentro** da classe `Item`,
 
 ### 8.3 Isolar o armazenamento numa classe
 
-Crie o arquivo `lib/lista_storage.dart`. Toda a conversa com o `shared_preferences` fica **só aqui**; a tela não precisa saber como os dados são guardados:
+Criar o arquivo `lib/lista_storage.dart`. Toda a conversa com o `shared_preferences` fica **só aqui**; a tela não precisa saber como os dados são guardados:
 
 ```dart
 import 'dart:convert';
@@ -838,13 +838,13 @@ class ListaStorage {
 ```
 
 - `Future` e `async`/`await`: ler do aparelho leva um instante, então a função devolve uma *promessa* de resultado. `await` espera essa promessa ser cumprida sem travar a tela
-- na primeira execução não existe nada salvo: `getString` devolve `null`, e devolvemos uma lista vazia
+- na primeira execução não existe nada salvo: `getString` devolve `null`, e devolve-se uma lista vazia
 - `jsonEncode(itens)` transforma a lista em texto. Ele chama o `toJson()` de cada `Item` automaticamente
-- `jsonDecode` faz o inverso; depois usamos `fromJson` em cada elemento
+- `jsonDecode` faz o inverso; depois usa-se `fromJson` em cada elemento
 
 ### 8.4 Ligar o armazenamento à tela
 
-No `main.dart`, acrescente `import 'lista_storage.dart';` junto dos outros imports. Depois faça estas alterações na `_ListaPageState`.
+No `main.dart`, acrescentar `import 'lista_storage.dart';` junto dos outros imports. Depois, fazer estas alterações na `_ListaPageState`.
 
 **a) Novos campos e métodos**, logo abaixo de `final List<Item> _itens = [];`:
 
@@ -874,10 +874,10 @@ No `main.dart`, acrescente `import 'lista_storage.dart';` junto dos outros impor
 ```
 
 - `initState` roda **uma vez**, quando a tela nasce: é o lugar certo para carregar os dados
-- `if (!mounted) return;` evita mexer numa tela que foi fechada enquanto esperávamos a leitura
+- `if (!mounted) return;` evita mexer numa tela que foi fechada durante a espera pela leitura
 - `_atualizar` é um atalho: faz o `setState` **e** salva. Assim, toda mudança na lista é gravada
 
-**b) Troque `setState(` por `_atualizar(` nos 6 lugares** em que o usuário muda a lista: em `_adicionar`, no botão de remover comprados, no `onDismissed`, no `onChanged` do checkbox e nos botões − e +. Exemplo:
+**b) Trocar `setState(` por `_atualizar(` nos 6 lugares** em que o usuário muda a lista: em `_adicionar`, no botão de remover comprados, no `onDismissed`, no `onChanged` do checkbox e nos botões − e +. Exemplo:
 
 ```dart
 // antes
@@ -886,7 +886,7 @@ onDismissed: (_) => setState(() => _itens.remove(item)),
 onDismissed: (_) => _atualizar(() => _itens.remove(item)),
 ```
 
-**c) Mostrar um indicador enquanto carrega.** No `body` do `Scaffold`, inclua o teste de `_carregando` antes da `Column`:
+**c) Mostrar um indicador enquanto carrega.** No `body` do `Scaffold`, incluir o teste de `_carregando` antes da `Column`:
 
 ```dart
       body: _carregando
@@ -900,15 +900,15 @@ onDismissed: (_) => _atualizar(() => _itens.remove(item)),
 
 ### 8.5 Testar a persistência
 
-1. Rode o app, adicione três itens, marque um e mude uma quantidade.
-2. No terminal do `flutter run`, aperte **R** (hot restart). O app reinicia do zero e a lista deve voltar do jeito que estava.
-3. Para o teste definitivo, pare o app (**Shift+F5** no VS Code) e rode de novo.
+1. Executar o app, adicionar três itens, marcar um e mudar uma quantidade.
+2. No terminal do `flutter run`, apertar **R** (hot restart). O app reinicia do zero e a lista deve voltar do jeito que estava.
+3. Para o teste definitivo, parar o app (**Shift+F5** no VS Code) e executá-lo de novo.
 
 **Resultado esperado:** os itens, as marcações e as quantidades reaparecem depois de reiniciar.
 
-> **No Chrome:** os dados ficam presos ao endereço da página (incluindo a porta). Se, ao parar e rodar de novo, a lista vier vazia, o Flutter pode ter aberto numa porta diferente. Fixe a porta: `flutter run -d chrome --web-port=5000`.
+> **No Chrome:** os dados ficam presos ao endereço da página (incluindo a porta). Se, ao parar e executar de novo, a lista vier vazia, o Flutter pode ter aberto numa porta diferente. Nesse caso, a porta pode ser fixada: `flutter run -d chrome --web-port=5000`.
 
-**Pense antes:** quais são as vantagens de a tela chamar `_storage.salvar(...)` em vez de usar o `SharedPreferencesAsync` diretamente? O que você teria de mudar na tela se um dia trocássemos por um banco de dados?
+**Questão para reflexão:** quais são as vantagens de a tela chamar `_storage.salvar(...)` em vez de usar o `SharedPreferencesAsync` diretamente? O que teria de mudar na tela se um dia o armazenamento fosse trocado por um banco de dados?
 
 ### Checkpoint 2
 
@@ -916,9 +916,9 @@ O app está completo. O `main.dart` deve ficar igual ao **código final** no fim
 
 ## Passo 9: Testar o modelo
 
-De tudo que fizemos, a conversão para JSON é a parte mais frágil: se alguém trocar o nome de uma chave em `toJson` e esquecer o `fromJson`, o app quebra na hora de ler os dados salvos. Vale a pena um teste automatizado que garanta que um `Item` **sobrevive à ida e volta**.
+De tudo que foi feito, a conversão para JSON é a parte mais frágil: se alguém trocar o nome de uma chave em `toJson` e esquecer o `fromJson`, o app quebra na hora de ler os dados salvos. Vale a pena um teste automatizado que garanta que um `Item` **sobrevive à ida e volta**.
 
-Crie o arquivo `test/item_test.dart`:
+Criar o arquivo `test/item_test.dart`:
 
 ```dart
 import 'dart:convert';
@@ -947,19 +947,19 @@ void main() {
 }
 ```
 
-Rode no terminal, dentro da pasta do projeto:
+Executar no terminal, dentro da pasta do projeto:
 
 ```bash
 flutter test
 ```
 
 - `test` define um caso de teste, e `expect(valor, esperado)` falha se os dois forem diferentes
-- `lista_compras` no import é o nome do pacote, o mesmo que demos no `flutter create`
+- `lista_compras` no import é o nome do pacote, o mesmo que foi dado no `flutter create`
 - o teste não usa o `shared_preferences`: ele só testa a conversão, que é Dart puro
 
 **Resultado esperado:** o terminal termina com *All tests passed!*
 
-**Pense antes:** troque `'quantidade'` por `'qtd'` apenas dentro do `toJson` e rode o teste de novo. O que acontece? Esse é o erro que o teste existe para pegar. Depois desfaça a troca.
+**Questão para reflexão:** ao trocar `'quantidade'` por `'qtd'` apenas dentro do `toJson` e executar o teste de novo, o que acontece? Esse é o erro que o teste existe para pegar. A troca deve ser desfeita depois.
 
 ## Erros comuns
 
@@ -1000,7 +1000,7 @@ O `shared_preferences` resolveu bem este app. Conforme os dados crescem, vale co
 | SQLite, com `drift` ou `sqflite` | muitos registros, filtros, ordenação, relacionamentos | exige modelar tabelas e escrever consultas |
 | Banco na nuvem, como Firebase ou Supabase | sincronizar entre aparelhos e usuários | precisa de conta, rede e backend |
 
-Como isolamos tudo na `ListaStorage`, trocar de opção significa mudar **só esse arquivo**.
+Como tudo está isolado na `ListaStorage`, trocar de opção significa mudar **só esse arquivo**.
 
 
 ## Código final completo (gabarito)
@@ -1294,28 +1294,28 @@ void main() {
 
 ## Como testar no emulador ou no celular Android
 
-Até aqui rodamos no Chrome. Para ver o app como ele é de verdade, rode no Android. Há duas opções: um emulador (celular virtual no computador) ou o seu próprio celular.
+Até aqui o app foi executado no Chrome. Para vê-lo como ele é de verdade, executá-lo no Android. Há duas opções: um emulador (celular virtual no computador) ou o celular próprio.
 
 ### Preparar o Android (uma única vez)
 
-1. Instale o [Android Studio](https://developer.android.com/studio) e abra-o uma vez, aceitando o assistente de instalação (ele baixa o Android SDK).
-2. Aceite as licenças e confira o ambiente:
+1. Instalar o [Android Studio](https://developer.android.com/studio) e abri-lo uma vez, aceitando o assistente de instalação (ele baixa o Android SDK).
+2. Aceitar as licenças e conferir o ambiente:
 
    ```bash
    flutter doctor --android-licenses
    flutter doctor
    ```
 
-3. A seção *Android toolchain* do `flutter doctor` deve ficar sem ✗. Se aparecer `cmdline-tools component is missing`, no Android Studio vá em *Settings > Languages & Frameworks > Android SDK > SDK Tools* e marque **Android SDK Command-line Tools**.
+3. A seção *Android toolchain* do `flutter doctor` deve ficar sem ✗. Se aparecer `cmdline-tools component is missing`, no Android Studio, ir em *Settings > Languages & Frameworks > Android SDK > SDK Tools* e marcar **Android SDK Command-line Tools**.
 
 ### Opção A: emulador Android
 
-1. **Criar o emulador** (só na primeira vez): no Android Studio, abra *More Actions > Virtual Device Manager* (ou *Tools > Device Manager*), clique em **Create Device**, escolha um modelo (por exemplo, *Pixel 8*), escolha uma imagem do sistema (baixe se pedir) e finalize.
-2. No VS Code, abra a pasta `lista_compras`.
-3. Aperte **Ctrl+Shift+P**, digite **Flutter: Launch Emulator** e escolha o emulador criado. Aguarde a tela do Android aparecer.
-4. Na **barra de status** (canto inferior direito do VS Code), confirme que o emulador aparece como dispositivo. Se não aparecer, clique no dispositivo atual e escolha o emulador.
-5. Abra `lib/main.dart` e aperte **F5** (ou *Run > Start Debugging*). Se pedir o ambiente, escolha **Dart & Flutter**.
-6. Aguarde a primeira compilação (pode levar alguns minutos). O app abre no emulador.
+1. **Criar o emulador** (só na primeira vez): no Android Studio, abrir *More Actions > Virtual Device Manager* (ou *Tools > Device Manager*), clicar em **Create Device**, escolher um modelo (por exemplo, *Pixel 8*), escolher uma imagem do sistema (baixá-la se solicitado) e finalizar.
+2. No VS Code, abrir a pasta `lista_compras`.
+3. Apertar **Ctrl+Shift+P**, digitar **Flutter: Launch Emulator** e escolher o emulador criado. Aguardar a tela do Android aparecer.
+4. Na **barra de status** (canto inferior direito do VS Code), confirmar que o emulador aparece como dispositivo. Se não aparecer, clicar no dispositivo atual e escolher o emulador.
+5. Abrir `lib/main.dart` e apertar **F5** (ou *Run > Start Debugging*). Se o ambiente for solicitado, escolher **Dart & Flutter**.
+6. Aguardar a primeira compilação (pode levar alguns minutos). O app abre no emulador.
 7. Para parar, **Shift+F5**. Salvar o código (**Ctrl+S**) aplica a mudança na hora (hot reload).
 
 Pelo terminal:
@@ -1326,21 +1326,21 @@ flutter emulators --launch NOME_DO_EMULADOR
 flutter run
 ```
 
-### Opção B: o seu próprio celular Android
+### Opção B: celular Android próprio
 
-1. **Modo desenvolvedor:** *Configurações > Sobre o telefone* e toque 7 vezes em **Número da versão**.
+1. **Modo desenvolvedor:** *Configurações > Sobre o telefone* e tocar 7 vezes em **Número da versão**.
 2. **Depuração USB:** *Configurações > Sistema > Opções do desenvolvedor > Depuração USB*.
-3. Conecte o celular ao computador com um cabo USB que transfira dados (não só carregue).
-4. No celular, aceite a janela **Permitir depuração USB?** (marque *Sempre permitir*).
-5. Confirme que o celular foi reconhecido:
+3. Conectar o celular ao computador com um cabo USB que transfira dados (não só carregue).
+4. No celular, aceitar a janela **Permitir depuração USB?** (marcando *Sempre permitir*).
+5. Confirmar que o celular foi reconhecido:
 
    ```bash
    flutter devices
    ```
 
-   O modelo do celular deve aparecer na lista. Se não aparecer, troque o cabo ou a porta USB.
-6. No VS Code, clique no dispositivo na **barra de status** e escolha o celular.
-7. Abra `lib/main.dart` e aperte **F5**. O app é instalado e abre no celular.
+   O modelo do celular deve aparecer na lista. Se não aparecer, trocar o cabo ou a porta USB.
+6. No VS Code, clicar no dispositivo na **barra de status** e escolher o celular.
+7. Abrir `lib/main.dart` e apertar **F5**. O app é instalado e abre no celular.
 8. Para parar, **Shift+F5**. Com o app aberto, **Ctrl+S** atualiza o celular na hora.
 
 Pelo terminal:
@@ -1350,7 +1350,7 @@ flutter devices
 flutter run -d ID_DO_CELULAR
 ```
 
-Sem cabo (Android 11 ou mais novo, celular e computador na mesma rede Wi-Fi): em *Opções do desenvolvedor*, ative **Depuração por Wi-Fi**, escolha *Parear dispositivo com código* e rode:
+Sem cabo (Android 11 ou mais novo, celular e computador na mesma rede Wi-Fi): em *Opções do desenvolvedor*, ativar **Depuração por Wi-Fi**, escolher *Parear dispositivo com código* e executar:
 
 ```bash
 adb pair IP:PORTA_DE_PAREAMENTO
@@ -1360,8 +1360,8 @@ flutter devices
 
 ### Confirmar a persistência no Android
 
-1. Adicione três itens, marque um e mude uma quantidade.
-2. Pare o app (**Shift+F5**) e rode de novo (**F5**).
+1. Adicionar três itens, marcar um e mudar uma quantidade.
+2. Parar o app (**Shift+F5**) e executá-lo de novo (**F5**).
 3. Os itens, as marcações e as quantidades devem reaparecer.
 
 | Sintoma | Solução |

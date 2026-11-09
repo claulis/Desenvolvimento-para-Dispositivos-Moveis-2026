@@ -272,7 +272,7 @@ O celular é o único dispositivo usado sob sol direto, no escuro do quarto e de
 
 - Sob luz forte, o contraste efetivo despenca por reflexão: uma combinação com 4,5:1 medida no escritório pode ficar ilegível na rua. Para conteúdo crítico ao ar livre (mapa de entregador, QR code, painel de motorista), projete acima do mínimo — 7:1 ou mais.
 - Cinzas muito claros sobre branco (`#F5F5F5` sobre `#FFFFFF`) desaparecem sob sol. Fronteiras entre seções precisam de outro recurso além de uma diferença sutil de tom.
-- À noite ocorre o inverso: telas claras demais ofuscam. Daí a difusão dos temas escuros e dos filtros de luz azul do sistema, que **alteram as cores do seu aplicativo sem avisar** — mais um argumento para não depender de matizes precisos para transmitir informação.
+- À noite ocorre o inverso: telas claras demais ofuscam. Daí a difusão dos temas escuros e dos filtros de luz azul do sistema, que **alteram as cores do aplicativo sem avisar** — mais um argumento para não depender de matizes precisos para transmitir informação.
 
 ### Daltonismo e a regra de nunca usar cor sozinha
 
@@ -287,7 +287,7 @@ O critério WCAG 1.4.1 (*Use of Color*) é categórico: **cor nunca pode ser o �
 
 ### Cor dinâmica
 
-Desde o Android 12, o **Material You** pode gerar toda a paleta do aplicativo a partir do papel de parede do usuário. Isso significa que a cor primária do seu app pode não ser a sua no aparelho do usuário. Projetar com tokens semânticos ) é o que torna esse cenário viável; escrever `#1E88E5` diretamente dentro dos componentes é o que o impede.
+Desde o Android 12, o **Material You** pode gerar toda a paleta do aplicativo a partir do papel de parede do usuário. Isso significa que a cor primária do aplicativo pode não ser a definida pela marca no aparelho do usuário. Projetar com tokens semânticos ) é o que torna esse cenário viável; escrever `#1E88E5` diretamente dentro dos componentes é o que o impede.
 
 ---
 
@@ -451,7 +451,7 @@ Text('Total do pedido', style: Theme.of(context).textTheme.bodyLarge)
 
 > **Definição — Interface do usuário (UI)**: o conjunto de elementos visuais, textuais e interativos por meio dos quais a pessoa opera o sistema — layout, cor, tipografia, componentes, ícones, movimento, som.
 >
-> **Definição — Experiência do usuário (UX)**: a totalidade da experiência da pessoa com o produto e com a organização que o oferece, incluindo descoberta, instalação, uso, suporte, cobrança e desinstalação. Termo cunhado por **Don Norman** na Apple, no início dos anos 1990, precisamente porque "interface" e "usabilidade" eram estreitos demais para o que sua equipe fazia.
+> **Definição — Experiência do usuário (UX)**: a totalidade da experiência da pessoa com o produto e com a organização que o oferece, incluindo descoberta, instalação, uso, suporte, cobrança e desinstalação. Termo cunhado por **Don Norman** na Apple, no início dos anos 1990, precisamente porque "interface" e "usabilidade" eram estreitos demais para o que a equipe fazia.
 
 A relação, sem a analogia gasta do ketchup: **toda UI é parte da UX; a maior parte da UX não é UI**. Um aplicativo de banco com telas impecáveis e uma fila de atendimento de 40 minutos tem boa UI e péssima UX. Um app de entrega com tela feia que entrega em 20 minutos pode ter UX melhor que o concorrente elegante e atrasado.
 

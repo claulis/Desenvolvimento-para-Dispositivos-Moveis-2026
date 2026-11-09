@@ -70,7 +70,7 @@ A arquitetura limpa é, em essência, uma formalização mais detalhada do mesmo
 
 ## 4.1. Onde MVVM e MVI se encaixam nesses estilos
 
-Os três estilos das §2–4 descrevem como organizar o sistema **como um todo**. Um degrau abaixo, dentro da camada de apresentação especificamente, existem padrões mais específicos que decidem como a interface se comunica com o estado — os que você provavelmente vai encontrar nomeados em uma vaga de desenvolvimento Android:
+Os três estilos das §2–4 descrevem como organizar o sistema **como um todo**. Um degrau abaixo, dentro da camada de apresentação especificamente, existem padrões mais específicos que decidem como a interface se comunica com o estado — os que provavelmente aparecem nomeados em uma vaga de desenvolvimento Android:
 
 > **Definição — MVVM (Model-View-ViewModel)**: padrão de apresentação em que a View observa um ViewModel que expõe estado e comandos, sem o ViewModel conhecer a View diretamente — o Provider/Riverpod consumido por um `ConsumerWidget` (Aula 12) ou um hook customizado consumido por um componente (Aula 17) cumprem, na prática, o papel de ViewModel.
 

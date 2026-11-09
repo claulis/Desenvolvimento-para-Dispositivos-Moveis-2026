@@ -163,7 +163,7 @@ O SIM tradicional sai da fábrica com um único perfil gravado, imutável. O eUI
 
 **Como o perfil chega lá** (padrão GSMA **RSP** — Remote SIM Provisioning):
 
-1. Você lê um QR code, que contém apenas um endereço de servidor + um código de ativação
+1. O usuário lê um QR code, que contém apenas um endereço de servidor + um código de ativação
 2. O aparelho contata o **SM-DP+** da operadora (*Subscription Manager – Data Preparation*)
 3. O servidor prepara um perfil — IMSI, Ki, regras, nome da rede — e o envia **cifrado ponta a ponta**
 4. Só o eUICC, com sua chave de fábrica, consegue decifrar e instalar
@@ -317,7 +317,7 @@ O Android não permite que um aplicativo simplesmente "use toda a memória que p
 Quando a memória do sistema fica escassa, dois mecanismos atuam em conjunto:
 
 - **Low Memory Killer / LMKD** (*Low Memory Killer Daemon*, evolução em espaço de usuário do antigo mecanismo em kernel): monitora continuamente os níveis de memória livre do sistema e, ao cruzar limiares configurados, seleciona processos para encerrar.
-- **`ActivityManager`**, no nível de sistema Android: mantém uma classificação de prioridade dos processos em segundo plano (processos vazios > em cache > serviços > visíveis > em primeiro plano), e o LMKD encerra primeiro os de menor prioridade — o processo do seu app em segundo plano é, do ponto de vista do sistema, um dos primeiros candidatos a ser sacrificado para liberar espaço para o app que o usuário está usando agora.
+- **`ActivityManager`**, no nível de sistema Android: mantém uma classificação de prioridade dos processos em segundo plano (processos vazios > em cache > serviços > visíveis > em primeiro plano), e o LMKD encerra primeiro os de menor prioridade — o processo do aplicativo em segundo plano é, do ponto de vista do sistema, um dos primeiros candidatos a ser sacrificado para liberar espaço para o app que o usuário está usando agora.
 
 > **Definição — `zRAM`**: área de memória comprimida, mantida na própria RAM, usada pelo Android como uma espécie de memória de troca (*swap*) rápida — páginas de memória pouco usadas são comprimidas e mantidas em `zRAM` em vez de descartadas imediatamente, adiando (mas não eliminando) a necessidade de encerrar processos. Não deve ser confundida com um SSD de swap de computador: é mais rápida, mas ainda tem um custo de CPU para compressão/descompressão.
 

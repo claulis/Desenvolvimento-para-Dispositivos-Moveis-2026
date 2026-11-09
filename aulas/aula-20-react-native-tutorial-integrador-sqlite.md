@@ -33,7 +33,7 @@ Um app com **três telas**, acessadas por um menu de abas na parte de baixo:
 
 | Aba | O que faz |
 |---|---|
-| 📝 **Tarefas** | Adiciona tarefas escolhendo uma categoria; toque no texto para marcar/desmarcar como feita; **Excluir** apaga. Cada tarefa mostra o nome da categoria. |
+| 📝 **Tarefas** | Adiciona tarefas escolhendo uma categoria; tocar no texto marca/desmarca como feita; **Excluir** apaga. Cada tarefa mostra o nome da categoria. |
 | 🏷️ **Categorias** | Cadastra categorias (nomes únicos, sem diferenciar maiúsculas) e as exclui com confirmação. Ao excluir, as tarefas da categoria **não** são apagadas: ficam "sem categoria". |
 | 📊 **Resumo** | Mostra, por categoria, quantas tarefas estão feitas em relação ao total (ex.: `2/5 feitas`). |
 
@@ -46,22 +46,22 @@ Os dados ficam num banco **SQLite** dentro do aparelho. Fechar e reabrir o app n
 ## 2. A plataforma: React Native + Expo
 
 ### React Native
-Framework em que você escreve a interface em **JavaScript/TypeScript com React**, e ele a transforma em componentes **nativos** de Android e iOS. `<View>` vira uma view nativa, `<Text>` vira um texto nativo. Não é uma página web dentro de um app.
+Framework em que a interface é escrita em **JavaScript/TypeScript com React** e transformada em componentes **nativos** de Android e iOS. `<View>` vira uma view nativa, `<Text>` vira um texto nativo. Não é uma página web dentro de um app.
 
 ### Expo
 Conjunto de ferramentas e bibliotecas sobre o React Native que remove a parte difícil (Xcode, Android Studio, configuração nativa):
 
 - **Expo CLI** (`npx expo start`): sobe o servidor de desenvolvimento (Metro bundler).
-- **Expo Go**: app que você instala no celular para abrir seu projeto escaneando um QR Code, sem compilar nada.
+- **Expo Go**: app instalado no celular para abrir o projeto escaneando um QR Code, sem compilar nada.
 - **Módulos Expo** (`expo-sqlite`, `expo-router`...): bibliotecas já prontas e compatíveis entre si.
 - **EAS** (opcional): serviço na nuvem para gerar o APK/IPA final e publicá-lo nas lojas.
-- **Continuous Native Generation (CNG)**: as pastas `android/` e `ios/` **não existem** no repositório. O Expo as gera quando necessário a partir do `app.json`. Você nunca as edita à mão.
+- **Continuous Native Generation (CNG)**: as pastas `android/` e `ios/` **não existem** no repositório. O Expo as gera quando necessário a partir do `app.json`. Nunca são editadas à mão.
 
 ### Expo Router
 Biblioteca de navegação **baseada em arquivos**: cada arquivo dentro de `src/app/` é uma tela, e o nome do arquivo é a rota. O arquivo `_layout.tsx` define o "molde" que envolve as telas (aqui, o menu de abas). É a navegação recomendada pelo Expo e pelo `AGENTS.md` deste projeto.
 
 ### TypeScript
-O código usa TypeScript em modo `strict`: os tipos `Tarefa`, `Categoria` e `Resumo` descrevem o formato das linhas do banco e o compilador avisa se você usar errado.
+O código usa TypeScript em modo `strict`: os tipos `Tarefa`, `Categoria` e `Resumo` descrevem o formato das linhas do banco e o compilador avisa em caso de uso incorreto.
 
 ---
 
@@ -127,7 +127,7 @@ Definidas em `package.json`:
 | `typescript` (dev) | ~6.0.3 | Verificação de tipos |
 | `@types/react` (dev) | ~19.3.0 | Tipos do React |
 
-> **Regra do Expo:** instale pacotes sempre com `npx expo install <pacote>`, não com `npm install`. O comando escolhe a versão compatível com o seu SDK.
+> **Regra do Expo:** os pacotes devem ser instalados sempre com `npx expo install <pacote>`, e não com `npm install`. O comando escolhe a versão compatível com o SDK do projeto.
 
 ---
 
@@ -135,7 +135,7 @@ Definidas em `package.json`:
 
 ### 5.1 Pré-requisitos
 
-1. **Node.js** em versão LTS recente (<https://nodejs.org>). Confira com `node -v` e `npm -v`.
+1. **Node.js** em versão LTS recente (<https://nodejs.org>). Conferir com `node -v` e `npm -v`.
 2. **Git** (opcional).
 3. **Um destes para ver o app:**
    - **Celular com Expo Go** instalado (Play Store / App Store). É o caminho mais fácil.
@@ -166,14 +166,14 @@ mkdir src\app src\db            # Windows (no macOS/Linux: mkdir -p src/app src/
 del App.tsx index.ts            # (rm App.tsx index.ts no macOS/Linux)
 ```
 
-Depois ajuste a configuração (próxima seção) e crie os arquivos da [seção 7](#7-o-código-completo-arquivo-por-arquivo).
+Em seguida, ajusta-se a configuração (próxima seção) e criam-se os arquivos da [seção 7](#7-o-código-completo-arquivo-por-arquivo).
 
 ### 5.4 Configuração
 
 Três arquivos:
 
 - **`package.json`**: `"main": "expo-router/entry"` entrega o app ao Expo Router.
-- **`app.json`**: adicione `"scheme": "tarefas"` (necessário para links profundos) e o plugin `"expo-router"` na lista de `plugins`.
+- **`app.json`**: recebe `"scheme": "tarefas"` (necessário para links profundos) e o plugin `"expo-router"` na lista de `plugins`.
 - **`tsconfig.json`**: herda a base do Expo e liga o modo `strict`.
 
 Não há variáveis de ambiente, chaves de API nem arquivo `.env`.
@@ -202,7 +202,7 @@ tarefas/
 └── LICENSE
 ```
 
-Gerados automaticamente (não edite): `node_modules/`, `.expo/`, e, se rodar build nativo, `android/` e `ios/`.
+Gerados automaticamente (não devem ser editados): `node_modules/`, `.expo/` e, em caso de build nativo, `android/` e `ios/`.
 
 ---
 
@@ -288,7 +288,7 @@ Gerados automaticamente (não edite): `node_modules/`, `.expo/`, e, se rodar bui
 - `orientation: "portrait"` trava o app em pé; `userInterfaceStyle: "light"` força tema claro.
 - `android.package` é o identificador único na Play Store; não muda depois de publicado.
 - `scheme` define o prefixo de links profundos (`tarefas://resumo` abriria a aba Resumo). O Expo Router exige.
-- `plugins` registra módulos que precisam de configuração nativa, sem você mexer em `android/` e `ios/`.
+- `plugins` registra módulos que precisam de configuração nativa, sem necessidade de alterar `android/` e `ios/`.
 
 ### 7.3 `tsconfig.json`
 
@@ -301,7 +301,7 @@ Gerados automaticamente (não edite): `node_modules/`, `.expo/`, e, se rodar bui
 }
 ```
 
-**Como funciona:** herda as regras do Expo (inclusive o `jsx` correto) e ativa `strict`. Rode `npx tsc --noEmit` para checar os tipos sem gerar arquivos.
+**Como funciona:** herda as regras do Expo (inclusive o `jsx` correto) e ativa `strict`. O comando `npx tsc --noEmit` checa os tipos sem gerar arquivos.
 
 ### 7.4 `src/db/db.ts` (camada de dados)
 
@@ -401,7 +401,7 @@ export const resumo = (db: SQLiteDatabase) =>
 - **v1:** cria `tarefas` e liga o modo WAL (*Write-Ahead Logging*, mais rápido e seguro para leituras e escritas simultâneas).
 - **v2 (dentro de uma transação):** cria `categorias` (`nome` é `UNIQUE` e `COLLATE NOCASE`, então "Casa" e "casa" são o mesmo nome) e **adiciona a coluna** `categoria_id` em `tarefas`, apontando para `categorias(id)`. `ON DELETE SET NULL` significa: se a categoria for apagada, a coluna das tarefas dela vira `NULL`, e as tarefas continuam existindo. Colocar o `user_version = 2` dentro da transação garante que, se algo falhar no meio, nada fica pela metade.
 - **`listar`.** `LEFT JOIN` junta cada tarefa à sua categoria. É `LEFT` para que tarefas **sem** categoria também apareçam (com `categoria = NULL`). Um `INNER JOIN` as esconderia.
-- **`adicionar`.** Dois parâmetros `?`. Passar `null` grava `NULL` (sem categoria). **Nunca** monte SQL concatenando texto do usuário.
+- **`adicionar`.** Dois parâmetros `?`. Passar `null` grava `NULL` (sem categoria). **Nunca** se deve montar SQL concatenando texto do usuário.
 - **`alternar`.** `feita = 1 - feita` inverte 0↔1 em um único comando.
 - **`adicionarCategoria`.** Se o nome já existir, o SQLite lança um erro (`UNIQUE constraint failed`); quem chama trata (ver `categorias.tsx`).
 - **`resumo`.** `GROUP BY t.categoria_id` agrupa as tarefas por categoria; `COUNT(*)` conta e `SUM(t.feita)` soma os 1, ou seja, as feitas. `COALESCE(c.nome, 'Sem categoria')` troca o `NULL` por um texto legível.
@@ -463,7 +463,7 @@ export default function Layout() {
 - É o arquivo mais importante da navegação. O Expo Router o usa como **moldura** de todas as telas da mesma pasta.
 - `SQLiteProvider` fica **por fora** de `Tabs`: abre `tarefas.db`, executa `onInit={migrar}` e só então mostra as abas. Assim todas as telas já encontram as tabelas prontas.
 - `Tabs` desenha a barra de abas e o cabeçalho de cada tela. Cada `Tabs.Screen` liga um arquivo de `src/app/` ao menu: `name="index"` é `index.tsx`, `name="categorias"` é `categorias.tsx` etc. `title` aparece no cabeçalho e sob o ícone; a **ordem** dos `Tabs.Screen` é a ordem das abas.
-- `tabBarIcon` recebe uma função que devolve o ícone. Usamos um emoji dentro de `<Text>` para não instalar biblioteca de ícones. `icone('📝')` devolve essa função.
+- `tabBarIcon` recebe uma função que devolve o ícone. Utiliza-se um emoji dentro de `<Text>` para não instalar biblioteca de ícones. `icone('📝')` devolve essa função.
 
 ### 7.7 `src/app/index.tsx` (aba Tarefas)
 
@@ -562,7 +562,7 @@ export default function Tarefas() {
 **Como funciona:**
 - **Estados:** `itens` (tarefas), `categorias` (opções dos chips), `texto` (campo digitado) e `categoriaId` (chip selecionado; `null` = sem categoria).
 - **`carregar`** lê tarefas e categorias do banco. A última linha usa a forma funcional do setter, `setCategoriaId((atual) => ...)`: se a categoria selecionada foi apagada em outra aba, a seleção volta para `null`. Sem isso, o próximo `INSERT` apontaria para uma categoria inexistente e a chave estrangeira o rejeitaria com erro.
-- **`useFocusEffect`** executa `carregar` toda vez que **esta aba ganha foco**, e não só na primeira vez. Veja o motivo na [seção 8.5](#85-recarregar-ao-ganhar-foco-usefocuseffect). O callback precisa estar em `useCallback`, senão o efeito reexecutaria a cada renderização.
+- **`useFocusEffect`** executa `carregar` toda vez que **esta aba ganha foco**, e não só na primeira vez. O motivo está na [seção 8.5](#85-recarregar-ao-ganhar-foco-usefocuseffect). O callback precisa estar em `useCallback`, senão o efeito reexecutaria a cada renderização.
 - **Chips de categoria.** `opcoes` junta a opção fixa "Sem categoria" (`id: null`) às categorias do banco. O `ScrollView horizontal` permite rolar para o lado se houver muitas. O chip ativo troca de estilo (`ativo && s.chipOn`). `key={c.id ?? 'nenhuma'}` dá uma chave única mesmo para o `null`.
 - **`salvar`** passa o `categoriaId` escolhido para `adicionar`.
 - **Lista.** `item.categoria && <Text>...` só mostra o nome da categoria se existir (tarefa sem categoria não mostra nada).
@@ -706,7 +706,7 @@ export default function ResumoTela() {
 A interface é composta por funções que retornam JSX. Cada arquivo de `src/app/` exporta (com `export default`) um componente, que é a tela. Um componente se redesenha quando seu estado muda.
 
 ### 8.2 Estado (`useState`)
-`const [itens, setItens] = useState<Tarefa[]>([])` cria um valor que, ao ser trocado via `setItens`, faz o React redesenhar a tela. **Nunca** modifique o array direto; chame o setter com um novo valor. O setter também aceita uma **função** `(atual) => novo`, usada em `setCategoriaId` para decidir com base no valor mais recente.
+`const [itens, setItens] = useState<Tarefa[]>([])` cria um valor que, ao ser trocado via `setItens`, faz o React redesenhar a tela. **Nunca** se deve modificar o array diretamente; o setter é chamado com um novo valor. O setter também aceita uma **função** `(atual) => novo`, usada em `setCategoriaId` para decidir com base no valor mais recente.
 
 ### 8.3 Context e Provider
 `SQLiteProvider` coloca o banco num *contexto* React; `useSQLiteContext()` o lê em qualquer componente abaixo dele. Como o provider está no layout raiz, as três telas usam o **mesmo** banco sem passar `db` como prop.
@@ -716,17 +716,17 @@ A interface é composta por funções que retornam JSX. Cada arquivo de `src/app
 - **`_layout.tsx` = moldura.** Define como as telas irmãs se organizam. Aqui, `<Tabs>` cria o menu de abas.
 - **Abas ficam montadas.** Ao trocar de aba, a anterior **não é destruída**: continua na memória com seu estado (o texto digitado, por exemplo, é mantido). Isso é bom para a experiência, mas traz o problema da próxima seção.
 - Para navegar por código ou por link, o Expo Router oferece `Link` (`<Link href="/resumo">`) e `router.push('/resumo')`. Este projeto navega só pelo menu.
-- Outros tipos de menu usam o mesmo princípio: troque `Tabs` por `Stack` (telas empilhadas) ou `Drawer` (menu lateral).
+- Outros tipos de menu usam o mesmo princípio: troca-se `Tabs` por `Stack` (telas empilhadas) ou `Drawer` (menu lateral).
 
 ### 8.5 Recarregar ao ganhar foco (`useFocusEffect`)
-Em um app de uma tela, `useEffect` que carrega a lista ao abrir bastava. Com abas, **não basta**: as telas ficam montadas, então um `useEffect` com `[]` roda uma vez só. Se você criar uma categoria na aba Categorias e voltar à aba Tarefas, a lista de chips estaria desatualizada.
+Em um app de uma tela, `useEffect` que carrega a lista ao abrir bastava. Com abas, **não basta**: as telas ficam montadas, então um `useEffect` com `[]` roda uma vez só. Se uma categoria for criada na aba Categorias e o usuário voltar à aba Tarefas, a lista de chips estaria desatualizada.
 
 `useFocusEffect` (de `expo-router`) executa o efeito **sempre que a tela ganha foco**. Regras:
-- Passe uma função envolvida em `useCallback`.
-- Para funções `async`, chame-as dentro do callback (`carregar();`), pois o callback em si não pode ser `async`.
+- Passar uma função envolvida em `useCallback`.
+- Para funções `async`, chamá-las dentro do callback (`carregar();`), pois o callback em si não pode ser `async`.
 
 ### 8.6 Assíncrono (`async`/`await`)
-Operações de disco demoram. `await` pausa a função até terminar sem congelar a interface. Sempre use `await` antes de `carregar()` para recarregar **depois** da gravação.
+Operações de disco demoram. `await` pausa a função até terminar sem congelar a interface. Deve-se sempre usar `await` antes de `carregar()` para recarregar **depois** da gravação.
 
 ### 8.7 SQL e SQLite
 - **SQLite**: banco relacional num único arquivo, sem servidor, embutido em Android e iOS.
@@ -754,7 +754,7 @@ Uma categoria tem **várias** tarefas, e cada tarefa tem **no máximo uma** cate
 O banco guarda sua própria versão de esquema. Ao abrir, o app compara com a versão do banco e aplica só os degraus que faltam. Isso permite atualizar o app sem perder os dados dos usuários (ver [seção 11](#11-migrações-como-o-banco-passou-da-v1-para-a-v2)).
 
 ### 8.10 Lista virtualizada (`FlatList`)
-Para listas, prefira `FlatList` em vez de `ScrollView` + `map`: ela cria só os itens visíveis. Os chips usam `ScrollView horizontal` porque são poucos.
+Para listas, é preferível usar `FlatList` em vez de `ScrollView` + `map`: ela cria só os itens visíveis. Os chips usam `ScrollView horizontal` porque são poucos.
 
 ### 8.11 Estilos e Flexbox
 Sem CSS: estilos são objetos JS. O layout é sempre por Flexbox (`flexDirection: 'column'` é o padrão). `flex: 1` significa "ocupe o espaço que sobrar". Estilos compartilhados ficam em um módulo importado pelas telas.
@@ -765,26 +765,26 @@ Sem CSS: estilos são objetos JS. O layout é sempre por Flexbox (`flexDirection
 
 ### Passo a passo (celular com Expo Go)
 
-1. **Instale as dependências** (uma vez):
+1. **Instalar as dependências** (uma vez):
    ```bash
    cd C:\codigo\reactnative\tarefas
    npm install
    ```
-2. **Inicie o servidor de desenvolvimento:**
+2. **Iniciar o servidor de desenvolvimento:**
    ```bash
    npm start
    ```
    Aparecem um **QR Code** e um menu no terminal.
-3. **Abra no celular:**
-   - **Android:** abra o **Expo Go** e use *Scan QR code*.
-   - **iPhone:** abra a **Câmera** e leia o QR Code.
-4. **Teste o roteiro completo:**
-   1. Aba **Categorias**: cadastre "Casa" e "Trabalho". Tente cadastrar "casa" de novo: deve aparecer o aviso de duplicada.
-   2. Aba **Tarefas**: toque no chip "Casa", digite "Lavar louça" e adicione. Veja o nome da categoria sob a tarefa.
-   3. Marque a tarefa como feita (toque no texto).
+3. **Abrir no celular:**
+   - **Android:** abrir o **Expo Go** e usar *Scan QR code*.
+   - **iPhone:** abrir a **Câmera** e ler o QR Code.
+4. **Testar o roteiro completo:**
+   1. Aba **Categorias**: cadastrar "Casa" e "Trabalho". Tentar cadastrar "casa" de novo: deve aparecer o aviso de duplicada.
+   2. Aba **Tarefas**: tocar no chip "Casa", digitar "Lavar louça" e adicionar. Verificar o nome da categoria sob a tarefa.
+   3. Marcar a tarefa como feita (tocar no texto).
    4. Aba **Resumo**: deve mostrar `Casa  1/1 feitas`.
-   5. Volte à aba **Categorias**, exclua "Casa" e confirme. Na aba **Tarefas**, a tarefa continua lá, agora sem categoria; no **Resumo**, aparece em "Sem categoria".
-   6. Feche e reabra o app: tudo persiste.
+   5. Voltar à aba **Categorias**, excluir "Casa" e confirmar. Na aba **Tarefas**, a tarefa continua lá, agora sem categoria; no **Resumo**, aparece em "Sem categoria".
+   6. Fechar e reabrir o app: tudo persiste.
 
 ### Outras formas de rodar
 
@@ -799,7 +799,7 @@ Sem CSS: estilos são objetos JS. O layout é sempre por Flexbox (`flexDirection
 - `a`: abre no Android · `i`: abre no iOS · `r`: recarrega · `m`: menu de desenvolvedor · `Ctrl+C`: encerra.
 
 ### Fast Refresh
-Ao salvar um arquivo, o app atualiza sozinho em segundos. Edite um texto ou uma cor para ver isso.
+Ao salvar um arquivo, o app atualiza sozinho em segundos. Editar um texto ou uma cor permite ver isso.
 
 ### Verificações de qualidade
 ```bash
@@ -899,7 +899,7 @@ if (atual === 2) {
 }
 ```
 
-Acrescente o campo ao tipo `Tarefa` e ao `SELECT` de `listar`.
+O campo deve ser acrescentado ao tipo `Tarefa` e ao `SELECT` de `listar`.
 
 ---
 
@@ -908,32 +908,32 @@ Acrescente o campo ao tipo `Tarefa` e ao `SELECT` de `listar`.
 | Sintoma | Causa provável | Solução |
 |---|---|---|
 | QR Code lido, mas o app não carrega | Celular e PC em redes diferentes ou firewall | Mesma rede Wi-Fi; ou `npx expo start --tunnel` |
-| `npm install` falha com erro de versão | Node muito antigo | Atualize para o Node LTS atual |
+| `npm install` falha com erro de versão | Node muito antigo | Atualizar para o Node LTS atual |
 | Aviso de versões incompatíveis de pacotes | Pacote instalado com `npm install` | `npx expo install --fix` |
 | Erros estranhos após mudar dependências, `app.json` ou `main` | Cache do Metro | `npx expo start --clear` |
-| Tela "Unmatched Route" ou o app abre vazio | Faltou `"main": "expo-router/entry"`, ou arquivos fora de `src/app/` | Confira a seção 7.1 e a estrutura da seção 6 |
+| Tela "Unmatched Route" ou o app abre vazio | Faltou `"main": "expo-router/entry"`, ou arquivos fora de `src/app/` | Conferir a seção 7.1 e a estrutura da seção 6 |
 | Erro "No route named X exists" no `Tabs.Screen` | `name` não corresponde a um arquivo de `src/app/` | `name="categorias"` exige `categorias.tsx` |
-| Categoria nova não aparece na aba Tarefas | Tela carregando com `useEffect` em vez de `useFocusEffect` | Use `useFocusEffect` (seção 8.5) |
-| Excluir categoria não zera a categoria das tarefas / erro de chave estrangeira não aparece | `PRAGMA foreign_keys = ON` ausente | Mantenha-o no início de `migrar` |
-| Erro "no such table: categorias" ou "no such column: categoria_id" | Banco criado durante testes com esquema incompleto | Desinstale o app do aparelho (apaga o banco) ou limpe os dados do app |
-| Quer zerar os dados para testar | , | Limpe o armazenamento do Expo Go ou desinstale o app |
-| Falha ao rodar na web | `expo-sqlite` na web é experimental e exige configuração adicional | Teste em Android/iOS |
-| Pacote com código nativo novo não funciona no Expo Go | Expo Go só inclui módulos nativos próprios | Crie um *development build*: `npx expo run:android` |
+| Categoria nova não aparece na aba Tarefas | Tela carregando com `useEffect` em vez de `useFocusEffect` | Usar `useFocusEffect` (seção 8.5) |
+| Excluir categoria não zera a categoria das tarefas / erro de chave estrangeira não aparece | `PRAGMA foreign_keys = ON` ausente | Manter essa instrução no início de `migrar` |
+| Erro "no such table: categorias" ou "no such column: categoria_id" | Banco criado durante testes com esquema incompleto | Desinstalar o app do aparelho (apaga o banco) ou limpar os dados do app |
+| Zerar os dados para testar | , | Limpar o armazenamento do Expo Go ou desinstalar o app |
+| Falha ao rodar na web | `expo-sqlite` na web é experimental e exige configuração adicional | Testar em Android/iOS |
+| Pacote com código nativo novo não funciona no Expo Go | Expo Go só inclui módulos nativos próprios | Criar um *development build*: `npx expo run:android` |
 
 ---
 
 ## 13. Pontos de atenção neste código
 
-Observações para você saber o que pode melhorar (nada impede o app de funcionar):
+Observações sobre o que pode ser melhorado (nada impede o app de funcionar):
 
 1. **Erros do banco só são tratados em `salvar` de categoria**, e ali qualquer erro é mostrado como "já existe". As demais operações não têm `try/catch`: se falharem, a exceção não é capturada.
 2. **Sem confirmação ao excluir tarefa.** Um toque em "Excluir" apaga na hora (a exclusão de categoria, por afetar outras tarefas, pede confirmação).
-3. **`feita` é `number`**, não `boolean` (limitação do SQLite). Considere converter ao ler.
-4. **Dois toques rápidos em "Adicionar"** podem inserir duas vezes, pois o campo só é limpo depois do `await`. Limpe o campo antes ou desabilite o botão durante a gravação.
+3. **`feita` é `number`**, não `boolean` (limitação do SQLite). Convém converter ao ler.
+4. **Dois toques rápidos em "Adicionar"** podem inserir duas vezes, pois o campo só é limpo depois do `await`. Convém limpar o campo antes ou desabilitar o botão durante a gravação.
 5. **O chip selecionado permanece após adicionar uma tarefa.** É intencional (útil para cadastrar várias na mesma categoria), mas pode surpreender.
-6. **Cada tela recarrega do banco ao ganhar foco**, mesmo sem mudanças. É simples e correto para listas pequenas; com milhares de linhas, considere paginação.
+6. **Cada tela recarrega do banco ao ganhar foco**, mesmo sem mudanças. É simples e correto para listas pequenas; com milhares de linhas, convém considerar paginação.
 7. **Não é possível mover uma tarefa para outra categoria depois de criada** nem renomear categorias (ver exercícios).
-8. **Ícones são emojis**, que variam de aparência entre Android e iOS. Para ícones uniformes, use `@expo/vector-icons` (já incluso no Expo).
+8. **Ícones são emojis**, que variam de aparência entre Android e iOS. Para ícones uniformes, recomenda-se `@expo/vector-icons` (já incluso no Expo).
 9. **Sem testes automatizados.** O SQL da `db.ts` é a parte mais valiosa para testar.
 
 ---
@@ -942,15 +942,15 @@ Observações para você saber o que pode melhorar (nada impede o app de funcion
 
 Da mais simples à mais difícil:
 
-1. **Filtrar por categoria** na aba Tarefas: reaproveite os chips como filtro e adicione `WHERE t.categoria_id = ?` em `listar` (cuidado com o caso `NULL`: use `IS NULL`).
-2. **Renomear categoria**: novo `UPDATE categorias SET nome = ? WHERE id = ?` em `db.ts`. Trate o erro de nome duplicado como em `salvar`.
+1. **Filtrar por categoria** na aba Tarefas: reaproveitar os chips como filtro e adicionar `WHERE t.categoria_id = ?` em `listar` (atenção ao caso `NULL`: usar `IS NULL`).
+2. **Renomear categoria**: novo `UPDATE categorias SET nome = ? WHERE id = ?` em `db.ts`. Tratar o erro de nome duplicado como em `salvar`.
 3. **Trocar a categoria de uma tarefa**: um `UPDATE tarefas SET categoria_id = ? WHERE id = ?` e um jeito de escolher (toque longo abrindo as opções).
 4. **Contador de pendentes** no ícone da aba: `tabBarBadge` em `Tabs.Screen`, alimentado por um `SELECT COUNT(*)`.
 5. **Migração v3** com data de criação (seção 11) e exibição ordenada por data.
 6. **Cor por categoria**: nova coluna `cor TEXT` (migração v3), `<TextInput>` ou lista fixa de cores no cadastro, e uso da cor no chip e na tarefa.
-7. **Tela de detalhe da tarefa** (3ª rota empilhada): crie `src/app/tarefa/[id].tsx`, navegue com `router.push('/tarefa/3')` e leia o `id` com `useLocalSearchParams`. Isso exige um `Stack` em volta das abas: veja a documentação do Expo Router sobre *nesting navigators*.
-8. **Trocar abas por menu lateral**: instale as dependências do `Drawer` conforme a documentação e troque `Tabs` por `Drawer`.
-9. **Modo escuro**: remova `userInterfaceStyle: "light"` e use `useColorScheme()` do `react-native` nos estilos.
+7. **Tela de detalhe da tarefa** (3ª rota empilhada): criar `src/app/tarefa/[id].tsx`, navegar com `router.push('/tarefa/3')` e ler o `id` com `useLocalSearchParams`. Isso exige um `Stack` em volta das abas: consultar a documentação do Expo Router sobre *nesting navigators*.
+8. **Trocar abas por menu lateral**: instalar as dependências do `Drawer` conforme a documentação e trocar `Tabs` por `Drawer`.
+9. **Modo escuro**: remover `userInterfaceStyle: "light"` e usar `useColorScheme()` do `react-native` nos estilos.
 10. **Testes** das funções de `db.ts` e **publicação** com EAS Build e EAS Submit.
 
 Documentação oficial: <https://docs.expo.dev/router/introduction/>

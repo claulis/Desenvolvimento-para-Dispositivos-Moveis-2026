@@ -2,9 +2,9 @@
 
 ## Tutorial: App de Tarefas com Expo, React Native, SQLite e navegação por abas
 
-Este tutorial explica, passo a passo, o projeto **tarefas**: um app mobile com **três telas** (Tarefas, Categorias e Resumo), um **menu de navegação em abas** e um banco **SQLite** local com duas tabelas relacionadas. Ao final você saberá instalar, rodar, entender cada arquivo e estender o app.
+Este tutorial explica, passo a passo, o projeto **tarefas**: um app mobile com **três telas** (Tarefas, Categorias e Resumo), um **menu de navegação em abas** e um banco **SQLite** local com duas tabelas relacionadas.
 
-> **Nível:** intermediário. Em relação à versão de uma tela só, este projeto acrescenta: roteamento com Expo Router, relacionamento entre tabelas (chave estrangeira, `JOIN`, `GROUP BY`), migração de banco de verdade (v1 → v2) e recarga de dados ao trocar de aba.
+
 
 ---
 

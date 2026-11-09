@@ -7,7 +7,7 @@
 
 ### Problema
 
-Ao retomar a Aula 11, observa-se que o Flutter resolve a diferença entre sistemas operacionais desenhando todos os pixels por conta própria. Essa não é a única solução possível, e cada alternativa implica consequências distintas para a aparência, o comportamento e a integração com o sistema. A compreensão dessa escolha é pré-requisito para a comparação formal que será concluída na Aula 24.
+Observa-se que o Flutter resolve a diferença entre sistemas operacionais desenhando todos os pixels por conta própria. Essa não é a única solução possível, e cada alternativa implica consequências distintas para a aparência, o comportamento e a integração com o sistema.
 
 ### Mecanismo
 

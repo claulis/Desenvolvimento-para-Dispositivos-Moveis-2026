@@ -1,4 +1,4 @@
-# Medições — Aula 23 (React Native)
+# Medições — Aula 25 (React Native)
 
 ## Antes da correção
 

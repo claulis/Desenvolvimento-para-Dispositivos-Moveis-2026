@@ -1,5 +1,8 @@
 # Aula 20 — React Native: tutorial integrador com SQLite, Expo Router e navegação por abas
 
+**Carga horária:** 4h
+**Unidade:** IV — Arquitetura de software em React Native
+
 ## Tutorial: App de Tarefas com Expo, React Native, SQLite e navegação por abas
 
 Este tutorial explica, passo a passo, o projeto **tarefas**: um app mobile com **três telas** (Tarefas, Categorias e Resumo), um **menu de navegação em abas** e um banco **SQLite** local com duas tabelas relacionadas.

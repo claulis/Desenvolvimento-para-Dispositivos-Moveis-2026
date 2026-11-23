@@ -1,5 +1,5 @@
-name: performance_lista_solucao
-description: Solução de referência — desempenho de renderização em lista longa (Aula 23)
+name: performance_lista_inicio
+description: Ponto de partida — desempenho de renderização em lista longa (Aula 25)
 publish_to: 'none'
 version: 1.0.0
 
@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.5.0
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,8 @@
-# Aula 26 — Capacitor: tutorial progressivo de um mini aplicativo de delivery, da memória ao SQLite
+# Aula 22 — Capacitor: tutorial progressivo de um mini aplicativo de delivery, da memória ao SQLite
 
-**Unidade:** V — Estilos arquiteturais, renderização e análise comparativa
-**Pré-requisito:** [Aula 25 — Android com Capacitor](./aula-25-android-capacitor.md)
+**Carga horária:** 4h
+**Unidade:** V — Aplicações híbridas com Capacitor
+**Pré-requisito:** [Aula 21 — Android com Capacitor](./aula-21-android-capacitor.md)
 
 ## Objetivos da aula
 
@@ -53,7 +54,7 @@ Os módulos `dados.js` e `db.js` exportam **as mesmas funções, com os mesmos n
 |---|---|
 | **Vite** | Servidor de desenvolvimento e empacotador; gera o diretório `dist/` consumido pelo Capacitor |
 | **JavaScript puro** | Interface e roteamento, sem *framework* de componentes |
-| **Capacitor 8** | Contêiner nativo Android (Aula 25) |
+| **Capacitor 8** | Contêiner nativo Android (Aula 21) |
 | **`@capacitor-community/sqlite`** | Plugin que expõe o SQLite nativo do Android ao JavaScript (Parte B) |
 
 O empacotador é necessário porque os pacotes npm são importados com `import` por nome (por exemplo, `'@capacitor-community/sqlite'`), resolução que o navegador não realiza sozinho.
@@ -639,7 +640,7 @@ npx cap copy android
 npx cap run android
 ```
 
-Erros de JavaScript no aplicativo em execução são inspecionados no Chrome do computador, em `chrome://inspect`, conforme a Aula 25.
+Erros de JavaScript no aplicativo em execução são inspecionados no Chrome do computador, em `chrome://inspect`, conforme a Aula 21.
 
 ---
 
@@ -664,7 +665,7 @@ mini-delivery/
 - Um aplicativo Capacitor com várias páginas pode ser construído como aplicação de página única com roteamento por *hash*, sem *framework*.
 - A Parte A, com dados em memória, executa no navegador e no Android, mas perde o estado ao fechar o aplicativo.
 - A Parte B substitui a camada de dados por SQLite por meio do plugin `@capacitor-community/sqlite`; como as duas camadas expõem a mesma interface assíncrona, a apresentação recebe apenas duas alterações pontuais.
-- A troca do armazenamento sem impacto na interface é a evidência prática do benefício da separação em camadas estudada nas Aulas 12, 17 e 21.
+- A troca do armazenamento sem impacto na interface é a evidência prática do benefício da separação em camadas estudada nas Aulas 12, 17 e 23.
 - Consultas parametrizadas, transações, valores monetários em centavos e escape de texto na interface são práticas independentes de plataforma.
 
 ## Referências

@@ -38,11 +38,11 @@
 18. [React Native: camada de dados, detecção de conectividade e estratégia off-line](/aulas/aula-18-react-native-dados-e-conectividade.md)
 19. [React Native: navegação e módulos nativos](/aulas/aula-19-react-native-navegacao-e-modulos-nativos.md)
 20. [React Native: tutorial integrador com SQLite, Expo Router e navegação por abas](/aulas/aula-20-react-native-tutorial-integrador-sqlite.md)
-21. [Estilos arquiteturais: camadas, portas e adaptadores, arquitetura limpa](/aulas/aula-21-estilos-arquiteturais.md)
-22. [Modularização por funcionalidade contra modularização por camada](/aulas/aula-22-modularizacao.md)
-23. [Camada de apresentação e custo de renderização: reconstrução, reconciliação e memoização](/aulas/aula-23-performance-de-renderizacao.md)
-24. [Análise comparativa arquitetural e critérios de escolha de plataforma por cenário](/aulas/aula-24-analise-comparativa-e-defesa-final.md)
-25. [Android com Capacitor: arquitetura, instalação, configuração e tutorial *Hello World*](/aulas/aula-25-android-capacitor.md)
-26. [Capacitor: tutorial progressivo de mini aplicativo de delivery, da memória ao SQLite](/aulas/aula-26-capacitor-mini-delivery-sqlite.md)
+21. [Android com Capacitor: arquitetura, instalação, configuração e tutorial *Hello World*](/aulas/aula-21-android-capacitor.md)
+22. [Capacitor: tutorial progressivo de mini aplicativo de delivery, da memória ao SQLite](/aulas/aula-22-capacitor-mini-delivery-sqlite.md)
+23. [Estilos arquiteturais: camadas, portas e adaptadores, arquitetura limpa](/aulas/aula-23-estilos-arquiteturais.md)
+24. [Modularização por funcionalidade contra modularização por camada](/aulas/aula-24-modularizacao.md)
+25. [Camada de apresentação e custo de renderização: reconstrução, reconciliação e memoização](/aulas/aula-25-performance-de-renderizacao.md)
+26. [Análise comparativa arquitetural e critérios de escolha de plataforma por cenário](/aulas/aula-26-analise-comparativa-e-defesa-final.md)
 
 ---

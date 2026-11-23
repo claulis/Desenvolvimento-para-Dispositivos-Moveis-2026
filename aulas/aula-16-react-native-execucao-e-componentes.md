@@ -1,5 +1,7 @@
 # Aula 16 — React Native: modelo de execução e componentes
 
+**Carga horária:** 4h
+**Unidade:** IV — Arquitetura de software em React Native
 
 ## 1. O que torna o React Native diferente do Flutter
 
@@ -214,7 +216,7 @@ Uma ressalva de equivalência: `useWindowDimensions` reporta o tamanho da **jane
 
 Uma razão de mercado frequentemente citada para a adoção do React Native é a reutilização de conhecimento de equipes já proficientes em JavaScript/TypeScript e React para web. Conceitos como componentes, hooks, Flexbox e gerenciamento de estado (Context, Redux; Aula 17) transferem-se quase diretamente.
 
-Esse fator reduz o tempo de adaptação de uma equipe web à produção mobile, aspecto relevante na análise comparativa de custo de implementação que será feita na Aula 24. Ele não elimina, contudo, a necessidade de compreender os condicionantes da plataforma Android estudados na Unidade I, que continuam se aplicando integralmente.
+Esse fator reduz o tempo de adaptação de uma equipe web à produção mobile, aspecto relevante na análise comparativa de custo de implementação que será feita na Aula 26. Ele não elimina, contudo, a necessidade de compreender os condicionantes da plataforma Android estudados na Unidade I, que continuam se aplicando integralmente.
 
 ## Síntese da aula
 

@@ -1,6 +1,6 @@
 # Datasets
 
-`produtos.json`: 250 produtos de exemplo, usados na atividade de medição de desempenho de renderização (Aula 23), que exige uma lista de pelo menos 200 elementos. Reaproveitado pelos projetos em [`codigo/flutter/23-performance-lista/`](../../codigo/flutter/23-performance-lista/) e [`codigo/react-native/23-performance-lista/`](../../codigo/react-native/23-performance-lista/).
+`produtos.json`: 250 produtos de exemplo, usados na atividade de medição de desempenho de renderização (Aula 25), que exige uma lista de pelo menos 200 elementos. Reaproveitado pelos projetos em [`codigo/flutter/25-performance-lista/`](../../codigo/flutter/25-performance-lista/) e [`codigo/react-native/25-performance-lista/`](../../codigo/react-native/25-performance-lista/).
 
 Cada item segue o formato:
 

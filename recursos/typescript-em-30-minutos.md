@@ -1,6 +1,6 @@
 # TypeScript em 30 minutos — só o que este componente usa
 
-Este não é um curso de TypeScript. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 16–22, para quem chega ao componente com JavaScript/ES6 mas sem experiência prévia em TypeScript. Se sua equipe já tem essa base, pule este anexo.
+Este não é um curso de TypeScript. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 16–24, para quem chega ao componente com JavaScript/ES6 mas sem experiência prévia em TypeScript. Se sua equipe já tem essa base, pule este anexo.
 
 ## Tipagem básica
 

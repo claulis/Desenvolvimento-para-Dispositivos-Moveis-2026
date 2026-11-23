@@ -627,7 +627,7 @@ npx cap run android
 3. Encerra-se o aplicativo completamente e abre-se de novo: o carrinho e o histórico de pedidos permanecem, pois estão gravados no banco SQLite no armazenamento interno do aplicativo.
 4. Os dados só são apagados ao desinstalar o aplicativo ou ao limpar seus dados em **Configurações → Apps → Mini Delivery → Armazenamento**.
 
-> **Observação:** a partir da Parte B, `npm run dev` no navegador do computador exibe a mensagem de erro de abertura do banco. No navegador, o plugin depende de um armazenamento alternativo (pacotes `jeep-sqlite` e `sql.js`), não configurado neste tutorial; o SQLite é utilizado apenas no Android.
+> **Importante:** a partir da Parte B, o aplicativo é executado sempre no emulador ou no aparelho Android, com `npx cap run android`, pois é no Android que o SQLite nativo está disponível. O comando `npm run dev` passa a ser utilizado apenas na Parte A.
 
 ### Passo B7 — Ciclo de alteração
 

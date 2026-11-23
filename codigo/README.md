@@ -11,7 +11,7 @@ codigo/
 │   ├── 12-camadas-estado/
 │   ├── 13-repositorio-offline/
 │   ├── 14-navegacao-deeplink/
-│   └── 23-performance-lista/
+│   └── 25-performance-lista/
 ├── html/                 (Aula 3 — responsividade em HTML/CSS)
 │   ├── semresponvidade/
 │   ├── flexbox/
@@ -22,7 +22,7 @@ codigo/
     ├── 17-camadas-estado/
     ├── 18-repositorio-offline/
     ├── 19-navegacao-deeplink/
-    └── 23-performance-lista/
+    └── 25-performance-lista/
 ```
 
 Cada pasta de tópico contém:

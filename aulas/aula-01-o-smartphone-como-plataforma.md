@@ -1,4 +1,7 @@
-# O smartphone como plataforma de projeto
+# Aula 1 — O smartphone como plataforma de projeto
+
+**Carga horária:** 4h
+**Unidade:** I — O smartphone e a plataforma Android como condicionantes de projeto
 
 ## Breve historico
 
@@ -6,7 +9,6 @@ https://en.wikipedia.org/wiki/Motorola_TAC
 https://en.wikipedia.org/wiki/Nokia
 https://en.wikipedia.org/wiki/BlackBerry
 https://en.wikipedia.org/wiki/IPhone
-
 
 ## Comunicações: O princípio comum
 
@@ -214,7 +216,7 @@ Normalmente de arquitetura **ARM** (conjunto de instruções RISC, licenciado pe
 - **Núcleos de desempenho ("big")**: 3–5 núcleos, usados para tarefas que exigem CPU sustentada.
 - **Núcleos de eficiência ("LITTLE")**: 2–4 núcleos, usados para a maior parte do tempo de uso comum (rolar uma lista, checar notificações) — o que realmente preserva a bateria no dia a dia.
 
-O sistema operacional (o *scheduler* do kernel Linux) decide dinamicamente em qual núcleo executar cada tarefa, com base em prioridade e carga — uma decisão invisível ao desenvolvedor, mas cujo efeito é sentido diretamente: uma thread de interface mal escrita, presa em um núcleo de eficiência por uma tarefa que deveria ter sido leve, produz o mesmo travamento visual (Aula 23) que veria em um aparelho genuinamente mais fraco.
+O sistema operacional (o *scheduler* do kernel Linux) decide dinamicamente em qual núcleo executar cada tarefa, com base em prioridade e carga — uma decisão invisível ao desenvolvedor, mas cujo efeito é sentido diretamente: uma thread de interface mal escrita, presa em um núcleo de eficiência por uma tarefa que deveria ter sido leve, produz o mesmo travamento visual (Aula 25) que veria em um aparelho genuinamente mais fraco.
 
 ### GPU
 

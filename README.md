@@ -43,5 +43,6 @@
 23. [Camada de apresentação e custo de renderização: reconstrução, reconciliação e memoização](/aulas/aula-23-performance-de-renderizacao.md)
 24. [Análise comparativa arquitetural e critérios de escolha de plataforma por cenário](/aulas/aula-24-analise-comparativa-e-defesa-final.md)
 25. [Android com Capacitor: arquitetura, instalação, configuração e tutorial *Hello World*](/aulas/aula-25-android-capacitor.md)
+26. [Capacitor: tutorial de um mini aplicativo de delivery com SQLite (três páginas)](/aulas/aula-26-capacitor-mini-delivery-sqlite.md)
 
 ---

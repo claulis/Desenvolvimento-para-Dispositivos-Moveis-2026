@@ -1,4 +1,4 @@
-# Aula 10 — Hierarquia visual e Material Design
+# Aula 9 — Hierarquia visual e Material Design
 
 **Carga horária:** 4h
 **Unidade:** II — Interface, experiência e responsividade
@@ -29,7 +29,7 @@ O termo "material" decorre da metáfora central do sistema: a interface é compo
 
 ### Relevância para o desenvolvimento
 
-A adoção do Material Design não constitui imposição estética arbitrária. Trata-se da forma mais direta de entregar uma interface compatível com o **modelo mental** do usuário sobre o comportamento esperado de um aplicativo Android (retomando a Aula 7), pois os componentes apresentam o mesmo comportamento de toque, elevação e retorno visual já observado em outros aplicativos do sistema. Adicionalmente, o Jetpack Compose disponibiliza esses componentes já implementados, o que dispensa sua construção manual.
+A adoção do Material Design não constitui imposição estética arbitrária. Trata-se da forma mais direta de entregar uma interface compatível com o **modelo mental** do usuário sobre o comportamento esperado de um aplicativo Android (retomando a Aula 6), pois os componentes apresentam o mesmo comportamento de toque, elevação e retorno visual já observado em outros aplicativos do sistema. Adicionalmente, o Jetpack Compose disponibiliza esses componentes já implementados, o que dispensa sua construção manual.
 
 ## 2. Hierarquia visual: a orientação do olhar anterior à leitura
 
@@ -39,7 +39,7 @@ A adoção do Material Design não constitui imposição estética arbitrária. 
 
 A percepção visual humana não percorre a tela de forma linear, como ocorre na leitura de um livro. Ela opera por **varredura**: em frações de segundo, o olhar se dirige aos elementos que se destacam (maiores, coloridos, contrastantes ou isolados por espaço vazio) e apenas depois se decide pela leitura. Quando todos os elementos possuem o mesmo tamanho, a mesma cor e a mesma distância em relação aos vizinhos, nenhum se destaca, e o usuário precisa ler todo o conteúdo para identificar o que é relevante.
 
-Em dispositivos móveis, a situação é agravada: a tela é reduzida e o uso ocorre frequentemente em contextos de atenção parcial, como deslocamento e operação com uma única mão (Aula 7).
+Em dispositivos móveis, a situação é agravada: a tela é reduzida e o uso ocorre frequentemente em contextos de atenção parcial, como deslocamento e operação com uma única mão (Aula 6).
 
 ### Mecanismo
 
@@ -69,7 +69,7 @@ O Material Design adota uma malha base de **8dp**: todo espaçamento (margens, p
 
 A limitação do conjunto de valores elimina a necessidade de decisão caso a caso: não se escolhe entre 17 e 18, mas entre 16 e 24. Quando todos os componentes seguem a mesma malha, o alinhamento decorre da própria construção.
 
-**Justificativa do valor 8.** Por ser divisível por 2 e por 4, o valor de 8dp converte-se de forma exata em pixels físicos nos baldes de densidade estudados na Aula 6:
+**Justificativa do valor 8.** Por ser divisível por 2 e por 4, o valor de 8dp converte-se de forma exata em pixels físicos nos baldes de densidade estudados na Aula 5:
 
 | Densidade | Fator de escala | 8dp equivale a |
 |---|---|---|
@@ -146,7 +146,7 @@ Os valores da tabela são ilustrativos; os valores efetivos dependem do tema def
 
 O prefixo **`on`** significa "o que é posicionado sobre". `onPrimary` é a cor projetada para manter contraste adequado sobre `primary` em ambos os temas, o que dispensa a escolha manual de "texto branco" e evita ilegibilidade quando a cor de fundo se altera.
 
-Esse mecanismo viabiliza o suporte a tema claro e escuro (Aula 6) **sem duplicação do código de cada tela**: o código declara o uso de `surface`, e o tema substitui o valor automaticamente.
+Esse mecanismo viabiliza o suporte a tema claro e escuro (Aula 5) **sem duplicação do código de cada tela**: o código declara o uso de `surface`, e o tema substitui o valor automaticamente.
 
 ### Aplicação
 
@@ -197,7 +197,7 @@ O ícone economiza espaço e esforço de leitura: uma lupa substitui a palavra "
 
 ### Mecanismo
 
-Os ícones padrão do Material (carrinho de compras, lupa de busca, coração de favorito) operam como a sinalização de trânsito mencionada na §1: o usuário já os aprendeu em outros aplicativos, e seu emprego aproveita esse conhecimento prévio. Ícones excessivamente criativos, sem correspondência com convenções estabelecidas, aumentam a carga cognitiva e violam diretamente a heurística "reconhecimento em vez de memorização" (Aula 8).
+Os ícones padrão do Material (carrinho de compras, lupa de busca, coração de favorito) operam como a sinalização de trânsito mencionada na §1: o usuário já os aprendeu em outros aplicativos, e seu emprego aproveita esse conhecimento prévio. Ícones excessivamente criativos, sem correspondência com convenções estabelecidas, aumentam a carga cognitiva e violam diretamente a heurística "reconhecimento em vez de memorização" (Aula 7).
 
 ### Requisito de acessibilidade
 
@@ -216,13 +216,13 @@ Icon(
 
 ### Problema
 
-O texto integra a hierarquia da interface: é o recurso a que o usuário recorre quando o elemento visual é insuficiente. Textos vagos, inconsistentes ou excessivamente criativos geram hesitação precisamente nos momentos de maior consequência, como pagamento, exclusão e envio. Em dispositivos móveis, o espaço é escasso e a atenção, fragmentada (Aula 7), de modo que cada palavra deve cumprir uma função.
+O texto integra a hierarquia da interface: é o recurso a que o usuário recorre quando o elemento visual é insuficiente. Textos vagos, inconsistentes ou excessivamente criativos geram hesitação precisamente nos momentos de maior consequência, como pagamento, exclusão e envio. Em dispositivos móveis, o espaço é escasso e a atenção, fragmentada (Aula 6), de modo que cada palavra deve cumprir uma função.
 
 ### Princípios práticos
 
 - **Clareza antes de criatividade.** O rótulo "Confirmar compra" é preferível a "Vamos lá!" quando a ação possui consequência financeira, pois o usuário precisa saber exatamente o que ocorrerá ao tocar o botão. A ambiguidade em ações irreversíveis constitui risco, e não traço de personalidade da marca.
 - **Mensagens de erro específicas e acionáveis.** "Não foi possível conectar à internet. Verifique sua conexão e tente novamente" informa o que ocorreu e qual providência tomar. "Ocorreu um erro" não oferece ao usuário nenhum caminho de resolução.
-- **Consistência terminológica.** Se a tela de listagem denomina um conceito "Pedido", a tela de detalhe não deve denominá-lo "Compra". O usuário pode inferir que se trata de entidades distintas, e a inconsistência compromete o modelo mental em construção (Aula 7).
+- **Consistência terminológica.** Se a tela de listagem denomina um conceito "Pedido", a tela de detalhe não deve denominá-lo "Compra". O usuário pode inferir que se trata de entidades distintas, e a inconsistência compromete o modelo mental em construção (Aula 6).
 - **Botões com verbo de ação.** Preferem-se "Salvar", "Enviar" e "Confirmar" a "OK" sempre que for possível uma ação mais específica, pois o verbo descreve o resultado e dispensa a releitura da pergunta do diálogo para interpretar o significado do botão.
 
 | Evitar | Preferir | Justificativa |

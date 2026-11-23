@@ -1,4 +1,4 @@
-# Aula 12 — Flutter: arquitetura em camadas e gerenciamento de estado
+# Aula 11 — Flutter: arquitetura em camadas e gerenciamento de estado
 
 **Carga horária:** 4h
 **Unidade:** III — Arquitetura de software em Flutter

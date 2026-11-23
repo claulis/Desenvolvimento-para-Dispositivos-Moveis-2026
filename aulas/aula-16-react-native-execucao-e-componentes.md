@@ -36,7 +36,7 @@ Desde a versão 0.76 (outubro de 2024), a **Nova Arquitetura** é o padrão de t
 
 1. **Thread JavaScript**: executa a lógica da aplicação e decide **o que** deve ser exibido, descrevendo a interface como uma árvore de elementos React (semelhante ao DOM virtual da web).
 2. **JSI (JavaScript Interface)**: mecanismo de comunicação entre a thread JavaScript e o código nativo. Permite chamadas **síncronas e tipadas diretamente**, sem serialização em lote, e substitui a antiga Bridge.
-3. **Fabric**: o renderizador da Nova Arquitetura, responsável por criar e atualizar os componentes nativos reais na tela a partir da árvore descrita em JavaScript. É o análogo funcional do motor de renderização do Flutter (Aula 11), com a diferença central de que o Fabric produz componentes nativos de fato, e não pixels desenhados por um motor próprio.
+3. **Fabric**: o renderizador da Nova Arquitetura, responsável por criar e atualizar os componentes nativos reais na tela a partir da árvore descrita em JavaScript. É o análogo funcional do motor de renderização do Flutter (Aula 10), com a diferença central de que o Fabric produz componentes nativos de fato, e não pixels desenhados por um motor próprio.
 4. **TurboModules**: acesso a módulos nativos sob demanda e com JSI, substituindo o antigo `NativeModules` (retomado na Aula 19).
 
 O fluxo de uma atualização pode ser resumido assim: o estado muda em JavaScript; o React calcula a nova árvore de elementos; o Fabric compara a árvore nova com a anterior e aplica ao lado nativo apenas as diferenças; os componentes nativos são atualizados na tela.
@@ -84,17 +84,17 @@ const estilos = StyleSheet.create({
 
 Leitura do código: `useState(0)` devolve o par `[valor, função de atualização]`, com valor inicial `0`. A forma `setQuantidade((q) => q + 1)` recebe uma função que calcula o novo valor a partir do valor mais recente, o que evita erros quando várias atualizações ocorrem em sequência. A expressão entre chaves no JSX é avaliada a cada renderização, e o texto exibido depende do valor atual.
 
-O exemplo é conceitualmente equivalente ao `StatefulWidget` da Aula 11: `useState` desempenha o papel que `setState()` desempenha no Flutter, que é disparar nova renderização quando o dado muda. A diferença de forma é que o estado, em vez de residir em uma classe `State` separada, é declarado dentro da própria função.
+O exemplo é conceitualmente equivalente ao `StatefulWidget` da Aula 10: `useState` desempenha o papel que `setState()` desempenha no Flutter, que é disparar nova renderização quando o dado muda. A diferença de forma é que o estado, em vez de residir em uma classe `State` separada, é declarado dentro da própria função.
 
-## 4. Tela de detalhe de produto: comparação direta com a Aula 11
+## 4. Tela de detalhe de produto: comparação direta com a Aula 10
 
-Para explicitar a equivalência entre as duas plataformas, central ao método comparativo deste componente, a mesma tela de detalhe de produto construída em Flutter na Aula 11 é reconstruída aqui em React Native.
+Para explicitar a equivalência entre as duas plataformas, central ao método comparativo deste componente, a mesma tela de detalhe de produto construída em Flutter na Aula 10 é reconstruída aqui em React Native.
 
 ### Centralização dos valores de tema
 
 ```tsx
 // tema.ts — tokens de cor e tipografia, único lugar que conhece valores brutos
-// (a mesma paleta gerada no Material Theme Builder, Aula 10, reaproveitada aqui)
+// (a mesma paleta gerada no Material Theme Builder, Aula 9, reaproveitada aqui)
 export const cores = {
   primary: '#6750A4',
   onPrimary: '#FFFFFF',
@@ -106,7 +106,7 @@ export const tipografia = {
 };
 ```
 
-O arquivo `tema.ts` cumpre o papel dos tokens da Aula 10: os componentes referenciam `cores.primary`, e somente este arquivo conhece o valor `#6750A4`. A anotação `as const` faz o TypeScript tratar os valores como literais imutáveis, o que impede a alteração acidental e habilita a verificação de tipos precisa.
+O arquivo `tema.ts` cumpre o papel dos tokens da Aula 9: os componentes referenciam `cores.primary`, e somente este arquivo conhece o valor `#6750A4`. A anotação `as const` faz o TypeScript tratar os valores como literais imutáveis, o que impede a alteração acidental e habilita a verificação de tipos precisa.
 
 ### A tela
 
@@ -116,7 +116,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { cores, tipografia } from './tema';
 
 function TelaProduto() {
-  const insets = useSafeAreaInsets(); // Aula 6: SafeAreaView do core é legado e
+  const insets = useSafeAreaInsets(); // Aula 5: SafeAreaView do core é legado e
   return (                            // não se comporta bem no Android; usa-se o hook
     <View style={[estilos.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
       <Text style={[estilos.titulo, tipografia.headlineSmall]}>Smartphone XYZ</Text>
@@ -139,9 +139,9 @@ const estilos = StyleSheet.create({
 });
 ```
 
-Leitura do código e correspondência com a Aula 11:
+Leitura do código e correspondência com a Aula 10:
 
-| Flutter (Aula 11) | React Native (esta aula) |
+| Flutter (Aula 10) | React Native (esta aula) |
 |---|---|
 | `Scaffold` + `SafeArea` | `View` + `useSafeAreaInsets()` aplicados como `padding` |
 | `Column` | `View` (o `flexDirection` padrão é `column`) |
@@ -149,7 +149,7 @@ Leitura do código e correspondência com a Aula 11:
 | `ElevatedButton` | `Pressable` estilizado |
 | `Theme.of(context).textTheme` | Objeto `tipografia` importado de `tema.ts` |
 
-A malha de espaçamento (múltiplos de 8, Aula 10) e os tokens de cor continuam se aplicando, expressos em `StyleSheet` do React Native em vez de widgets do Flutter. Observa-se que o `titulo` ainda contém a cor fixa `'#000000'`, e **cores e tamanhos de fonte fixos diretamente no `StyleSheet`, como `'#6750A4'` espalhado pelos componentes, constituem exatamente o antipadrão "cor fixa, ignora tema" apontado na Aula 10**. Centralizar os valores em `tema.ts` (ou em um equivalente que resolva claro e escuro) é o que preserva, em React Native, o mesmo princípio já estabelecido para Android nativo.
+A malha de espaçamento (múltiplos de 8, Aula 9) e os tokens de cor continuam se aplicando, expressos em `StyleSheet` do React Native em vez de widgets do Flutter. Observa-se que o `titulo` ainda contém a cor fixa `'#000000'`, e **cores e tamanhos de fonte fixos diretamente no `StyleSheet`, como `'#6750A4'` espalhado pelos componentes, constituem exatamente o antipadrão "cor fixa, ignora tema" apontado na Aula 9**. Centralizar os valores em `tema.ts` (ou em um equivalente que resolva claro e escuro) é o que preserva, em React Native, o mesmo princípio já estabelecido para Android nativo.
 
 ## 5. Layout por Flexbox
 
@@ -182,7 +182,7 @@ Para quem já programa para a web, o Flexbox do React Native representa reaprove
 
 ### Problema
 
-Retomando a Aula 3 e a Aula 11, o aplicativo deve adaptar sua estrutura ao tamanho da janela, que varia entre aparelhos, orientações e modos de janela em telas grandes ou dobráveis.
+Retomando a Aula 3 e a Aula 10, o aplicativo deve adaptar sua estrutura ao tamanho da janela, que varia entre aparelhos, orientações e modos de janela em telas grandes ou dobráveis.
 
 ### Mecanismo
 
@@ -208,7 +208,7 @@ function TelaResponsiva() {
 }
 ```
 
-A comparação direta com o `LayoutBuilder` do Flutter (Aula 11) é intencional: os mesmos pontos de quebra de 600dp e 840dp (Aula 3) se aplicam, apenas expressos por um hook em vez de um widget. Isso reforça que a **teoria de responsividade pertence à plataforma Android, e não ao framework**.
+A comparação direta com o `LayoutBuilder` do Flutter (Aula 10) é intencional: os mesmos pontos de quebra de 600dp e 840dp (Aula 3) se aplicam, apenas expressos por um hook em vez de um widget. Isso reforça que a **teoria de responsividade pertence à plataforma Android, e não ao framework**.
 
 Uma ressalva de equivalência: `useWindowDimensions` reporta o tamanho da **janela inteira**, assemelhando-se mais ao `MediaQuery` do Flutter do que ao `LayoutBuilder`, que informa o espaço concedido pelo widget pai. Para adaptar um componente ao espaço do seu contêiner, o React Native oferece o evento `onLayout` das views, que informa as dimensões efetivamente medidas.
 

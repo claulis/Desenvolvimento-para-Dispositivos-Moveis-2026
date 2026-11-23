@@ -7,8 +7,8 @@ Projetos executáveis que acompanham as atividades das Unidades III e IV. Este c
 ```
 codigo/
 ├── flutter/
-│   ├── 11-widgets-responsivos/
-│   ├── 12-camadas-estado/
+│   ├── 10-widgets-responsivos/
+│   ├── 11-camadas-estado/
 │   ├── 13-repositorio-offline/
 │   ├── 14-navegacao-deeplink/
 │   └── 25-performance-lista/

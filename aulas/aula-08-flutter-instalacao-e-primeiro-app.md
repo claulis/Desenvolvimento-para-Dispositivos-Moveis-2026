@@ -1,4 +1,4 @@
-# Aula 5 — Criar e rodar um app Flutter no Windows (VS Code + emulador Android)
+# Aula 8 — Criar e rodar um app Flutter no Windows (VS Code + emulador Android)
 
 Roteiro passo a passo para criar o app de exemplo do Flutter (o "contador": um botão **+** que soma 1 a cada toque) e executá-lo em um emulador Android.
 

@@ -1,6 +1,7 @@
-# Aula 9 — Exemplo Flutter completo com persistência
+# Aula 12 — Exemplo Flutter completo com persistência
 
-
+**Carga horária:** 4h
+**Unidade:** III — Arquitetura de software em Flutter
 
 ## Visão geral
 

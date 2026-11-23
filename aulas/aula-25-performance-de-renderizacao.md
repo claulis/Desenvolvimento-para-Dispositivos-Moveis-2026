@@ -17,7 +17,7 @@ Retomando a Aula 1: o smartphone tem CPU/GPU limitadas e sem ventoinha — rende
 
 ## 2. Reconstrução de subárvore no Flutter
 
-Retomando a Aula 11: quando `setState()` é chamado dentro de um `State`, o Flutter reconstrói (chama `build()` novamente) o widget correspondente **e toda a sua subárvore de widgets filhos**, por padrão — mesmo que apenas uma pequena parte visual precise mudar.
+Retomando a Aula 10: quando `setState()` é chamado dentro de um `State`, o Flutter reconstrói (chama `build()` novamente) o widget correspondente **e toda a sua subárvore de widgets filhos**, por padrão — mesmo que apenas uma pequena parte visual precise mudar.
 
 ```dart
 // Ineficiente: setState no topo reconstrói toda a lista de produtos
@@ -51,9 +51,9 @@ O Flutter, no entanto, é inteligente o suficiente para **não redesenhar** widg
 
 ### Escopo de reconstrução
 
-A técnica mais eficaz para reduzir o custo de reconstrução é limitar o escopo de `setState()` ao menor trecho de árvore possível — mas **isso não significa mover o próprio dado para dentro do widget filho**. "Favoritado" é estado de domínio: pertence ao usuário, precisa persistir e sincronizar (Aula 13), não é um detalhe efêmero de apresentação. Movê-lo para dentro de `_CardProdutoState`, como uma versão anterior deste material chegou a sugerir, contraria diretamente a separação de camadas das Aulas 12 e 20 — e, pior, **não funciona**: dentro de um `ListView.builder`, ao rolar a lista para longe e voltar, o `State` do item é descartado e recriado, e o favorito marcado localmente simplesmente desaparece (ou, sem uma `Key` estável — §5 desta aula — pode reaparecer associado ao item errado).
+A técnica mais eficaz para reduzir o custo de reconstrução é limitar o escopo de `setState()` ao menor trecho de árvore possível — mas **isso não significa mover o próprio dado para dentro do widget filho**. "Favoritado" é estado de domínio: pertence ao usuário, precisa persistir e sincronizar (Aula 13), não é um detalhe efêmero de apresentação. Movê-lo para dentro de `_CardProdutoState`, como uma versão anterior deste material chegou a sugerir, contraria diretamente a separação de camadas das Aulas 11 e 20 — e, pior, **não funciona**: dentro de um `ListView.builder`, ao rolar a lista para longe e voltar, o `State` do item é descartado e recriado, e o favorito marcado localmente simplesmente desaparece (ou, sem uma `Key` estável — §5 desta aula — pode reaparecer associado ao item errado).
 
-A técnica correta é **escuta seletiva, não descida de estado**: a fonte da verdade continua no gerenciador de estado (Aula 12), e cada item da lista observa apenas a sua própria fatia daquele estado, de forma que alternar um favorito reconstrua unicamente o card correspondente:
+A técnica correta é **escuta seletiva, não descida de estado**: a fonte da verdade continua no gerenciador de estado (Aula 11), e cada item da lista observa apenas a sua própria fatia daquele estado, de forma que alternar um favorito reconstrua unicamente o card correspondente:
 
 ```dart
 // Eficiente: o estado de "favoritado" continua no domínio (favoritosProvider),
@@ -190,7 +190,7 @@ Renderizar uma lista de milhares de produtos com um `ListView`/`Column` comum (q
 
 ## 7. Exemplo real: rolagem engasgada em lista de feed
 
-Um padrão de bug de desempenho relatado com frequência em aplicativos de feed de conteúdo (redes sociais, marketplaces): a rolagem fica "engasgada" (baixa taxa de quadros) especificamente ao curtir/favoritar um item no meio de uma lista longa. A causa raiz, tanto em Flutter quanto em React Native, costuma ser a mesma: o estado de "curtido" é observado de forma grosseira demais — o componente pai reconstrói/re-renderiza a lista inteira a cada interação com **um** item, em vez de cada item observar apenas a sua própria fatia de estado. A correção — escuta seletiva por item (`ref.watch(favoritoProvider(id))`/`Selector`/`BlocSelector` em Flutter, `React.memo` com `renderItem` estável e seletor por id em React Native), como demonstrado nas seções 2 e 3 — é o mesmo princípio arquitetural aplicado nas duas plataformas, reforçando que o problema de desempenho de renderização é conceitual, não específico de framework. O que **não** resolve o problema, e na verdade o piora, é mover o dado de "curtido" para fora do domínio e para dentro do estado local do item — como visto na §2, isso quebra ao rolar a lista e sai da arquitetura estabelecida nas Aulas 12 e 20.
+Um padrão de bug de desempenho relatado com frequência em aplicativos de feed de conteúdo (redes sociais, marketplaces): a rolagem fica "engasgada" (baixa taxa de quadros) especificamente ao curtir/favoritar um item no meio de uma lista longa. A causa raiz, tanto em Flutter quanto em React Native, costuma ser a mesma: o estado de "curtido" é observado de forma grosseira demais — o componente pai reconstrói/re-renderiza a lista inteira a cada interação com **um** item, em vez de cada item observar apenas a sua própria fatia de estado. A correção — escuta seletiva por item (`ref.watch(favoritoProvider(id))`/`Selector`/`BlocSelector` em Flutter, `React.memo` com `renderItem` estável e seletor por id em React Native), como demonstrado nas seções 2 e 3 — é o mesmo princípio arquitetural aplicado nas duas plataformas, reforçando que o problema de desempenho de renderização é conceitual, não específico de framework. O que **não** resolve o problema, e na verdade o piora, é mover o dado de "curtido" para fora do domínio e para dentro do estado local do item — como visto na §2, isso quebra ao rolar a lista e sai da arquitetura estabelecida nas Aulas 11 e 20.
 
 ## Síntese da aula
 

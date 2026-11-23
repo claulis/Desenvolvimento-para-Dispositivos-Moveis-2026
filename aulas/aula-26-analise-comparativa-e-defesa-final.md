@@ -11,7 +11,7 @@
 
 ## 1. Por que esta aula fecha o curso, e não abre um tópico novo
 
-Das Aulas 11 a 20 e 23 a 25, Flutter e React Native foram comparados dimensão a dimensão — renderização (Aulas 11/16), estado (Aulas 12/17), dados e conectividade (Aulas 13/18), navegação e integração nativa (Aulas 14/19), desempenho de renderização (Aula 25). Esta aula não introduz teoria nova: **consolida** o que já foi construído, e responde à pergunta que ficou implícita em cada comparação até aqui — dado tudo isso, qual escolher, e sob quais condições?
+Das Aulas 10 a 20 e 23 a 25, Flutter e React Native foram comparados dimensão a dimensão — renderização (Aulas 10/16), estado (Aulas 11/17), dados e conectividade (Aulas 13/18), navegação e integração nativa (Aulas 14/19), desempenho de renderização (Aula 25). Esta aula não introduz teoria nova: **consolida** o que já foi construído, e responde à pergunta que ficou implícita em cada comparação até aqui — dado tudo isso, qual escolher, e sob quais condições?
 
 > **Definição — Atributo de qualidade (quality attribute)**: propriedade mensurável ou observável de um sistema (desempenho, portabilidade, manutenibilidade, testabilidade, segurança, entre outras) usada como critério objetivo para avaliar e comparar decisões de arquitetura, em contraposição a critérios subjetivos como preferência pessoal ou familiaridade da equipe (BASS; CLEMENTS; KAZMAN, retomando a leitura da Aula 1).
 
@@ -49,7 +49,7 @@ Retomando o princípio da Aula 23 (nenhum estilo arquitetural é universalmente 
 
 1. **Startup de 3 pessoas, equipe já proficiente em desenvolvimento web (React/TypeScript)**: o custo de ramp-up (Aula 16 §7) tende a pesar mais que a diferença de desempenho de renderização para a maioria dos produtos.
 2. **Aplicativo bancário com requisito forte de biometria, segurança de armazenamento local e certificação de plataforma**: a proximidade com APIs nativas e a maturidade de bibliotecas de segurança em cada ecossistema tornam-se o critério dominante — e o estado atual de suporte a biometria/armazenamento seguro em cada framework precisa ser verificado antes da decisão.
-3. **Aplicativo com identidade visual proprietária forte e animações complexas e não padronizadas**: a consistência pixel-a-pixel entre plataformas do Flutter (Aula 11) tende a pesar mais do que a proximidade nativa do React Native.
+3. **Aplicativo com identidade visual proprietária forte e animações complexas e não padronizadas**: a consistência pixel-a-pixel entre plataformas do Flutter (Aula 10) tende a pesar mais do que a proximidade nativa do React Native.
 
 Em cada cenário, uma recomendação bem fundamentada explicita os dois ou três atributos de qualidade que mais pesaram na decisão e a condição que inverteria a escolha.
 
@@ -67,7 +67,7 @@ Nenhuma dessas opções foi tratada neste componente; servem apenas como reconhe
 
 | Etapa | Produto |
 |---|---|
-| Consolidação | Tabela comparativa completa, das Aulas 11-20 e 23-25 |
+| Consolidação | Tabela comparativa completa, das Aulas 10-20 e 23-25 |
 | Evidência | Métricas medidas nas duas implementações |
 | Contextualização | Recomendação justificada para três cenários distintos |
 | Limite do escopo | Reconhecimento de alternativas não cobertas pelo curso |

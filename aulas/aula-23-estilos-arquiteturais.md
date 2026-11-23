@@ -5,7 +5,7 @@
 
 ## 1. Arquitetura em camadas (layered architecture)
 
-O estilo já praticado nas Aulas 12 e 17: componentes organizados em camadas horizontais (apresentação, domínio, dados), com a regra de que uma camada só pode depender da camada imediatamente abaixo dela.
+O estilo já praticado nas Aulas 11 e 17: componentes organizados em camadas horizontais (apresentação, domínio, dados), com a regra de que uma camada só pode depender da camada imediatamente abaixo dela.
 
 > **Definição — Acoplamento**: grau em que um componente depende do funcionamento interno ou da existência de outro componente específico, de forma que uma mudança em um provavelmente exige mudança no outro.
 
@@ -60,9 +60,9 @@ A arquitetura limpa é, em essência, uma formalização mais detalhada do mesmo
 
 Os três estilos das §2–4 descrevem como organizar o sistema **como um todo**. Um degrau abaixo, dentro da camada de apresentação especificamente, existem padrões mais específicos que decidem como a interface se comunica com o estado — os que provavelmente aparecem nomeados em uma vaga de desenvolvimento Android:
 
-> **Definição — MVVM (Model-View-ViewModel)**: padrão de apresentação em que a View observa um ViewModel que expõe estado e comandos, sem o ViewModel conhecer a View diretamente — o Provider/Riverpod consumido por um `ConsumerWidget` (Aula 12) ou um hook customizado consumido por um componente (Aula 17) cumprem, na prática, o papel de ViewModel.
+> **Definição — MVVM (Model-View-ViewModel)**: padrão de apresentação em que a View observa um ViewModel que expõe estado e comandos, sem o ViewModel conhecer a View diretamente — o Provider/Riverpod consumido por um `ConsumerWidget` (Aula 11) ou um hook customizado consumido por um componente (Aula 17) cumprem, na prática, o papel de ViewModel.
 
-> **Definição — MVI (Model-View-Intent)**: padrão de apresentação em que toda interação do usuário é modelada como uma **intenção** (evento) explícita, processada de forma unidirecional para produzir um novo estado imutável — o BLoC (Aula 12) é, em espírito, uma implementação de MVI: eventos de entrada, estados de saída, fluxo estritamente unidirecional.
+> **Definição — MVI (Model-View-Intent)**: padrão de apresentação em que toda interação do usuário é modelada como uma **intenção** (evento) explícita, processada de forma unidirecional para produzir um novo estado imutável — o BLoC (Aula 11) é, em espírito, uma implementação de MVI: eventos de entrada, estados de saída, fluxo estritamente unidirecional.
 
 Ou seja: MVVM/MVI não competem com camadas/portas-e-adaptadores/arquitetura limpa — eles descrevem a organização *interna* da camada de apresentação, dentro de qualquer um dos três estilos macro já estudados.
 

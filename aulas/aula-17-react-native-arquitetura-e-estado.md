@@ -11,17 +11,17 @@
 
 ## Organização da aula
 
-A aula retoma, em React Native, as duas questões da Aula 12: **onde cada tipo de código deve residir** (arquitetura em camadas, §1, §2, §4 e §6) e **como o estado é armazenado e propagado** (§2.1, §3 e §5). Uma distinção organiza o conteúdo: a diferença entre **estado de servidor** e **estado de cliente** (§2.1), que determina qual ferramenta é adequada a cada tipo de dado. Cada tópico segue a sequência: problema, mecanismo e aplicação.
+A aula retoma, em React Native, as duas questões da Aula 11: **onde cada tipo de código deve residir** (arquitetura em camadas, §1, §2, §4 e §6) e **como o estado é armazenado e propagado** (§2.1, §3 e §5). Uma distinção organiza o conteúdo: a diferença entre **estado de servidor** e **estado de cliente** (§2.1), que determina qual ferramenta é adequada a cada tipo de dado. Cada tópico segue a sequência: problema, mecanismo e aplicação.
 
 ## 1. Arquitetura em camadas em React Native
 
 ### Problema
 
-Os problemas da mistura de responsabilidades descritos na Aula 12 (dificuldade de trocar a fonte de dados, impossibilidade de testar regras sem a interface, reuso custoso de lógica) não dependem do framework. Um componente React Native que acessa a rede diretamente reproduz exatamente os mesmos defeitos de um widget Flutter equivalente.
+Os problemas da mistura de responsabilidades descritos na Aula 11 (dificuldade de trocar a fonte de dados, impossibilidade de testar regras sem a interface, reuso custoso de lógica) não dependem do framework. Um componente React Native que acessa a rede diretamente reproduz exatamente os mesmos defeitos de um widget Flutter equivalente.
 
 ### Mecanismo
 
-Os mesmos princípios de arquitetura em camadas estudados na Aula 12 aplicam-se integralmente ao React Native. A separação entre apresentação, domínio e dados é uma decisão de arquitetura de software, independente do framework de interface escolhido. O que muda é a sintaxe e as ferramentas disponíveis em cada ecossistema. A dependência permanece unidirecional: apresentação → domínio → dados.
+Os mesmos princípios de arquitetura em camadas estudados na Aula 11 aplicam-se integralmente ao React Native. A separação entre apresentação, domínio e dados é uma decisão de arquitetura de software, independente do framework de interface escolhido. O que muda é a sintaxe e as ferramentas disponíveis em cada ecossistema. A dependência permanece unidirecional: apresentação → domínio → dados.
 
 ### Aplicação
 
@@ -98,7 +98,7 @@ Leitura do código: o `useEffect` executa a busca quando o componente é exibido
 
 > **Por que a flag `cancelado` (ou um `AbortController`) não é opcional**: sem ela, se o componente desmontar (ou `repositorio` mudar) antes de a `Promise` resolver, o `.then`/`.catch` chama `setPedidos`/`setErro` em um componente que não existe mais. Trata-se de uma condição de corrida que o React sinaliza como aviso e que, em cenários mais complexos, pode causar atualização de estado incorreta (por exemplo, a resposta de uma requisição antiga sobrescrevendo a de uma mais recente). É a versão em React Native do princípio "o processo pode morrer ou mudar a qualquer momento" discutido para o Android nativo na Aula 2: aqui, o equivalente é o componente ser desmontado a qualquer momento. Em chamadas HTTP reais, recomenda-se encadear um `AbortController` e passar seu `signal` para `fetch`/`axios`, cancelando a requisição de fato, e não apenas ignorando o resultado.
 
-O hook `usePedidos` desempenha, no React Native, papel equivalente ao do gerenciador de estado exposto por um `Provider`/`Riverpod` no Flutter (Aula 12). Ele é a fronteira entre o componente de apresentação (que apenas consome `{ pedidos, carregando, erro }`) e o domínio/dados (que o hook encapsula, delegando ao repositório, tema retomado na Aula 18).
+O hook `usePedidos` desempenha, no React Native, papel equivalente ao do gerenciador de estado exposto por um `Provider`/`Riverpod` no Flutter (Aula 11). Ele é a fronteira entre o componente de apresentação (que apenas consome `{ pedidos, carregando, erro }`) e o domínio/dados (que o hook encapsula, delegando ao repositório, tema retomado na Aula 18).
 
 > **Nota — o ecossistema abandonou esse padrão manual**: implementar `loading`, `error` e cache à mão com `useEffect`, como acima, é o que a comunidade React descreve como misturar **estado de servidor** (dados que vivem no backend e apenas são espelhados localmente) com **estado de cliente** (dados que só existem na interface, como um formulário em preenchimento). Bibliotecas de *server state*, como **TanStack Query** (ou SWR), resolvem loading, erro, cache e revalidação automaticamente (retomado na §2.1 e na Aula 18). Vale implementar manualmente uma vez, como acima, precisamente para compreender o problema que essas bibliotecas resolvem, mas esse não é o padrão recomendado para um projeto real em 2026.
 
@@ -138,7 +138,7 @@ Leitura do código: `queryKey` identifica o dado no cache (duas telas que usam a
 
 ### Problema
 
-Retomando a Aula 12: o estado local (`useState`) é suficiente para um componente, mas insuficiente quando o dado é compartilhado entre componentes distantes na árvore (por exemplo, o carrinho, usado no catálogo e no checkout). Repassar o dado manualmente por todos os componentes intermediários (*prop drilling*) acopla componentes que não o utilizam.
+Retomando a Aula 11: o estado local (`useState`) é suficiente para um componente, mas insuficiente quando o dado é compartilhado entre componentes distantes na árvore (por exemplo, o carrinho, usado no catálogo e no checkout). Repassar o dado manualmente por todos os componentes intermediários (*prop drilling*) acopla componentes que não o utilizam.
 
 ### Context API
 
@@ -226,13 +226,13 @@ Funcionamento: o estado e as ações que o alteram ficam na mesma definição. O
 | Zustand | Projetos que buscam simplicidade de API sem abrir mão de estado global compartilhado |
 | TanStack Query (ou SWR) | Sempre que o dado é *server state* (ver §2.1), combinável com qualquer uma das três acima para o *client state* restante |
 
-Esta tabela é estruturalmente paralela à da Aula 12 (Provider/Riverpod/BLoC). O critério de decisão (tamanho do projeto, necessidade de rastreabilidade, preferência por simplicidade ou rigor estrutural) é o mesmo raciocínio arquitetural aplicado a dois ecossistemas distintos, o que reforça o argumento comparativo central deste componente.
+Esta tabela é estruturalmente paralela à da Aula 11 (Provider/Riverpod/BLoC). O critério de decisão (tamanho do projeto, necessidade de rastreabilidade, preferência por simplicidade ou rigor estrutural) é o mesmo raciocínio arquitetural aplicado a dois ecossistemas distintos, o que reforça o argumento comparativo central deste componente.
 
 ## 4. Onde o gerenciador de estado se encaixa na arquitetura
 
-Assim como discutido para o Flutter na Aula 12, o gerenciador de estado (Context, Redux ou Zustand) ocupa a fronteira entre apresentação e domínio. A regra de negócio (por exemplo, "um item só pode ser adicionado ao carrinho se houver estoque") não deve residir dentro do reducer do Redux ou da store do Zustand, acoplada à interface. Deve residir em uma função de domínio, testável isoladamente, chamada a partir da ação ou da store.
+Assim como discutido para o Flutter na Aula 11, o gerenciador de estado (Context, Redux ou Zustand) ocupa a fronteira entre apresentação e domínio. A regra de negócio (por exemplo, "um item só pode ser adicionado ao carrinho se houver estoque") não deve residir dentro do reducer do Redux ou da store do Zustand, acoplada à interface. Deve residir em uma função de domínio, testável isoladamente, chamada a partir da ação ou da store.
 
-A justificativa é a mesma da Aula 12: se a regra residir no reducer, a migração entre Redux e Zustand (comum, conforme a §5) obrigaria reescrever também a regra de negócio, que não tem relação com a tecnologia de estado.
+A justificativa é a mesma da Aula 11: se a regra residir no reducer, a migração entre Redux e Zustand (comum, conforme a §5) obrigaria reescrever também a regra de negócio, que não tem relação com a tecnologia de estado.
 
 ```tsx
 // Domínio, sem dependência de React ou de qualquer gerenciador de estado
@@ -251,7 +251,7 @@ O Redux é mantido apenas em domínios com fluxos de estado genuinamente complex
 
 ### Problema
 
-Como na Aula 12, o benefício de isolar o domínio precisa ser demonstrado. Se a regra depende de componentes ou de um gerenciador de estado, testá-la exige montar a árvore de componentes e simular hooks, o que é lento e frágil.
+Como na Aula 11, o benefício de isolar o domínio precisa ser demonstrado. Se a regra depende de componentes ou de um gerenciador de estado, testá-la exige montar a árvore de componentes e simular hooks, o que é lento e frágil.
 
 ### Mecanismo e aplicação
 

@@ -131,13 +131,13 @@ Toda alteração no código web exige novo *build* web seguido de `npx cap copy`
 | Item | Versão / observação |
 |---|---|
 | Node.js | 22 ou superior (exigido pelo `@capacitor/cli`) |
-| Android Studio | Versão estável recente, com Android SDK e emulador configurados (ver Aula 5) |
-| JDK | 21, o mesmo utilizado na Aula 5 (o Android Gradle Plugin 8.13 exige no mínimo JDK 17) |
+| Android Studio | Versão estável recente, com Android SDK e emulador configurados (ver Aula 8) |
+| JDK | 21, o mesmo utilizado na Aula 8 (o Android Gradle Plugin 8.13 exige no mínimo JDK 17) |
 | Android SDK | `compileSdkVersion` e `targetSdkVersion` 36 |
 | Versão mínima do Android | `minSdkVersion` 24 (Android 7.0) |
 | Android System WebView | Versão atualizada no aparelho ou emulador |
 
-A configuração do Android Studio, do SDK, do emulador e do JDK segue integralmente o roteiro da [Aula 5](./aula-05-flutter-instalacao-e-primeiro-app.md), seções 1 e 2. O Node.js pode ser instalado no Windows com:
+A configuração do Android Studio, do SDK, do emulador e do JDK segue integralmente o roteiro da [Aula 8](./aula-08-flutter-instalacao-e-primeiro-app.md), seções 1 e 2. O Node.js pode ser instalado no Windows com:
 
 ```powershell
 winget install --id OpenJS.NodeJS.LTS -e
@@ -262,7 +262,7 @@ npm init -y
 mkdir www
 ```
 
-O caminho segue a mesma recomendação da Aula 5: sem espaços, sem acentos e fora do OneDrive.
+O caminho segue a mesma recomendação da Aula 8: sem espaços, sem acentos e fora do OneDrive.
 
 ### Passo 2 — Criar a página inicial
 
@@ -345,7 +345,7 @@ Neste projeto não há plugins adicionais, mas a execução de `sync` após qual
 
 ### Passo 7 — Executar no emulador
 
-Com o emulador criado na Aula 5 em execução (ou um aparelho conectado com a depuração USB ativada):
+Com o emulador criado na Aula 8 em execução (ou um aparelho conectado com a depuração USB ativada):
 
 ```powershell
 npx cap run android

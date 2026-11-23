@@ -6,25 +6,25 @@
 ## Objetivos da aula
 
 - Preparar o ambiente de desenvolvimento Flutter para Android no Windows, com VS Code.
-- Construir um aplicativo completo que integre os conceitos das Aulas 11 a 14: árvore de widgets e responsividade, arquitetura em camadas e gerenciamento de estado, camada de dados com SQLite e conectividade intermitente, navegação declarativa, ligação profunda e canal de plataforma.
+- Construir um aplicativo completo que integre os conceitos das Aulas 10 a 14: árvore de widgets e responsividade, arquitetura em camadas e gerenciamento de estado, camada de dados com SQLite e conectividade intermitente, navegação declarativa, ligação profunda e canal de plataforma.
 - Executar e testar o aplicativo por diferentes meios: emulador, dispositivo físico, testes automatizados e roteiro de testes manuais.
 - Gerar o APK e instalá-lo por diferentes meios.
 
 ## Organização da aula
 
-A Aula 9 construiu uma lista de compras em um único arquivo, com os dados gravados como texto JSON no `shared_preferences`. A solução era adequada para apresentar o Flutter, mas reúne no mesmo `State` a interface, as regras e o armazenamento, exatamente a mistura de responsabilidades criticada na Aula 12. Esta aula reconstrói o mesmo aplicativo com a arquitetura estudada nas Aulas 11 a 14 e com um banco de dados relacional (SQLite).
+A Aula 12 construiu uma lista de compras em um único arquivo, com os dados gravados como texto JSON no `shared_preferences`. A solução era adequada para apresentar o Flutter, mas reúne no mesmo `State` a interface, as regras e o armazenamento, exatamente a mistura de responsabilidades criticada na Aula 11. Esta aula reconstrói o mesmo aplicativo com a arquitetura estudada nas Aulas 10 a 14 e com um banco de dados relacional (SQLite).
 
 O tutorial segue a ordem em que um projeto real é montado: ambiente (§1), arquitetura e estrutura de pastas (§2 e §3), criação e identidade do projeto (Passos 1 e 2), camadas de domínio, dados e apresentação (Passos 3 a 9), execução (§4), testes (§5) e distribuição do APK (§6). Cada passo informa o arquivo a criar, o código completo a copiar e a justificativa técnica das decisões.
 
-| Aspecto | Aula 9 | Aula 15 |
+| Aspecto | Aula 12 | Aula 15 |
 |---|---|---|
-| Organização do código | Um arquivo (`main.dart`) com tudo | Camadas de apresentação, domínio e dados (Aula 12) |
-| Estado | `setState` em um único `StatefulWidget` | Riverpod: `AsyncNotifier`, `Notifier` e `AsyncValue` (Aula 12) |
+| Organização do código | Um arquivo (`main.dart`) com tudo | Camadas de apresentação, domínio e dados (Aula 11) |
+| Estado | `setState` em um único `StatefulWidget` | Riverpod: `AsyncNotifier`, `Notifier` e `AsyncValue` (Aula 11) |
 | Persistência | Lista inteira como texto JSON no `shared_preferences` | Tabela SQLite, com gravação e leitura por registro (Aula 13) |
 | Rede | Inexistente | Servidor simulado, sincronização com nova tentativa e detecção de conectividade (Aula 13) |
 | Navegação | Uma única tela | Rotas declarativas, ligação profunda e confirmação ao sair de formulário (Aula 14) |
 | Integração nativa | Inexistente | Canal de plataforma em Kotlin (Aula 14) |
-| Responsividade | Lista de largura única | Grade de 1, 2 ou 3 colunas conforme a largura (Aulas 3 e 11) |
+| Responsividade | Lista de largura única | Grade de 1, 2 ou 3 colunas conforme a largura (Aulas 3 e 10) |
 | Testes | Um teste de conversão JSON | Testes de domínio, de repositório com SQLite em memória e de interface |
 
 ### Funcionalidades do aplicativo final
@@ -134,7 +134,7 @@ Para este projeto, as seções **Flutter**, **Android toolchain**, **Android Stu
 
 ### 2.1 Camadas e direção das dependências
 
-O aplicativo segue a arquitetura em camadas da Aula 12:
+O aplicativo segue a arquitetura em camadas da Aula 11:
 
 ```text
 ┌──────────────────────── Apresentação ────────────────────────┐
@@ -274,7 +274,7 @@ flutter pub add dev:sqflite_common_ffi
 
 | Pacote | Camada | Finalidade |
 |---|---|---|
-| `flutter_riverpod` | Apresentação | Gerenciamento de estado e injeção de dependências (Aula 12) |
+| `flutter_riverpod` | Apresentação | Gerenciamento de estado e injeção de dependências (Aula 11) |
 | `go_router` | Apresentação | Rotas declarativas e ligação profunda (Aula 14) |
 | `sqflite` | Dados | Acesso ao SQLite do Android (Aula 13) |
 | `path` | Dados | Montagem do caminho do arquivo do banco, independente do sistema |
@@ -300,7 +300,7 @@ dev_dependencies:
   sqflite_common_ffi: ^2.4.0+3
 ```
 
-> **Sobre o Riverpod sem geração de código.** A Aula 12 apresentou a anotação `@riverpod`, que exige o gerador `build_runner`. Este tutorial usa as classes `AsyncNotifier`, `Notifier` e `Provider` escritas diretamente, que oferecem o mesmo comportamento sem a etapa de geração. A escolha reduz o número de ferramentas no primeiro projeto completo; a migração para `@riverpod` não altera a arquitetura.
+> **Sobre o Riverpod sem geração de código.** A Aula 11 apresentou a anotação `@riverpod`, que exige o gerador `build_runner`. Este tutorial usa as classes `AsyncNotifier`, `Notifier` e `Provider` escritas diretamente, que oferecem o mesmo comportamento sem a etapa de geração. A escolha reduz o número de ferramentas no primeiro projeto completo; a migração para `@riverpod` não altera a arquitetura.
 
 ## Passo 2: Identidade do aplicativo
 
@@ -309,10 +309,10 @@ dev_dependencies:
 Um aplicativo distribuído precisa ser identificável em três níveis:
 
 - **Pelo sistema operacional.** O Android identifica cada aplicativo instalado pelo `applicationId`. Dois aplicativos com o mesmo identificador não coexistem no aparelho: instalar o segundo tenta substituir o primeiro e falha. Por isso, o identificador gerado por padrão (`com.example`) não deve ser mantido, e o `--org` do Passo 1 deve conter um identificador próprio da pessoa ou da equipe responsável.
-- **Pelo usuário.** O nome exibido no inicializador do Android e na barra superior, a cor do tema e as categorias oferecidas devem corresponder ao público e ao contexto de uso (Aula 7). Uma lista de compras para uma república estudantil, para uma cantina ou para uma família tende a ter categorias diferentes.
+- **Pelo usuário.** O nome exibido no inicializador do Android e na barra superior, a cor do tema e as categorias oferecidas devem corresponder ao público e ao contexto de uso (Aula 6). Uma lista de compras para uma república estudantil, para uma cantina ou para uma família tende a ter categorias diferentes.
 - **Pela equipe.** A tela "Sobre" registra a autoria e a turma, prática comum em software para créditos e contato.
 
-Todos esses dados ficam concentrados em um único arquivo, `identidade.dart`. Concentrá-los segue o mesmo princípio dos tokens de cor da Aula 10: o restante do código referencia `Identidade.nomeDoApp`, e não o texto literal.
+Todos esses dados ficam concentrados em um único arquivo, `identidade.dart`. Concentrá-los segue o mesmo princípio dos tokens de cor da Aula 9: o restante do código referencia `Identidade.nomeDoApp`, e não o texto literal.
 
 ### 2.2 Arquivo `lib/config/identidade.dart`
 
@@ -346,7 +346,7 @@ abstract final class Identidade {
     Integrante(nome: 'Nome Completo da Pessoa 1', matricula: '000000000'),
   ];
 
-  /// Cor semente do tema (Aula 10): o Material 3 deriva a paleta a partir dela.
+  /// Cor semente do tema (Aula 9): o Material 3 deriva a paleta a partir dela.
   static const corSemente = Color(0xFF2E7D32);
 
   /// Categorias oferecidas no formulário. A primeira é o valor padrão.
@@ -355,7 +355,7 @@ abstract final class Identidade {
 ```
 
 - `abstract final class` impede que a classe seja instanciada ou estendida: ela serve apenas para agrupar constantes.
-- A cor semente é escrita como `Color(0xAARRGGBB)`. `0xFF` no início é a opacidade total. Após a escolha, convém verificar o contraste da paleta gerada nos temas claro e escuro (Aula 10).
+- A cor semente é escrita como `Color(0xAARRGGBB)`. `0xFF` no início é a opacidade total. Após a escolha, convém verificar o contraste da paleta gerada nos temas claro e escuro (Aula 9).
 - A primeira categoria da lista é o valor inicial do formulário.
 
 ### 2.3 Nome no inicializador do Android
@@ -382,7 +382,7 @@ O valor deve refletir o identificador escolhido no Passo 1. Caso o projeto tenha
 
 ## Passo 3: Camada de domínio
 
-O domínio contém o que o aplicativo **é**, independentemente de como é exibido ou armazenado. Nenhum arquivo desta pasta importa Flutter, SQLite ou pacotes de rede, e por isso todos podem ser testados com Dart puro (Aula 12).
+O domínio contém o que o aplicativo **é**, independentemente de como é exibido ou armazenado. Nenhum arquivo desta pasta importa Flutter, SQLite ou pacotes de rede, e por isso todos podem ser testados com Dart puro (Aula 11).
 
 ### 3.1 Entidade `lib/dominio/item.dart`
 
@@ -547,7 +547,7 @@ abstract interface class ItemRepository {
 
 ### 4.1 Por que SQLite
 
-O `shared_preferences` da Aula 9 grava a lista inteira como um único texto a cada alteração e precisa ler tudo para encontrar um item. O SQLite é um banco de dados relacional completo, armazenado em um único arquivo no aparelho e embutido no próprio Android. Ele permite:
+O `shared_preferences` da Aula 12 grava a lista inteira como um único texto a cada alteração e precisa ler tudo para encontrar um item. O SQLite é um banco de dados relacional completo, armazenado em um único arquivo no aparelho e embutido no próprio Android. Ele permite:
 
 - gravar e ler **um registro por vez**, com custo que não cresce com o tamanho da lista;
 - **consultar** por condição (por exemplo, apenas os itens não enviados), com o auxílio de índices;
@@ -1175,7 +1175,7 @@ class SincronizacaoNotifier extends Notifier<EstadoSincronizacao> {
 Pontos de funcionamento:
 
 - **`ref.watch` em `build`** cria uma dependência: se o repositório mudar (por exemplo, substituído em um teste), a lista é recarregada. **`ref.read`** apenas obtém o valor no momento, adequado dentro de métodos que respondem a ações.
-- **`AsyncNotifier`** começa no estado `loading`, executa `build` e passa a `data` ou `error`. A interface trata os três estados com `.when` (Aula 12).
+- **`AsyncNotifier`** começa no estado `loading`, executa `build` e passa a `data` ou `error`. A interface trata os três estados com `.when` (Aula 11).
 - **Remoção otimista em `excluir`.** O componente `Dismissible` exige que o item arrastado saia da lista imediatamente. Por isso, o notifier remove o item do estado antes de concluir a exclusão no banco e, se o banco falhar, recarrega a lista para desfazer a remoção.
 - **`switch` com padrões** (`AsyncData(:final value) => value`) extrai o valor quando o estado é `data` e usa um valor padrão nos demais casos. Por precaução, sem informação sobre a rede, a sincronização não é tentada.
 - **`ref.invalidate(itensProvider)`** descarta o valor em cache e força uma nova leitura. Como o `.when` mantém os dados anteriores durante a recarga, a lista não pisca.
@@ -1300,7 +1300,7 @@ class AppCompras extends ConsumerWidget {
 }
 ```
 
-`MaterialApp.router` delega a navegação ao go_router. `theme` e `darkTheme` derivam da mesma cor semente; o Flutter escolhe entre eles conforme a configuração do aparelho (Aula 6), sem nenhuma condição no código.
+`MaterialApp.router` delega a navegação ao go_router. `theme` e `darkTheme` derivam da mesma cor semente; o Flutter escolhe entre eles conforme a configuração do aparelho (Aula 5), sem nenhuma condição no código.
 
 ### 9.3 Tela principal `lib/apresentacao/telas/tela_lista.dart`
 
@@ -1545,7 +1545,7 @@ class _Falha extends StatelessWidget {
 - **Estado offline (Aula 13).** A faixa de aviso aparece acima da lista quando não há rede, sem bloquear o uso: os dados continuam sendo gravados no SQLite.
 - **`ref.listen`** executa uma ação em resposta a uma mudança, sem reconstruir a tela. É usado para sincronizar quando a rede retorna e para exibir a `SnackBar` com o resultado.
 - **`select`** faz a tela observar apenas o campo `emAndamento` do estado de sincronização. Mudanças apenas na mensagem não reconstroem a tela, o que antecipa as técnicas de redução de reconstruções da Aula 25.
-- **Responsividade (Aulas 3 e 11).** O `LayoutBuilder` informa a largura disponível e define 1, 2 ou 3 colunas. A altura de cada cartão é multiplicada pela escala de fonte do sistema (`textScalerOf`); com altura fixa, um usuário com fonte ampliada (Aula 4) teria o texto cortado.
+- **Responsividade (Aulas 3 e 10).** O `LayoutBuilder` informa a largura disponível e define 1, 2 ou 3 colunas. A altura de cada cartão é multiplicada pela escala de fonte do sistema (`textScalerOf`); com altura fixa, um usuário com fonte ampliada (Aula 4) teria o texto cortado.
 - **`CustomScrollView` com *slivers*** permite que o cabeçalho de resumo e a grade rolem juntos, como uma única lista.
 
 ### 9.4 Formulário `lib/apresentacao/telas/tela_item.dart`
@@ -1824,7 +1824,7 @@ class _FormularioItemState extends ConsumerState<FormularioItem> {
 - **`PopScope` (Aula 14).** Enquanto houver alteração não salva, `canPop` é falso: o "voltar" do sistema e o botão de voltar da barra superior são interceptados, e um diálogo pergunta se as alterações devem ser descartadas. Após salvar, `context.pop()` fecha a tela diretamente, porque uma chamada explícita de `pop` não é bloqueada pelo `PopScope`.
 - **`Form.onChanged`** é chamado a cada alteração nos campos de texto e na lista de categorias; a quantidade, controlada por botões, marca a alteração em `_mudarQuantidade`.
 - **Categoria preservada.** O conjunto `{...Identidade.categorias, _categoria}` garante que a categoria de um item antigo continue disponível mesmo que a lista de categorias tenha sido alterada em `identidade.dart`. Sem isso, o `DropdownButtonFormField` encerraria o aplicativo com um erro de valor inexistente.
-- **UX writing (Aula 10).** Os botões descrevem a ação ("Adicionar à lista", "Salvar alterações", "Descartar", "Continuar editando"), e não "OK" ou "Cancelar".
+- **UX writing (Aula 9).** Os botões descrevem a ação ("Adicionar à lista", "Salvar alterações", "Descartar", "Continuar editando"), e não "OK" ou "Cancelar".
 
 ### 9.5 Tela "Sobre" `lib/apresentacao/telas/tela_sobre.dart`
 
@@ -2026,7 +2026,7 @@ class CartaoItem extends ConsumerWidget {
 ```
 
 - `ValueKey(item.id)` identifica o cartão de forma estável, requisito do `Dismissible` para saber qual item foi arrastado.
-- O estado de envio é comunicado por **dois canais** (Aula 10): o ícone muda de forma (nuvem com seta ou com marca de confirmação) e de cor. `semanticLabel` descreve o ícone para o leitor de tela (Aula 4).
+- O estado de envio é comunicado por **dois canais** (Aula 9): o ícone muda de forma (nuvem com seta ou com marca de confirmação) e de cor. `semanticLabel` descreve o ícone para o leitor de tela (Aula 4).
 - O cartão usa os tokens do tema (`errorContainer`, `onErrorContainer`, `primary`, `outline`), e não cores fixas, de modo que funciona nos temas claro e escuro.
 
 ### 9.8 Aviso de ausência de rede `lib/apresentacao/componentes/faixa_offline.dart`
@@ -2440,7 +2440,7 @@ Disponível no Android 11 ou posterior, com computador e celular na mesma rede:
 
 | Modo | Comando | Compilação | Uso |
 |---|---|---|---|
-| Debug | `flutter run` ou **F5** | JIT (Aula 11) | Desenvolvimento: hot reload, depurador, verificações (`assert`) ativas |
+| Debug | `flutter run` ou **F5** | JIT (Aula 10) | Desenvolvimento: hot reload, depurador, verificações (`assert`) ativas |
 | Profile | `flutter run --profile` | AOT, com instrumentação | Medição de desempenho com o DevTools (Aula 25). Recomenda-se dispositivo físico, pois o emulador não representa o desempenho real |
 | Release | `flutter run --release` | AOT, otimizado | Comportamento e desempenho finais; sem depurador nem hot reload |
 
@@ -2467,7 +2467,7 @@ No VS Code, os três modos podem ser oferecidos no menu de execução por meio d
 
 ### 4.7 Flutter DevTools
 
-Com o aplicativo em execução, `Ctrl+Shift+P` > **Flutter: Open DevTools**. O **Widget Inspector** exibe a árvore de widgets real (Aula 11) e permite selecionar um elemento na tela para localizá-lo no código; a aba **Performance**, em modo *profile*, mostra o tempo de cada quadro (Aula 25).
+Com o aplicativo em execução, `Ctrl+Shift+P` > **Flutter: Open DevTools**. O **Widget Inspector** exibe a árvore de widgets real (Aula 10) e permite selecionar um elemento na tela para localizá-lo no código; a aba **Performance**, em modo *profile*, mostra o tempo de cada quadro (Aula 25).
 
 ## 5. Formas de testar
 

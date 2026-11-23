@@ -1,6 +1,6 @@
 # 15 — Execução e componentes (React Native/Expo)
 
-Ponto de partida para a atividade da Aula 16: a mesma tela de detalhe de produto construída em Flutter na Aula 11, agora em React Native/Expo, com `tema.ts` centralizando tokens de cor e tipografia (Aula 16 §4).
+Ponto de partida para a atividade da Aula 16: a mesma tela de detalhe de produto construída em Flutter na Aula 10, agora em React Native/Expo, com `tema.ts` centralizando tokens de cor e tipografia (Aula 16 §4).
 
 ## Como rodar
 

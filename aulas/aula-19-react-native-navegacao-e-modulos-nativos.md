@@ -97,7 +97,7 @@ Essa solução é paralela ao `PopScope` do Flutter, estudado na Aula 14: o mesm
 
 ### Problema
 
-Como na Aula 14, uma ligação profunda leva o usuário diretamente a uma tela específica, sem que as telas anteriores tenham sido percorridas. Se a pilha contiver apenas a tela de destino, o botão voltar fecha o aplicativo de forma inesperada, o que contraria a heurística "controle e liberdade do usuário" (Aula 8).
+Como na Aula 14, uma ligação profunda leva o usuário diretamente a uma tela específica, sem que as telas anteriores tenham sido percorridas. Se a pilha contiver apenas a tela de destino, o botão voltar fecha o aplicativo de forma inesperada, o que contraria a heurística "controle e liberdade do usuário" (Aula 7).
 
 ### Mecanismo
 

@@ -25,7 +25,7 @@ Uma aplicação real precisa abrir telas em resposta a toques, mas também a eve
 
 > **Definição — Navegação declarativa**: modelo em que a pilha de navegação é derivada de um estado da aplicação (ex.: "usuário autenticado", "id do pedido selecionado"), de forma que mudar esse estado automaticamente reflete a pilha de rotas correta — a navegação é uma função do estado, não uma sequência de comandos imperativos.
 
-A relação é análoga à diferença entre a manipulação imperativa de views e o `build()` declarativo estudados na Aula 12: no modelo declarativo, descreve-se **qual deve ser o resultado** (a pilha correspondente ao estado atual), e o framework determina os passos necessários para alcançá-lo. A vantagem prática é que a mesma descrição serve a qualquer origem de navegação (toque, link, notificação), já que todas convergem para um endereço (rota).
+A relação é análoga à diferença entre a manipulação imperativa de views e o `build()` declarativo estudados na Aula 11: no modelo declarativo, descreve-se **qual deve ser o resultado** (a pilha correspondente ao estado atual), e o framework determina os passos necessários para alcançá-lo. A vantagem prática é que a mesma descrição serve a qualquer origem de navegação (toque, link, notificação), já que todas convergem para um endereço (rota).
 
 O Flutter suporta os dois modelos.
 
@@ -67,7 +67,7 @@ Leitura do código: o segmento `:id` é um parâmetro de caminho. Ao navegar par
 
 ### Problema
 
-Retomando a Aula 2, o Android mantém uma pilha de retorno, e o usuário espera que o gesto ou botão "voltar" do sistema desfaça a última navegação. Se o Flutter ignorasse essa expectativa, o aplicativo violaria o modelo mental do usuário Android (Aula 7). Há ainda situações em que o retorno imediato é indesejável, como descartar um formulário preenchido e não salvo.
+Retomando a Aula 2, o Android mantém uma pilha de retorno, e o usuário espera que o gesto ou botão "voltar" do sistema desfaça a última navegação. Se o Flutter ignorasse essa expectativa, o aplicativo violaria o modelo mental do usuário Android (Aula 6). Há ainda situações em que o retorno imediato é indesejável, como descartar um formulário preenchido e não salvo.
 
 ### Mecanismo
 
@@ -105,7 +105,7 @@ Sequência de eventos: (1) o usuário aciona "voltar"; (2) como `canPop` é `fal
 
 ### Problema
 
-Ao abrir um deep link, o aplicativo não percorreu as telas anteriores; ele "nasce" já na tela de destino. Se a pilha contiver apenas essa tela, o usuário que tocar em "voltar" fecha o aplicativo inesperadamente ou fica sem rota de saída clara. Trata-se de violação direta da heurística "controle e liberdade do usuário" (Aula 8).
+Ao abrir um deep link, o aplicativo não percorreu as telas anteriores; ele "nasce" já na tela de destino. Se a pilha contiver apenas essa tela, o usuário que tocar em "voltar" fecha o aplicativo inesperadamente ou fica sem rota de saída clara. Trata-se de violação direta da heurística "controle e liberdade do usuário" (Aula 7).
 
 ### Mecanismo
 

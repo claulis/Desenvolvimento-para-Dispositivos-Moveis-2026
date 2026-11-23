@@ -1,4 +1,4 @@
-# Aula 8 — Pesquisa breve com usuário e heurísticas de usabilidade
+# Aula 7 — Pesquisa breve com usuário e heurísticas de usabilidade
 
 **Carga horária:** 4h
 **Unidade:** II — Interface, experiência e responsividade
@@ -11,7 +11,7 @@
 
 ## 1. Por que pesquisar antes de desenhar
 
-Decisões de interface tomadas sem qualquer contato com o usuário real tendem a refletir o modelo mental do próprio desenvolvedor — que, tendo construído o sistema, jamais terá a mesma incerteza que um usuário novo enfrenta ao abri-lo pela primeira vez. Uma pesquisa breve, mesmo pequena e informal, é suficiente para revelar divergências entre o modelo mental do time e o do usuário real, tema introduzido na Aula 7.
+Decisões de interface tomadas sem qualquer contato com o usuário real tendem a refletir o modelo mental do próprio desenvolvedor — que, tendo construído o sistema, jamais terá a mesma incerteza que um usuário novo enfrenta ao abri-lo pela primeira vez. Uma pesquisa breve, mesmo pequena e informal, é suficiente para revelar divergências entre o modelo mental do time e o do usuário real, tema introduzido na Aula 6.
 
 > **Definição — Pesquisa de usuário**: conjunto de métodos sistemáticos para coletar informação diretamente de pessoas que usam ou usarão o sistema, com o objetivo de fundamentar decisões de projeto em evidência, e não apenas em suposição.
 
@@ -52,7 +52,7 @@ Jakob Nielsen propôs, em 1994, dez princípios gerais de usabilidade que perman
 1. **Visibilidade do estado do sistema** — o app informa o que está acontecendo (indicador de carregamento, confirmação de envio) em vez de deixar o usuário sem retorno.
 2. **Correspondência entre o sistema e o mundo real** — linguagem e ícones familiares ao usuário, não jargão técnico interno (ex.: usar "Meus pedidos", não "Consultar registros de transação").
 3. **Controle e liberdade do usuário** — sempre existe uma saída clara (botão voltar funcional, cancelar uma ação em andamento) — retoma diretamente a pilha de retorno da Aula 2.
-4. **Consistência e padrões** — seguir as convenções do Material Design e do próprio Android (retoma a Aula 7: convenções de plataforma).
+4. **Consistência e padrões** — seguir as convenções do Material Design e do próprio Android (retoma a Aula 6: convenções de plataforma).
 5. **Prevenção de erros** — desabilitar um botão de envio até o formulário estar válido, em vez de deixar o usuário errar e só depois avisar.
 6. **Reconhecimento em vez de memorização** — mostrar opções disponíveis (ex.: sugestões de busca) em vez de exigir que o usuário lembre um comando ou termo exato.
 7. **Flexibilidade e eficiência de uso** — atalhos para usuários experientes (ex.: gestos, favoritos) sem obrigar o usuário novato a usá-los.

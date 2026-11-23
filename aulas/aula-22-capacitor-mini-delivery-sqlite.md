@@ -351,7 +351,7 @@ iniciar();
 
 ### Passo A7 — Estilos: `src/style.css`
 
-A folha de estilos aplica os princípios das Aulas 3, 4 e 7: área segura (`env(safe-area-inset-*)`), unidades relativas e alvos de toque de no mínimo 48 × 48 px.
+A folha de estilos aplica os princípios das Aulas 3, 4 e 6: área segura (`env(safe-area-inset-*)`), unidades relativas e alvos de toque de no mínimo 48 × 48 px.
 
 ```css
 * { box-sizing: border-box; }
@@ -665,7 +665,7 @@ mini-delivery/
 - Um aplicativo Capacitor com várias páginas pode ser construído como aplicação de página única com roteamento por *hash*, sem *framework*.
 - A Parte A, com dados em memória, executa no navegador e no Android, mas perde o estado ao fechar o aplicativo.
 - A Parte B substitui a camada de dados por SQLite por meio do plugin `@capacitor-community/sqlite`; como as duas camadas expõem a mesma interface assíncrona, a apresentação recebe apenas duas alterações pontuais.
-- A troca do armazenamento sem impacto na interface é a evidência prática do benefício da separação em camadas estudada nas Aulas 12, 17 e 23.
+- A troca do armazenamento sem impacto na interface é a evidência prática do benefício da separação em camadas estudada nas Aulas 11, 17 e 23.
 - Consultas parametrizadas, transações, valores monetários em centavos e escape de texto na interface são práticas independentes de plataforma.
 
 ## Referências

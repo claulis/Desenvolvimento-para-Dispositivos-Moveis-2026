@@ -11,7 +11,7 @@
 
 ## Organização da aula
 
-A aula percorre a camada de dados da arquitetura estudada na Aula 12. Parte-se da abstração que isola a origem dos dados (§1), passa-se aos mecanismos de acesso e armazenamento (§2 e §3) e, então, ao problema que distingue o desenvolvimento móvel: a rede não é confiável (§4). As estratégias de resiliência (§5) e sua expressão na interface (§6) respondem a esse problema. Cada tópico segue a sequência: problema, mecanismo e aplicação.
+A aula percorre a camada de dados da arquitetura estudada na Aula 11. Parte-se da abstração que isola a origem dos dados (§1), passa-se aos mecanismos de acesso e armazenamento (§2 e §3) e, então, ao problema que distingue o desenvolvimento móvel: a rede não é confiável (§4). As estratégias de resiliência (§5) e sua expressão na interface (§6) respondem a esse problema. Cada tópico segue a sequência: problema, mecanismo e aplicação.
 
 ## 1. O padrão repositório
 
@@ -23,7 +23,7 @@ Se o domínio ou a interface acessam diretamente a API, cada tela passa a conhec
 
 ### Mecanismo
 
-O repositório é o **único lugar** que decide de onde os dados vêm. O domínio (Aula 12) apenas pergunta "quais são os pedidos deste usuário" e recebe a resposta, sem saber se ela veio de uma API ou de um banco local. A separação é obtida em duas partes:
+O repositório é o **único lugar** que decide de onde os dados vêm. O domínio (Aula 11) apenas pergunta "quais são os pedidos deste usuário" e recebe a resposta, sem saber se ela veio de uma API ou de um banco local. A separação é obtida em duas partes:
 
 - uma **interface abstrata** (`PedidoRepository`), que define o contrato visível ao domínio;
 - uma **implementação** (`PedidoRepositoryImpl`), que coordena as fontes concretas (remota e local).
@@ -122,7 +122,7 @@ A escolha depende da complexidade e do volume dos dados. Armazenar uma lista ext
 
 ### Problema
 
-Retomando o contexto de uso móvel (Aula 7), o usuário está em movimento, entrando e saindo de áreas de cobertura e alternando entre Wi-Fi e dados móveis. Um aplicativo que presume conexão estável e contínua (modelo mental típico de quem vem do desenvolvimento web ou desktop) falha de forma visível e frequente em uso real.
+Retomando o contexto de uso móvel (Aula 6), o usuário está em movimento, entrando e saindo de áreas de cobertura e alternando entre Wi-Fi e dados móveis. Um aplicativo que presume conexão estável e contínua (modelo mental típico de quem vem do desenvolvimento web ou desktop) falha de forma visível e frequente em uso real.
 
 > **Definição — Conectividade intermitente**: condição normal de operação de um aplicativo móvel em que a disponibilidade e a qualidade da conexão de rede variam ao longo do tempo, exigindo que o aplicativo seja projetado para operar de forma aceitável mesmo sob rede instável, lenta ou ausente — não apenas para "tratar o erro" quando a rede falha.
 

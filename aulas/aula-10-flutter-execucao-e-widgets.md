@@ -1,4 +1,4 @@
-# Aula 11 — Flutter: modelo de execução e árvore de widgets
+# Aula 10 — Flutter: modelo de execução e árvore de widgets
 
 **Carga horária:** 4h
 **Unidade:** III — Arquitetura de software em Flutter
@@ -28,7 +28,7 @@ O Flutter adota a segunda estratégia. Em vez de solicitar ao Android que crie u
 As consequências são de duas naturezas:
 
 - **Vantagem**: consistência visual entre plataformas (o mesmo resultado, pixel a pixel, em Android e iOS) e desempenho de renderização previsível, já que o framework não depende da árvore de views nativa do sistema. Como o desenho é controlado integralmente pelo Flutter, uma atualização do sistema operacional não altera a aparência do aplicativo.
-- **Custo**: o Flutter precisa reimplementar comportamentos de plataforma que o sistema oferece automaticamente aos componentes nativos (por exemplo, o comportamento exato de rolagem e a seleção de texto). Para aderir ao Material Design (Aula 10), o framework disponibiliza o pacote `Material`, que traduz os tokens de cor, a tipografia e os componentes estudados anteriormente para widgets Flutter.
+- **Custo**: o Flutter precisa reimplementar comportamentos de plataforma que o sistema oferece automaticamente aos componentes nativos (por exemplo, o comportamento exato de rolagem e a seleção de texto). Para aderir ao Material Design (Aula 9), o framework disponibiliza o pacote `Material`, que traduz os tokens de cor, a tipografia e os componentes estudados anteriormente para widgets Flutter.
 
 ## 2. Compilação AOT (ahead-of-time) e JIT (just-in-time)
 
@@ -112,7 +112,7 @@ class TelaProduto extends StatelessWidget {
 
 Leitura do código, de fora para dentro: `Scaffold` fornece a estrutura da tela (barra superior e corpo); `Padding` afasta o conteúdo das bordas; `Column` empilha os filhos verticalmente; `Spacer` ocupa o espaço restante e empurra o botão para a parte inferior. Cada elemento é um widget e cada um envolve ou é envolvido por outro.
 
-Observa-se que a malha de espaçamento (`EdgeInsets.all(16.0)`, `SizedBox(height: 8)`) e a escala tipográfica (`Theme.of(context).textTheme.headlineSmall`) discutidas na Aula 10 traduzem-se diretamente em código Flutter. O sistema de design não é reinventado por plataforma; é apenas expresso na sintaxe de cada uma.
+Observa-se que a malha de espaçamento (`EdgeInsets.all(16.0)`, `SizedBox(height: 8)`) e a escala tipográfica (`Theme.of(context).textTheme.headlineSmall`) discutidas na Aula 9 traduzem-se diretamente em código Flutter. O sistema de design não é reinventado por plataforma; é apenas expresso na sintaxe de cada uma.
 
 ## 4. Widgets com e sem estado
 
@@ -224,7 +224,7 @@ Para tornar concreta a metáfora da árvore, recomenda-se abrir o **Flutter DevT
 
 ### Problema
 
-Retomando a Aula 6, telas modernas possuem recortes de câmera, cantos arredondados e barras do sistema (status e navegação). Conteúdo posicionado nessas regiões fica parcialmente oculto ou inacessível ao toque.
+Retomando a Aula 5, telas modernas possuem recortes de câmera, cantos arredondados e barras do sistema (status e navegação). Conteúdo posicionado nessas regiões fica parcialmente oculto ou inacessível ao toque.
 
 ### Mecanismo e aplicação
 
@@ -240,7 +240,7 @@ Scaffold(
 
 ## 7. Exemplo real: hot reload como resposta ao custo de iteração em mobile
 
-Antes de frameworks com hot reload, ajustar um valor de espaçamento em uma tela Android nativa exigia recompilar e reinstalar o aplicativo inteiro no aparelho ou no emulador, ciclo que, em projetos maiores, chega a consumir dezenas de segundos ou minutos. Esse custo de iteração desincentiva o ajuste fino de interface, justamente a atividade mais frequente ao aplicar hierarquia visual (Aula 10) e responsividade (Aula 3).
+Antes de frameworks com hot reload, ajustar um valor de espaçamento em uma tela Android nativa exigia recompilar e reinstalar o aplicativo inteiro no aparelho ou no emulador, ciclo que, em projetos maiores, chega a consumir dezenas de segundos ou minutos. Esse custo de iteração desincentiva o ajuste fino de interface, justamente a atividade mais frequente ao aplicar hierarquia visual (Aula 9) e responsividade (Aula 3).
 
 O hot reload do Flutter, ao preservar o estado da aplicação e aplicar apenas a mudança de código em menos de um segundo, reduz esse custo a praticamente zero. Trata-se de uma decisão arquitetural do framework (máquina virtual Dart com JIT durante o desenvolvimento, conforme a §2) com efeito direto e mensurável sobre a produtividade de quem projeta interface.
 

@@ -1,9 +1,5 @@
 # Aula 22 — Capacitor: tutorial progressivo de um mini aplicativo de delivery, da memória ao SQLite
 
-**Carga horária:** 4h
-**Unidade:** V — Aplicações híbridas com Capacitor
-**Pré-requisito:** [Aula 21 — Android com Capacitor](./aula-21-android-capacitor.md)
-
 ## Objetivos da aula
 
 - Construir, com tecnologias web e Capacitor, um aplicativo Android de três páginas inspirado em plataformas de entrega de comida.

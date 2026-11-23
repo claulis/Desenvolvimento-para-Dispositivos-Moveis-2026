@@ -1,8 +1,5 @@
 # Aula 12 — Exemplo Flutter completo com persistência
 
-**Carga horária:** 4h
-**Unidade:** III — Arquitetura de software em Flutter
-
 ## Visão geral
 
 Em 9 passos curtos, a turma constrói um app Flutter de lista de compras que **lembra os itens mesmo depois de fechado**, usando `shared_preferences`.
@@ -1004,7 +1001,7 @@ O `shared_preferences` resolveu bem este app. Conforme os dados crescem, vale co
 Como tudo está isolado na `ListaStorage`, trocar de opção significa mudar **só esse arquivo**.
 
 
-## Código final completo (gabarito)
+## Código final completo
 
 Estrutura do projeto ao final:
 

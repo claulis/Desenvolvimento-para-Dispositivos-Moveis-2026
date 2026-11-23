@@ -1,8 +1,5 @@
 # Aula 4 — Responsividade II e acessibilidade
 
-**Carga horária:** 4h
-**Unidade:** II — Interface, experiência e responsividade
-
 ## Objetivos da aula
 
 - Projetar interfaces que respeitem a escala de fonte definida pelo usuário e o contraste mínimo exigido.

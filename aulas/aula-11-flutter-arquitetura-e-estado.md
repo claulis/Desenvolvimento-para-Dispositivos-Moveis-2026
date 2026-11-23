@@ -1,8 +1,5 @@
 # Aula 11 — Flutter: arquitetura em camadas e gerenciamento de estado
 
-**Carga horária:** 4h
-**Unidade:** III — Arquitetura de software em Flutter
-
 ## Objetivos da aula
 
 - Estruturar uma aplicação Flutter em camadas de apresentação, domínio e dados.

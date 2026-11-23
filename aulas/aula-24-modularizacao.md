@@ -1,8 +1,5 @@
 # Aula 24 — Modularização por funcionalidade e por camada
 
-**Carga horária:** 4h
-**Unidade:** VI — Estilos arquiteturais, renderização e análise comparativa
-
 ## Objetivos da aula
 
 - Distinguir modularização por funcionalidade e por camada.

@@ -1,8 +1,5 @@
 # Aula 7 — Pesquisa breve com usuário e heurísticas de usabilidade
 
-**Carga horária:** 4h
-**Unidade:** II — Interface, experiência e responsividade
-
 ## Objetivos da aula
 
 - Planejar e conduzir uma pesquisa breve de usuário adequada ao contexto mobile.

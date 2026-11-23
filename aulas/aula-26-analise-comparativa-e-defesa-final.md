@@ -1,8 +1,5 @@
 # Aula 26 — Análise comparativa Flutter × React Native e defesa arquitetural
 
-**Carga horária:** 4h
-**Unidade:** VI — Estilos arquiteturais, renderização e análise comparativa
-
 ## Objetivos da aula
 
 - Consolidar, com base em evidência medida, a comparação entre implementações Flutter e React Native do mesmo módulo.
@@ -21,13 +18,13 @@ A tabela abaixo reúne as comparações feitas ao longo do componente:
 
 | Dimensão | Flutter | React Native | Aula(s) de origem |
 |---|---|---|---|
-| Renderização | Motor próprio (Impeller), desenha cada pixel | Componentes nativos reais, via Fabric | 11, 16 |
-| Linguagem e execução | Dart, compilado AOT | JavaScript/TypeScript sobre Hermes (bytecode AOT + interpretação) | 11, 16 |
-| Gerenciamento de estado | Provider/Riverpod/BLoC | Context/Redux/Zustand + TanStack Query | 12, 17 |
+| Renderização | Motor próprio (Impeller), desenha cada pixel | Componentes nativos reais, via Fabric | 10, 16 |
+| Linguagem e execução | Dart, compilado AOT | JavaScript/TypeScript sobre Hermes (bytecode AOT + interpretação) | 10, 16 |
+| Gerenciamento de estado | Provider/Riverpod/BLoC | Context/Redux/Zustand + TanStack Query | 11, 17 |
 | Camada de dados | Repositório + `dio`/`sqflite`/`connectivity_plus` | Repositório + `axios`/MMKV/NetInfo | 13, 18 |
 | Navegação | `go_router`, declarativa | React Navigation, `linking` | 14, 19 |
 | Integração nativa | Canal de plataforma (`MethodChannel`/`pigeon`) | TurboModules/Codegen (ou Expo Modules) | 14, 19 |
-| Custo de renderização de listas | Escopo de `setState`/escuta seletiva, `ListView.builder` | `React.memo`+seletor, `FlatList` | 23 |
+| Custo de renderização de listas | Escopo de `setState`/escuta seletiva, `ListView.builder` | `React.memo`+seletor, `FlatList` | 25 |
 
 ## 3. Evidência empírica, não impressão
 

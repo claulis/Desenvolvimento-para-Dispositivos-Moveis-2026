@@ -1,8 +1,5 @@
 # Aula 23 — Estilos arquiteturais aplicados a aplicações móveis
 
-**Carga horária:** 4h
-**Unidade:** VI — Estilos arquiteturais, renderização e análise comparativa
-
 ## 1. Arquitetura em camadas (layered architecture)
 
 O estilo já praticado nas Aulas 11 e 17: componentes organizados em camadas horizontais (apresentação, domínio, dados), com a regra de que uma camada só pode depender da camada imediatamente abaixo dela.
@@ -84,7 +81,7 @@ A razão prática pela qual esta aula importa para um módulo implementado nas d
 
 ## 6. Exemplo real: por que times que mantêm apps em duas plataformas investem em domínio isolado
 
-Equipes que mantêm simultaneamente uma versão Flutter e uma versão React Native do mesmo produto — cenário raro, mas didaticamente relevante — relatam que o principal fator de sucesso na manutenção de paridade entre as duas versões é justamente o quanto a lógica de domínio (regras de validação, cálculo de preço, elegibilidade de desconto) foi isolada de detalhes de framework. Quando o domínio está bem isolado (mesmo que reescrito, não compartilhado literalmente entre Dart e TypeScript), uma mudança de regra de negócio é replicada de forma mecânica e verificável entre as duas bases; quando o domínio está espalhado pela camada de apresentação, cada mudança exige uma investigação separada em cada plataforma, aumentando o risco de divergência não intencional entre elas — exatamente o risco que a Unidade VI busca tornar visível antes da análise comparativa final (Aula 26).
+Equipes que mantêm simultaneamente uma versão Flutter e uma versão React Native do mesmo produto — cenário raro, mas didaticamente relevante — relatam que o principal fator de sucesso na manutenção de paridade entre as duas versões é justamente o quanto a lógica de domínio (regras de validação, cálculo de preço, elegibilidade de desconto) foi isolada de detalhes de framework. Quando o domínio está bem isolado (mesmo que reescrito, não compartilhado literalmente entre Dart e TypeScript), uma mudança de regra de negócio é replicada de forma mecânica e verificável entre as duas bases; quando o domínio está espalhado pela camada de apresentação, cada mudança exige uma investigação separada em cada plataforma, aumentando o risco de divergência não intencional entre elas — exatamente o risco que as Aulas 23 a 25 buscam tornar visível antes da análise comparativa final (Aula 26).
 
 
 

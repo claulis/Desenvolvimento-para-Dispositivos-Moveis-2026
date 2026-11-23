@@ -1,8 +1,5 @@
 # Aula 15 — Flutter: tutorial integrador com SQLite, arquitetura em camadas e distribuição do APK
 
-**Carga horária:** 4h
-**Unidade:** III — Arquitetura de software em Flutter
-
 ## Objetivos da aula
 
 - Preparar o ambiente de desenvolvimento Flutter para Android no Windows, com VS Code.
@@ -44,10 +41,10 @@ O tutorial segue a ordem em que um projeto real é montado: ambiente (§1), arqu
 |---|---|---|
 | 3 | Pontos de quebra de 600 e 840 dp | `tela_lista.dart` (`LayoutBuilder`), largura máxima dos formulários |
 | 4 | Escala de fonte, rótulos para leitor de tela | `MediaQuery.textScalerOf`, `semanticLabel`, `tooltip`, `Semantics(liveRegion:)` |
-| 6 | Tema claro e escuro, área segura | `theme` e `darkTheme` em `app.dart`, `SafeArea` |
-| 10 | Cor semente e tokens de cor e tipografia | `ColorScheme.fromSeed`, `colorScheme.*`, `textTheme.*` |
-| 11 | Árvore de widgets, `LayoutBuilder`, `MediaQuery`, hot reload, DevTools | Telas e componentes; §4 |
-| 12 | Camadas, gerenciamento de estado, `AsyncValue`, testes de domínio | `dominio/`, `providers.dart`, `test/dominio/` |
+| 5 | Tema claro e escuro, área segura | `theme` e `darkTheme` em `app.dart`, `SafeArea` |
+| 9 | Cor semente e tokens de cor e tipografia | `ColorScheme.fromSeed`, `colorScheme.*`, `textTheme.*` |
+| 10 | Árvore de widgets, `LayoutBuilder`, `MediaQuery`, hot reload, DevTools | Telas e componentes; §4 |
+| 11 | Camadas, gerenciamento de estado, `AsyncValue`, testes de domínio | `dominio/`, `providers.dart`, `test/dominio/` |
 | 13 | Repositório, serialização, persistência local, sincronização, backoff com jitter, estado offline | `dados/`, `faixa_offline.dart` |
 | 14 | Rotas declarativas e aninhadas, ligação profunda, `PopScope`, `MethodChannel` | `rotas.dart`, `AndroidManifest.xml`, `tela_item.dart`, `MainActivity.kt` |
 

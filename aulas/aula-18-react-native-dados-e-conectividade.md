@@ -1,8 +1,5 @@
 # Aula 18 — React Native: camada de dados e conectividade
 
-**Carga horária:** 4h
-**Unidade:** IV — Arquitetura de software em React Native
-
 ## Objetivos da aula
 
 - Implementar o padrão repositório em React Native, com persistência local e detecção de conectividade.

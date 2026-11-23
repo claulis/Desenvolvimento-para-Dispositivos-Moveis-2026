@@ -1,8 +1,5 @@
 # Aula 1 — O smartphone como plataforma de projeto
 
-**Carga horária:** 4h
-**Unidade:** I — O smartphone e a plataforma Android como condicionantes de projeto
-
 ## Breve historico
 
 https://en.wikipedia.org/wiki/Motorola_TAC

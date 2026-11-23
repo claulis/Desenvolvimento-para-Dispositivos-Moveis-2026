@@ -1,8 +1,5 @@
 # Aula 10 — Flutter: modelo de execução e árvore de widgets
 
-**Carga horária:** 4h
-**Unidade:** III — Arquitetura de software em Flutter
-
 ## Objetivos da aula
 
 - Explicar o modelo de compilação e renderização do Flutter e suas consequências para consistência visual.

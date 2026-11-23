@@ -1,8 +1,5 @@
 # Aula 2 — Cor, tipografia e fundamentos de UI/UX para dispositivos móveis
 
-**Carga horária:** 4h
-**Unidade:** I — O smartphone e a plataforma Android como condicionantes de projeto
-
 ## Sumário
 
 - [Cor antes do pixel](#cor-antes-do-pixel)

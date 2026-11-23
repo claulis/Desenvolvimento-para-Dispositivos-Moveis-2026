@@ -1,8 +1,5 @@
 # Aula 14 — Flutter: navegação declarativa e canais de plataforma
 
-**Carga horária:** 4h
-**Unidade:** III — Arquitetura de software em Flutter
-
 ## Objetivos da aula
 
 - Implementar navegação declarativa, rotas e ligações profundas em Flutter.

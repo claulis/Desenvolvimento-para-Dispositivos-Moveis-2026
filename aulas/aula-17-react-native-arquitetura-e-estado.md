@@ -1,8 +1,5 @@
 # Aula 17 — React Native: arquitetura em camadas e gerenciamento de estado
 
-**Carga horária:** 4h
-**Unidade:** IV — Arquitetura de software em React Native
-
 ## Objetivos da aula
 
 - Estruturar uma aplicação React Native em camadas de apresentação, domínio e dados.

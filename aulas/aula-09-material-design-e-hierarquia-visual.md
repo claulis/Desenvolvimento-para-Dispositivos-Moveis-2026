@@ -1,8 +1,5 @@
 # Aula 9 — Hierarquia visual e Material Design
 
-**Carga horária:** 4h
-**Unidade:** II — Interface, experiência e responsividade
-
 ## Objetivos da aula
 
 - Aplicar malha de espaçamento, escala tipográfica e sistema de cor segundo o Material Design.

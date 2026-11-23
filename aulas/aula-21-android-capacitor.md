@@ -1,9 +1,5 @@
 # Aula 21 — Android com Capacitor: aplicações web em contêiner nativo
 
-**Carga horária:** 4h
-**Unidade:** V — Aplicações híbridas com Capacitor
-**Referência principal:** documentação oficial do Capacitor para Android — https://capacitorjs.com/docs/android
-
 ## Objetivos da aula
 
 - Definir o Capacitor e situá-lo em relação às abordagens já estudadas (Flutter e React Native).

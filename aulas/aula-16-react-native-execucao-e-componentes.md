@@ -1,8 +1,5 @@
 # Aula 16 — React Native: modelo de execução e componentes
 
-**Carga horária:** 4h
-**Unidade:** IV — Arquitetura de software em React Native
-
 ## 1. O que torna o React Native diferente do Flutter
 
 > **Definição — React Native**: framework de interface multiplataforma que executa código de aplicação escrito em JavaScript/TypeScript sobre uma camada de componentes **nativos reais** do sistema operacional hospedeiro — diferente do Flutter, que desenha sua própria interface, o React Native traduz seus componentes (`View`, `Text`, `Image`) em componentes nativos Android (ou iOS) de fato.
@@ -216,7 +213,7 @@ Uma ressalva de equivalência: `useWindowDimensions` reporta o tamanho da **jane
 
 Uma razão de mercado frequentemente citada para a adoção do React Native é a reutilização de conhecimento de equipes já proficientes em JavaScript/TypeScript e React para web. Conceitos como componentes, hooks, Flexbox e gerenciamento de estado (Context, Redux; Aula 17) transferem-se quase diretamente.
 
-Esse fator reduz o tempo de adaptação de uma equipe web à produção mobile, aspecto relevante na análise comparativa de custo de implementação que será feita na Aula 26. Ele não elimina, contudo, a necessidade de compreender os condicionantes da plataforma Android estudados na Unidade I, que continuam se aplicando integralmente.
+Esse fator reduz o tempo de adaptação de uma equipe web à produção mobile, aspecto relevante na análise comparativa de custo de implementação que será feita na Aula 26. Ele não elimina, contudo, a necessidade de compreender os condicionantes da plataforma Android estudados nas Aulas 1 a 7, que continuam se aplicando integralmente.
 
 ## Síntese da aula
 

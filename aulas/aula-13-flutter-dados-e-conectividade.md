@@ -1,8 +1,5 @@
 # Aula 13 — Flutter: camada de dados e conectividade intermitente
 
-**Carga horária:** 4h
-**Unidade:** III — Arquitetura de software em Flutter
-
 ## Objetivos da aula
 
 - Implementar o padrão repositório com fontes de dados local e remota.

@@ -1,8 +1,5 @@
 # Aula 3 — Responsividade I: unidades, pontos de quebra e classes de tamanho de janela
 
-**Carga horária:** 4h
-**Unidade:** II — Interface, experiência e responsividade
-
 ## Objetivos da aula
 
 - Diferenciar layout adaptativo de layout responsivo.

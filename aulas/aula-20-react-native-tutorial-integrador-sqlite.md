@@ -1,8 +1,5 @@
 # Aula 20 — React Native: tutorial integrador com SQLite, Expo Router e navegação por abas
 
-**Carga horária:** 4h
-**Unidade:** IV — Arquitetura de software em React Native
-
 ## Tutorial: App de Tarefas com Expo, React Native, SQLite e navegação por abas
 
 Este tutorial explica, passo a passo, o projeto **tarefas**: um app mobile com **três telas** (Tarefas, Categorias e Resumo), um **menu de navegação em abas** e um banco **SQLite** local com duas tabelas relacionadas.
@@ -23,8 +20,8 @@ Este tutorial explica, passo a passo, o projeto **tarefas**: um app mobile com *
 8. [Conceitos principais](#8-conceitos-principais)
 9. [Como rodar](#9-como-rodar)
 10. [Fluxos, do toque ao banco](#10-fluxos-do-toque-ao-banco)
-11. [Problemas comuns](#12-problemas-comuns)
-12. [Pontos de atenção neste código](#13-pontos-de-atenção-neste-código)
+11. [Problemas comuns](#11-problemas-comuns)
+12. [Pontos de atenção neste código](#12-pontos-de-atenção-neste-código)
 
 
 ---
@@ -891,7 +888,7 @@ O padrão **gravar → recarregar → redesenhar** vale para todas as ações.
 
 ---
 
-## 13. Pontos de atenção neste código
+## 12. Pontos de atenção neste código
 
 Observações sobre o que pode ser melhorado (nada impede o app de funcionar):
 
@@ -901,7 +898,7 @@ Observações sobre o que pode ser melhorado (nada impede o app de funcionar):
 4. **Dois toques rápidos em "Adicionar"** podem inserir duas vezes, pois o campo só é limpo depois do `await`. Convém limpar o campo antes ou desabilitar o botão durante a gravação.
 5. **O chip selecionado permanece após adicionar uma tarefa.** É intencional (útil para cadastrar várias na mesma categoria), mas pode surpreender.
 6. **Cada tela recarrega do banco ao ganhar foco**, mesmo sem mudanças. É simples e correto para listas pequenas; com milhares de linhas, convém considerar paginação.
-7. **Não é possível mover uma tarefa para outra categoria depois de criada** nem renomear categorias (ver exercícios).
+7. **Não é possível mover uma tarefa para outra categoria depois de criada** nem renomear categorias.
 8. **Ícones são emojis**, que variam de aparência entre Android e iOS. Para ícones uniformes, recomenda-se `@expo/vector-icons` (já incluso no Expo).
 9. **Sem testes automatizados.** O SQL da `db.ts` é a parte mais valiosa para testar.
 

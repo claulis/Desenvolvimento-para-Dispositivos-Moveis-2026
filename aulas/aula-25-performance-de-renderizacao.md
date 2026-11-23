@@ -1,8 +1,5 @@
 # Aula 25 — Arquitetura da camada de apresentação e desempenho de renderização
 
-**Carga horária:** 4h
-**Unidade:** VI — Estilos arquiteturais, renderização e análise comparativa
-
 ## Objetivos da aula
 
 - Explicar reconstrução de subárvore no Flutter e reconciliação no React Native.

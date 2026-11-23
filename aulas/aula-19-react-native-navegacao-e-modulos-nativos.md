@@ -1,8 +1,5 @@
 # Aula 19 — React Native: navegação e módulos nativos
 
-**Carga horária:** 4h
-**Unidade:** IV — Arquitetura de software em React Native
-
 ## Objetivos da aula
 
 - Implementar navegação, rotas e ligações profundas com React Navigation.

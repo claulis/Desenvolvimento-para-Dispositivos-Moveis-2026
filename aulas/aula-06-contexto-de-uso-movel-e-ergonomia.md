@@ -1,8 +1,5 @@
 # Aula 6 — Contexto de uso móvel e ergonomia de alcance
 
-**Carga horária:** 4h
-**Unidade:** I — O smartphone e a plataforma Android como condicionantes de projeto
-
 ## Objetivos da aula
 
 - Caracterizar o contexto de uso móvel em oposição ao uso sentado diante de um computador.

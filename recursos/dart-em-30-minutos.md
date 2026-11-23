@@ -1,6 +1,6 @@
 # Dart em 30 minutos — só o que este componente usa
 
-Este não é um curso de Dart. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 11–22, para quem chega ao componente com POO (em qualquer linguagem) mas sem experiência prévia em Dart. Se sua equipe já tem essa base, pule este anexo.
+Este não é um curso de Dart. Cobre exclusivamente a sintaxe usada nos exemplos das Aulas 11–24, para quem chega ao componente com POO (em qualquer linguagem) mas sem experiência prévia em Dart. Se sua equipe já tem essa base, pule este anexo.
 
 ## Tipagem e variáveis
 

@@ -1,7 +1,7 @@
-# Aula 23 — Arquitetura da camada de apresentação e desempenho de renderização
+# Aula 25 — Arquitetura da camada de apresentação e desempenho de renderização
 
 **Carga horária:** 4h
-**Unidade:** V — Estilos arquiteturais, renderização e análise comparativa
+**Unidade:** VI — Estilos arquiteturais, renderização e análise comparativa
 
 ## Objetivos da aula
 

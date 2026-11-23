@@ -1,6 +1,7 @@
-# Aula 25 — Android com Capacitor: aplicações web em contêiner nativo
+# Aula 21 — Android com Capacitor: aplicações web em contêiner nativo
 
-**Unidade:** V — Estilos arquiteturais, renderização e análise comparativa
+**Carga horária:** 4h
+**Unidade:** V — Aplicações híbridas com Capacitor
 **Referência principal:** documentação oficial do Capacitor para Android — https://capacitorjs.com/docs/android
 
 ## Objetivos da aula
